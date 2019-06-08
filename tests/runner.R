@@ -11,7 +11,7 @@ if (length(.libPaths()) > 1) {
   print("libpats are")
   print(.libPaths())
   print("writing this to .Rprofile")
-  to_r_prof <- paste0(".libPaths('", .libPaths(), "')")
+  to_r_prof <- paste0(".libPaths('", paste0("c('", paste(.libPaths(), collapse = "' ,'"), "')"), "')")
   cat(to_r_prof)
   writeLines(to_r_prof, path_r_prof) 
   cat(readLines(path_r_prof))
