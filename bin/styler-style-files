@@ -1,10 +1,2 @@
 #!/usr/bin/env Rscript
-cat("try sourcing R profile")
-if (file.exists("~/.Rprofile")) {
-  source("~/.Rprofile")
-}
-
-if (file.exists(".Rprofile")) {
-  source(".Rprofile")
-}
 styler::style_file(commandArgs(trailing = TRUE))
