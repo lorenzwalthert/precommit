@@ -10,7 +10,7 @@ path <- c(PATH = paste0(
 ))
 repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
-
+Sys.setenv("R_LIBS_SITE" = paste0(.libPaths(), collapse = ":"))
 # if (length(.libPaths()) > 1) {
 #   path_r_prof <- fs::path(Sys.getenv("HOME"), ".Rprofile.site")
 #   print("libpats are")
