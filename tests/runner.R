@@ -19,9 +19,9 @@ if (length(.libPaths()) > 1) {
   system2("echo", "$R_PROFILE_USER")
   print("path home")
   system2("echo", "$HOME")
-  print("rprof")
+  print("global rprof")
   system2("cat", "$HOME/.Rprofile")
-  print("user rprof")
+  print("project rprof")
   system2("cat", ".Rprofile")
 }
 
