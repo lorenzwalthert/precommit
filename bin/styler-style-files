@@ -1,21 +1,2 @@
 #!/usr/bin/env Rscript
-print("libPaths are") 
-print(.libPaths())
-print("wd is")
-print(getwd())
-print("user rprofile exists:")
-print(file.exists(".Rprofile"))
-print("global R profile exists:")
-print(file.exists("~/.Rprofile"))
-print("HOme is at:")
-system2("echo", "$HOME")
-cat("try sourcing R profile")
-if (file.exists("~/.Rprofile")) {
-  source("~/.Rprofile")
-}
-
-if (file.exists(".Rprofile")) {
-  source(".Rprofile")
-}
-
 styler::style_file(commandArgs(trailing = TRUE))
