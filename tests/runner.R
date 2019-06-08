@@ -30,6 +30,6 @@ fs::file_copy(fs::dir_ls("resources"), path_test_repo)
 withr::with_dir(path_test_repo, {
   git2r::config(repo, user.name = "ci")
   git2r::add(repo, "styler-style-files-positive.R")
-  processx::run("git", c("commit", "-m", "shall pass"), echo = TRUE, echo_cmd = TRUE)
+  processx::run("git", c("commit", "-m", "shall pass"), echo = TRUE, env = path, echo_cmd = TRUE)
 })
 fs::dir_delete(path_test_repo)
