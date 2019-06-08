@@ -12,10 +12,10 @@ repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
 
 if (length(.libPaths()) > 1) {
-  path_r_prof <- fs::path(Sys.getenv("HOME"), ".Rprofile")
+  path_r_prof <- fs::path(Sys.getenv("HOME"), ".Rprofile.site")
   print("libpats are")
   print(.libPaths())
-  print("writing this to .Rprofile")
+  print("writing this to .Rprofile.site")
   to_r_prof <- paste0(".libPaths(", paste0("c('", paste(.libPaths(), collapse = "' ,'"), "')"), ")")
   cat(to_r_prof)
   writeLines(to_r_prof, path_r_prof)
