@@ -6,7 +6,8 @@ path <- c(PATH = paste0(
 repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
 print(.libPaths())
-
+print(glue::glue("styler is installled: {'styler' %in% rownames(installed.packages())}"))
+library(styler)
 # initialize
 withr::with_dir(
   path_test_repo, {
