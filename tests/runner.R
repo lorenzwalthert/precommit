@@ -15,6 +15,12 @@ if (length(.libPaths()) > 1) {
   cat(to_r_prof)
   writeLines(to_r_prof, path_r_prof) 
   cat(readLines(path_r_prof))
+  print("echo $R_PROFILE_USER")
+  system2("echo", "$R_PROFILE_USER")
+  print("path home")
+  system2("echo", "$HOME")
+  print("rprof")
+  system2("cat", "$HOME/.Rprofile")
 }
 
 
