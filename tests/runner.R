@@ -1,9 +1,13 @@
-path_test_repo <- "tests/tets-repo"
+path_test_repo <- "tests/test-repo"
 fs::dir_create(path_test_repo)
 path <- c(PATH = paste0(
   Sys.getenv("PATH"), ":", Sys.getenv("HOME"), "/.pre-commit-venv/bin"
 ))
+repo <- git2r::init(path_test_repo)
+
+
 # initialize
+
 withr::with_dir(
   path_test_repo, {
     processx::run("curl", "https://pre-commit.com/install-local.py | python -")
@@ -21,6 +25,11 @@ withr::with_dir(
   }
 )
 
-
-# how to install on windows
-# how to call system? pre-commit install.
+# hooks are not supported: https://github.com/ropensci/git2r/issues/118
+fs::file_copy(fs::dir_ls("resources"), path_test_repo)
+withr::with_dir(path_test_repo, {
+  git2r::config(repo, user.name = "ci")
+  git2r::add(repo, "styler-style-files-positive.R")
+  processx::run("git", c("commit", "-m", "shall pass"), echo = TRUE, echo_cmd = TRUE)
+})
+fs::dir_delete(path_test_repo)
