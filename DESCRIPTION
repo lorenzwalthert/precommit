@@ -1,0 +1,14 @@
+Package: pre-commit-hooks
+Title: Pre commit hooks
+Version: 1.0.0
+Author: Lorenz Walthert
+Maintainer: Lorenz Walthert <lorenz.walthert@icloud.com>
+Imports:
+    withr,
+    tic (>= 0.2.13.9015),
+    git2r,
+    processx,
+    fs
+Encoding: UTF-8
+Remotes: 
+    ropenscilabs/tic
