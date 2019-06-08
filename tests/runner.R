@@ -17,10 +17,13 @@ if (length(.libPaths()) > 1) {
   cat(readLines(path_r_prof))
   print("echo $R_PROFILE_USER")
   system2("echo", "$R_PROFILE_USER")
+  
   print("echo $R_LIBS")
   system2("echo", "$R_LIBS")
+  
   print("echo $R_LIBS_USER")
   system2("echo", "$R_LIBS_USER")
+  
   print("path home")
   system2("echo", "$HOME")
   print("global rprof")
@@ -37,7 +40,7 @@ withr::with_dir(
     system2("curl", "https://pre-commit.com/install-local.py | python -")
     writeLines(c(
       "-   repo: https://github.com/lorenzwalthert/pre-commit-hooks",
-      "    rev: 6d760ddc9843c46e93550d0e0db0a12c2a97432a",
+      "    rev: 1bf17b33ab413a7f0406d5764af475e085b6c8b2",
       "    hooks:",
       "    - id: devtools-document",
       "    - id: styler-style-files",
