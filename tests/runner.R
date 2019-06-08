@@ -12,8 +12,7 @@ repo <- git2r::init(path_test_repo)
 
 withr::with_dir(
   path_test_repo, {
-    processx::run("curl", "https://pre-commit.com/install-local.py | python -")
-    system("echo $PATH")
+    processx::run("curl", "https://pre-commit.com/install-local.py | python -", echo = TRUE, env = path, echo_cmd = TRUE)
     writeLines(c(
       "-   repo: https://github.com/lorenzwalthert/pre-commit-hooks",
       "    rev: latest",
