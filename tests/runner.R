@@ -1,4 +1,5 @@
-print(system("which curl"))
+print(system("which python"))
+
 path_test_repo <- "tests/test-repo"
 fs::dir_create(path_test_repo)
 path <- c(PATH = paste0(
