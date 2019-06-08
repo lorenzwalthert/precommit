@@ -8,8 +8,9 @@ git2r::config(repo, user.name = "ci", user.email = "example@example.com")
 
 if (length(.libPaths()) > 1) {
   print("writing this to .Rprofile")
-  print(paste0(".libpaths(", capture.output(dput(.libPaths())), ")"))
-  writeLines(paste0(".libpaths(", capture.output(dput(.libPaths())), ")"), fs::path(Sys.getenv("HOME"), ".Rprofile")) 
+  to_r_prof <- paste0(".libPaths(", capture.output(dput(.libPaths())), ")")
+  print(to_r_prof)
+  writeLines(to_r_prof, fs::path(Sys.getenv("HOME"), ".Rprofile")) 
 }
 
 
