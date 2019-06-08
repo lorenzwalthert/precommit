@@ -11,31 +11,31 @@ path <- c(PATH = paste0(
 repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
 
-if (length(.libPaths()) > 1) {
-  path_r_prof <- fs::path(Sys.getenv("HOME"), ".Rprofile.site")
-  print("libpats are")
-  print(.libPaths())
-  print("writing this to .Rprofile.site")
-  to_r_prof <- paste0(".libPaths(", paste0("c('", paste(.libPaths(), collapse = "' ,'"), "')"), ")")
-  cat(to_r_prof)
-  writeLines(to_r_prof, path_r_prof)
-  cat(readLines(path_r_prof))
-  print("echo $R_PROFILE_USER")
-  system2("echo", "$R_PROFILE_USER")
-
-  print("echo $R_LIBS")
-  system2("echo", "$R_LIBS")
-
-  print("echo $R_LIBS_USER")
-  system2("echo", "$R_LIBS_USER")
-
-  print("path home")
-  system2("echo", "$HOME")
-  print("global rprof")
-  system2("cat", "$HOME/.Rprofile")
-  print("project rprof")
-  system2("cat", ".Rprofile")
-}
+# if (length(.libPaths()) > 1) {
+#   path_r_prof <- fs::path(Sys.getenv("HOME"), ".Rprofile.site")
+#   print("libpats are")
+#   print(.libPaths())
+#   print("writing this to .Rprofile.site")
+#   to_r_prof <- paste0(".libPaths(", paste0("c('", paste(.libPaths(), collapse = "' ,'"), "')"), ")")
+#   cat(to_r_prof)
+#   writeLines(to_r_prof, path_r_prof)
+#   cat(readLines(path_r_prof))
+#   print("echo $R_PROFILE_USER")
+#   system2("echo", "$R_PROFILE_USER")
+# 
+#   print("echo $R_LIBS")
+#   system2("echo", "$R_LIBS")
+# 
+#   print("echo $R_LIBS_USER")
+#   system2("echo", "$R_LIBS_USER")
+# 
+#   print("path home")
+#   system2("echo", "$HOME")
+#   print("global rprof")
+#   system2("cat", "$HOME/.Rprofile")
+#   print("project rprof")
+#   system2("cat", ".Rprofile")
+# }
 
 
 # initialize
