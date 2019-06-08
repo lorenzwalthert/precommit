@@ -5,7 +5,14 @@ path <- c(PATH = paste0(
 ))
 repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
-print(.libPaths())
+
+if (length(.libPaths()) > 1) {
+  print("writing this to .Rprofile")
+  print(paste0(".libpaths(", capture.output(dput(.libPaths())), ")"))
+  writeLines(paste0(".libpaths(", capture.output(dput(.libPaths())), ")"), fs::path(Sys.getenv("HOME"), ".Rprofile")) 
+}
+
+
 print(glue::glue("styler is installled: {'styler' %in% rownames(installed.packages())}"))
 library(styler)
 # initialize
