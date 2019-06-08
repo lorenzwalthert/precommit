@@ -1,5 +1,3 @@
-print(system("which python"))
-
 path_test_repo <- "tests/test-repo"
 fs::dir_create(path_test_repo)
 path <- c(PATH = paste0(
@@ -27,14 +25,12 @@ withr::with_dir(
     )
   }
 )
-cat("completed init")
 
-# hooks are not supported: https://github.com/ropensci/git2r/issues/118
+# hooks are not supported in git2r: https://github.com/ropensci/git2r/issues/118
 fs::file_copy(fs::dir_ls("resources"), path_test_repo)
 withr::with_dir(path_test_repo, {
-  git2r::config(repo, user.name = "ci")
+  git2r::config(repo, user.name = "ci", user.email = "example@example.com")
   git2r::add(repo, "styler-style-files-positive.R")
-  cat("completed git add")
   processx::run("git", c("commit", "-m", "shall pass"), echo = TRUE, env = path, echo_cmd = TRUE)
 })
 fs::dir_delete(path_test_repo)
