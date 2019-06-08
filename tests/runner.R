@@ -21,6 +21,8 @@ if (length(.libPaths()) > 1) {
   system2("echo", "$HOME")
   print("rprof")
   system2("cat", "$HOME/.Rprofile")
+  print("user rprof")
+  system2("cat", ".Rprofile")
 }
 
 
