@@ -1,10 +1,11 @@
 path_test_repo <- "tests/tets-repo"
 fs::dir_create(path_test_repo)
-
+path <- c(PATH = paste0(
+  Sys.getenv("PATH"), ":", Sys.getenv("HOME"), "/.pre-commit-venv/bin"
+))
 # initialize
 withr::with_dir(
   path_test_repo, {
-    git2r::init()
     processx::run("curl", "https://pre-commit.com/install-local.py | python -")
     writeLines(c(
       "-   repo: https://github.com/lorenzwalthert/pre-commit-hooks",
@@ -13,9 +14,10 @@ withr::with_dir(
       "    - id: devtools-document",
       "    - id: styler-style-files",
       "    - id: usethis-use-tidy-description"
-    ), fs::path(path_test_repo, ".pre-commit-config.yaml"))
-    #Sys.setenv(PATH = paste0(Sys.getenv("PATH"), ":/Users/lorenz/.pre-commit-venv/bin"))
-    # system("pwd && pre-commit install -f")
+    ), ".pre-commit-config.yaml")
+    processx::run("pre-commit", "install",
+      env = path
+    )
   }
 )
 
