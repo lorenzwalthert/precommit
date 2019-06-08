@@ -8,7 +8,9 @@ Imports:
     tic (>= 0.2.13.9015),
     git2r,
     processx,
-    fs
+    fs,
+    styler,
+    usethis
 Encoding: UTF-8
 Remotes: 
     ropenscilabs/tic

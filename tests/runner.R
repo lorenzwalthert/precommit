@@ -4,10 +4,10 @@ path <- c(PATH = paste0(
   Sys.getenv("PATH"), ":", Sys.getenv("HOME"), "/.pre-commit-venv/bin"
 ))
 repo <- git2r::init(path_test_repo)
+git2r::config(repo, user.name = "ci", user.email = "example@example.com")
 
 
 # initialize
-
 withr::with_dir(
   path_test_repo, {
     # can't use processx::run() because of pipe
@@ -29,8 +29,6 @@ withr::with_dir(
 # hooks are not supported in git2r: https://github.com/ropensci/git2r/issues/118
 fs::file_copy(fs::dir_ls("resources"), path_test_repo)
 withr::with_dir(path_test_repo, {
-  git2r::config(repo, user.name = "ci", user.email = "example@example.com")
   git2r::add(repo, "styler-style-files-positive.R")
-  processx::run("git", c("commit", "-m", "shall pass"), echo = TRUE, env = path, echo_cmd = TRUE)
+  processx::run("git", c("commit", "-m", "shall pass"), env = path)
 })
-fs::dir_delete(path_test_repo)
