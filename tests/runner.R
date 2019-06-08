@@ -5,7 +5,7 @@ path <- c(PATH = paste0(
 ))
 repo <- git2r::init(path_test_repo)
 git2r::config(repo, user.name = "ci", user.email = "example@example.com")
-
+print(.libPaths())
 
 # initialize
 withr::with_dir(
@@ -30,5 +30,5 @@ withr::with_dir(
 fs::file_copy(fs::dir_ls("resources"), path_test_repo)
 withr::with_dir(path_test_repo, {
   git2r::add(repo, "styler-style-files-positive.R")
-  processx::run("git", c("commit", "-m", "shall pass"), env = path)
+  processx::run("git", c("commit", "-m", "shall pass"), env = path, echo = TRUE, echo_cmd = TRUE)
 })
