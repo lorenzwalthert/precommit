@@ -1,2 +1,13 @@
 #!/usr/bin/env Rscript
-styler::style_file(commandArgs(trailing = TRUE))
+#!/usr/bin/env Rscript
+print("libPaths are") 
+print(.libPaths())
+print("wd is")
+print(getwd())
+print("user rprofile exists:")
+print(file.exists(".Rprofile"))
+print("global R profile exists:")
+print(file.exists("~/.Rprofile"))
+print("HOme is at:")
+system2("echo", "$HOME")
+stop("now you saw home and rpfoeiles ect.")
