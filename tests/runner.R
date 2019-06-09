@@ -45,7 +45,7 @@ withr::with_dir(
     system2("curl", "https://pre-commit.com/install-local.py | python -")
     writeLines(c(
       "-   repo: https://github.com/lorenzwalthert/pre-commit-hooks",
-      "    rev: f9f354e57cdcd52bca5684ba97ea430eb833aa71",
+      "    rev: f1ff440a55c6d1b4447ad08766c638cac6e336fb",
       "    hooks:",
       "    - id: devtools-document",
       "    - id: styler-style-files",
