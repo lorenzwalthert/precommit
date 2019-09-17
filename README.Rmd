@@ -53,6 +53,8 @@ A collection of git pre-commit hooks to use with
   
 * `lintr`: A hook to run `lintr::lint()` to check that R files are lint free.
 
+![](man/figs/pre-commit-demo.gif)
+
 To add a pre-commit hook to your project, install pre-commit as described in the
 [official documentation](https://pre-commit.com/#intro) and make sure that the
 executable `pre-commit` is in a place that is on your `$PATH`.
