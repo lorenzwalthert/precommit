@@ -167,7 +167,8 @@ take arguments:
     matched with `base::grep()` to ignore further files from the hook.
     Argument `lang` is passed to `spelling::spell_check_files()`.
 
-  - `lintr`: Arguments are not supported. Instead, `lintr` config should
-    be specified in a `.lintr` config file in Debian Control Field
-    Format as specified in the [`.lintr`
+  - `lintr`: Argument `--warning_only` changes the behavior of the pre-commit
+    to be non-blocking. If lint errors appear, they are printed. Other arguments
+    are not supported. Instead, `lintr` config should be specified in a `.lintr`
+    config file in Debian Control Field Format as specified in the [`.lintr`
     documentation](https://github.com/jimhester/lintr#project-configuration).
