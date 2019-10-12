@@ -18,13 +18,10 @@ if (git2r::in_repository()) {
   }
 }
 
-out <- lapply(arguments$files, function(path) {
+for (path in arguments$files) {
   lints <- lintr::lint(path)
-  if (length(lints) && arguments$warn_only) {
-    warning(
-      "File ", path, " is not lint free\n",
-      call. = FALSE
-    )
+  if (length(lints) && TRUE) {
+    cat("Warning: File `", path, "` is not lint free\n", sep = "")
     print(lints)
   } else if (length(lints)) {
     stop(
@@ -33,4 +30,4 @@ out <- lapply(arguments$files, function(path) {
       call. = FALSE
     )
   }
-})
+}
