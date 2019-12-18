@@ -11,12 +11,16 @@ open_config <- function(path_root = here::here()) {
   if (rstudioapi::isAvailable()) {
     rstudioapi::navigateToFile(fs::path(path_root, ".pre-commit-config.yaml"))
   } else {
-    rlang::abort("Can't open if you don't have RStudio running.")
+    rlang::warn("Can't open if you don't have RStudio running.")
   }
 }
 
 #' @export
 #' @rdname open_config
 open_wordlist <- function(path_root = here::here()) {
-  rstudioapi::navigateToFile(fs::path(path_root, "inst", "WORDLIST"))
+  if (rstudioapi::isAvailable()) {
+    rstudioapi::navigateToFile(fs::path(path_root, "inst", "WORDLIST"))
+  } else {
+    rlang::warn("Can't open if you don't have RStudio running.")
+  }
 }
