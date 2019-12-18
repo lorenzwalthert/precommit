@@ -19,11 +19,12 @@ Imports:
     rstudioapi,
     usethis,
     withr
-Suggests: 
+Suggests:
     desc,
     git2r,
     knitr,
     lintr,
+    pkgapi,
     oneliner (>= 0.1.0),
     rmarkdown,
     roxygen2,
@@ -32,12 +33,13 @@ Suggests:
     testthat,
     tic,
     yaml
-VignetteBuilder: 
+VignetteBuilder:
     knitr
-Remotes: 
+Remotes:
     lorenzwalthert/oneliner,
+    r-lib/pkgapi,
     ropenscilabs/tic
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
     "collate", "pkgapi::api_roclet"))
-RoxygenNote: 7.0.1
+RoxygenNote: 7.0.2
