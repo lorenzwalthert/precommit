@@ -23,11 +23,23 @@ path_pre_commit_exec <- function(check_if_exists = TRUE) {
 
 
 path_derive_precommit_exec <- function() {
+  if (nzchar(from_conda <- path_derive_from_conda())) {
+    from_conda
+  } else if (nzchar(from_pip <- path_derive_from_pip())) {
+    from_pip
+  } else {
+    ""
+  }
+}
+
+path_derive_from_conda <- function() {
   tryCatch(
     {
       ls <- reticulate::conda_list()
 
-      path_reticulate <- fs::path_dir(ls[ls$name == "r-reticulate", "python"][1])
+      path_reticulate <- fs::path_dir(
+        ls[ls$name == "r-reticulate", "python"][1]
+      )
       derived <- fs::path(
         path_reticulate,
         ifelse(is_windows(), "Scripts", ""),
@@ -37,4 +49,10 @@ path_derive_precommit_exec <- function() {
     },
     error = function(e) ""
   )
+}
+
+path_derive_from_pip <- function() {
+  if (fs::file_exists(lb <- fs::path_home(".local", "bin", "pre-commit"))) {
+    lb
+  }
 }
