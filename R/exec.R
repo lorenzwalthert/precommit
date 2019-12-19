@@ -54,5 +54,7 @@ path_derive_from_conda <- function() {
 path_derive_from_pip <- function() {
   if (fs::file_exists(lb <- fs::path_home(".local", "bin", "pre-commit"))) {
     lb
+  } else {
+    ""
   }
 }
