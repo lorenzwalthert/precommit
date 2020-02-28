@@ -14,10 +14,6 @@ install:
   - cmd: Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes')"
   - cmd: Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl')"
   - cmd: Rscript -e "remotes::install_github('ropenscilabs/tic'); print(tic::dsl_load()); tic::prepare_all_stages()"
-  - "git clone git://github.com/astropy/ci-helpers.git"
-  - "powershell ci-helpers/appveyor/install-miniconda.ps1"
-  - cmd: "rm *.exe"
-  - cmd: "rm -rf ci-helpers"
 
 before_build: Rscript -e "tic::before_install()"
 build_script: Rscript -e "tic::install()"
@@ -41,20 +37,13 @@ environment:
   # R_QPDF=true makes sure that R CMD check doesn't complain
   # about a missing qpdf executable
   R_QPDF: "true"
+  PATH: C:\Miniconda3;C:\Miniconda3\Scripts;%PATH%
   # The example below will not work for your repository,
   # you need to encrypt your own token.
   # Please follow https://ci.appveyor.com/tools/encrypt .
   #GITHUB_PAT:
   #  secure: VXO22OHLkl4YhVIomSMwCZyOTx03Xf2WICaVng9xH7gISlAg8a+qrt1DtFtk8sK5
-  PYTHON: "C:\\conda"
-  CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\ci-helpers\\appveyor\\windows_sdk.cmd"
-  PYTHON_ARCH: "64" # needs to be set for CMD_IN_ENV to succeed. If a mix
-                    # of 32 bit and 64 bit builds are needed, move this
-                    # to the matrix section.
-  #CONDA_CHANNELS: "https://conda.anaconda.org/t/%ANACONDA_ORG_TOKEN%/binstar conda-kapsel"
-  #CONDA_DEPENDENCIES: "pip setuptools=23.0.0 clyent pillow psutil nbformat anaconda-project mock"
-  #PIP_DEPENDENCIES_2: "coverage==3.7.1"
-  PYTHON_VERSION: "3.6"
+  USE_RTOOLS: true
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
@@ -74,3 +63,6 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+platform:
+    - x64

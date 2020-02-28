@@ -1,12 +1,12 @@
 #' Set up pre-commit
-#' 
+#'
 #' Get started.
 #' @section When to call this function?:
-#' 
+#'
 #' * You want to add pre-commit support to a git repo. This involves adding
 #'   a pre-commit config file and making sure git will call the hooks before
 #'   the next commit.
-#' * You use a repo that has such a config file but for pre-commit to become 
+#' * You use a repo that has such a config file but for pre-commit to become
 #'   active, you need to make sure git knows that it should call pre-commit.
 #'
 #' @section What it does the funciton do?:
@@ -40,20 +40,19 @@ use_precommit <- function(force = FALSE,
       ))
     }
     install_repo()
-    use_precommit_config(force)
-    autoupdate()
+    use_precommit_config(force, path_root)
+    autoupdate(path_root)
     if (open) {
-      open_config()
+      open_config(path_root)
     }
   })
 }
 
-use_precommit_config <- function(force) {
+use_precommit_config <- function(force, path_root = here::here()) {
   name_origin <- "pre-commit-config.yaml"
   escaped_name_target <- "^\\.pre-commit-config\\.yaml$"
   name_target <- ".pre-commit-config.yaml"
   # workaround for RCMD CHECK warning about hidden top-level directories.
-  path_root <- getwd()
   if (!fs::file_exists(fs::path(name_target)) | force) {
     fs::file_copy(
       system.file(name_origin, package = "precommit"),
@@ -68,7 +67,7 @@ use_precommit_config <- function(force) {
       ". Use `force = TRUE` to replace .pre-commit-config.yaml"
     ))
   }
-  
+
   if (is_package(".")) {
     usethis::write_union(".Rbuildignore", escaped_name_target)
   }
@@ -98,28 +97,27 @@ autoupdate <- function(path_root = here::here()) {
     out <- system2(path_pre_commit_exec(), "autoupdate")
     if (out == 0) {
       usethis::ui_done(paste0(
-      "Ran `pre-commit autoupdate` to get the latest version of the hooks."
-    ))
+        "Ran `pre-commit autoupdate` to get the latest version of the hooks."
+      ))
     } else {
       rlang::abort("Running precommit autoupdate failed.")
     }
   })
-
 }
 
 assert_correct_upstream_repo_url <- function() {
   if (upstream_repo_url_is_outdated()) {
     usethis::ui_info(c(
-      "The repo https://github.com/lorenzwalthert/pre-commit-hooks ", 
-      "has moved to https://github.com/lorenzwalthert/precommit. ", 
-      "Please fix the URL in .pre-commit-config.yaml, ", 
+      "The repo https://github.com/lorenzwalthert/pre-commit-hooks ",
+      "has moved to https://github.com/lorenzwalthert/precommit. ",
+      "Please fix the URL in .pre-commit-config.yaml, ",
       "most confortably with `precommit::open_config()`."
     ))
   }
 }
 
 upstream_repo_url_is_outdated <- function() {
-  purrr::map_chr(yaml::read_yaml(".pre-commit-config.yaml")$repos, ~.x$repo) %>%
-    grepl("https://github.com/lorenzwalthert/pre-commit-hooks", .) %>%
+  purrr::map_chr(yaml::read_yaml(".pre-commit-config.yaml")$repos, ~ .x$repo) %>%
+    grepl("https://github.com/lorenzwalthert/pre-commit-hooks", ., fixed = TRUE) %>%
     any()
 }

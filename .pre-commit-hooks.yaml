@@ -36,7 +36,7 @@
     files: 'README\.[Rr]?md$'
 -   id: codemeta-description-updated
     name: codemeta-description-updated
-    description: make sure codemeta.json is in sync with DESCRIPTION
+    description: make sure codemeta.json is in sync with DESCRIPTION. It should be run after use-tidy-description.
     entry: inst/bin/codemeta-description-updated
     language: script
     files: '^DESCRIPTION$'
@@ -46,6 +46,7 @@
     entry: inst/bin/spell-check
     language: script
     exclude: '(\.[rR]$|\.py$|/?\.gitignore$|^\.pre-commit|^NAMESPACE$|^inst/WORDLIST$)'
+    require_serial: true
 -   id: deps-in-desc
     name: deps-in-desc
     description: Check if dependencies that can be parsed from code are in DESCRIPTION.

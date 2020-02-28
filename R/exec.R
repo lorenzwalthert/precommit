@@ -21,18 +21,45 @@ path_pre_commit_exec <- function(check_if_exists = TRUE) {
   final
 }
 
-
+#' Derive the path to the pre-commit executable
+#'
+#' First check if there is an executable on the `$PATH`, then check if the
+#' conda installation was used. Returns `""` if no executable is found. If not,
+#' search other possible locations that are OS dependent.
+#' @keywords internal
 path_derive_precommit_exec <- function() {
-  if (nzchar(from_conda <- path_derive_from_conda())) {
-    from_conda
-  } else if (nzchar(from_pip <- path_derive_from_pip())) {
-    from_pip
+  path <- path_derive_precommit_exec_path()
+  if (path == "") {
+    path <- path_derive_precommit_exec_conda()
+  }
+  if (path == "") {
+    os <- tolower(Sys.info()[["sysname"]])
+    if (os == "darwin") {
+      # path <- path_derive_precommit_exec_mac()
+    } else if (os == "windows") {
+      # path <- path_derive_precommit_exec_windows()
+    } else if (os == "linux") {
+      path <- path_derive_precommit_exec_linux()
+    }
+  }
+  path
+}
+
+# https://unix.stackexchange.com/questions/240037/why-did-pip-install-a-package-into-local-bin
+path_derive_precommit_exec_linux <- function() {
+  assumed <- fs::path("~/.local/bin", "pre-commit")
+  if (fs::file_exists(assumed)) {
+    assumed
   } else {
     ""
   }
 }
 
-path_derive_from_conda <- function() {
+path_derive_precommit_exec_path <- function() {
+  unname(Sys.which("pre-commit")[1])
+}
+
+path_derive_precommit_exec_conda <- function() {
   tryCatch(
     {
       ls <- reticulate::conda_list()
