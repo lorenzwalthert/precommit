@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9049</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -150,8 +150,16 @@
     <p>Bumps the version to devel.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>release_complete</span>(<span class='kw'>ask</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>release_complete</span>(<span class='kw'>ask</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>is_cran</span> <span class='kw'>=</span> <span class='no'>ask</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tag</th>
+      <td><p>The tag to push. <code>NULL</code> will derive the tag from <code>DESCRIPTION</code>.</p></td>
+    </tr>
+    </table>
 
 
   </div>
