@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <p>Arguments are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>, e.g. we can set the argument <code>style_pkg</code> to <code>styler</code> and <code>style_fun</code> to <code>tidyverse_style</code> for the hook <code>style-files</code> like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.1.2.9000
+    rev: v0.1.2
     hooks:
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style]</code></pre>
@@ -162,7 +162,7 @@
 </h2>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.2.9000, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.2, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 data/.*| 
 (.*/|)\.Rprofile|
