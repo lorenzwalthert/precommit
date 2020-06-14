@@ -195,7 +195,7 @@ exclude: &lt;regular expresion&gt;</code></pre>
 <h2 class="hasAnchor">
 <a href="#roxygenize" class="anchor"></a><code>roxygenize</code>
 </h2>
-<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes.</p>
+<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code> manually anymore.</p>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>.</p>
 </div>
 <div id="deps-in-desc" class="section level2">
