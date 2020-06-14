@@ -46,8 +46,8 @@
 
 
 <meta property="og:title" content="Locate the pre-commit executable — path_precommit_exec" />
-<meta property="og:description" content="path_precommit_exec() simply reads the R option precommit.executable, ]
-path_derive_precommit_exec() uses a heuristic to derive it from scratch." />
+<meta property="og:description" content="path_precommit_exec() simply reads the R option precommit.executable,
+path_pre_commit_exec() is the old spelling and deprecated." />
 
 
 <meta name="robots" content="noindex">
@@ -148,8 +148,8 @@ path_derive_precommit_exec() uses a heuristic to derive it from scratch." />
     </div>
 
     <div class="ref-description">
-    <p><code>path_precommit_exec()</code> simply reads the R option <code>precommit.executable</code>, ]
-<code><a href='path_derive_precommit_exec.html'>path_derive_precommit_exec()</a></code> uses a heuristic to derive it from scratch.</p>
+    <p><code>path_precommit_exec()</code> simply reads the R option <code>precommit.executable</code>,
+<code>path_pre_commit_exec()</code> is the old spelling and deprecated.</p>
     </div>
 
     <pre class="usage"><span class='fu'>path_precommit_exec</span>(<span class='kw'>check_if_exists</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -169,6 +169,9 @@ exists.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character vector of length one with the path to the pre-commit executable.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='path_derive_precommit_exec.html'>path_derive_precommit_exec()</a></code> for the heuristic to derive it from scratch.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
