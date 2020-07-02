@@ -120,7 +120,7 @@
     rev: v0.1.2.9000
     hooks:
     -   id: style-files
-        args: [--style_pkg=styler, --style_fun=tidyverse_style]</code></pre>
+        args: [--style_pkg=styler, '--style_transformers=tidyverse_style(scope = "tokens")']</code></pre>
 <p><strong>Other hook settings</strong></p>
 <p>Apart from specifying the <code>args</code> key as described above, there are other hooks settings you can specify. If you don’t, they are inherited from the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks">pre-commit documentation</a>, for the available settings.</p>
 </div>
@@ -131,9 +131,10 @@
 <h2 class="hasAnchor">
 <a href="#style-files" class="anchor"></a><code>style-files</code>
 </h2>
-<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. Set argument <code>style_pkg</code> and <code>style_fun</code> if you want to use another style guide than the tidyverse style guide.</p>
+<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. Set argument <code>style_pkg</code> and <code>style_transformers</code> if you want to use another style guide than the tidyverse style guide. Argument <code>style_fun</code> is deprecated as of version <code>0.1.2.9001</code> and will be removed in a future release because <code>style_transformers</code> is more flexible, e.g. you can specify scope and other arguments of the style guide, e.g. `’–style_transformers=“tidyverse_style(scope=‘spaces’)”.</p>
 <pre><code>  id: style-files
-  args: [--style_pkg=&lt;styler&gt;, --style_fun=&lt;tidyverse_style&gt;]</code></pre>
+  args: [--style_pkg=&lt;styler&gt;, '--style_transformers=&lt;tidyverse_style(scope = "tokens")'&gt;, --style_fun=&lt;tidyverse_style&gt;]</code></pre>
+<p>Note that not all combinations of quotes will be parsed correctly, e.g. reversing inner and outer quotes won’t work and escaping quotes may also not work.</p>
 <p>This hook modifies files.</p>
 </div>
 <div id="readme-rmd-rendered" class="section level2">
