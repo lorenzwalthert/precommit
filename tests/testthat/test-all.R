@@ -1,3 +1,4 @@
+test_that("just a header to make RStudio show the Run Tests button", {})
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### style-files                                                             ####
 
@@ -9,19 +10,33 @@ run_test("style-files", suffix = "-fail-changed.R", error_msg = NA)
 run_test("style-files", suffix = "-fail-parse.R", error_msg = "unexpected")
 
 # success with cmd args
+## style_fun
 run_test("style-files",
   file_name = "style-files-cmd",
   suffix = "-success.R",
   cmd_args = c("--style_pkg=styler", "--style_fun=tidyverse_style")
 )
 
+## style_transformers
+run_test("style-files",
+  file_name = "style-files-cmd",
+  suffix = "-success.R",
+  cmd_args = c("--style_pkg=styler", "'--style_transformers=tidyverse_style()'")
+)
+
+run_test("style-files",
+  file_name = "style-files-cmd",
+  suffix = "-success.R",
+  cmd_args = c("--style_pkg=styler", "'--style_transformers=tidyverse_style(scope = \"none\")'")
+)
+
+# fail
 run_test("style-files",
   file_name = "style-files-cmd",
   suffix = "-fail.R",
   error_msg = NA,
   cmd_args = c("--style_pkg=styler", "--style_fun=tidyverse_style")
 )
-
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### use-tidy-description                                                    ####
 
