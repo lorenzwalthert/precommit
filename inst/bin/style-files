@@ -2,12 +2,12 @@
 
 'style files.
 Usage:
-  style_files [--style_pkg=<style_guide_pkg>] [--style_transformers=<style_guide_transformers>] [--style_fun=<style_guide_fun>] <files>...
+  style_files [--style_pkg=<style_guide_pkg>] [--arg=<style_guide_transformers>] [--style_fun=<style_guide_fun>] <files>...
 
 Options:
   --style_pkg=<style_guide_pkg>  Package where the style guide is stored [default: styler].
-  --style_transformers=<style_guide_transformers> The `transformers` argument supplied to the styling API from the `style_pkg` namespace [default: tidyverse_style()].
-  --style_fun=<style_guide_fun>  Deprecated in favor or `style_transformers`. The styling function in style_pkg [default: tidyverse_style].
+  --arg=<style_guide_transformers> The `transformers` argument supplied to the styling API from the `style_pkg` namespace [default: tidyverse_style()].
+  --style_fun=<style_guide_fun>  Deprecated in favor or `arg`. The styling function in style_pkg [default: tidyverse_style].
 
 ' -> doc
 
@@ -19,23 +19,23 @@ if (packageVersion("styler") < "1.3.2") {
     "`install.packages('styler')`. This will get you big speed-ups."
   )
 } else {
-  if (!is.null(arguments$style_transformers)) {
+  if (!is.null(arguments$arg)) {
     if (packageVersion("docopt") < "0.7") {
       stop(
         "Your need R package docopt > 0.7 when specifying the style guide via ", 
-        "`--style_transformers`. Please install it with ",
+        "`--arg`. Please install it with ",
         "`install.packages('docopt')`."
       )
     } 
-    stop("arguments transformed to: ", arguments$style_transformers)
+    stop("arguments transformed to: ", arguments$arg)
     transformers <- eval(parse(
-      text = paste0(noquote(arguments$style_pkg), "::", arguments$style_transformers)
+      text = paste0(noquote(arguments$style_pkg), "::", arguments$arg)
     ))
   } else if (!is.null(arguments$style_fun)) {
     style <- eval(parse(text = paste0(arguments$style_pkg, "::", arguments$style_fun)))
     transformers <- style()
   } else {
-    rlang::abort('Either `--style_transformers` or `--style_fun` must be specified.')
+    rlang::abort('Either `--arg` or `--style_fun` must be specified.')
   }
   
   tryCatch(
