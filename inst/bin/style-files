@@ -27,7 +27,9 @@ if (packageVersion("styler") < "1.3.2") {
         "`install.packages('docopt')`."
       )
     } 
-    transformers <- eval(parse(text = paste0(noquote(arguments$style_pkg), "::", arguments$style_transformers)))
+    transformers <- eval(parse(
+      text = paste0(noquote(arguments$style_pkg), "::", noquote(arguments$style_transformers))
+    ))
   } else if (!is.null(arguments$style_fun)) {
     style <- eval(parse(text = paste0(arguments$style_pkg, "::", arguments$style_fun)))
     transformers <- style()
