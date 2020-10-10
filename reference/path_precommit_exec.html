@@ -46,8 +46,8 @@
 
 
 <meta property="og:title" content="Locate the pre-commit executable — path_precommit_exec" />
-<meta property="og:description" content="path_precommit_exec() simply reads the R option precommit.executable, ]
-path_derive_precommit_exec() uses a heuristic to derive it from scratch." />
+<meta property="og:description" content="path_precommit_exec() simply reads the R option precommit.executable,
+path_pre_commit_exec() is the old spelling and deprecated." />
 
 
 
@@ -79,7 +79,7 @@ path_derive_precommit_exec() uses a heuristic to derive it from scratch." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -148,13 +148,13 @@ path_derive_precommit_exec() uses a heuristic to derive it from scratch." />
     </div>
 
     <div class="ref-description">
-    <p><code>path_precommit_exec()</code> simply reads the R option <code>precommit.executable</code>, ]
-<code><a href='path_derive_precommit_exec.html'>path_derive_precommit_exec()</a></code> uses a heuristic to derive it from scratch.</p>
+    <p><code>path_precommit_exec()</code> simply reads the R option <code>precommit.executable</code>,
+<code>path_pre_commit_exec()</code> is the old spelling and deprecated.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>path_precommit_exec</span>(<span class='kw'>check_if_exists</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>path_precommit_exec</span><span class='op'>(</span>check_if_exists <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>path_pre_commit_exec</span>(<span class='kw'>check_if_exists</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>path_pre_commit_exec</span><span class='op'>(</span>check_if_exists <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,14 +169,18 @@ exists.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character vector of length one with the path to the pre-commit executable.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='path_derive_precommit_exec.html'>path_derive_precommit_exec()</a></code> for the heuristic to derive it from scratch.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>path_precommit_exec</span>()
-}
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>path_pre_commit_exec</span>()
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>path_precommit_exec</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>path_pre_commit_exec</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -192,7 +196,7 @@ exists.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

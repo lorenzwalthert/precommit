@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -93,7 +93,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="FAQ_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>FAQ</h1>
@@ -130,9 +130,10 @@
 <h2 class="hasAnchor">
 <a href="#how-can-i-make-sure-that-my-contributors-are-using-the-hooks" class="anchor"></a>How can I make sure that my contributors are using the hooks?</h2>
 <p>They must follow the installation instructions in the README, i.e. run</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"lorenzwalthert/precommit"</span>)
-<span class="kw pkg">precommit</span><span class="kw ns">::</span><span class="fu"><a href="../reference/install_precommit.html">install_precommit</a></span>()
-<span class="kw pkg">precommit</span><span class="kw ns">::</span><span class="fu"><a href="../reference/use_precommit.html">use_precommit</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"lorenzwalthert/precommit"</span><span class="op">)</span>
+<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/install_precommit.html">install_precommit</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>The last call can be omitted by users who have <a href="https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories">automatically enabled pre-commit hooks</a>.</p>
 <p>To enforce all hooks pass, you can follow the <a href="https://pre-commit.com/#usage-in-continuous-integration">advice on how to use pre-commit in a CI/CD setup</a>.</p>
 </div>
@@ -149,7 +150,7 @@
 <div id="why-are-my-hooks-running-slowly" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-are-my-hooks-running-slowly" class="anchor"></a>Why are my hooks running slowly?</h2>
-<p>Some of the hooks depend on R functions that run slowly, e.g. the <code>style-files</code> hook depends on <code>styler</code>, which is not very fast. Also, note that for each hook, R is started. Make sure your startup process is quick for non-interactive use, e.g. your <code>.Rprofile</code> and related files do not have a long execution time. E.g. wrap code in <code>if (interactive())</code> if possible, so it won’t run when pre-commit hooks are ran. Find out more about the startup process with <code>?startup</code>. We’d like to support the <code>--vanilla</code> option but it’s <a href="https://github.com/lorenzwalthert/precommit/issues/165">not easily possible we believe</a>.</p>
+<p>Some of the hooks depend on R functions that run slowly, e.g. the <code>style-files</code> hook depends on <code>styler</code>, which is not very fast. Also, note that for each hook, R is started. Make sure your startup process is quick for non-interactive use, e.g. your <code>.Rprofile</code> and related files do not have a long execution time when pre-commit calls them. You can wrap code in <code>if (interactive())</code> to only execute it in an interactive session or wrap it in <code>if (Sys.getenv("PRE_COMMIT") != "1")</code> (if you have <code>pre-commit &gt;= 2.5.0</code>), so it won’t run when pre-commit hooks are ran. Find out more about the startup process with <code>?startup</code>.</p>
 <hr>
 <p>There is more. Check out the documentation of the <a href="https://pre-commit.com">pre-commit</a> framework.</p>
 </div>
@@ -170,7 +171,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

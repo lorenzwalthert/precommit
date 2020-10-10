@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -144,32 +144,47 @@
       <small>Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="precommit-v0-1-2" class="section level1">
+    <div id="precommit-v013" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.3">
+<a href="#precommit-v013" class="anchor"></a>precommit v0.1.3<small> Unreleased </small>
+</h1>
+<p><strong>API changes</strong></p>
+<ul>
+<li>style-files hook gains new argument <code>style_transformers</code> that allows to specify a style guide like this: <code>--'style_transformers=tidyverse_style(scope = "spaces")'</code>, which gives the user the flexibility to also specify arguments of the style guide. The argument <code>--style_fun</code> is deprecated and will be removed in a future release. (<a href='https://github.com/lorenzwalthert/precommit/issues/183'>#183</a>).</li>
+<li>install_hooks in <code><a href="../reference/use_precommit.html">use_precommit()</a></code> should now work as expected (<a href='https://github.com/lorenzwalthert/precommit/issues/185'>#185</a>).</li>
+</ul>
+<p><strong>Minor changes</strong></p>
+<ul>
+<li>
+<code><a href="../reference/uninstall_precommit.html">precommit::uninstall_precommit()</a></code> now correctly removes <code>^\\.pre-commit-config.yaml$</code>from <code>.Rbuildignore</code> and does not show a prompt (<a href='https://github.com/lorenzwalthert/precommit/issues/199'>#199</a>).</li>
+</ul>
+</div>
+    <div id="precommit-v012" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.2">
-<a href="#precommit-v0-1-2" class="anchor"></a>precommit v0.1.2<small> 2020-06-13 </small>
+<a href="#precommit-v012" class="anchor"></a>precommit v0.1.2<small> 2020-06-13 </small>
 </h1>
 <p>Initial CRAN release. See <a href="https://lorenzwalthert.github.io/precommit/" class="uri">https://lorenzwalthert.github.io/precommit/</a>.</p>
 </div>
-    <div id="precommit-v0-0-0-9049" class="section level1">
+    <div id="precommit-v0009049" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9049">
-<a href="#precommit-v0-0-0-9049" class="anchor"></a>precommit v0.0.0.9049<small> Unreleased </small>
+<a href="#precommit-v0009049" class="anchor"></a>precommit v0.0.0.9049<small> Unreleased </small>
 </h1>
 <ul>
 <li>Roxygen hook cache only includes files that are part of the index and will hence be able to use the cache in cases it was previously invalidated without need (<a href='https://github.com/lorenzwalthert/precommit/issues/171'>#171</a>).</li>
 <li>styler hook should fail if styling any file fails (<a href='https://github.com/lorenzwalthert/precommit/issues/174'>#174</a>).</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9048" class="section level1">
+    <div id="precommit-v0009048" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9048">
-<a href="#precommit-v0-0-0-9048" class="anchor"></a>precommit v0.0.0.9048<small> Unreleased </small>
+<a href="#precommit-v0009048" class="anchor"></a>precommit v0.0.0.9048<small> Unreleased </small>
 </h1>
 <ul>
 <li>Don’t allow legacy hooks by default, delete README hook from usethis informatively (<a href='https://github.com/lorenzwalthert/precommit/issues/167'>#167</a>).</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9046" class="section level1">
+    <div id="precommit-v0009046" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9046">
-<a href="#precommit-v0-0-0-9046" class="anchor"></a>precommit v0.0.0.9046<small> Unreleased </small>
+<a href="#precommit-v0009046" class="anchor"></a>precommit v0.0.0.9046<small> Unreleased </small>
 </h1>
 <p><strong>Major Changes</strong></p>
 <ul>
@@ -177,9 +192,9 @@
 <code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new <code>install_hooks = TRUE</code> parameter. Now all hook environments defined in yaml config are by default installed in advance. (<a href='https://github.com/lorenzwalthert/precommit/issues/163'>#163</a>)</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9044" class="section level1">
+    <div id="precommit-v0009044" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9044">
-<a href="#precommit-v0-0-0-9044" class="anchor"></a>precommit v0.0.0.9044<small> Unreleased </small>
+<a href="#precommit-v0009044" class="anchor"></a>precommit v0.0.0.9044<small> Unreleased </small>
 </h1>
 <p><strong>Breaking Changes</strong></p>
 <ul>
@@ -198,9 +213,9 @@
 <code>.Renviron</code>, <code>.Rrofile</code>, <code>.RData</code>, <code>.feather</code> and <code>.Rds</code> is now also excluded from the spell checking hook.</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9042" class="section level1">
+    <div id="precommit-v0009042" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9042">
-<a href="#precommit-v0-0-0-9042" class="anchor"></a>precommit v0.0.0.9042<small> Unreleased </small>
+<a href="#precommit-v0009042" class="anchor"></a>precommit v0.0.0.9042<small> Unreleased </small>
 </h1>
 <p><strong>Breaking Changes</strong></p>
 <p>A major API review was conducted to make the package ready for a CRAN submission in <a href='https://github.com/lorenzwalthert/precommit/issues/152'>#152</a>:</p>
@@ -219,9 +234,9 @@
 <li>the hook <code>spell-check</code> does no longer take the hook argument <code>ignore-files</code> since this was inconsistent with the pre-commit framework. To exclude additional files, specify the <code>exclude:</code> key in your <code>.pre-commit-config.yaml</code> file. If you like to keep excluding the default files, make sure you include the <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#spell-check">default regex</a> (<a href='https://github.com/lorenzwalthert/precommit/issues/153'>#153</a>).</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9040" class="section level1">
+    <div id="precommit-v0009040" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9040">
-<a href="#precommit-v0-0-0-9040" class="anchor"></a>precommit v0.0.0.9040<small> Unreleased </small>
+<a href="#precommit-v0009040" class="anchor"></a>precommit v0.0.0.9040<small> Unreleased </small>
 </h1>
 <ul>
 <li>roxygenize hook now only ran when <code>git diff --cached</code> contains roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/151'>#151</a>).</li>
@@ -229,15 +244,15 @@
 <li>Use more thoughtful order for hooks, between pkg and project (<a href='https://github.com/lorenzwalthert/precommit/issues/142'>#142</a>).</li>
 </ul>
 </div>
-    <div id="precommit-v0-0-0-9031-up-to-v0-0-0-9038" class="section level1">
+    <div id="precommit-v0009031-up-to-v0009038" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9031">
-<a href="#precommit-v0-0-0-9031-up-to-v0-0-0-9038" class="anchor"></a>precommit v0.0.0.9031 up to v0.0.0.9038<small> Unreleased </small>
+<a href="#precommit-v0009031-up-to-v0009038" class="anchor"></a>precommit v0.0.0.9031 up to v0.0.0.9038<small> Unreleased </small>
 </h1>
 <p>Test release process.</p>
 </div>
-    <div id="precommit-v0-0-0-9030" class="section level1">
+    <div id="precommit-v0009030" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9030">
-<a href="#precommit-v0-0-0-9030" class="anchor"></a>precommit v0.0.0.9030<small> Unreleased </small>
+<a href="#precommit-v0009030" class="anchor"></a>precommit v0.0.0.9030<small> Unreleased </small>
 </h1>
 <ul>
 <li>auto-detect pre-commit executable when installed via pip for Linux (<a href='https://github.com/lorenzwalthert/precommit/issues/120'>#120</a>), macOS (<a href='https://github.com/lorenzwalthert/precommit/issues/131'>#131</a>).</li>
@@ -256,9 +271,9 @@
 <li>internal refactoring (<a href='https://github.com/lorenzwalthert/precommit/issues/136'>#136</a>).</li>
 </ul>
 </div>
-    <div id="precommit-0-0-0-9017" class="section level1">
+    <div id="precommit-0009017" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9017">
-<a href="#precommit-0-0-0-9017" class="anchor"></a>precommit 0.0.0.9017<small> Unreleased </small>
+<a href="#precommit-0009017" class="anchor"></a>precommit 0.0.0.9017<small> Unreleased </small>
 </h1>
 <ul>
 <li><p><strong>BREAKING:</strong> If you used precommit &lt; 0.0.0.9017 (and if you choose a different installation strategy than <code>precommit::install_precommit()), you can link your existing  executable by setting the R option</code>precommit.executable` to the path where you stored the pre-commit executable.</p></li>
@@ -285,7 +300,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

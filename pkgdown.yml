@@ -1,12 +1,12 @@
-pandoc: 2.3.1
-pkgdown: 1.5.1
+pandoc: 2.7.3
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   FAQ: FAQ.html
   available-hooks: available-hooks.html
   hook-order: hook-order.html
   why-use-hooks: why-use-hooks.html
-last_built: 2020-06-14T14:33Z
+last_built: 2020-10-10T20:22Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit//reference
   article: https://lorenzwalthert.github.io/precommit//articles
