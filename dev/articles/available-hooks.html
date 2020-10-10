@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9000</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="available-hooks_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Available Hooks</h1>
@@ -117,10 +117,10 @@
 <p>Arguments are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>, e.g. we can set the argument <code>style_pkg</code> to <code>styler</code> and <code>style_fun</code> to <code>tidyverse_style</code> for the hook <code>style-files</code> like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.1.2.9000
+    rev: v0.1.3.9000
     hooks:
     -   id: style-files
-        args: [--style_pkg=styler, '--style_transformers=tidyverse_style(scope = "tokens")']</code></pre>
+        args: [--style_pkg=styler, --style_fun=tidyverse_style]</code></pre>
 <p><strong>Other hook settings</strong></p>
 <p>Apart from specifying the <code>args</code> key as described above, there are other hooks settings you can specify. If you don’t, they are inherited from the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks">pre-commit documentation</a>, for the available settings.</p>
 </div>
@@ -131,17 +131,16 @@
 <h2 class="hasAnchor">
 <a href="#style-files" class="anchor"></a><code>style-files</code>
 </h2>
-<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. Set argument <code>style_pkg</code> and <code>style_transformers</code> if you want to use another style guide than the tidyverse style guide. Argument <code>style_fun</code> is deprecated as of version <code>0.1.2.9001</code> and will be removed in a future release because <code>style_transformers</code> is more flexible, e.g. you can specify scope and other arguments of the style guide, e.g. `’–style_transformers=“tidyverse_style(scope=‘spaces’)”.</p>
+<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. Set argument <code>style_pkg</code> and <code>style_fun</code> if you want to use another style guide than the tidyverse style guide.</p>
 <pre><code>  id: style-files
-  args: [--style_pkg=&lt;styler&gt;, '--style_transformers=&lt;tidyverse_style(scope = "tokens")'&gt;, --style_fun=&lt;tidyverse_style&gt;]</code></pre>
-<p>Note that not all combinations of quotes will be parsed correctly, e.g. reversing inner and outer quotes won’t work and escaping quotes may also not work.</p>
+  args: [--style_pkg=&lt;styler&gt;, --style_fun=&lt;tidyverse_style&gt;]</code></pre>
 <p>This hook modifies files.</p>
 </div>
 <div id="readme-rmd-rendered" class="section level2">
 <h2 class="hasAnchor">
 <a href="#readme-rmd-rendered" class="anchor"></a><code>readme-rmd-rendered</code>
 </h2>
-<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently than <code>README.md</code>, i.e. remind you to render the <code>.Rmd</code> to <code>.md</code> before committing.</p>
+<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently than <code>README.md</code>, i.e. remind you to render the <code>.Rmd</code> to <code>.md</code> before committing.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div id="parsable-r" class="section level2">
@@ -164,7 +163,7 @@
 </h2>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.2.9000, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.3.9000, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 data/.*| 
 (.*/|)\.Rprofile|
@@ -203,7 +202,7 @@ exclude: &lt;regular expresion&gt;</code></pre>
 <h2 class="hasAnchor">
 <a href="#deps-in-desc" class="anchor"></a><code>deps-in-desc</code>
 </h2>
-<p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
+<p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
 <pre><code>id: deps-in-desc args: [--allow_private_imports] </code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>. For those who use <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>: As long as the CRAN version of the dependency {desc} is <code>v1.2.0</code>, we recommend you to install the GitHub version because otherwise, the new dependencies won’t be added in alphabetical order and after adding a dependency, <code>use-tidy-description</code> will fail in most cases (#85)[<a href="https://github.com/r-lib/desc/pull/85" class="uri">https://github.com/r-lib/desc/pull/85</a>].</p>
 </div>
@@ -250,7 +249,7 @@ verbose: true</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

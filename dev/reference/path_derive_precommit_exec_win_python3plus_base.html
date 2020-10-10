@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the location to a config file — set_config_source • precommit</title>
+<title>Where are executables on Windows for Python 3 and higher? — path_derive_precommit_exec_win_python3plus_base • precommit</title>
 
 
 <!-- jquery -->
@@ -45,11 +45,9 @@
 
 
 
-<meta property="og:title" content="Set the location to a config file — set_config_source" />
-<meta property="og:description" content="If a remote location is specified, the file is downloaded to a temporary
-location and the path to this location is returned. If NULL, we'll resort
-to a default config. We'll perform some checks on the existence of the file
-too." />
+<meta property="og:title" content="Where are executables on Windows for Python 3 and higher? — path_derive_precommit_exec_win_python3plus_base" />
+<meta property="og:description" content="Heuristic to determine the directory where the pre-commit executable on
+Windows lives for Python versions 3 and above." />
 
 
 <meta name="robots" content="noindex">
@@ -144,19 +142,17 @@ too." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the location to a config file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/config.R'><code>R/config.R</code></a></small>
-    <div class="hidden name"><code>set_config_source.Rd</code></div>
+    <h1>Where are executables on Windows for Python 3 and higher?</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/exec.R'><code>R/exec.R</code></a></small>
+    <div class="hidden name"><code>path_derive_precommit_exec_win_python3plus_base.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If a remote location is specified, the file is downloaded to a temporary
-location and the path to this location is returned. If <code>NULL</code>, we'll resort
-to a default config. We'll perform some checks on the existence of the file
-too.</p>
+    <p>Heuristic to determine the directory where the pre-commit executable on
+Windows lives for Python versions 3 and above.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_config_source</span><span class='op'>(</span><span class='va'>config_source</span>, <span class='va'>root</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>path_derive_precommit_exec_win_python3plus_base</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
 

@@ -28,6 +28,9 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/install_precommit.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/not_conda.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/open_config.html</loc>
   </url>
   <url>
@@ -41,6 +44,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/path_derive_precommit_exec_path.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/path_derive_precommit_exec_win_python3plus_base.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/path_precommit_exec.html</loc>
