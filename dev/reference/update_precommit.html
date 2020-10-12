@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Uninstall pre-commit — uninstall_precommit • precommit</title>
+<title>Update the pre-commit executable — update_precommit • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,13 @@
 
 
 
-<meta property="og:title" content="Uninstall pre-commit — uninstall_precommit" />
-<meta property="og:description" content="Remove pre-commit from a repo or from your system." />
+<meta property="og:title" content="Update the pre-commit executable — update_precommit" />
+<meta property="og:description" content="Updates the conda installation of the upstream framework pre-commit. This
+does not update the R package {precommit} and only works if you choose
+conda as your installation method. If you have problems updating, we suggest
+deleting the conda environment r-precommit (if you are sure nothing but
+pre-commit depend on it) and do a fresh installation with
+install_precommit()." />
 
 
 <meta name="robots" content="noindex">
@@ -141,54 +146,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Uninstall pre-commit</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/install.R'><code>R/install.R</code></a></small>
-    <div class="hidden name"><code>uninstall_precommit.Rd</code></div>
+    <h1>Update the pre-commit executable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/update.R'><code>R/update.R</code></a></small>
+    <div class="hidden name"><code>update_precommit.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Remove pre-commit from a repo or from your system.</p>
+    <p>Updates the conda installation of the upstream framework pre-commit. This
+does not update the R package <code>{precommit}</code> and only works if you choose
+conda as your installation method. If you have problems updating, we suggest
+deleting the conda environment <code>r-precommit</code> (if you are sure nothing but
+pre-commit depend on it) and do a fresh installation with
+<code><a href='install_precommit.html'>install_precommit()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uninstall_precommit</span><span class='op'>(</span>scope <span class='op'>=</span> <span class='st'>"repo"</span>, ask <span class='op'>=</span> <span class='st'>"user"</span>, root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>update_precommit</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>scope</th>
-      <td><p>Either "repo" or "user". "repo" removes pre-commit from your
-project, but you will be able to use it in other projects. With "user",
-you remove the pre-commit executable in the virtual python environment
-r-precommit so it won't be available in any project. When you want to do
-the latter, you should first do the former.</p></td>
-    </tr>
-    <tr>
-      <th>ask</th>
-      <td><p>Either "user", "repo" or "none" to determine in which case
-a prompt should show up to let the user confirm his action.</p></td>
-    </tr>
-    <tr>
-      <th>root</th>
-      <td><p>The path to the root directory of your project.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>NULL</code> (invisibly). The function is called for its side effects.</p>
+    <p>The exit status of the conda update command (invisible).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other executable managers: 
 <code><a href='install_precommit.html'>install_precommit</a>()</code>,
-<code><a href='update_precommit.html'>update_precommit</a>()</code>,
+<code><a href='uninstall_precommit.html'>uninstall_precommit</a>()</code>,
 <code><a href='version_precommit.html'>version_precommit</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>uninstall_precommit</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

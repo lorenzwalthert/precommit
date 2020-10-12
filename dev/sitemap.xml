@@ -76,6 +76,12 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/uninstall_precommit.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/update_impl.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/update_precommit.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/update_rev_in_config.html</loc>
   </url>
   <url>
@@ -83,6 +89,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/use_precommit_config.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/version_precommit.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/FAQ.html</loc>
