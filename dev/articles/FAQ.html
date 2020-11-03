@@ -139,6 +139,11 @@
 <p>The last call can be omitted by users who have <a href="https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories">automatically enabled pre-commit hooks</a>.</p>
 <p>To enforce all hooks pass, you can follow the <a href="https://pre-commit.com/#usage-in-continuous-integration">advice on how to use pre-commit in a CI/CD setup</a>.</p>
 </div>
+<div id="should-i-list-precommit-as-a-dependency-of-my-package-in-description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#should-i-list-precommit-as-a-dependency-of-my-package-in-description" class="anchor"></a>Should I list <code>{precommit}</code> as a dependency of my package in DESCRIPTION?</h2>
+<p>No, precommit is a dev dependency like <code>{devtools}</code>, so it should not be listed in <code>DESCRIPTION</code>.</p>
+</div>
 <div id="what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks" class="anchor"></a>What if not all people who are committing to this repo want to use the hooks?</h2>
