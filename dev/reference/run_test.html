@@ -158,7 +158,8 @@
   suffix <span class='op'>=</span> <span class='st'>".R"</span>,
   error_msg <span class='op'>=</span> <span class='cn'>NULL</span>,
   cmd_args <span class='op'>=</span> <span class='cn'>NULL</span>,
-  copy <span class='op'>=</span> <span class='cn'>NULL</span>
+  copy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file_transformer <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span> <span class='va'>files</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -196,6 +197,18 @@ the temp directory where the hook is executed (the temp directory will be
 the working directory at that time) and the value is the path that points
 to the place where the artifact is currently stored.</p></td>
     </tr>
+    <tr>
+      <th>file_transformer</th>
+      <td><p>A function that takes the file names as input and is
+ran right before the hook script is invoked, returning the path to the
+files, potentially modified (if renamed). This can be useful if you need to
+make in-place modifications to the file, e.g. to test hooks that operate on
+<code>.Rprofile</code>. You can't have different names for different tests on that
+file because it must be called <code>.Rprofile</code> all the time. And R CMD check
+seems to remove hidden files, so we must also rename it. The transformation
+is also applied to a temp copy of the reference file before a comparison is
+made.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -207,7 +220,7 @@ We check if the executable passes as follows:</p><ul>
 <li><p>If we expect success (by setting <code>error_msg</code> to <code>NULL</code>), we make sure
 nothing was written to sterr and the file content does not change.</p></li>
 <li><p>If we expect failure, it can be due to changed file or due to failed
-executable. To check for failed executalble, we set <code>error_msg</code> to
+executable. To check for failed executable, we set <code>error_msg</code> to
 the message we expect. To check changed file content, we set <code>error_msg</code> to
 <code>NA</code>.</p></li>
 </ul>
