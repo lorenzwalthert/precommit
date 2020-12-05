@@ -116,8 +116,8 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the package from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"precommit"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"precommit"</span><span class="op">)</span></code></pre></div>
 <p>To access pre-commit functionality from R, you also need to install the <a href="https://pre-commit.com">pre-commit framework</a>. The following command line methods are tested to work with this R package:</p>
 <ul>
 <li><p><code>$ pip3 install pre-commit --user</code> (macOS, Linux and Windows) <strong>outside</strong> a conda or virtual environment.</p></li>
@@ -129,11 +129,11 @@
 <li><p>install the pre-commit framework with <code><a href="reference/install_precommit.html">precommit::install_precommit()</a></code> into the conda environment <code>r-precommit</code>. Do not install other packages into this environment.</p></li>
 </ul>
 <p>Then, in a fresh R session:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># once in every git repo either</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># once in every git repo either</span>
 <span class="co"># * after cloning a repo that already uses pre-commit or</span>
 <span class="co"># * if you want introduce pre-commit to this repo</span>
-<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>The last command initializes pre-commit in your repo and performs some set-up tasks like creating the config file <code>.pre-commit-config.yaml</code>, where the hooks that will be run on <code>git commit</code> are specified. See <code>?precommit::use_precommit()</code> to see how you can use a custom <code>.pre-commit-config.yaml</code> instead of the default at initialization. You can (obviously) change edit the file manually at any time.</p>
 </div>
 <div id="usage" class="section level2">
@@ -155,8 +155,8 @@
 <li><p><strong>Do not abort while hooks are running in RStudio git tab.</strong> Non-staged changes are stashed to a temp directory and when you abort in RStudio, these changes are not brought back to you repo. Upvote <a href="https://github.com/rstudio/rstudio/issues/6471">this issue</a> to change this. We hope that in the future, the changes will be recovered in RStudio too. Note that this is only an issue with RStudio. Stashes are restored when you abort a <code>git commit</code> with <code>INT</code> (e.g. Ctrl+C) on the command line. To restore stashes, manually after hitting <em>abort</em> in the RStudio git tab, you can <code>git apply /path/to/patch_with_id</code> whereas you find the patch under your pre-commit cache, which is usually under <code>$HOME/.cache/pre-commit/</code>.</p></li>
 <li><p>Because R is not officially supported as a language in the pre-commit framework (yet), there is no R package dependency management for the R hooks provided in this repo. If an R package that is needed by a hook is not yet installed, you might get this error:</p></li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># &gt; Error in loadNamespace(name) : there is no package called ‘__name_of_package__’</span></pre></div>
+<!-- end list --><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># &gt; Error in loadNamespace(name) : there is no package called ‘__name_of_package__’</span></code></pre></div>
 <p>In that case, just install the package with <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> once and try to commit again. All R dependencies of the pre-commit hooks provided in this repo are suggested dependencies of this R package, so if you want to install them all, just <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("precommit", dependencies = c("Imports", "Suggests"))</a></code>.</p>
 </div>
 <div id="documentation" class="section level2">
@@ -178,9 +178,9 @@
 <div id="uninstallation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#uninstallation" class="anchor"></a>Uninstallation</h2>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"repo"</span><span class="op">)</span> <span class="co"># just for the repo you are in.</span>
-<span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span> <span class="co"># remove the pre-commit conda executable.</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"repo"</span><span class="op">)</span> <span class="co"># just for the repo you are in.</span>
+<span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span> <span class="co"># remove the pre-commit conda executable.</span></code></pre></div>
 </div>
 </div>
   </div>

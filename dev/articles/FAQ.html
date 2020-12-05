@@ -132,10 +132,10 @@
 <h2 class="hasAnchor">
 <a href="#how-can-i-make-sure-that-my-contributors-are-using-the-hooks" class="anchor"></a>How can I make sure that my contributors are using the hooks?</h2>
 <p>They must follow the installation instructions in the README, i.e. run</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"lorenzwalthert/precommit"</span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"lorenzwalthert/precommit"</span><span class="op">)</span>
 <span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/install_precommit.html">install_precommit</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>The last call can be omitted by users who have <a href="https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories">automatically enabled pre-commit hooks</a>.</p>
 <p>To enforce all hooks pass, you can follow the <a href="https://pre-commit.com/#usage-in-continuous-integration">advice on how to use pre-commit in a CI/CD setup</a>.</p>
 </div>
