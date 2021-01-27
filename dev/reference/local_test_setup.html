@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The name of the executable file — precommit_executable_file • precommit</title>
+<title>Testing utilities — local_test_setup • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="The name of the executable file — precommit_executable_file" />
-<meta property="og:description" content="This is platform dependent." />
+<meta property="og:title" content="Testing utilities — local_test_setup" />
+<meta property="og:description" content="Similar to the local_() family from {withr}, this function creates a
+temporary directory and optionally initiates git and pre-commit in it." />
 
 
 <meta name="robots" content="noindex">
@@ -141,17 +142,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>The name of the executable file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/exec.R'><code>R/exec.R</code></a></small>
-    <div class="hidden name"><code>precommit_executable_file.Rd</code></div>
+    <h1>Testing utilities</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/testing.R'><code>R/testing.R</code></a></small>
+    <div class="hidden name"><code>local_test_setup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is platform dependent.</p>
+    <p>Similar to the <code>local_()</code> family from <code>{withr}</code>, this function creates a
+temporary directory and optionally initiates git and pre-commit in it.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>precommit_executable_file</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>local_test_setup</span><span class='op'>(</span>
+  .local_envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>,
+  git <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  use_precommit <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.local_envir</th>
+      <td><p><code>[environment]</code><br /> The environment to use for scoping.</p></td>
+    </tr>
+    <tr>
+      <th>git</th>
+      <td><p>Whether or not to init git in the local directory.</p></td>
+    </tr>
+    <tr>
+      <th>use_precommmit</th>
+      <td><p>Whether or not to <code><a href='use_precommit.html'>use_precommit()</a></code>.</p></td>
+    </tr>
+    </table>
 
 
   </div>
