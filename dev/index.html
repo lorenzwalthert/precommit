@@ -105,11 +105,10 @@
 <a href="#useful-git-pre-commit-hooks-for-r" class="anchor"></a>Useful git pre-commit hooks for R</h1></div>
 <!-- badges: start -->
 
-<p><a href="https://github.com/lorenzwalthert/precommit/actions"><img src="https://github.com/lorenzwalthert/precommit/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <!-- badges: end --></p>
 <p><a href="https://pre-commit.com">Pre-commit hooks</a> are tests that run each time you attempt to commit. If the tests pass, the commit will be made, otherwise not. A very basic test is to check if the code is parsable, making sure you have not forgotten a comma, brace or quote.</p>
 <p>The goal of this package is to twofold:</p>
 <ul>
-<li><p>Provide a set of hooks that are useful when your git repo contains R code. You can find them under <code><a href="articles/available-hooks.html">vignette("available-hooks")</a></code>.</p></li>
+<li><p>Provide a <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html">set of hooks</a> that are useful when your git repo contains R code.</p></li>
 <li><p>Provide <a href="https://github.com/r-lib/usethis">usethis</a>-like functionality for common tasks such as installation and set-up and config file modification.</p></li>
 </ul>
 <div id="installation" class="section level2">
@@ -152,10 +151,10 @@
 <h2 class="hasAnchor">
 <a href="#caution" class="anchor"></a>Caution</h2>
 <ul>
-<li><p><strong>Do not abort while hooks are running in RStudio git tab.</strong> Non-staged changes are stashed to a temp directory and when you abort in RStudio, these changes are not brought back to you repo. Upvote <a href="https://github.com/rstudio/rstudio/issues/6471">this issue</a> to change this. We hope that in the future, the changes will be recovered in RStudio too. Note that this is only an issue with RStudio. Stashes are restored when you abort a <code>git commit</code> with <code>INT</code> (e.g. Ctrl+C) on the command line. To restore stashes, manually after hitting <em>abort</em> in the RStudio git tab, you can <code>git apply /path/to/patch_with_id</code> whereas you find the patch under your pre-commit cache, which is usually under <code>$HOME/.cache/pre-commit/</code>.</p></li>
+<li><p><strong>Do not abort while hooks are running in RStudio git tab.</strong> Non-staged changes are stashed to a temp directory and when you abort in RStudio, these changes are not brought back to you repo. Upvote <a href="https://github.com/rstudio/rstudio/issues/6471">this issue</a> to change this. We hope that in the future, the changes will be recovered in RStudio too. Note that this is only an issue with RStudio. Stashes are restored when you abort a <code>git   commit</code> with <code>INT</code> (e.g. Ctrl+C) on the command line. To restore stashes, manually after hitting <em>abort</em> in the RStudio git tab, you can <code>git   apply /path/to/patch_with_id</code> whereas you find the patch under your pre-commit cache, which is usually under <code>$HOME/.cache/pre-commit/</code>.</p></li>
 <li><p>Because R is not officially supported as a language in the pre-commit framework (yet), there is no R package dependency management for the R hooks provided in this repo. If an R package that is needed by a hook is not yet installed, you might get this error:</p></li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># &gt; Error in loadNamespace(name) : there is no package called ‘__name_of_package__’</span></code></pre></div>
 <p>In that case, just install the package with <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> once and try to commit again. All R dependencies of the pre-commit hooks provided in this repo are suggested dependencies of this R package, so if you want to install them all, just <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("precommit", dependencies = c("Imports", "Suggests"))</a></code>.</p>
 </div>
@@ -221,6 +220,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=precommit"><img src="https://www.r-pkg.org/badges/version/precommit" alt="CRAN status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/lorenzwalthert/precommit/actions"><img src="https://github.com/lorenzwalthert/precommit/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>

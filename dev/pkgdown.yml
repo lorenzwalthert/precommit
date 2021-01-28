@@ -6,7 +6,7 @@ articles:
   available-hooks: available-hooks.html
   hook-order: hook-order.html
   why-use-hooks: why-use-hooks.html
-last_built: 2021-01-27T22:52Z
+last_built: 2021-01-28T09:25Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit//reference
   article: https://lorenzwalthert.github.io/precommit//articles
