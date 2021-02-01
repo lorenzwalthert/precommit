@@ -107,22 +107,22 @@
 
     
     
-<p>Below is a comprehensive list with all hooks from {precommit} as well as their arguments or flags, if they take any. Other repos also host hooks, many are listed <a href="https://pre-commit.com/hooks.html">here</a>.</p>
+<p>Below is a comprehensive list with all hooks from {precommit} as well as their arguments or flags, if they take any. With the standard config file that gets placed in your project with <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> all hooks should work out of the box, but you can further customize them as described below. Other repos also host hooks, many are listed <a href="https://pre-commit.com/hooks.html">here</a>.</p>
 <div id="good-to-know" class="section level1">
 <h1 class="hasAnchor">
 <a href="#good-to-know" class="anchor"></a>Good to know</h1>
 <p><strong>File modification</strong></p>
 <p>Some hooks will fail without changing the files you want to commit, like the <code>lintr</code> hook - and you need to make manual changes for the hook to pass on the next attempt. Other hooks like the <code>styler</code> hook write to files, and if that changes the file, the hook will fail, but this means you won’t need to modify the file manually, just stage the changes and try to commit again. Below, we indicate for every hook if it modifies files or not.</p>
 <p><strong>Arguments</strong></p>
-<p>Arguments are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>, e.g. we can set the argument <code>style_pkg</code> to <code>styler</code> and <code>style_fun</code> to <code>tidyverse_style</code> for the hook <code>style-files</code> like this:</p>
+<p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.1.3.9000
     hooks:
-    -   id: style-files
-        args: [--style_pkg=styler, --style_fun=tidyverse_style]</code></pre>
+    -   id: lintr
+        args: [--warn-only, --key=value]</code></pre>
 <p><strong>Other hook settings</strong></p>
-<p>Apart from specifying the <code>args</code> key as described above, there are other hooks settings you can specify. If you don’t, they are inherited from the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks">pre-commit documentation</a>, for the available settings.</p>
+<p>Apart from specifying the <code>args</code> key as described above, there are other hooks settings you can specify, e.g. file exclusion. If you don’t, they are inherited from the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks">pre-commit documentation</a>, for the available settings.</p>
 </div>
 <div id="hooks" class="section level1">
 <h1 class="hasAnchor">
@@ -131,9 +131,12 @@
 <h2 class="hasAnchor">
 <a href="#style-files" class="anchor"></a><code>style-files</code>
 </h2>
-<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. Set argument <code>style_pkg</code> and <code>style_fun</code> if you want to use another style guide than the tidyverse style guide.</p>
+<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. You can pass arguments to <code>style_file(...)</code> using the <code>--key=value</code> syntax like this:</p>
 <pre><code>  id: style-files
-  args: [--style_pkg=&lt;styler&gt;, --style_fun=&lt;tidyverse_style&gt;]</code></pre>
+  args: [--scope=spaces, --reindention=specify_reindention('#')]</code></pre>
+<p>Argument <code>style_pkg</code> and <code>style_fun</code> default to <code>styler</code> and <code>tidyverse_style</code>. If you want to use another style guide than the tidyverse style guide, you can specify it like this:</p>
+<pre><code>  id: style-files
+  args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]</code></pre>
 <p>This hook modifies files.</p>
 </div>
 <div id="readme-rmd-rendered" class="section level2">
@@ -147,7 +150,7 @@
 <h2 class="hasAnchor">
 <a href="#parsable-r" class="anchor"></a><code>parsable-R</code>
 </h2>
-<p>Checks if your <code>.R</code> files are “valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html">parse()</a></code> on it returns an error.</p>
+<p>Checks if your <code>.R</code> files are “valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html">parse()</a></code> on them returns an error.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div id="no-browser-statement" class="section level2">
@@ -187,8 +190,7 @@ data/.*|
 <p><strong>language</strong></p>
 <p>The <code>lang</code> arg will be passed to <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html">spelling::spell_check_files()</a></code>.</p>
 <pre><code>id: spell-check
-args: [--lang=&lt;language&gt;]
-exclude: &lt;regular expresion&gt;</code></pre>
+args: [--lang=&lt;language&gt;]</code></pre>
 <p>This hook does not modify input files. It will add all words not found in the dictionary to <code>inst/WORDLIST</code>, assuming they were spelled correctly but were not in the dictionary. An example might be “RStudio”. The hook error message will contain all words written to <code>inst/WORDLIST</code>, so if there were really some typos, make sure to fix them and remove them from <code>inst/WORDLIST</code>. If there were not typos, or you fixed all, stage <code>inst/WORDLIST</code> and this time, the commit should pass.</p>
 </div>
 <div id="roxygenize" class="section level2">
@@ -228,9 +230,16 @@ verbose: true</code></pre>
 <h2 class="hasAnchor">
 <a href="#codemeta-description-updated" class="anchor"></a><code>codemeta-description-updated</code>
 </h2>
-<p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently than <code>codemeta.json</code>, i.e. remind you to run <code>codemetar::write_codemeta()</code> in order to keep <code>codemeta.json</code> in sync with <code>DESCRIPTION</code>.</p>
+<p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently than <code>codemeta.json</code>,</p>
+<p>i.e. remind you to run <code>codemetar::write_codemeta()</code> in order to keep <code>codemeta.json</code> in sync with <code>DESCRIPTION</code>.</p>
 <p>This hook does not modify any file.</p>
 </div>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Note that there might be issues with arguments that contain special characters and you might have to quote them and the order of single, double and escaped quotes may not give identical results on one platform and may not be portable to all platforms either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
   </div>
 

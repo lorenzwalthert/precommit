@@ -152,6 +152,8 @@
 <ul>
 <li>
 <code><a href="../reference/version_precommit.html">version_precommit()</a></code> and <code><a href="../reference/update_precommit.html">update_precommit()</a></code> are new functions to check the version of the installed pre-commit executable and to update it (<a href='https://github.com/lorenzwalthert/precommit/issues/197'>#197</a>).</li>
+<li>
+<code>style-files</code> hook now supports the full <a href="https://styler.r-lib.org/dev/reference/style_file.html"><code>style_file()</code></a> API, e.g. you can supply <code>--scope=spaces</code> and similar via <code>args:</code> in your <code>.pre-commit-config.yaml</code>. See the <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#style-files-1">docs</a> for details.</li>
 </ul>
 <p><strong>Minor changes</strong></p>
 <ul>
