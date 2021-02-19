@@ -157,9 +157,11 @@
   file_name <span class='op'>=</span> <span class='va'>hook_name</span>,
   suffix <span class='op'>=</span> <span class='st'>".R"</span>,
   error_msg <span class='op'>=</span> <span class='cn'>NULL</span>,
+  msg <span class='op'>=</span> <span class='cn'>NULL</span>,
   cmd_args <span class='op'>=</span> <span class='cn'>NULL</span>,
   copy <span class='op'>=</span> <span class='cn'>NULL</span>,
-  file_transformer <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span> <span class='va'>files</span>
+  file_transformer <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span> <span class='va'>files</span>,
+  env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -181,6 +183,10 @@
       <th>error_msg</th>
       <td><p>An expected error message. If no error is expected, this
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></td>
+    </tr>
+    <tr>
+      <th>msg</th>
+      <td><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></td>
     </tr>
     <tr>
       <th>cmd_args</th>
@@ -208,6 +214,10 @@ file because it must be called <code>.Rprofile</code> all the time. And R CMD ch
 seems to remove hidden files, so we must also rename it. The transformation
 is also applied to a temp copy of the reference file before a comparison is
 made.</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment variables to set with <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
     </tr>
     </table>
 

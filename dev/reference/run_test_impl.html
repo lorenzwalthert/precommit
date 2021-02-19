@@ -154,9 +154,11 @@
   <span class='va'>path_executable</span>,
   <span class='va'>path_candidate</span>,
   <span class='va'>error_msg</span>,
+  <span class='va'>msg</span>,
   <span class='va'>cmd_args</span>,
   <span class='va'>copy</span>,
-  <span class='va'>file_transformer</span>
+  <span class='va'>file_transformer</span>,
+  <span class='va'>env</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -177,6 +179,10 @@ executable.</p></td>
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></td>
     </tr>
     <tr>
+      <th>msg</th>
+      <td><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></td>
+    </tr>
+    <tr>
       <th>cmd_args</th>
       <td><p>More arguments passed to the file. Pre-commit handles it as
 described <a href='https://pre-commit.com/#arguments-pattern-in-hooks'>here</a>.</p></td>
@@ -190,6 +196,10 @@ you can pass a named vector. The name is the target directory relative to
 the temp directory where the hook is executed (the temp directory will be
 the working directory at that time) and the value is the path that points
 to the place where the artifact is currently stored.</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment variables to set with <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
     </tr>
     </table>
 
