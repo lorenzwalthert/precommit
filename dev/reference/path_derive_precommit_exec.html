@@ -160,10 +160,10 @@
 <ul>
 <li><p>First check if there is an executable on the <code>$PATH</code> using
 <code><a href='path_derive_precommit_exec_path.html'>path_derive_precommit_exec_path()</a></code></p></li>
-<li><p>If not, check if we can find one in a conda environment with
-<code><a href='path_derive_precommit_exec_conda.html'>path_derive_precommit_exec_conda()</a></code>.</p></li>
 <li><p>Search os dependent for other possible locations for common installation
 methods.</p></li>
+<li><p>If not, check if we can find one in a conda environment with
+<code><a href='path_derive_precommit_exec_conda.html'>path_derive_precommit_exec_conda()</a></code>. Do this last as it's the slowest.</p></li>
 </ul>
 
 
