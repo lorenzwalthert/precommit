@@ -22,6 +22,9 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/fallback_doc.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/has_persistent_R.cache.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/install_impl.html</loc>
   </url>
   <url>
@@ -29,6 +32,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/local_test_setup.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/may_require_permanent_cache.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/not_conda.html</loc>
