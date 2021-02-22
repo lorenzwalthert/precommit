@@ -112,7 +112,7 @@
 <h1 class="hasAnchor">
 <a href="#good-to-know" class="anchor"></a>Good to know</h1>
 <p><strong>File modification</strong></p>
-<p>Some hooks will fail without changing the files you want to commit, like the <code>lintr</code> hook - and you need to make manual changes for the hook to pass on the next attempt. Other hooks like the <code>styler</code> hook write to files, and if that changes the file, the hook will fail, but this means you won’t need to modify the file manually, just stage the changes and try to commit again. Below, we indicate for every hook if it modifies files or not.</p>
+<p>Some hooks will fail without changing the files you want to commit, like the <code>lintr</code> hook - and you need to make manual changes for the hook to pass on the next attempt. Other hooks like the <code>roxygenize</code> hook write to files, and if that changes the file, the hook will fail, but this means for most hooks you won’t need to modify the file manually after the attempted commit, just stage the changes and try to commit again. Below, we indicate for every hook if it modifies files or not.</p>
 <p><strong>Arguments</strong></p>
 <p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
@@ -131,13 +131,19 @@
 <h2 class="hasAnchor">
 <a href="#style-files" class="anchor"></a><code>style-files</code>
 </h2>
-<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. You can pass arguments to <code>style_file(...)</code> using the <code>--key=value</code> syntax like this:</p>
+<p>A hook to style files with <a href="https://styler.r-lib.org">styler</a>. Only commit code corresponding to the tidyverse style guide. You can pass arguments to <a href="https://styler.r-lib.org/reference/style_file.html"><code>style_file(...)</code></a> using the <code>--key=value</code> syntax like this:</p>
 <pre><code>  id: style-files
   args: [--scope=spaces, --reindention=specify_reindention('#')]</code></pre>
-<p>Argument <code>style_pkg</code> and <code>style_fun</code> default to <code>styler</code> and <code>tidyverse_style</code>. If you want to use another style guide than the tidyverse style guide, you can specify it like this:</p>
+<p>In addition, the hook takes the following arguments that are not passed to <a href="https://styler.r-lib.org/reference/style_file.html"><code>style_file(...)</code></a>:</p>
+<ul>
+<li>Argument <code>style_pkg</code> and <code>style_fun</code> default to <code>styler</code> and <code>tidyverse_style</code>. If you want to use another style guide than the tidyverse style guide, you can specify it like this:</li>
+</ul>
 <pre><code>  id: style-files
   args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]</code></pre>
-<p>This hook modifies files.</p>
+<ul>
+<li>If no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</li>
+</ul>
+<p>This hook modifies files unless you specify <code>--dry=fail</code> (requires <code>{styler} &gt; 1.3.2</code>).</p>
 </div>
 <div id="readme-rmd-rendered" class="section level2">
 <h2 class="hasAnchor">
@@ -189,23 +195,26 @@ data/.*|
 )$</code></pre>
 <p><strong>language</strong></p>
 <p>The <code>lang</code> arg will be passed to <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html">spelling::spell_check_files()</a></code>.</p>
-<pre><code>id: spell-check
-args: [--lang=&lt;language&gt;]</code></pre>
+<pre><code>  id: spell-check
+  args: [--lang=&lt;language&gt;]</code></pre>
 <p>This hook does not modify input files. It will add all words not found in the dictionary to <code>inst/WORDLIST</code>, assuming they were spelled correctly but were not in the dictionary. An example might be “RStudio”. The hook error message will contain all words written to <code>inst/WORDLIST</code>, so if there were really some typos, make sure to fix them and remove them from <code>inst/WORDLIST</code>. If there were not typos, or you fixed all, stage <code>inst/WORDLIST</code> and this time, the commit should pass.</p>
 </div>
 <div id="roxygenize" class="section level2">
 <h2 class="hasAnchor">
 <a href="#roxygenize" class="anchor"></a><code>roxygenize</code>
 </h2>
-<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code> manually anymore.</p>
-<p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>.</p>
+<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code> manually anymore. If no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</p>
+<pre><code>  id: royxgenize
+  args: [--no-warn-cache] </code></pre>
+<p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
 </div>
 <div id="deps-in-desc" class="section level2">
 <h2 class="hasAnchor">
 <a href="#deps-in-desc" class="anchor"></a><code>deps-in-desc</code>
 </h2>
 <p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
-<pre><code>id: deps-in-desc args: [--allow_private_imports] </code></pre>
+<pre><code>  id: deps-in-desc 
+  args: [--allow_private_imports] </code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>. For those who use <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>: As long as the CRAN version of the dependency {desc} is <code>v1.2.0</code>, we recommend you to install the GitHub version because otherwise, the new dependencies won’t be added in alphabetical order and after adding a dependency, <code>use-tidy-description</code> will fail in most cases (#85)[<a href="https://github.com/r-lib/desc/pull/85" class="uri">https://github.com/r-lib/desc/pull/85</a>].</p>
 </div>
 <div id="use-tidy-description" class="section level2">
@@ -220,9 +229,9 @@ args: [--lang=&lt;language&gt;]</code></pre>
 <a href="#lintr" class="anchor"></a><code>lintr</code>
 </h2>
 <p>A hook to run <code><a href="https://rdrr.io/pkg/lintr/man/lint_file.html">lintr::lint()</a></code> to check that R files are lint free. Argument <code>warning_only</code> changes the behavior of the pre-commit to be non-blocking. You should set this with the field <code>verbose: true</code>.</p>
-<pre><code>id: lintr
-args: [--warn_only]
-verbose: true</code></pre>
+<pre><code>  id: lintr
+  args: [--warn_only]
+  verbose: true</code></pre>
 <p>When configured this way, lintr prints lint errors as they appear. Other arguments are not supported. Instead, <code>lintr</code> config should be specified in a <code>.lintr</code> config file in Debian Control Field Format as specified in the <a href="https://github.com/jimhester/lintr#project-configuration"><code>.lintr</code> documentation</a>.</p>
 <p>This hook does not modify any file.</p>
 </div>
