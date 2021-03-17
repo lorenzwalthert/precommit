@@ -46,8 +46,8 @@
 
 
 <meta property="og:title" content="Issue a warning if {R.cache} uses temporary cache only — may_require_permanent_cache" />
-<meta property="og:description" content="This function is only exported to have a clean API, but it's not intended to
-be used by the end-user, only in hook scripts." />
+<meta property="og:description" content="This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly." />
 
 
 <meta name="robots" content="noindex">
@@ -148,8 +148,8 @@ be used by the end-user, only in hook scripts." />
     </div>
 
     <div class="ref-description">
-    <p>This function is only exported to have a clean API, but it's not intended to
-be used by the end-user, only in hook scripts.</p>
+    <p>This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly.</p>
     </div>
 
     <pre class="usage"><span class='fu'>may_require_permanent_cache</span><span class='op'>(</span>temp_cache_is_enough <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -165,6 +165,10 @@ no permanent cache is available.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other hook script helpers: 
+<code><a href='diff_requires_run_roxygenize.html'>diff_requires_run_roxygenize</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

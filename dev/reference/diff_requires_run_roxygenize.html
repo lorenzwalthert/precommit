@@ -47,9 +47,9 @@
 
 <meta property="og:title" content="Check if we should run roxygen. — diff_requires_run_roxygenize" />
 <meta property="og:description" content="This is the case if a new or replaced/removed line contains a roxygen2
-comment in a file that is staged. This is only exported because it's used
-in a hook script: It's not intended to be called by users of precommit
-directly." />
+comment in a file that is staged.
+This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly." />
 
 
 <meta name="robots" content="noindex">
@@ -151,9 +151,9 @@ directly." />
 
     <div class="ref-description">
     <p>This is the case if a new or replaced/removed line contains a roxygen2
-comment in a file that is staged. This is only exported because it's used
-in a hook script: It's not intended to be called by users of precommit
-directly.</p>
+comment in a file that is staged.
+This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly.</p>
     </div>
 
     <pre class="usage"><span class='fu'>diff_requires_run_roxygenize</span><span class='op'>(</span>root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -170,6 +170,10 @@ directly.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A logical vector of length 1.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other hook script helpers: 
+<code><a href='may_require_permanent_cache.html'>may_require_permanent_cache</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
