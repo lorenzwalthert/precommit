@@ -157,6 +157,10 @@
 <li>
 <code>style-files</code> and <code>roxygenize</code> hooks now warn if there is no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache set up. You can silence the warning with the hook argument <code>--no-warn-cache</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/225'>#225</a>).</li>
 </ul>
+<p><strong>Major Changes</strong></p>
+<ul>
+<li>{precommit} now uses <a href="https://pre-commit.com/#r"><code>language: r</code></a> instead of <code>language: script</code> from the <a href="https://pre-commit.com">pre-commit framework</a>. This requires <code>pre-commit &gt;= 2.11.1</code>. All hooks and dependencies are now contained in a virtual environment with <a href="https://rstudio.github.io/renv/"><code>{renv}</code></a> (<a href='https://github.com/lorenzwalthert/precommit/issues/233'>#233</a>).</li>
+</ul>
 <p><strong>Minor changes</strong></p>
 <ul>
 <li>The cache for the roxygen2 hook is now also invalidated for changes in formals if there are no changes in roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/214'>#214</a>).</li>

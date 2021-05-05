@@ -208,6 +208,12 @@ data/.*|
 <p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code> manually anymore. If no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</p>
 <pre><code>  id: royxgenize
   args: [--no-warn-cache] </code></pre>
+<p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
+<p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
+<pre><code>  id: roxygenize
+  additional_dependencies:
+  - r-lib/pkgapi
+</code></pre>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
 </div>
 <div id="deps-in-desc" class="section level2">
@@ -217,7 +223,7 @@ data/.*|
 <p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
 <pre><code>  id: deps-in-desc 
   args: [--allow_private_imports] </code></pre>
-<p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>. For those who use <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>: As long as the CRAN version of the dependency {desc} is <code>v1.2.0</code>, we recommend you to install the GitHub version because otherwise, the new dependencies won’t be added in alphabetical order and after adding a dependency, <code>use-tidy-description</code> will fail in most cases (#85)[<a href="https://github.com/r-lib/desc/pull/85" class="uri">https://github.com/r-lib/desc/pull/85</a>].</p>
+<p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>.</p>
 </div>
 <div id="use-tidy-description" class="section level2">
 <h2 class="hasAnchor">
