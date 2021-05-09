@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a new release on GitHub — release_gh • precommit</title>
+<title>Roxygen depending on cache state — roxygenize_with_cache • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="Create a new release on GitHub — release_gh" />
-<meta property="og:description" content="This must be done before a CRAN release." />
+<meta property="og:title" content="Roxygen depending on cache state — roxygenize_with_cache" />
+<meta property="og:description" content="This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly." />
 
 
 <meta name="robots" content="noindex">
@@ -141,55 +142,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a new release on GitHub</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/release.R'><code>R/release.R</code></a></small>
-    <div class="hidden name"><code>release_gh.Rd</code></div>
+    <h1>Roxygen depending on cache state</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/roxygen2.R'><code>R/roxygen2.R</code></a></small>
+    <div class="hidden name"><code>roxygenize_with_cache.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This must be done <strong>before</strong> a CRAN release.</p>
+    <p>This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>release_gh</span><span class='op'>(</span>bump <span class='op'>=</span> <span class='st'>"dev"</span>, is_cran <span class='op'>=</span> <span class='va'>bump</span> <span class='op'>!=</span> <span class='st'>"dev"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>roxygenize_with_cache</span><span class='op'>(</span><span class='va'>key</span>, <span class='va'>dirs</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bump</th>
-      <td><p>The bump increment, either "dev", "patch", "minor" or "major".</p></td>
+      <th>key</th>
+      <td><p>An optional object from which a hexadecimal hash
+    code will be generated and appended to the filename.</p></td>
     </tr>
     <tr>
-      <th>is_cran</th>
-      <td><p>Is this release a CRAN release?</p></td>
+      <th>dirs</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character</a></code> <code><a href='https://rdrr.io/r/base/vector.html'>vector</a></code> constituting the path to the
+     cache subdirectory (of the <em>cache root directory</em>
+     as returned by <code><a href='https://rdrr.io/pkg/R.cache/man/getCacheRootPath.html'>getCacheRootPath</a></code>()) to be used.
+     If <code><a href='https://rdrr.io/r/base/NULL.html'>NULL</a></code>, the path will be the cache root path.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>This function does the following:</p><ul>
-<li><p>bump description.</p></li>
-<li><p>update default config in inst/</p></li>
-<li><p>commit</p></li>
-<li><p>git tag</p></li>
-<li><p>run <code>inst/consistent-release-tag</code> hook with --release-mode (passing args to
-hooks not possible interactively, hence we run in advance).</p></li>
-<li><p>commit and push with skipping <code>inst/consistent-release-tag</code>.</p></li>
-<li><p>autoupdate own config file</p></li>
-<li><p>bump description with dev</p></li>
-<li><p>commit and push DESCRIPTION and .pre-commit-config.yaml</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="cran-release"><a class="anchor" href="#cran-release"></a>CRAN release</h2>
-
-    
-
-<p>If <code>is_cran</code> is <code>TRUE</code>, the workflow is changed slightly:</p><ul>
-<li><p>push to release branch, not master.</p></li>
-<li><p>doesn't run <code><a href='release_complete.html'>release_complete()</a></code>. This must be done manually after accepted
-on CRAN.</p></li>
-</ul>
-
+    <div class='dont-index'><p>Other hook script helpers: 
+<code><a href='diff_requires_run_roxygenize.html'>diff_requires_run_roxygenize</a>()</code>,
+<code><a href='dirs_R.cache.html'>dirs_R.cache</a>()</code>,
+<code><a href='may_require_permanent_cache.html'>may_require_permanent_cache</a>()</code>,
+<code><a href='roxygen_assert_additional_dependencies.html'>roxygen_assert_additional_dependencies</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

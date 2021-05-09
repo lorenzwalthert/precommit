@@ -16,10 +16,16 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/diff_requires_run_roxygenize.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/dirs_R.cache.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/extract_diff_root.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/fallback_doc.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/generate_uninstalled_pkg_name.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/has_persistent_R.cache.html</loc>
@@ -73,6 +79,12 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/release_gh.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/roxygen_assert_additional_dependencies.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/roxygenize_with_cache.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/run_test.html</loc>
   </url>
   <url>
@@ -80,6 +92,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/set_config_source.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/snippet_generate.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/uninstall_precommit.html</loc>
