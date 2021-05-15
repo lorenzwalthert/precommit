@@ -20,9 +20,11 @@
 - `{renv}` infra files are not checked anymore by default (#237).
 - `deps-in-desc` now checks `.Rprofile`, `.Rmd` and `.Rnw` files in addition to 
   `.R` files (#216).  
-- The location of the pre-commit executable is now also recognised on Apple Silicon
+- The location of the pre-commit executable is now also recognized on Apple Silicon
   when installed with Homebrew (#240).
-  
+- The `deps-in-desc` hook now points to the hook argument 
+  `--allow_private_imports` when the hook fails due to private imports (#254).
+
 # precommit v0.1.3
 
 This is mainly a CRAN maintenance release because of #201 and includes some 
