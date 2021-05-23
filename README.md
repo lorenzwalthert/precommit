@@ -35,6 +35,12 @@ The following online docs are available:
 -   [GitHub development
     version](https://lorenzwalthert.github.io/precommit/dev/).
 
+These only cover the functionality added on top of the pre-commit
+framework by this package. Everything else is covered in the extensive
+[online documentation](https://pre-commit.com) of the pre-commit
+framework itself, including how to create hooks for actions like
+`git push` or `git checkout`, create local hooks etc.
+
 ## Installation
 
 You can install the package from CRAN:
@@ -143,29 +149,24 @@ provided in this repo are suggested dependencies of this R package, so
 if you want to install them all, just
 `install.packages("precommit", dependencies = c("Imports", "Suggests"))`.
 
-## Documentation
-
-The [online
-documentation](https://lorenzwalthert.github.io/precommit/index.html) of
-this package only covers the functionality added on top of pre-commit by
-this package. Everything else is covered in the extensive [online
-documentation](https://pre-commit.com) of the pre-commit framework
-itself, including how to:
-
--   create pre-push hooks
-
--   create local hooks
-
--   and more
-
 ## Update
 
-To update the pre-commit executable, use the update utilities provided
-by your installation method. If you chose conda, you can use
-`precommit::update_precommit()`.
+If you used {precommit} before, upgrade these three components for
+maximal compatibility:
 
-You can check the version of you executable with
-`precommit::version_precommit()`.
+-   the R package {precommit} from CRAN with
+    `install.packages("precommit")`.
+
+-   the hook revisions in your `.pre-commit-config.yaml` with
+    `precommit::autoupdate()`. Hook revision updates are released in
+    sync with R package updates (exception: Patch releases for hooks
+    don’t have a corresponding CRAN release).
+
+-   the upstream pre-commit framework. Use the update utilities provided
+    by your installation method (i.e. `pip3` or
+    ``` brew``). If you chose conda, you can use ```precommit::update\_precommit()`. If you don't remember the installation method   you chose, just choose any and then upgrade. We'll warn you if you have   multiple executables installed and point you to their location so you can get   rid of all but one. You can check the version of you executable with`precommit::version\_precommit()\`.
+    Updates to the pre-commit framework are not released in sync with
+    the R or hook revision updates.
 
 ## Uninstallation
 
