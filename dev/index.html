@@ -161,8 +161,12 @@
 <div id="update" class="section level2">
 <h2 class="hasAnchor">
 <a href="#update" class="anchor"></a>Update</h2>
-<p>To update the pre-commit executable, use the update utilities provided by your installation method. If you chose conda, you can use <code><a href="reference/update_precommit.html">precommit::update_precommit()</a></code>.</p>
-<p>You can check the version of you executable with <code><a href="reference/version_precommit.html">precommit::version_precommit()</a></code>.</p>
+<p>If you used {precommit} before, upgrade these three components for maximal compatibility:</p>
+<ul>
+<li><p>the R package {precommit} from CRAN with <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("precommit")</a></code>.</p></li>
+<li><p>the hook revisions in your <code>.pre-commit-config.yaml</code> with <code><a href="reference/autoupdate.html">precommit::autoupdate()</a></code>. Hook revision updates are released in sync with R package updates (exception: Patch releases for hooks don’t have a corresponding CRAN release).</p></li>
+<li><p>the upstream pre-commit framework. Use the update utilities provided by your installation method (i.e. <code>pip3</code> or <code>brew``). If you chose conda, you can use</code>precommit::update_precommit()<code>. If you don't remember the installation method   you chose, just choose any and then upgrade. We'll warn you if you have   multiple executables installed and point you to their location so you can get   rid of all but one. You can check the version of you executable with</code>precommit::version_precommit()`. Updates to the pre-commit framework are not released in sync with the R or hook revision updates.</p></li>
+</ul>
 </div>
 <div id="uninstallation" class="section level2">
 <h2 class="hasAnchor">

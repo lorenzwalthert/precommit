@@ -148,6 +148,9 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#precommit-v020-rc-development" class="anchor"></a>precommit v0.2.0-rc (Development)<small> Unreleased </small>
 </h1>
+<p><strong>Installation</strong></p>
+<p>Please follow the instructions in the <a href="https://lorenzwalthert.github.io/precommit/dev/">README</a> if you are a new user of pre-commit or if you want to update a current<br>
+installation.</p>
 <p><strong>API changes</strong></p>
 <ul>
 <li>
@@ -159,20 +162,21 @@
 </ul>
 <p><strong>Major Changes</strong></p>
 <ul>
-<li>{precommit} now uses <a href="https://pre-commit.com/#r"><code>language: r</code></a> instead of <code>language: script</code> from the <a href="https://pre-commit.com">pre-commit framework</a>. This requires <code>pre-commit &gt;= 2.11.1</code>. All hooks and dependencies are now contained in a virtual environment with <a href="https://rstudio.github.io/renv/"><code>{renv}</code></a> (<a href='https://github.com/lorenzwalthert/precommit/issues/233'>#233</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/250'>#250</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/260'>#260</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/264'>#264</a>). Thanks to {renv}’s excellent <a href="https://rstudio.github.io/renv/articles/renv.html#cache-1">caching</a>, this does not consume much space and is fast. This makes output of hooks more consistent across different local setups, make manual dependency management redundant and will facilitate running R hooks as part of CI/CD, e.g. <a href="https://pre-commit.ci" class="uri">https://pre-commit.ci</a> or <a href="https://github.com/pre-commit/action">GitHub Actions</a> along with arbitrary other hooks.</li>
+<li>{precommit} now uses <a href="https://pre-commit.com/#r"><code>language: r</code></a> instead of <code>language: script</code> from the <a href="https://pre-commit.com">pre-commit framework</a>. This requires <code>pre-commit &gt;= 2.11.1</code> (ideally even <code>&gt;= 2.13.0</code>). All hooks and dependencies are now contained in a virtual environment with <a href="https://rstudio.github.io/renv/"><code>{renv}</code></a>. Thanks to {renv}’s excellent <a href="https://rstudio.github.io/renv/articles/renv.html#cache-1">caching</a>, this hardly consumes any space and is fast. This makes output of hooks more consistent across different local setups, make manual dependency management redundant and will facilitate running R hooks as part of CI/CD in the future, e.g. via <a href="https://pre-commit.ci" class="uri">https://pre-commit.ci</a> or <a href="https://github.com/pre-commit/action">GitHub Actions</a> along with hook implemented in other languages (<a href='https://github.com/lorenzwalthert/precommit/issues/233'>#233</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/250'>#250</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/260'>#260</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/264'>#264</a>).</li>
 <li>Because hooks run in a virtual environment and the <code>roxygenize</code> hook runs <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html">pkgload::load_all()</a></code>, you need to list all dependencies of your package in <code>additional_dependencies</code> field in <code>.pre-commit-config.yaml</code>. You will be prompted to add them if they are missing, <code><a href="../reference/snippet_generate.html">precommit::snippet_generate("additional-deps-roxygenize")</a></code> generates the code you can copy/paste (<a href='https://github.com/lorenzwalthert/precommit/issues/247'>#247</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/248'>#248</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/249'>#249</a>).</li>
 </ul>
 <p><strong>Minor changes</strong></p>
 <ul>
+<li>In order to avoid multiple installations of the pre-commit framework, a warning is issued if multiple are found so the user can remove them (<a href='https://github.com/lorenzwalthert/precommit/issues/266'>#266</a>).</li>
 <li>The cache for the roxygen2 hook is now also invalidated for changes in formals if there are no changes in roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/214'>#214</a>).</li>
 <li>
-<code>{renv}</code> infra files are not checked anymore by default (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
+<code>{renv}</code> infra files are not checked anymore by default in the template config files (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
 <li>
 <code>deps-in-desc</code> now checks <code>.Rprofile</code>, <code>.Rmd</code> and <code>.Rnw</code> files in addition to <code>.R</code> files (<a href='https://github.com/lorenzwalthert/precommit/issues/216'>#216</a>).<br>
 </li>
 <li>The location of the pre-commit executable is now also recognized on Apple Silicon when installed with Homebrew (<a href='https://github.com/lorenzwalthert/precommit/issues/240'>#240</a>).</li>
 <li>The <code>deps-in-desc</code> hook now points to the hook argument <code>--allow_private_imports</code> when the hook fails due to private imports (<a href='https://github.com/lorenzwalthert/precommit/issues/254'>#254</a>).</li>
-<li>Hook dependency updates are proposed by an automatic monthly pull request (<a href='https://github.com/lorenzwalthert/precommit/issues/430'>#430</a>).</li>
+<li>Hook dependency updates are proposed by an automatic monthly pull request to <code>lorenzwalthert/precommit</code>. This does not affect users directly (<a href='https://github.com/lorenzwalthert/precommit/issues/430'>#430</a>).</li>
 </ul>
 </div>
     <div id="precommit-v013" class="section level1">
