@@ -23,6 +23,10 @@ installation.
 
 **Minor changes**
 
+- Warnings are no longer promoted to errors in the styler hook, which is 
+  particularly relevant for the apparently random error 
+  `Unknown or uninitialised column: text`(#268).
+  
 - In order to avoid multiple installations of the pre-commit framework, a 
   warning is issued if multiple are found so the user can remove them (#266).
 - The cache for the roxygen2 hook is now also invalidated for changes in formals 
