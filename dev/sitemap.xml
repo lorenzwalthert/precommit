@@ -13,10 +13,16 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/call_precommit.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/copy_artifacts.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/diff_requires_run_roxygenize.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/dirs_R.cache.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/ensure_named.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/extract_diff_root.html</loc>
@@ -29,6 +35,12 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/has_persistent_R.cache.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/hook_state_assert.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/hook_state_create.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/install_impl.html</loc>

@@ -161,7 +161,7 @@ when running.</p>
   error_msg <span class='op'>=</span> <span class='cn'>NULL</span>,
   msg <span class='op'>=</span> <span class='cn'>NULL</span>,
   cmd_args <span class='op'>=</span> <span class='cn'>NULL</span>,
-  copy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  artifacts <span class='op'>=</span> <span class='cn'>NULL</span>,
   file_transformer <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span> <span class='va'>files</span>,
   env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -175,7 +175,9 @@ when running.</p>
     </tr>
     <tr>
       <th>file_name</th>
-      <td><p>The file to test in <code>tests/in</code> (without extension).</p></td>
+      <td><p>The file to test in <code>tests/in</code> (without extension). Can be
+a named vector of length one where the name is the target location relative
+to the temporary location and the value is the source of the file.</p></td>
     </tr>
     <tr>
       <th>suffix</th>
@@ -196,14 +198,11 @@ can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.<
 described <a href='https://pre-commit.com/#arguments-pattern-in-hooks'>here</a>.</p></td>
     </tr>
     <tr>
-      <th>copy</th>
-      <td><p>Path with files to copy to the temp directory where the test
-is run. If the target destination relative to the temp dir where the hook
-is tested is not identical to the path from where a file should be copied,
-you can pass a named vector. The name is the target directory relative to
-the temp directory where the hook is executed (the temp directory will be
-the working directory at that time) and the value is the path that points
-to the place where the artifact is currently stored.</p></td>
+      <th>artifacts</th>
+      <td><p>Path with artifact files to copy to the temp directory root where
+the test is run. If you don't target the root, this can be a named vector
+of length one where the name is the target location relative to the
+temporary location and the value is the source of the file.</p></td>
     </tr>
     <tr>
       <th>file_transformer</th>

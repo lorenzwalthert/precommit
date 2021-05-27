@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Implement a test run — run_test_impl • precommit</title>
+<title>Create a hook state — hook_state_create • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="Implement a test run — run_test_impl" />
-<meta property="og:description" content="Implement a test run" />
+<meta property="og:title" content="Create a hook state — hook_state_create" />
+<meta property="og:description" content="Runs the hook script to create a hook state, i.e. exit code, transformed
+files and emitted messages of the hook run." />
 
 
 <meta name="robots" content="noindex">
@@ -141,64 +142,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Implement a test run</h1>
+    <h1>Create a hook state</h1>
     <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/testing.R'><code>R/testing.R</code></a></small>
-    <div class="hidden name"><code>run_test_impl.Rd</code></div>
+    <div class="hidden name"><code>hook_state_create.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Implement a test run</p>
+    <p>Runs the hook script to create a hook state, i.e. exit code, transformed
+files and emitted messages of the hook run.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_test_impl</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>hook_state_create</span><span class='op'>(</span>
+  <span class='va'>tempdir</span>,
+  <span class='va'>path_candidate_temp</span>,
   <span class='va'>path_executable</span>,
-  <span class='va'>path_candidate</span>,
-  <span class='va'>error_msg</span>,
-  <span class='va'>msg</span>,
   <span class='va'>cmd_args</span>,
-  <span class='va'>artifacts</span>,
-  <span class='va'>file_transformer</span>,
+  <span class='va'>path_stdout</span>,
+  <span class='va'>path_stderr</span>,
   <span class='va'>env</span>
 <span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path_executable</th>
-      <td><p>The path to the executable bash script.</p></td>
-    </tr>
-    <tr>
-      <th>path_candidate</th>
-      <td><p>The path to a file that should be modified by the
-executable.</p></td>
-    </tr>
-    <tr>
-      <th>error_msg</th>
-      <td><p>An expected error message. If no error is expected, this
-can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></td>
-    </tr>
-    <tr>
-      <th>msg</th>
-      <td><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></td>
-    </tr>
-    <tr>
-      <th>cmd_args</th>
-      <td><p>More arguments passed to the file. Pre-commit handles it as
-described <a href='https://pre-commit.com/#arguments-pattern-in-hooks'>here</a>.</p></td>
-    </tr>
-    <tr>
-      <th>artifacts</th>
-      <td><p>Path with artifact files to copy to the temp directory root where
-the test is run. If you don't target the root, this can be a named vector
-of length one where the name is the target location relative to the
-temporary location and the value is the source of the file.</p></td>
-    </tr>
-    <tr>
-      <th>env</th>
-      <td><p>The environment variables to set with <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
-    </tr>
-    </table>
 
 
   </div>
