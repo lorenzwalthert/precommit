@@ -79,6 +79,7 @@ parsable
 pkgapi
 pkgdown
 pre
+prec
 precommit
 precommithooks
 proj

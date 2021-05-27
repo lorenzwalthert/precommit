@@ -2,6 +2,7 @@
 
 export(autoupdate)
 export(diff_requires_run_roxygenize)
+export(dirs_R.cache)
 export(install_precommit)
 export(may_require_permanent_cache)
 export(open_config)

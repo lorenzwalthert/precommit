@@ -17,6 +17,7 @@ to be called by the end-user directly.
 }
 \seealso{
 Other hook script helpers: 
-\code{\link{diff_requires_run_roxygenize}()}
+\code{\link{diff_requires_run_roxygenize}()},
+\code{\link{dirs_R.cache}()}
 }
 \concept{hook script helpers}
