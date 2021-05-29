@@ -35,7 +35,7 @@ path_relative_cache <- file.path("precommit", "roxygenize")
 roxygenize_with_cache <- function(key, dirs) {
   if (precommit::diff_requires_run_roxygenize()) {
     roxygen2::roxygenise()
-    saveCache(object = Sys.time(), key = key, dirs = dirs)
+    R.cache::saveCache(object = Sys.time(), key = key, dirs = dirs)
   }
 }
 
