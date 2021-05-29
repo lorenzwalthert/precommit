@@ -20,7 +20,6 @@ installation.
   `{R.cache}` cache set up. You can silence the warning with the hook argument 
   `--no-warn-cache` (#225).
 
-
 **Minor changes**
 
 - Warnings are no longer promoted to errors in the styler hook, which is 
@@ -28,7 +27,7 @@ installation.
   `Unknown or uninitialised column: text`(#268).
   
 - In order to avoid multiple installations of the pre-commit framework, a 
-  warning is issued if multiple are found so the user can remove them (#266).
+  warning is issued if multiple are found so the user can remove them (#266, #273).
 - The cache for the roxygen2 hook is now also invalidated for changes in formals 
   if there are no changes in roxygen comments (#214).
 - `{renv}` infra files are not checked anymore by default in the template config
