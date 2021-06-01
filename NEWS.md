@@ -1,4 +1,16 @@
-# precommit v0.2.0-rc (Development)
+# precommit v0.1.3.9005 (Development)
+
+This is a pre-release for `v0.2.0` and imposes a minimal version requirement 
+on the [pre-commit framework](https://pre-commit.com/) (`v2.13.0`). Please see
+*Installation* below for how to satisfy it. This will ensure future releases of 
+{precommit} building on the newly supported 
+[`language: r`](https://pre-commit.com/#r) will work out of the box instead of 
+issuing messages that are confusing for most end-users. We aspire the transition
+to `language: r` due to the following benefits: No more manual dependency management
+for hooks nor conflicts with your global R library plus eventually it will 
+enable the easy use of continuous integration services (enforcing hooks and 
+auto-fixing problems with pre-commit.ci, GitHub Actions).
+
 
 **Installation**
 
@@ -24,7 +36,7 @@ installation.
 
 - Warnings are no longer promoted to errors in the styler hook, which is 
   particularly relevant for the apparently random error 
-  `Unknown or uninitialised column: text`(#268).
+  `Unknown or uninitialised column: text` (#268).
   
 - In order to avoid multiple installations of the pre-commit framework, a 
   warning is issued if multiple are found so the user can remove them (#266, #273).
