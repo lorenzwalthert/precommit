@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9005</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
 <p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.1.3.9002
+    rev: v0.1.3.9005
     hooks:
     -   id: lintr
         args: [--warn-only, --key=value]</code></pre>
@@ -172,7 +172,7 @@
 </h2>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.3.9002, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.1.3.9005, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 .*\.[rR]|
 .*\.feather|
@@ -212,12 +212,6 @@ data/.*|
 <p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html">roxygen2::roxygenize()</a></code> manually anymore. If no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</p>
 <pre><code>  id: royxgenize
   args: [--no-warn-cache] </code></pre>
-<p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
-<p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
-<pre><code>  id: roxygenize
-  additional_dependencies:
-  - r-lib/pkgapi
-</code></pre>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
 </div>
 <div id="deps-in-desc" class="section level2">
@@ -227,7 +221,7 @@ data/.*|
 <p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
 <pre><code>  id: deps-in-desc 
   args: [--allow_private_imports] </code></pre>
-<p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>.</p>
+<p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>. For those who use <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package()</a></code>: As long as the CRAN version of the dependency {desc} is <code>v1.2.0</code>, we recommend you to install the GitHub version because otherwise, the new dependencies won’t be added in alphabetical order and after adding a dependency, <code>use-tidy-description</code> will fail in most cases (#85)[<a href="https://github.com/r-lib/desc/pull/85" class="uri">https://github.com/r-lib/desc/pull/85</a>].</p>
 </div>
 <div id="use-tidy-description" class="section level2">
 <h2 class="hasAnchor">

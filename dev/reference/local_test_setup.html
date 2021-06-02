@@ -79,7 +79,7 @@ temporary directory and optionally initiates git and pre-commit in it." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9005</span>
       </span>
     </div>
 
@@ -153,24 +153,22 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
     </div>
 
     <pre class="usage"><span class='fu'>local_test_setup</span><span class='op'>(</span>
+  .local_envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>,
   git <span class='op'>=</span> <span class='cn'>TRUE</span>,
   use_precommit <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  package <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  quiet <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>,
-  .local_envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>git</th>
-      <td><p>Whether or not to init git in the local directory.</p></td>
-    </tr>
-    <tr>
       <th>.local_envir</th>
       <td><p><code>[environment]</code><br /> The environment to use for scoping.</p></td>
+    </tr>
+    <tr>
+      <th>git</th>
+      <td><p>Whether or not to init git in the local directory.</p></td>
     </tr>
     <tr>
       <th>use_precommmit</th>
