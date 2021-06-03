@@ -148,10 +148,9 @@
 <h1 class="page-header" data-toc-text="0.1.3.9008">
 <a href="#precommit-v0139008-development" class="anchor"></a>precommit v0.1.3.9008 (Development)<small> Unreleased </small>
 </h1>
-<p>This is a pre-release for <code>v0.2.0</code> and imposes a minimal version requirement on the <a href="https://pre-commit.com/">pre-commit framework</a> (<code>v2.13.0</code>). Please see <em>Installation</em> below for how to satisfy it. This will ensure future releases of {precommit} building on the newly supported <a href="https://pre-commit.com/#r"><code>language: r</code></a> will work out of the box instead of issuing messages that are confusing for most end-users. We aspire the transition to <code>language: r</code> due to the following benefits: No more manual dependency management for hooks nor conflicts with your global R library plus eventually it will enable the easy use of continuous integration services (enforcing hooks and auto-fixing problems with pre-commit.ci, GitHub Actions).</p>
-<p><strong>Installation</strong></p>
-<p>Please follow the instructions in the <a href="https://lorenzwalthert.github.io/precommit/dev/">README</a> if you are a new user of pre-commit or if you want to update a current<br>
-installation.</p>
+<p>This is a pre-release for <code>v0.2.0</code> and imposes a minimal version requirement on the <a href="https://pre-commit.com/">pre-commit framework</a> (<code>v2.13.0</code>). Please see <em>Installation/Update</em> below for how to satisfy it. This will ensure future releases of {precommit} building on the newly supported <a href="https://pre-commit.com/#r"><code>language: r</code></a> will work out of the box instead of issuing messages that are confusing for most end-users. We aspire the transition to <code>language: r</code> due to the following benefits: No more manual dependency management for hooks nor conflicts with your global R library plus eventually it will enable the easy use of continuous integration services (enforcing hooks and auto-fixing problems with pre-commit.ci, GitHub Actions).</p>
+<p><strong>Installation/Update</strong></p>
+<p>Please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/#update">update instructions</a> or <a href="https://lorenzwalthert.github.io/precommit/dev/#installation">installation instructions</a> depending on whether or not you previously used pre-commit.</p>
 <p><strong>API changes</strong></p>
 <ul>
 <li>
@@ -168,7 +167,7 @@ installation.</p>
 <code>deps-in-desc</code> now checks <code>.Rprofile</code>, <code>.Rmd</code> and <code>.Rnw</code> files in addition to <code>.R</code> files (<a href='https://github.com/lorenzwalthert/precommit/issues/216'>#216</a>).<br>
 </li>
 <li>In order to avoid multiple installations of the pre-commit framework, a warning is issued if multiple are found so the user can remove them (<a href='https://github.com/lorenzwalthert/precommit/issues/266'>#266</a>,
-<a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/277'>#277</a>).</li>
+<a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/277'>#277</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/278'>#278</a>).</li>
 <li>The cache for the roxygen2 hook is now also invalidated for changes in formals if there are no changes in roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/214'>#214</a>).</li>
 <li>
 <code>{renv}</code> infra files are not checked anymore by default in the template config files (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
