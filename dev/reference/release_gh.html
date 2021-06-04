@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9009</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9010</span>
       </span>
     </div>
 
@@ -172,9 +172,9 @@
 <li><p>update default config in inst/</p></li>
 <li><p>commit</p></li>
 <li><p>git tag</p></li>
-<li><p>run <code>inst/hooks/local/consistent-release-tag</code> hook with --release-mode (passing args to hooks
+<li><p>run <code>inst/hooks/local/consistent-release-tag.R</code> hook with --release-mode (passing args to hooks
 not possible interactively, hence we run in advance).</p></li>
-<li><p>commit and push with skipping <code>inst/hooks/local/consistent-release-tag</code>.</p></li>
+<li><p>commit and push with skipping <code>inst/hooks/local/consistent-release-tag.R</code>.</p></li>
 <li><p>autoupdate own config file</p></li>
 <li><p>bump description with dev</p></li>
 <li><p>commit and push DESCRIPTION and .pre-commit-config.yaml</p></li>
