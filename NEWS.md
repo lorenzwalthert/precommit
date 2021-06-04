@@ -77,6 +77,7 @@ depending on whether or not you previously used pre-commit.
 - The `deps-in-desc` hook now points to the hook argument 
   `--allow_private_imports` when the hook fails due to private imports (#254).
 - roxygenize hook is now fully tested (#267).
+- Hook scripts were relocated and R hooks now have a file extension (#280).
 - Hook dependency updates are proposed by an automatic monthly pull request 
   to `lorenzwalthert/precommit`. This does not affect users directly (#430).
 

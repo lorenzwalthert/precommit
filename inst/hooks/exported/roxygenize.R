@@ -31,7 +31,7 @@ if (packageVersion("precommit") < "0.1.3.9002") {
   precommit::roxygen_assert_additional_dependencies()
 }
 
-path_relative_cache <- precommit::dirs_R.cache('roxygenize')
+path_relative_cache <- precommit::dirs_R.cache("roxygenize")
 wd <- list(getwd())
 cache <- R.cache::loadCache(key = wd, dirs = path_relative_cache)
 
