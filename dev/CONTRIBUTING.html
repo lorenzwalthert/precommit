@@ -151,7 +151,7 @@
 <div id="adding-new-hooks" class="section level1">
 <h1 class="hasAnchor">
 <a href="#adding-new-hooks" class="anchor"></a>Adding new hooks</h1>
-<p>To create a new hook, have a look at the <a href="https://pre-commit.com/#new-hooks">official documentation</a> on creating new hooks, then have a look at existing hooks in this repo. The actual executables are defined in <a href="https://github.com/lorenzwalthert/precommit/tree/master/inst/bin"><code>inst/bin/</code></a>. In the script, you can expect the passed command line arguments to be all options, finally the files that should be processed with the hook.</p>
+<p>To create a new hook, have a look at the <a href="https://pre-commit.com/#new-hooks">official documentation</a> on creating new hooks, then have a look at existing hooks in this repo. The actual executables are defined in <a href="https://github.com/lorenzwalthert/precommit/tree/master/inst/hooks"><code>inst/hooks/</code></a>. In the script, you can expect the passed command line arguments to be all options, finally the files that should be processed with the hook.</p>
 <p>For the scripts to become a hook, they need to be <em>registered</em> in <a href="https://github.com/lorenzwalthert/precommit/blob/master/.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a>. As R is not currently a supported language of pre-commit (<a href="https://github.com/pre-commit/pre-commit/issues/926" class="uri">https://github.com/pre-commit/pre-commit/issues/926</a>), most hooks use <code>language: script</code> and then a shebang in the <code>entrypoint</code> script.</p>
 </div>
 <div id="testing-hooks" class="section level1">
