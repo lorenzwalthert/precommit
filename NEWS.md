@@ -29,9 +29,6 @@ depending on whether or not you previously used pre-commit.
   `.pre-commit-config.yaml`. See the
   [docs](https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#style-files-1)
   for details.
-- `style-files` and `roxygenize` hooks now warn if there is no permanent 
-  `{R.cache}` cache set up. You can silence the warning with the hook argument 
-  `--no-warn-cache` (#225).
 
 **Major Changes**
 
@@ -55,10 +52,15 @@ depending on whether or not you previously used pre-commit.
   the code you can copy/paste (#247, #248, #249).
 - Warnings are no longer promoted to errors in the styler hook, which is 
   particularly relevant for the apparently random error 
-  `Unknown or uninitialised column: text`(#268).
+  `Unknown or uninitialised column: text` (#268).
 - `deps-in-desc` now checks `.Rprofile`, `.Rmd` and `.Rnw` files in addition to 
   `.R` files (#216).  
-
+- `style-files` and `roxygenize` hooks now warn if there is no permanent 
+  `{R.cache}` cache set up. You can silence the warning with the hook argument 
+  `--no-warn-cache` (#225).
+- the lintr and styler hook now also check `.Rmd`, `.Rnw` and `.Rprofile` files 
+  (#286).
+  
 **Minor changes**
 
 - In order to avoid multiple installations of the pre-commit framework, a 

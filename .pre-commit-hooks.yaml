@@ -18,7 +18,7 @@
     description: style files with styler
     entry: Rscript inst/hooks/exported/style-files.R
     language: r
-    files: '(\.R|\.Rmd|\.Rnw|\.r|\.rmd|\.rnw)$'
+    files: '(\.[rR]profile|\.R|\.Rmd|\.Rnw|\.r|\.rmd|\.rnw)$'
     exclude: 'renv/activate\.R'
     minimum_pre_commit_version: "2.13.0"
 -   id: no-browser-statement
@@ -96,6 +96,6 @@
     description: check if a .R file is lint free (using lintr)
     entry: Rscript inst/hooks/exported/lintr.R
     language: r
-    files: '\.[rR]$'
+    files: '(\.[rR]profile|\.R|\.Rmd|\.Rnw|\.r|\.rmd|\.rnw)$'
     exclude: 'renv/activate\.R'
     minimum_pre_commit_version: "2.13.0"
