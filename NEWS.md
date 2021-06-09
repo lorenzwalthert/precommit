@@ -82,6 +82,7 @@ depending on whether or not you previously used pre-commit.
 - Hook scripts were relocated and R hooks now have a file extension (#280).
 - Hook dependency updates are proposed by an automatic monthly pull request 
   to `lorenzwalthert/precommit`. This does not affect users directly (#430).
+- Updated GitHub Action workflows (#288).
 
 # precommit v0.1.3
 
