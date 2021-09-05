@@ -8,6 +8,7 @@
 ^cran-comments\.md$
 ^docs$
 ^inst/hooks/local$
+^inst/renv-update\.R$
 ^inst/WORDLIST$
 ^LICENSE\.md$
 ^pkgdown$
