@@ -1,3 +1,3 @@
 #!/usr/bin/env Rscript
 
-usethis::use_tidy_description()
+precommit::use_tidy_description()

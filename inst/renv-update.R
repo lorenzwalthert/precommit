@@ -1,8 +1,25 @@
 # also see corresponding files to update
-# options(renv.snapshot.filter = function(root) {
-#   out <- renv::dependencies("inst/hooks/exported/")$Packages
-#   return(out)
-# })
+hook_deps <- function(root) {
+  out <- renv::dependencies("inst/hooks/exported/")$Package
+  desc <- desc::desc()
+  deps <- desc$get_deps()
+  dont <- c("yaml", "usethis", "withr", "rstudioapi", "precommit")
+  out <- setdiff(c(unique(c(out, deps[deps$type == "Imports", ]$package))), dont)
+  return(out)
+}
+options(renv.snapshot.filter = hook_deps)
 
 renv::activate()
-renv::snapshot(packages = c('precommit', 'styler'))
+renv::snapshot(type = "custom")
+renv::snapshot(packages = hook_deps())
+
+
+#' * Run failed because of system dependencies for compiling packgages (matrix).
+#'   This can be resolved by dropping --without-recommend-packages
+#' * other packages will fail too because of system dependencies, in particular
+#'   the roxygen hook needs libgit2.
+#' * roxygen2 hook in addition needs to load the package,
+#'   which means everyone who develops packages that depend on system
+#'   dependencies won't manage install things.
+#' * pak can help installing system dependencies but not sure they can persist
+#'   the cache.
