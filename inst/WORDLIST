@@ -6,6 +6,7 @@ args
 autoupdate
 beaefa
 ci
+cli
 CLI
 cmd
 CMD
