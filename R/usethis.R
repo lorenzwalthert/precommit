@@ -1,15 +1,3 @@
-#' Tidy the description
-#'
-#' @export
-#' @family hook script helpers
-use_tidy_description <- function() {
-  description <- desc::description$new()
-  tidy_desc(description)
-  description$write()
-  invisible(TRUE)
-}
-
-
 write_union <- function(path, lines) {
   stopifnot(is.character(lines))
   if (file.exists(path)) {
