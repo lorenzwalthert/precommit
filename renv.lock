@@ -23,12 +23,24 @@
       "Repository": "CRAN",
       "Hash": "b6963166f7f10b970af1006c462ce6cd"
     },
+    "digest": {
+      "Package": "digest",
+      "Version": "0.6.27",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a0cbe758a531d054b537d16dff4d58a1"
+    },
     "docopt": {
       "Package": "docopt",
       "Version": "0.7.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e9eeef7931ee99ca0093f3f20b88e09b"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteUsername": "docopt",
+      "RemoteRepo": "docopt.R",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "ebdeb31d911584eab409799423edce3e48a85a2c",
+      "RemoteHost": "api.github.com",
+      "Hash": "29e92f2df5a13ca12520224b00a4f488"
     },
     "fs": {
       "Package": "fs",
@@ -53,10 +65,10 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.33",
+      "Version": "1.34",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0bc1b5da1b0eb07cd4b727e95e9ff0b8"
+      "Hash": "aa958054ac6f0360926bb952ea302f0f"
     },
     "lintr": {
       "Package": "lintr",
@@ -72,6 +84,13 @@
       "Repository": "CRAN",
       "Hash": "41287f1ac7d28a92f0a286ed507928d3"
     },
+    "pkgload": {
+      "Package": "pkgload",
+      "Version": "1.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "53139eedf68b98eecd5289664969c3f2"
+    },
     "purrr": {
       "Package": "purrr",
       "Version": "0.3.4",
@@ -85,6 +104,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "515f341d3affe0de9e4a7f762efb0456"
+    },
+    "roxygen2": {
+      "Package": "roxygen2",
+      "Version": "7.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "eb9849556c4250305106e82edae35b72"
     },
     "rprojroot": {
       "Package": "rprojroot",
@@ -102,10 +128,10 @@
     },
     "styler": {
       "Package": "styler",
-      "Version": "1.5.1",
+      "Version": "1.6.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "eb62a56987abe8fa9d1de47eef53a790"
+      "Hash": "e342279826bab9f09f372693d8dcaffd"
     },
     "tibble": {
       "Package": "tibble",
