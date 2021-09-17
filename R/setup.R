@@ -72,8 +72,8 @@ autoupdate <- function(root = here::here()) {
     assert_correct_upstream_repo_url()
     out <- call_precommit("autoupdate")
     if (out$exit_status == 0) {
-      usethis::ui_done(paste0(
-        "Ran `pre-commit autoupdate` to get the latest version of the hooks."
+      cli::cli_alert_success(paste0(
+        "Ran {.fun pre-commit autoupdate } to get the latest version of the hooks."
       ))
     } else {
       communicate_captured_call(

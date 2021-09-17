@@ -46,9 +46,9 @@ use_precommit_config <- function(config_source = getOption("precommit.config_sou
       fs::path(root, name_target),
       overwrite = TRUE
     )
-    usethis::ui_done("Copied .pre-commit-config.yaml to {root}")
+    cli::cli_alert_success("Copied .pre-commit-config.yaml to {root}")
   } else {
-    usethis::ui_info(paste0(
+    cli::cli_alert_info(paste0(
       "There is already a pre-commit configuration file in ",
       root,
       ". Use `force = TRUE` to replace .pre-commit-config.yaml."
@@ -56,9 +56,9 @@ use_precommit_config <- function(config_source = getOption("precommit.config_sou
   }
 
   if (is_package(root)) {
-    usethis::write_union(fs::path(root, ".Rbuildignore"), escaped_name_target)
+    write_union(fs::path(root, ".Rbuildignore"), escaped_name_target)
   }
-  usethis::ui_todo(c(
+  cli::cli_ul(c(
     "Edit .precommit-hooks.yaml to (de)activate the hooks you want to use. ",
     "All available hooks: https://pre-commit.com/hooks.html",
     paste("R specific hooks:", hooks_repo)
@@ -78,7 +78,7 @@ set_config_source <- function(config_source,
                               verbose = TRUE) {
   if (is_url(config_source)) {
     if (verbose) {
-      usethis::ui_info("Downloading remote config from {config_source}.")
+      cli::cli_alert_info("Downloading remote config from {config_source}.")
     }
     tmp <- tempfile()
 
@@ -119,7 +119,7 @@ set_config_source <- function(config_source,
     ))
   }
   if (verbose) {
-    usethis::ui_info("Using local config from {config_source}.")
+    cli::cli_alert_info("Using local config from {config_source}.")
   }
   config_source
 }

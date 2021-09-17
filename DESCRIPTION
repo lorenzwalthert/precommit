@@ -22,7 +22,6 @@ Imports:
     rprojroot,
     rstudioapi,
     tibble,
-    usethis (>= 2.0.0),
     withr,
     yaml
 Suggests: 
@@ -39,7 +38,8 @@ Suggests:
     roxygen2,
     spelling,
     styler,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    usethis (>= 2.0.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
