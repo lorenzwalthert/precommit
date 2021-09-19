@@ -10,6 +10,7 @@ hook_deps <- function(root) {
   )
   out <- c(out, "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "git2r", "digest", "desc")
   out <- setdiff(c(unique(c(out, deps[deps$type == "Imports", ]$package))), dont)
+  out <- names(renv:::renv_package_dependencies(out))
   return(out)
 }
 
