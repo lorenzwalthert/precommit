@@ -150,7 +150,7 @@ repos:
         name: Ordered regex pattern for spell-check exclusion
         description: Ensure alphabetical order in `exclude:` key of spell check.
         entry: Rscript inst/hooks/local/spell-check-ordered-exclude.R
-        language: R
+        language: r
         files: '^(.*/|)\.?pre-commit-config.*\.yaml$'
         additional_dependencies:
         -    magrittr
