@@ -38,8 +38,8 @@
 -   id: readme-rmd-rendered
     name: readme-rmd-rendered
     description: make sure README.Rmd hasn't been edited more recently than README.md
-    entry: inst/hooks/exported/readme-rmd-rendered
-    language: script
+    entry: inst/hooks/exported/readme-rmd-rendered.R
+    language: r
     files: 'README\.[Rr]?md$'
     minimum_pre_commit_version: "2.13.0"
 -   id: codemeta-description-updated
