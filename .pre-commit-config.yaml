@@ -90,6 +90,7 @@ repos:
           (?x)^(
           tests/testthat/in/style-files-fail-parse\.R|
           tests/testthat/in/parsable-R-fail\.R|
+          tests/testthat/in/no-browser-statement-fail\.R|
           )$
     -   id: deps-in-desc
         exclude: > 
@@ -109,19 +110,35 @@ repos:
     hooks:
     -   id: consistent-release-tag
         name: consistent-release-tag
-        entry: inst/hooks/local/consistent-release-tag.R
-        language: script
+        entry: Rscript inst/hooks/local/consistent-release-tag.R
+        language: r
+        additional_dependencies:
+        -    docopt
+        -    fs
+        -    yaml
+        -    purrr 
+        -    rlang 
+        -    git2r
+        -    desc
         stages: [commit, push]
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst
-        entry: inst/hooks/local/hooks-config-to-inst.R
-        language: script
+        entry: Rscript inst/hooks/local/hooks-config-to-inst.R
+        language: r
         stages: [commit, push]
+        additional_dependencies:
+        -    fs
     -   id: spell-check-exclude-to-config
         name: spell-check-exclude-to-config
-        entry: inst/hooks/local/spell-check-exclude-to-config.R
-        language: script
+        entry: Rscript inst/hooks/local/spell-check-exclude-to-config.R
+        language: r
         stages: [commit, push]
+        additional_dependencies:
+        -    magrittr
+        -    purrr
+        -    yaml
+        -    here
+        -    rlang
     -   id: forbid-to-commit
         name: Don't commit common R artifacts
         entry: Cannot commit .Rhistory, .Rdata, .csv and similar.
