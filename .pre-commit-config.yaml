@@ -120,6 +120,7 @@ repos:
         -    rlang 
         -    git2r
         -    desc
+        -    glue
         stages: [commit, push]
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst
@@ -148,6 +149,11 @@ repos:
     -   id: spell-check-ordered-exclude
         name: Ordered regex pattern for spell-check exclusion
         description: Ensure alphabetical order in `exclude:` key of spell check.
-        entry: inst/hooks/local/spell-check-ordered-exclude.R
-        language: script
+        entry: Rscript inst/hooks/local/spell-check-ordered-exclude.R
+        language: R
         files: '^(.*/|)\.?pre-commit-config.*\.yaml$'
+        additional_dependencies:
+        -    magrittr
+        -    yaml
+        -    purrr
+        -    rlang
