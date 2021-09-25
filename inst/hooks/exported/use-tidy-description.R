@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 description <- desc::description$new()
+description_old <- description$clone(deep = TRUE)
 deps <- description$get_deps()
 deps <- deps[order(deps$type, deps$package), , drop = FALSE]
 description$del_deps()
@@ -10,4 +11,6 @@ if (length(remotes) > 0) {
 }
 description$set(Encoding = "UTF-8")
 try(description$normalize(), silent = TRUE)
-description$write()
+if (!all(capture.output(description) == capture.output(description_old))) {
+  description$write()
+}
