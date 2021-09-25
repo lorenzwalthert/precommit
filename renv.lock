@@ -252,13 +252,6 @@
       "Repository": "CRAN",
       "Hash": "aa958054ac6f0360926bb952ea302f0f"
     },
-    "lazyeval": {
-      "Package": "lazyeval",
-      "Version": "0.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
-    },
     "lifecycle": {
       "Package": "lifecycle",
       "Version": "1.0.0",

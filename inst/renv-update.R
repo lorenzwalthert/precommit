@@ -16,20 +16,5 @@ hook_deps <- function(root) {
 
 options(renv.snapshot.filter = hook_deps)
 
-renv::activate()
-renv::snapshot(type = "custom")
-purrr::walk(hook_deps(), ~ renv::snapshot(packages = .x, prompt = FALSE))
-
-
-#' * Run failed because of system dependencies for compiling packgages (matrix).
-#'   This can be resolved by dropping --without-recommend-packages
-#' * other packages will fail too because of system dependencies, in particular
-#'   the roxygen hook needs gert -> libgit2, but apparently shipped binary.
-#' * roxygen2 hook in addition needs to load the package,
-#'   which means everyone who develops packages that depend on system
-#'   dependencies won't manage install things.
-#' * pak can help installing system dependencies but not sure they can persist
-#'   the cache.
-
-
-# -> hard dependencies: what the user needs
+renv::snapshot(type = "custom", prompt = FALSE)
+# or renv::snapshot(packages = hook_deps(), prompt = FALSE)
