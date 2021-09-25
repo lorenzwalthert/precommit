@@ -13,7 +13,7 @@ Options:
 arguments <- docopt::docopt(doc)
 
 lintr_staged <- grepl(
-  "modified:.*\\.lintr", system2('git', 'status', stdout = TRUE)
+  "modified:.*\\.lintr", system2("git", "status", stdout = TRUE)
 )
 if (any(lintr_staged)) {
   stop(
