@@ -260,3 +260,70 @@ run_test("roxygenize",
     files
   }
 )
+
+
+### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
+### readme-rmd-rendered                                                     ####
+run_test("readme-rmd-rendered",
+  file_name = c("README.Rmd", "README.md"),
+  suffix = "",
+  error_msg = NULL,
+  msg = NULL,
+  file_transformer = function(files) {
+    git2r::init()
+    git2r::add(path = files)
+    files
+  }
+)
+
+# wrong order
+run_test("readme-rmd-rendered",
+  file_name = c("README.md", "README.Rmd"),
+  suffix = "",
+  error_msg = "out of date",
+  msg = NULL,
+  file_transformer = function(files) {
+    git2r::init()
+    git2r::add(path = files)
+    files
+  }
+)
+
+# only one file staged
+run_test("readme-rmd-rendered",
+  file_name = c("README.Rmd", "README.md"),
+  suffix = "",
+  error_msg = "should be both staged",
+  msg = NULL,
+  file_transformer = function(files) {
+    git2r::init()
+    git2r::add(path = files[1])
+    files
+  }
+)
+
+# only has md
+run_test("readme-rmd-rendered",
+  file_name = "README.md",
+  suffix = "",
+  error_msg = NULL,
+  msg = NULL,
+  file_transformer = function(files) {
+    git2r::init()
+    git2r::add(path = files[1])
+    files
+  }
+)
+
+# only has Rmd
+run_test("readme-rmd-rendered",
+  file_name = "README.Rmd",
+  suffix = "",
+  error_msg = NULL,
+  msg = NULL,
+  file_transformer = function(files) {
+    git2r::init()
+    git2r::add(path = files[1])
+    files
+  }
+)

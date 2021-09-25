@@ -54,7 +54,7 @@ run_test <- function(hook_name,
   path_candidate <- paste0(testthat::test_path("in", file_name), suffix) %>%
     ensure_named(names(file_name), fs::path_file)
   run_test_impl(
-    path_executable, path_candidate[1],
+    path_executable, path_candidate,
     error_msg = error_msg,
     msg = msg,
     cmd_args = cmd_args,
@@ -160,6 +160,29 @@ hook_state_assert <- function(path_candidate,
                               error_msg,
                               msg,
                               exit_status) {
+  purrr::map2(path_candidate, path_candidate_temp,
+    hook_state_assert_one,
+    tempdir = tempdir,
+    file_transformer = file_transformer,
+    path_stdout = path_stdout,
+    path_stderr = path_stderr,
+    expect_success = expect_success,
+    error_msg = error_msg,
+    msg = msg,
+    exit_status = exit_status
+  )
+}
+
+hook_state_assert_one <- function(path_candidate,
+                                  tempdir,
+                                  path_candidate_temp,
+                                  file_transformer,
+                                  path_stdout,
+                                  path_stderr,
+                                  expect_success,
+                                  error_msg,
+                                  msg,
+                                  exit_status) {
   candidate <- readLines(path_candidate_temp)
   path_temp <- tempfile()
   fs::file_copy(path_candidate, path_temp)
