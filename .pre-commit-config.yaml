@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 default_stages: ["commit"]
 ci:
-    skip: [consistent-release-tag, spell-check-ordered-exclude]
+    skip: [consistent-release-tag]
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.1.3.9128
