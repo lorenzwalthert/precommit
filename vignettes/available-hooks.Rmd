@@ -197,6 +197,10 @@ Flag not set by default, i.e. the hook will fail if such a call is found.
   args: [--allow_private_imports] 
 ```
 
+Note that for Rmd or Rnw documents, we use `knitr::purl()` to get the R code and
+code chunk headers cannot contain code that has dependencies outside the header, 
+see also [yihui/knitr#1938](/https://github.com/yihui/knitr/issues/1938).
+
 This hook does not modify the file `DESCRIPTION` because the user should decide
 for each package if it should go to `Imports:` or `Suggests:`, which can be done
 easily with `usethis::use_package()`.
