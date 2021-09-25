@@ -286,7 +286,7 @@ run_test("readme-rmd-rendered",
     if (length(files) > 1) {
       # transformer is called once on all files and once per file
       content_2 <- readLines(files[2])
-      Sys.sleep(1)
+      Sys.sleep(2)
       writeLines(content_2, files[2])
     }
     git2r::init()
