@@ -1,6 +1,6 @@
 
 if (file.exists("README.Rmd") & file.exists("README.md")) {
-  if (file.info("README.md")$ctime < file.info("README.Rmd")$ctime) {
+  if (file.info("README.md")$mtime < file.info("README.Rmd")$mtime) {
     rlang::abort("README.md is out of date; please re-knit README.Rmd.")
   }
 
