@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9999</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9013</span>
       </span>
     </div>
 
@@ -144,30 +144,36 @@
       <small>Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="precommit-v0139005-development" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.3.9005">
-<a href="#precommit-v0139005-development" class="anchor"></a>precommit v0.1.3.9005 (Development)<small> Unreleased </small>
+    <div id="precommit-v0139012-development" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.3.9012">
+<a href="#precommit-v0139012-development" class="anchor"></a>precommit v0.1.3.9012 (Development)<small> Unreleased </small>
 </h1>
-<p>This is a pre-release for <code>v0.2.0</code> and imposes a minimal version requirement on the <a href="https://pre-commit.com/">pre-commit framework</a> (<code>v2.13.0</code>). Please see <em>Installation</em> below for how to satisfy it. This will ensure future releases of {precommit} building on the newly supported <a href="https://pre-commit.com/#r"><code>language: r</code></a> will work out of the box instead of issuing messages that are confusing for most end-users. We aspire the transition to <code>language: r</code> due to the following benefits: No more manual dependency management for hooks nor conflicts with your global R library plus eventually it will enable the easy use of continuous integration services (enforcing hooks and auto-fixing problems with pre-commit.ci, GitHub Actions).</p>
-<p><strong>Installation</strong></p>
-<p>Please follow the instructions in the <a href="https://lorenzwalthert.github.io/precommit/dev/">README</a> if you are a new user of pre-commit or if you want to update a current<br>
-installation.</p>
+<p>This is a pre-release for <code>v0.2.0</code> and imposes a minimal version requirement on the <a href="https://pre-commit.com/">pre-commit framework</a> (<code>v2.13.0</code>). Please see <em>Installation/Update</em> below for how to satisfy it. This will ensure future releases of {precommit} building on the newly supported <a href="https://pre-commit.com/#r"><code>language: r</code></a> will work out of the box instead of issuing messages that are confusing for most end-users. We aspire the transition to <code>language: r</code> due to the following benefits: No more manual dependency management for hooks nor conflicts with your global R library plus eventually it will enable the easy use of continuous integration services (enforcing hooks and auto-fixing problems with pre-commit.ci, GitHub Actions).</p>
+<p><strong>Installation/Update</strong></p>
+<p>Please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/#update">update instructions</a> or <a href="https://lorenzwalthert.github.io/precommit/dev/#installation">installation instructions</a> depending on whether or not you previously used pre-commit.</p>
 <p><strong>API changes</strong></p>
 <ul>
 <li>
 <code><a href="../reference/version_precommit.html">version_precommit()</a></code> and <code><a href="../reference/update_precommit.html">update_precommit()</a></code> are new functions to check the version of the installed pre-commit executable and to update it (<a href='https://github.com/lorenzwalthert/precommit/issues/197'>#197</a>).</li>
 <li>
 <code>style-files</code> hook now supports the full <a href="https://styler.r-lib.org/dev/reference/style_file.html"><code>style_file()</code></a> API, e.g. you can supply <code>--scope=spaces</code> and similar via <code>args:</code> in your <code>.pre-commit-config.yaml</code>. See the <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#style-files-1">docs</a> for details.</li>
-<li>
-<code>style-files</code> and <code>roxygenize</code> hooks now warn if there is no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache set up. You can silence the warning with the hook argument <code>--no-warn-cache</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/225'>#225</a>).</li>
 </ul>
-<p><strong>Minor changes</strong></p>
+<p><strong>Major Changes</strong></p>
 <ul>
+<li>{precommit} now uses <a href="https://pre-commit.com/#r"><code>language: r</code></a> instead of <code>language: script</code> from the <a href="https://pre-commit.com">pre-commit framework</a>. This requires <code>pre-commit &gt;= 2.11.1</code> (ideally even <code>&gt;= 2.13.0</code>). All hooks and dependencies are now contained in a virtual environment with <a href="https://rstudio.github.io/renv/"><code>{renv}</code></a>. Thanks to {renv}’s excellent <a href="https://rstudio.github.io/renv/articles/renv.html#cache-1">caching</a>, this hardly consumes any space and is fast. This makes output of hooks more consistent across different local setups, make manual dependency management redundant and will facilitate running R hooks as part of CI/CD in the future, e.g. via <a href="https://pre-commit.ci" class="uri">https://pre-commit.ci</a> or <a href="https://github.com/pre-commit/action">GitHub Actions</a> along with hook implemented in other languages (<a href='https://github.com/lorenzwalthert/precommit/issues/233'>#233</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/250'>#250</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/260'>#260</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/264'>#264</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>).</li>
+<li>Because hooks run in a virtual environment and the <code>roxygenize</code> hook runs <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html">pkgload::load_all()</a></code>, you need to list all dependencies of your package in <code>additional_dependencies</code> field in <code>.pre-commit-config.yaml</code>. You will be prompted to add them if they are missing, <code><a href="../reference/snippet_generate.html">precommit::snippet_generate("additional-deps-roxygenize")</a></code> generates the code you can copy/paste (<a href='https://github.com/lorenzwalthert/precommit/issues/247'>#247</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/248'>#248</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/249'>#249</a>).</li>
 <li>Warnings are no longer promoted to errors in the styler hook, which is particularly relevant for the apparently random error <code>Unknown or uninitialised column: text</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/268'>#268</a>).</li>
 <li>
 <code>deps-in-desc</code> now checks <code>.Rprofile</code>, <code>.Rmd</code> and <code>.Rnw</code> files in addition to <code>.R</code> files (<a href='https://github.com/lorenzwalthert/precommit/issues/216'>#216</a>).<br>
 </li>
-<li>In order to avoid multiple installations of the pre-commit framework, a warning is issued if multiple are found so the user can remove them (<a href='https://github.com/lorenzwalthert/precommit/issues/266'>#266</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>).</li>
+<li>
+<code>style-files</code> and <code>roxygenize</code> hooks now warn if there is no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache set up. You can silence the warning with the hook argument <code>--no-warn-cache</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/225'>#225</a>).</li>
+<li>the lintr and styler hook now also check <code>.Rmd</code>, <code>.Rnw</code> and <code>.Rprofile</code> files (<a href='https://github.com/lorenzwalthert/precommit/issues/286'>#286</a>).</li>
+</ul>
+<p><strong>Minor changes</strong></p>
+<ul>
+<li>In order to avoid multiple installations of the pre-commit framework, a warning is issued if multiple are found so the user can remove them (<a href='https://github.com/lorenzwalthert/precommit/issues/266'>#266</a>,
+<a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/277'>#277</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/278'>#278</a>).</li>
 <li>The cache for the roxygen2 hook is now also invalidated for changes in formals if there are no changes in roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/214'>#214</a>).</li>
 <li>
 <code>{renv}</code> infra files are not checked anymore by default in the template config files (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
@@ -177,6 +183,9 @@ installation.</p>
 <li>The location of the pre-commit executable is now also recognized on Apple Silicon when installed with Homebrew (<a href='https://github.com/lorenzwalthert/precommit/issues/240'>#240</a>).</li>
 <li>The <code>deps-in-desc</code> hook now points to the hook argument <code>--allow_private_imports</code> when the hook fails due to private imports (<a href='https://github.com/lorenzwalthert/precommit/issues/254'>#254</a>).</li>
 <li>roxygenize hook is now fully tested (<a href='https://github.com/lorenzwalthert/precommit/issues/267'>#267</a>).</li>
+<li>Hook scripts were relocated and R hooks now have a file extension (<a href='https://github.com/lorenzwalthert/precommit/issues/280'>#280</a>).</li>
+<li>Hook dependency updates are proposed by an automatic monthly pull request to <code>lorenzwalthert/precommit</code>. This does not affect users directly (<a href='https://github.com/lorenzwalthert/precommit/issues/430'>#430</a>).</li>
+<li>Updated GitHub Action workflows (<a href='https://github.com/lorenzwalthert/precommit/issues/288'>#288</a>).</li>
 </ul>
 </div>
     <div id="precommit-v013" class="section level1">
