@@ -1,10 +1,3 @@
-# https://github.com/grantmcdermott/renv-rspm
-repo <- ifelse(Sys.info()[['sysname']] %in% c('Linux', 'Windows'),
-  "https://packagemanager.rstudio.com/all/latest",
-  "https://cran.rstudio.com/"
-)
-options(repos = c(RSPM = repo))
-options(renv.config.repos.override = getOption("repos"))
 
 local({
 
