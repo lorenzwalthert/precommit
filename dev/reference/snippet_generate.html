@@ -150,7 +150,11 @@
     <p>Utility function to generate code snippets:</p>
     </div>
 
-    <pre class="usage"><span class='fu'>snippet_generate</span><span class='op'>(</span>snippet <span class='op'>=</span> <span class='st'>""</span>, root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>snippet_generate</span><span class='op'>(</span>
+  snippet <span class='op'>=</span> <span class='st'>""</span>,
+  open <span class='op'>=</span> <span class='fu'>rstudioapi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rstudioapi/man/isAvailable.html'>isAvailable</a></span><span class='op'>(</span><span class='op'>)</span>,
+  root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,6 +162,12 @@
     <tr>
       <th>snippet</th>
       <td><p>Name of the snippet.</p></td>
+    </tr>
+    <tr>
+      <th>open</th>
+      <td><p>Whether or not to open the .pre-commit-config.yaml. The default
+is <code>TRUE</code> when working in  RStudio. Otherwise, we recommend manually opening
+the file.</p></td>
     </tr>
     <tr>
       <th>root</th>
