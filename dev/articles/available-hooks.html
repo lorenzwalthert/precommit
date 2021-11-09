@@ -143,6 +143,13 @@
 <ul>
 <li>If no permanent <a href="https://github.com/HenrikBengtsson/R.cache">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</li>
 </ul>
+<pre><code>  id: style-files
+  args: [--no-warn-cache]</code></pre>
+<ul>
+<li>Argument <code>cache_root</code> is passed to <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> to set <code>styler.cache_root</code>. Default value: <code>styler-perm</code>. The argument determines the sub-directory under the {R.cache} cache directory that {styler} uses. If you want {styler} to auto-clean up caches older than 6 days, set this to <code>"styler"</code>. For more information, see <code><a href="https://styler.r-lib.org/reference/caching.html">help("caching", package = "styler")</a></code>.</li>
+</ul>
+<pre><code>  id: style-files
+  args: [--cache-root=styler]</code></pre>
 <p>This hook modifies files unless you specify <code>--dry=fail</code> (requires <code>{styler} &gt; 1.3.2</code>).</p>
 </div>
 <div id="readme-rmd-rendered" class="section level2">

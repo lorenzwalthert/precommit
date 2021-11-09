@@ -150,8 +150,9 @@
 </h1>
 <p>This version marks the switch to <code>language: r</code> of all existing hooks. This includes switching to R based hook for <code>readme-rmd-render</code>, avoiding the {usethis} dependency, integration tests via GitHub Actions, auto-updates for used packages, roxygen snippet generation and more. In addition:</p>
 <ul>
-<li>Always sort <code>inst/WORDLIST</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/303'>#303</a>).</li>
-<li>rename default branch to <em>main</em> (<a href='https://github.com/lorenzwalthert/precommit/issues/307'>#307</a>).</li>
+<li><p>Always sort <code>inst/WORDLIST</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/303'>#303</a>).</p></li>
+<li><p>rename default branch to <em>main</em> (<a href='https://github.com/lorenzwalthert/precommit/issues/307'>#307</a>).</p></li>
+<li><p><code>style-files</code> hook gains an argument <code>--cache-root</code> that is passed to <code>options(styler.cache_root = ...)</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/305'>#305</a>).</p></li>
 </ul>
 </div>
     <div id="precommit-v0139012" class="section level1">
@@ -171,7 +172,7 @@
 <p><strong>Major Changes</strong></p>
 <ul>
 <li>{precommit} now uses <a href="https://pre-commit.com/#r"><code>language: r</code></a> instead of <code>language: script</code> from the <a href="https://pre-commit.com">pre-commit framework</a>. This requires <code>pre-commit &gt;= 2.11.1</code> (ideally even <code>&gt;= 2.13.0</code>). All hooks and dependencies are now contained in a virtual environment with <a href="https://rstudio.github.io/renv/"><code>{renv}</code></a>. Thanks to {renv}’s excellent <a href="https://rstudio.github.io/renv/articles/renv.html#cache-1">caching</a>, this hardly consumes any space and is fast. This makes output of hooks more consistent across different local setups, make manual dependency management redundant and will facilitate running R hooks as part of CI/CD in the future, e.g. via <a href="https://pre-commit.ci" class="uri">https://pre-commit.ci</a> or <a href="https://github.com/pre-commit/action">GitHub Actions</a> along with hook implemented in other languages (<a href='https://github.com/lorenzwalthert/precommit/issues/233'>#233</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/250'>#250</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/260'>#260</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/264'>#264</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>).</li>
-<li>Because hooks run in a virtual environment and the <code>roxygenize</code> hook runs <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html">pkgload::load_all()</a></code>, you need to list all dependencies of your package in <code>additional_dependencies</code> field in <code>.pre-commit-config.yaml</code>. You will be prompted to add them if they are missing, <code><a href="../reference/snippet_generate.html">precommit::snippet_generate("additional-deps-roxygenize")</a></code> generates the code you can copy/paste (<a href='https://github.com/lorenzwalthert/precommit/issues/247'>#247</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/248'>#248</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/249'>#249</a>).</li>
+<li>Because hooks run in a virtual environment and the <code>roxygenize</code> hook runs <code><a href="https://rdrr.io/pkg/pkgload/man/load_all.html">pkgload::load_all()</a></code>, you need to list all dependencies of your package in <code>additional_dependencies</code> field in <code>.pre-commit-config.yaml</code>. You will be prompted to add them if they are missing, <code>precommit::snippet_generate("additional-deps-roxygenize")</code> generates the code you can copy/paste (<a href='https://github.com/lorenzwalthert/precommit/issues/247'>#247</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/248'>#248</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/249'>#249</a>).</li>
 <li>Warnings are no longer promoted to errors in the styler hook, which is particularly relevant for the apparently random error <code>Unknown or uninitialised column: text</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/268'>#268</a>).</li>
 <li>
 <code>deps-in-desc</code> now checks <code>.Rprofile</code>, <code>.Rmd</code> and <code>.Rnw</code> files in addition to <code>.R</code> files (<a href='https://github.com/lorenzwalthert/precommit/issues/216'>#216</a>).<br>
@@ -186,7 +187,7 @@
 <a href='https://github.com/lorenzwalthert/precommit/issues/273'>#273</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/277'>#277</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/278'>#278</a>).</li>
 <li>The cache for the roxygen2 hook is now also invalidated for changes in formals if there are no changes in roxygen comments (<a href='https://github.com/lorenzwalthert/precommit/issues/214'>#214</a>).</li>
 <li>
-<code>{renv}</code> infra files are not checked anymore by default in the template config files (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
+<a href="https://rstudio.github.io/renv/">renv</a> infra files are not checked anymore by default in the template config files (<a href='https://github.com/lorenzwalthert/precommit/issues/237'>#237</a>).</li>
 <li>
 <code>.png</code>, <code>.jpeg</code>, <code>.pdf</code> and files in <code>.github/workflows</code> are no longer spell-checked in the template config file (<a href='https://github.com/lorenzwalthert/precommit/issues/276'>#276</a>).</li>
 <li>All sub-patterns in the <code>exclude:</code> pattern of the spell check hook are now ordered alphabetically (<a href='https://github.com/lorenzwalthert/precommit/issues/276'>#276</a>).</li>
@@ -314,7 +315,7 @@
 <li>auto-detect pre-commit executable when installed via pip for Linux (<a href='https://github.com/lorenzwalthert/precommit/issues/120'>#120</a>), macOS (<a href='https://github.com/lorenzwalthert/precommit/issues/131'>#131</a>).</li>
 <li>auto-detect pre-commit executable when installed via brew for macOS (<a href='https://github.com/lorenzwalthert/precommit/issues/132'>#132</a>).</li>
 <li>
-<code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new argument <code>config_source</code> to copy an existing config file into the repo at initialization. The argument defaults to <code><a href="https://rdrr.io/r/base/options.html">options('precommit.config_source')</a></code> to make it easy for users to use their preferred hooks in every repo they initialize (<a href='https://github.com/lorenzwalthert/precommit/issues/111'>#111</a>).</li>
+<code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new argument <code>config_source</code> to copy an existing config file into the repo at initialization. The argument defaults to <code>options('precommit.config_source')</code> to make it easy for users to use their preferred hooks in every repo they initialize (<a href='https://github.com/lorenzwalthert/precommit/issues/111'>#111</a>).</li>
 <li>Create <code>r-precommit</code> env if not existent before installing into it (<a href='https://github.com/lorenzwalthert/precommit/issues/114'>#114</a>).</li>
 <li>Unify vignettes on available hooks and arguments (<a href='https://github.com/lorenzwalthert/precommit/issues/109'>#109</a>).</li>
 <li>Fail fast when repo is not a git repo (<a href='https://github.com/lorenzwalthert/precommit/issues/111'>#111</a>).</li>
