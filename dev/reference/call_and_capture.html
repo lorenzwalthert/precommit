@@ -150,7 +150,7 @@
     <p>Make a call with <code><a href='https://rdrr.io/r/base/system2.html'>system2()</a></code> and capture the effects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>call_and_capture</span><span class='op'>(</span><span class='va'>command</span>, <span class='va'>args</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>call_and_capture</span><span class='op'>(</span><span class='va'>command</span>, <span class='va'>args</span>, <span class='va'>...</span>, wait <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,6 +166,10 @@
     <tr>
       <th>...</th>
       <td><p>Arguments passed to <code><a href='https://rdrr.io/r/base/system2.html'>system2()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>wait</th>
+      <td><p>Passed to <code><a href='https://rdrr.io/r/base/system2.html'>system2()</a></code>.</p></td>
     </tr>
     </table>
 

@@ -154,7 +154,7 @@ ensure an executable to runs successfully) or, if the installation method was
 not conda, as a plain bash command.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>call_precommit</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>call_precommit</span><span class='op'>(</span><span class='va'>...</span>, wait <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +162,10 @@ not conda, as a plain bash command.</p>
     <tr>
       <th>...</th>
       <td><p>Arguments passed to the command line call <code>pre-commit</code>.</p></td>
+    </tr>
+    <tr>
+      <th>wait</th>
+      <td><p>Passed to <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
     </tr>
     </table>
 
