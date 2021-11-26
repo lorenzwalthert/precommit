@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • precommit</title>
+<title>Use continuous integration with pre-commit — use_ci • precommit</title>
 
 
 <!-- jquery -->
@@ -45,7 +45,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Use continuous integration with pre-commit — use_ci" />
+<meta property="og:description" content="Sets up continuous integration, or prompts the user to do it manually." />
 
 
 <meta name="robots" content="noindex">
@@ -64,7 +65,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -140,28 +141,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Use continuous integration with pre-commit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/setup.R'><code>R/setup.R</code></a></small>
+    <div class="hidden name"><code>use_ci.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="FAQ.html">FAQ</a></dt>
-        <dd></dt>
-        <dt><a href="available-hooks.html">Available Hooks</a></dt>
-        <dd></dt>
-        <dt><a href="ci.html">Continuous Integration</a></dt>
-        <dd></dt>
-        <dt><a href="hook-order.html">hook-order</a></dt>
-        <dd></dt>
-        <dt><a href="testing.html">testing</a></dt>
-        <dd></dt>
-        <dt><a href="why-use-hooks.html">Why is this useful?</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Sets up continuous integration, or prompts the user to do it manually.</p>
     </div>
+
+    <pre class="usage"><span class='fu'>use_ci</span><span class='op'>(</span>
+  ci <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"precommit.ci"</span>, <span class='st'>"native"</span><span class='op'>)</span>,
+  force <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ci</th>
+      <td><p>Specifies which continuous integration service to use. See
+<code><a href='../articles/ci.html'>vignette("ci", package = "precommit")</a></code> for details. Defaults to
+<code>getOption("precommit.ci", "native")</code>, which is set to
+<code>"native"</code> on package loading (if unset). <code>"native"</code> sets up
+<a href='https://pre-commit.ci'>pre-commit.ci</a>. Alternatively, <code>"gha"</code> can be used
+to set up <a href='https://github.com/features/actions'>GitHub Actions</a>. Set value
+to <code>NULL</code> if you don't want to use a continuous integration.</p></td>
+    </tr>
+    <tr>
+      <th>force</th>
+      <td><p>Whether or not to overwrite an existing ci config file (only
+relevant for <code>ci = "gha"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>root</th>
+      <td><p>The path to the root directory of your project.</p></td>
+    </tr>
+    </table>
+
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

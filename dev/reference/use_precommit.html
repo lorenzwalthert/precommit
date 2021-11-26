@@ -156,6 +156,7 @@
   legacy_hooks <span class='op'>=</span> <span class='st'>"forbid"</span>,
   open <span class='op'>=</span> <span class='fu'>rstudioapi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rstudioapi/man/isAvailable.html'>isAvailable</a></span><span class='op'>(</span><span class='op'>)</span>,
   install_hooks <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  ci <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"precommit.ci"</span>, <span class='st'>"native"</span><span class='op'>)</span>,
   root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
@@ -172,7 +173,8 @@ config. See section 'Copying an existing config file'.</p></td>
     </tr>
     <tr>
       <th>force</th>
-      <td><p>Whether to replace an existing config file.</p></td>
+      <td><p>Whether or not to overwrite an existing ci config file (only
+relevant for <code>ci = "gha"</code>).</p></td>
     </tr>
     <tr>
       <th>legacy_hooks</th>
@@ -191,6 +193,16 @@ RStudio. Otherwise, we recommend manually inspecting the file.</p></td>
       <th>install_hooks</th>
       <td><p>Whether to install environments for all available hooks.
 If <code>FALSE</code>, environments are installed with first commit.</p></td>
+    </tr>
+    <tr>
+      <th>ci</th>
+      <td><p>Specifies which continuous integration service to use. See
+<code><a href='../articles/ci.html'>vignette("ci", package = "precommit")</a></code> for details. Defaults to
+<code>getOption("precommit.ci", "native")</code>, which is set to
+<code>"native"</code> on package loading (if unset). <code>"native"</code> sets up
+<a href='https://pre-commit.ci'>pre-commit.ci</a>. Alternatively, <code>"gha"</code> can be used
+to set up <a href='https://github.com/features/actions'>GitHub Actions</a>. Set value
+to <code>NULL</code> if you don't want to use a continuous integration.</p></td>
     </tr>
     <tr>
       <th>root</th>

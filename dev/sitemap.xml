@@ -121,6 +121,9 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/update_rev_in_config.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/use_ci.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/use_precommit.html</loc>
   </url>
   <url>
@@ -134,6 +137,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/available-hooks.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//articles/ci.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/hook-order.html</loc>

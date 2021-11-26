@@ -151,6 +151,8 @@
 <p>This version marks the switch to <code>language: r</code> of all existing hooks. This includes switching to R based hook for <code>readme-rmd-render</code>, avoiding the {usethis} dependency, integration tests via GitHub Actions, auto-updates for used packages, roxygen snippet generation and more. In addition:</p>
 <ul>
 <li>
+<code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains a <code>ci</code> argument, defaulting to <code>"native"</code>, which will guide the user to set up continuous integration of the hooks with either <a href="https://pre-commit.ci">pre-commit.ci</a> or <a href="https://github.com/features/actions">GitHub Actions</a>. New exported function <code>use_ci(ci = "native")</code> can be used to migrate existing repos. The default behavior for <code>ci</code> is governed by the R option <code>precommit.ci</code>.</li>
+<li>
 <code>use_precommit(..., install_hooks = TRUE)</code> is no longer blocking by default. New option <code>precommit.block_install_hooks</code> (defaults to <code>FALSE</code>) governs the behavior (<a href='https://github.com/lorenzwalthert/precommit/issues/312'>#312</a>).</li>
 <li>Always sort <code>inst/WORDLIST</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/303'>#303</a>).</li>
 <li>rename default branch to <em>main</em> (<a href='https://github.com/lorenzwalthert/precommit/issues/307'>#307</a>).</li>

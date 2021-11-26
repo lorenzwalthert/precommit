@@ -4,10 +4,11 @@ pkgdown_sha: ~
 articles:
   FAQ: FAQ.html
   available-hooks: available-hooks.html
+  ci: ci.html
   hook-order: hook-order.html
   testing: testing.html
   why-use-hooks: why-use-hooks.html
-last_built: 2021-11-26T17:39Z
+last_built: 2021-11-26T21:42Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit//reference
   article: https://lorenzwalthert.github.io/precommit//articles
