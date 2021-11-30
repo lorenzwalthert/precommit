@@ -146,28 +146,29 @@
 
 <div id="general" class="section level1">
 
-<p>Before making a pull request, discuss your ideas in an issue. This repo is experimental. This repo uses the <a href="https://github.com/ropenscilabs/tic">tic</a> package for CI.</p>
+<p>Before making a pull request, discuss your ideas in an issue. This repo is maturing.</p>
 </div>
 <div id="adding-new-hooks" class="section level1">
 <h1 class="hasAnchor">
 <a href="#adding-new-hooks" class="anchor"></a>Adding new hooks</h1>
 <p>To create a new hook, have a look at the <a href="https://pre-commit.com/#new-hooks">official documentation</a> on creating new hooks, then have a look at existing hooks in this repo. The actual executables are defined in <a href="https://github.com/lorenzwalthert/precommit/tree/main/inst/hooks"><code>inst/hooks/</code></a>. In the script, you can expect the passed command line arguments to be all options, finally the files that should be processed with the hook.</p>
-<p>For the scripts to become a hook, they need to be <em>registered</em> in <a href="https://github.com/lorenzwalthert/precommit/blob/main/.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a>. As R is not currently a supported language of pre-commit (<a href="https://github.com/pre-commit/pre-commit/issues/926" class="uri">https://github.com/pre-commit/pre-commit/issues/926</a>), most hooks use <code>language: script</code> and then a shebang in the <code>entrypoint</code> script.</p>
+<p>For the scripts to become a hook, they need to be <em>registered</em> in <a href="https://github.com/lorenzwalthert/precommit/blob/main/.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a>. As of pre-commit 2.11, R is a <a href="https://pre-commit.com/#r">supported language of pre-commit</a>. Hence, it should have <code>language: r</code> in <code>.pre-commit-hooks.yaml</code> and then (for compatibility) a shebang in the <code>entrypoint</code> script.</p>
 </div>
 <div id="testing-hooks" class="section level1">
 <h1 class="hasAnchor">
 <a href="#testing-hooks" class="anchor"></a>Testing hooks</h1>
-<p>Hooks should be tested by checking both the positive outcome (hook passes) and the negative outcome (hook fails) by adding two <code><a href="reference/run_test.html">run_test()</a></code> statements to <a href="https://github.com/lorenzwalthert/precommit/blob/main/tests/testthat/test-all.R"><code>./tests/testthat/test-all.R</code></a>. Look at existing examples and <a href="https://lorenzwalthert.github.io/precommit/reference/run_test.html">the documentation of <code>run_test()</code></a>. Note that this won’t actually use pre-commit. It will simply call the hook script the same way as pre-commit would, with the difference that the test uses a path to the <code>Rscript</code> executable whereas with pre-commit, the shebang is needed. Hence, omitting the shebang in your script will indicated passed tests, but this will be false positive. Also, there is no easy way to test if a hook is correctly registered in <code>.pre-commit-hooks.yaml</code></p>
-<p>For this reason, always test the hook manually end-to-end with <code>pre-commit try-repo</code> as described in the <a href="https://pre-commit.com/#pre-commit-try-repo">documentation</a>.</p>
+<p>Hooks should be tested by checking both the positive outcome (hook passes) and the negative outcome (hook fails) by adding two <code><a href="reference/run_test.html">run_test()</a></code> statements to <a href="https://github.com/lorenzwalthert/precommit/blob/main/tests/testthat/test-hooks.R"><code>./tests/testthat/test-hooks.R</code></a>. Look at existing examples and <a href="https://lorenzwalthert.github.io/precommit/reference/run_test.html">the documentation of <code>run_test()</code></a>. Note that this won’t interact with pre-commit. It will simply run <code>Rscript path/to/script.R</code> (whereas with pre-commit, a {renv} will be activated before running the script).</p>
+<p>Also, there are <a href="https://github.com/lorenzwalthert/precommit/blob/main/.github/workflows/end-to-end.yml">tests</a> to ensure that hooks are correctly registered in <code>.pre-commit-hooks.yaml</code>, which you have to adapt if you add a hook.</p>
+<p>You can also test them with <code>pre-commit try-repo</code> as described in the <a href="https://pre-commit.com/#pre-commit-try-repo">documentation</a>.</p>
 </div>
 <div id="summary" class="section level1">
 <h1 class="hasAnchor">
 <a href="#summary" class="anchor"></a>Summary</h1>
 <ul>
-<li><p>add your script to in <code>inst/bin</code> and make it executable. Only R scripts are currently supported as testing is done with <code>Rscript ...</code>.</p></li>
+<li><p>add your R (with extension) script in <code>inst/hooks/exported</code> and make it executable. See other scripts in <code>inst/hooks/exported</code> for a starting point for setting up your script.</p></li>
 <li><p>register hook in <code>.pre-commit-hooks.yaml</code>.</p></li>
-<li><p>add two unit tests, test manually with <code>pre-commit try-repo</code>.</p></li>
-<li><p>add a description of the new hook to the <code>README.Rmd</code>. Both description and <code>yaml</code> example code.</p></li>
+<li><p>add two unit tests, test manually with <code>pre-commit try-repo</code> and adapt the <a href="https://github.com/lorenzwalthert/precommit/blob/main/.github/workflows/end-to-end.yml">end-to-end test</a>.</p></li>
+<li><p>add a description of the new hook to <code>vignettes/available-hooks.Rmd</code>. Both description and <code>yaml</code> example code.</p></li>
 </ul>
 </div>
 
