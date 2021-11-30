@@ -163,7 +163,7 @@
 <h2 class="hasAnchor">
 <a href="#parsable-r" class="anchor"></a><code>parsable-R</code>
 </h2>
-<p>Checks if your <code>.R</code> files are “valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html">parse()</a></code> on them returns an error.</p>
+<p>Checks if your <code>.R</code> and <code>.Rmd</code> files are “valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html">parse()</a></code> on them (or their <code><a href="https://rdrr.io/pkg/knitr/man/knit.html">knitr::purl()</a></code>ed output for <code>.Rmd</code>) returns an error.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div id="no-browser-statement" class="section level2">
