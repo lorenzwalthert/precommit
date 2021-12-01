@@ -13,7 +13,16 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/call_precommit.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/copy_artifacts.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/diff_requires_run_roxygenize.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/dirs_R.cache.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/ensure_named.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/extract_diff_root.html</loc>
@@ -22,10 +31,28 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/fallback_doc.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/generate_uninstalled_pkg_name.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/has_persistent_R.cache.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/hook_state_assert.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/hook_state_create.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/install_impl.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/install_precommit.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/local_test_setup.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/may_require_permanent_cache.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/not_conda.html</loc>
@@ -64,6 +91,12 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/release_gh.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/roxygen_assert_additional_dependencies.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/roxygenize_with_cache.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/run_test.html</loc>
   </url>
   <url>
@@ -73,10 +106,22 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/set_config_source.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/snippet_generate.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/uninstall_precommit.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/update_impl.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/update_precommit.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/update_rev_in_config.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/use_ci.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//reference/use_precommit.html</loc>
@@ -85,13 +130,22 @@
     <loc>https://lorenzwalthert.github.io/precommit//reference/use_precommit_config.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//reference/version_precommit.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/FAQ.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/available-hooks.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit//articles/ci.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/hook-order.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit//articles/testing.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit//articles/why-use-hooks.html</loc>

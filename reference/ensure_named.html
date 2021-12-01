@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auto-update your hooks — autoupdate • precommit</title>
+<title>Name the input — ensure_named • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Auto-update your hooks — autoupdate" />
-<meta property="og:description" content="Runs pre-commit autoupdate." />
+<meta property="og:title" content="Name the input — ensure_named" />
+<meta property="og:description" content="Name the input" />
 
 
 
@@ -141,35 +141,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Auto-update your hooks</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/setup.R'><code>R/setup.R</code></a></small>
-    <div class="hidden name"><code>autoupdate.Rd</code></div>
+    <h1>Name the input</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>ensure_named.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Runs <a href='https://pre-commit.com/#pre-commit-autoupdate'><code>pre-commit autoupdate</code></a>.</p>
+    <p>Name the input</p>
     </div>
 
-    <pre class="usage"><span class='fu'>autoupdate</span><span class='op'>(</span>root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ensure_named</span><span class='op'>(</span><span class='va'>x</span>, candidate_name <span class='op'>=</span> <span class='cn'>NULL</span>, f <span class='op'>=</span> <span class='va'>identity</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>root</th>
-      <td><p>The path to the root directory of your project.</p></td>
+      <th>x</th>
+      <td><p>A vector.</p></td>
+    </tr>
+    <tr>
+      <th>f</th>
+      <td><p>How to transform the input <code>x</code> into a name.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The exit status from <code>pre-commit autoupdate</code> (invisibly).</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'><span class='fu'>autoupdate</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-in'><span class='op'>}</span></span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -47,7 +47,8 @@
 
 <meta property="og:title" content="Run a test — run_test" />
 <meta property="og:description" content="Tests for the executables used as pre-commit hooks via entrypoint in
-.pre-commit-config.yaml." />
+.pre-commit-config.yaml. Set's the env variable R_PRECOMMIT_HOOK_ENV to
+when running." />
 
 
 
@@ -79,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -87,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -119,7 +120,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/lorenzwalthert/precommit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -149,7 +150,8 @@
 
     <div class="ref-description">
     <p>Tests for the executables used as pre-commit hooks via <code>entrypoint</code> in
-<code>.pre-commit-config.yaml</code>.</p>
+<code>.pre-commit-config.yaml</code>. Set's the env variable <code>R_PRECOMMIT_HOOK_ENV</code> to
+when running.</p>
     </div>
 
     <pre class="usage"><span class='fu'>run_test</span><span class='op'>(</span>
@@ -157,8 +159,11 @@
   file_name <span class='op'>=</span> <span class='va'>hook_name</span>,
   suffix <span class='op'>=</span> <span class='st'>".R"</span>,
   error_msg <span class='op'>=</span> <span class='cn'>NULL</span>,
+  msg <span class='op'>=</span> <span class='cn'>NULL</span>,
   cmd_args <span class='op'>=</span> <span class='cn'>NULL</span>,
-  copy <span class='op'>=</span> <span class='cn'>NULL</span>
+  artifacts <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file_transformer <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span> <span class='va'>files</span>,
+  env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -166,11 +171,14 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>hook_name</th>
-      <td><p>The name of the hook in <code>bin/</code>.</p></td>
+      <td><p>The name of the hook in <code>inst/hooks/exported/</code>, without
+file extension.</p></td>
     </tr>
     <tr>
       <th>file_name</th>
-      <td><p>The file to test in <code>tests/in</code> (without extension).</p></td>
+      <td><p>The file to test in <code>tests/in</code> (without extension). Can be
+a named vector of length one where the name is the target location relative
+to the temporary location and the value is the source of the file.</p></td>
     </tr>
     <tr>
       <th>suffix</th>
@@ -182,19 +190,36 @@
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></td>
     </tr>
     <tr>
+      <th>msg</th>
+      <td><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></td>
+    </tr>
+    <tr>
       <th>cmd_args</th>
       <td><p>More arguments passed to the file. Pre-commit handles it as
 described <a href='https://pre-commit.com/#arguments-pattern-in-hooks'>here</a>.</p></td>
     </tr>
     <tr>
-      <th>copy</th>
-      <td><p>Path with files to copy to the temp directory where the test
-is run. If the target destination relative to the temp dir where the hook
-is tested is not identical to the path from where a file should be copied,
-you can pass a named vector. The name is the target directory relative to
-the temp directory where the hook is executed (the temp directory will be
-the working directory at that time) and the value is the path that points
-to the place where the artifact is currently stored.</p></td>
+      <th>artifacts</th>
+      <td><p>Path with artifact files to copy to the temp directory root where
+the test is run. If you don't target the root, this can be a named vector
+of length one where the name is the target location relative to the
+temporary location and the value is the source of the file.</p></td>
+    </tr>
+    <tr>
+      <th>file_transformer</th>
+      <td><p>A function that takes the file names as input and is
+ran right before the hook script is invoked, returning the path to the
+files, potentially modified (if renamed). This can be useful if you need to
+make in-place modifications to the file, e.g. to test hooks that operate on
+<code>.Rprofile</code>. You can't have different names for different tests on that
+file because it must be called <code>.Rprofile</code> all the time. And R CMD check
+seems to remove hidden files, so we must also rename it. The transformation
+is also applied to a temp copy of the reference file before a comparison is
+made.</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment variables to set with <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -207,7 +232,7 @@ We check if the executable passes as follows:</p><ul>
 <li><p>If we expect success (by setting <code>error_msg</code> to <code>NULL</code>), we make sure
 nothing was written to sterr and the file content does not change.</p></li>
 <li><p>If we expect failure, it can be due to changed file or due to failed
-executable. To check for failed executalble, we set <code>error_msg</code> to
+executable. To check for failed executable, we set <code>error_msg</code> to
 the message we expect. To check changed file content, we set <code>error_msg</code> to
 <code>NA</code>.</p></li>
 </ul>
@@ -224,7 +249,7 @@ the message we expect. To check changed file content, we set <code>error_msg</co
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://lorenzwalthert.netlify.com'>Lorenz Walthert</a>.</p>
+  <p>Developed by <a href='https://lorenzwalthert.com'>Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">

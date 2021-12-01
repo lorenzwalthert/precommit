@@ -46,7 +46,7 @@
 
 
 <meta property="og:title" content="Derive the path to the pre-commit executable — path_derive_precommit_exec" />
-<meta property="og:description" content="All these functions return &quot;&quot; if search was not successful." />
+<meta property="og:description" content="Returns &quot;&quot; if search was not successful, the path otherwise." />
 
 
 
@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +118,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/lorenzwalthert/precommit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -147,7 +147,7 @@
     </div>
 
     <div class="ref-description">
-    <p>All these functions return "" if search was not successful.</p>
+    <p>Returns "" if search was not successful, the path otherwise.</p>
     </div>
 
     <pre class="usage"><span class='fu'>path_derive_precommit_exec</span><span class='op'>(</span><span class='op'>)</span></pre>
@@ -160,10 +160,10 @@
 <ul>
 <li><p>First check if there is an executable on the <code>$PATH</code> using
 <code><a href='path_derive_precommit_exec_path.html'>path_derive_precommit_exec_path()</a></code></p></li>
-<li><p>If not, check if we can find one in a conda environment with
-<code><a href='path_derive_precommit_exec_conda.html'>path_derive_precommit_exec_conda()</a></code>.</p></li>
 <li><p>Search os dependent for other possible locations for common installation
 methods.</p></li>
+<li><p>If not, check if we can find one in a conda environment with
+<code><a href='path_derive_precommit_exec_conda.html'>path_derive_precommit_exec_conda()</a></code>. Do this last as it's the slowest.</p></li>
 </ul>
 
 
@@ -178,7 +178,7 @@ methods.</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://lorenzwalthert.netlify.com'>Lorenz Walthert</a>.</p>
+  <p>Developed by <a href='https://lorenzwalthert.com'>Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">

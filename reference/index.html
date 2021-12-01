@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -85,7 +85,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -117,7 +117,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/lorenzwalthert/precommit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -168,13 +168,13 @@
         <td>
           <p><code><a href="install_precommit.html">install_precommit()</a></code> </p>
         </td>
-        <td><p>Install pre-commit on your system.</p></td>
+        <td><p>Install pre-commit on your system</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="use_precommit.html">use_precommit()</a></code> </p>
         </td>
-        <td><p>Set up pre-commit</p></td>
+        <td><p>Get started with pre-commit</p></td>
       </tr><tr>
         
         <td>
@@ -206,11 +206,17 @@
           <p><code><a href="autoupdate.html">autoupdate()</a></code> </p>
         </td>
         <td><p>Auto-update your hooks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="snippet_generate.html">snippet_generate()</a></code> </p>
+        </td>
+        <td><p>Generate code snippets</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
+          <h2 id="section-manage-the-pre-commit-executable" class="hasAnchor"><a href="#section-manage-the-pre-commit-executable" class="anchor"></a>Manage the pre-commit executable</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -228,9 +234,64 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="update_precommit.html">update_precommit()</a></code> </p>
+        </td>
+        <td><p>Update the pre-commit executable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="version_precommit.html">version_precommit()</a></code> </p>
+        </td>
+        <td><p>Retrieve the version of the pre-commit executable used</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="path_precommit_exec.html">path_precommit_exec()</a></code> <code><a href="path_precommit_exec.html">path_pre_commit_exec()</a></code> </p>
         </td>
         <td><p>Locate the pre-commit executable</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-hook-script-helpers" class="hasAnchor"><a href="#section-hook-script-helpers" class="anchor"></a>Hook script helpers</h2>
+          <p class="section-desc"><p>Functions used in hook scripts. Not intended to be called by the end user.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="diff_requires_run_roxygenize.html">diff_requires_run_roxygenize()</a></code> </p>
+        </td>
+        <td><p>Check if we should run roxygen.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dirs_R.cache.html">dirs_R.cache()</a></code> </p>
+        </td>
+        <td><p>Create the path to the precommit R.cache cache</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="may_require_permanent_cache.html">may_require_permanent_cache()</a></code> </p>
+        </td>
+        <td><p>Issue a warning if <code>{R.cache}</code> uses temporary cache only</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="roxygen_assert_additional_dependencies.html">roxygen_assert_additional_dependencies()</a></code> </p>
+        </td>
+        <td><p>Assert if all dependencies are installed</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="roxygenize_with_cache.html">roxygenize_with_cache()</a></code> </p>
+        </td>
+        <td><p>Roxygen depending on cache state</p></td>
       </tr>
     </tbody>
     </table>
@@ -246,7 +307,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://lorenzwalthert.netlify.com'>Lorenz Walthert</a>.</p>
+  <p>Developed by <a href='https://lorenzwalthert.com'>Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">

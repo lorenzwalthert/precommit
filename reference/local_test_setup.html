@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auto-update your hooks — autoupdate • precommit</title>
+<title>Testing utilities — local_test_setup • precommit</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="Auto-update your hooks — autoupdate" />
-<meta property="og:description" content="Runs pre-commit autoupdate." />
+<meta property="og:title" content="Testing utilities — local_test_setup" />
+<meta property="og:description" content="Similar to the local_() family from {withr}, this function creates a
+temporary directory and optionally initiates git and pre-commit in it." />
 
 
 
@@ -141,35 +142,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Auto-update your hooks</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/setup.R'><code>R/setup.R</code></a></small>
-    <div class="hidden name"><code>autoupdate.Rd</code></div>
+    <h1>Testing utilities</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/R/testing.R'><code>R/testing.R</code></a></small>
+    <div class="hidden name"><code>local_test_setup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Runs <a href='https://pre-commit.com/#pre-commit-autoupdate'><code>pre-commit autoupdate</code></a>.</p>
+    <p>Similar to the <code>local_()</code> family from <code>{withr}</code>, this function creates a
+temporary directory and optionally initiates git and pre-commit in it.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>autoupdate</span><span class='op'>(</span>root <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>local_test_setup</span><span class='op'>(</span>
+  git <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  use_precommit <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  package <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  quiet <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>,
+  .local_envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>root</th>
-      <td><p>The path to the root directory of your project.</p></td>
+      <th>git</th>
+      <td><p>Whether or not to init git in the local directory.</p></td>
+    </tr>
+    <tr>
+      <th>.local_envir</th>
+      <td><p><code>[environment]</code><br /> The environment to use for scoping.</p></td>
+    </tr>
+    <tr>
+      <th>use_precommmit</th>
+      <td><p>Whether or not to <code><a href='use_precommit.html'>use_precommit()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The exit status from <code>pre-commit autoupdate</code> (invisibly).</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'><span class='fu'>autoupdate</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-in'><span class='op'>}</span></span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +118,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/lorenzwalthert/precommit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -150,7 +150,16 @@
     <p>Implement a test run</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_test_impl</span><span class='op'>(</span><span class='va'>path_executable</span>, <span class='va'>path_candidate</span>, <span class='va'>error_msg</span>, <span class='va'>cmd_args</span>, <span class='va'>copy</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>run_test_impl</span><span class='op'>(</span>
+  <span class='va'>path_executable</span>,
+  <span class='va'>path_candidate</span>,
+  <span class='va'>error_msg</span>,
+  <span class='va'>msg</span>,
+  <span class='va'>cmd_args</span>,
+  <span class='va'>artifacts</span>,
+  <span class='va'>file_transformer</span>,
+  <span class='va'>env</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,19 +179,24 @@ executable.</p></td>
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></td>
     </tr>
     <tr>
+      <th>msg</th>
+      <td><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></td>
+    </tr>
+    <tr>
       <th>cmd_args</th>
       <td><p>More arguments passed to the file. Pre-commit handles it as
 described <a href='https://pre-commit.com/#arguments-pattern-in-hooks'>here</a>.</p></td>
     </tr>
     <tr>
-      <th>copy</th>
-      <td><p>Path with files to copy to the temp directory where the test
-is run. If the target destination relative to the temp dir where the hook
-is tested is not identical to the path from where a file should be copied,
-you can pass a named vector. The name is the target directory relative to
-the temp directory where the hook is executed (the temp directory will be
-the working directory at that time) and the value is the path that points
-to the place where the artifact is currently stored.</p></td>
+      <th>artifacts</th>
+      <td><p>Path with artifact files to copy to the temp directory root where
+the test is run. If you don't target the root, this can be a named vector
+of length one where the name is the target location relative to the
+temporary location and the value is the source of the file.</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment variables to set with <code><a href='https://rdrr.io/r/base/system2.html'>base::system2()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -198,7 +212,7 @@ to the place where the artifact is currently stored.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://lorenzwalthert.netlify.com'>Lorenz Walthert</a>.</p>
+  <p>Developed by <a href='https://lorenzwalthert.com'>Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">

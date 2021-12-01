@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hook-order • precommit</title>
+<title>testing • precommit</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="hook-order">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="testing">
 <meta property="og:description" content="precommit">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -93,55 +93,33 @@
 
       
 
-      </header><script src="hook-order_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="testing_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>hook-order</h1>
+      <h1 data-toc-skip>testing</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/master/vignettes/hook-order.Rmd"><code>vignettes/hook-order.Rmd</code></a></small>
-      <div class="hidden name"><code>hook-order.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/master/vignettes/testing.Rmd"><code>vignettes/testing.Rmd</code></a></small>
+      <div class="hidden name"><code>testing.Rmd</code></div>
 
     </div>
 
     
     
-<p>Read only hooks should generally run only after write hooks.</p>
-<div id="rules-for-editing-this-document" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rules-for-editing-this-document" class="anchor"></a>Rules for editing this document</h2>
+<p>pre-commit &gt;= 2.11.0 supports R as a language and each hook repo has its own virtual environment with package versions locked. For that reason, we should also test with exactly these versions.</p>
+<p>This package has five testing workflows:</p>
 <ul>
-<li>Only add a dependency once, i.e. if styler must run before roxygen, add the requirement to styler or roxygen, not both. This makes keeping track easier.</li>
-<li>The hooks must appear in an order that meets all constraints, not just randomly order constraints.</li>
+<li><p>hook testing. Tests the hooks (as well as hook script helpers?) in the renv in which they’ll be shipped. No R CMD Check or pre-commit executable needed. All platforms. To avoid convolution of the testing environment (that contains testthat and other packages) and the hook environment (specified in <code>renv.lock</code>), we must only activate the hook environment right when the script is called, but <code><a href="../reference/run_test.html">run_test()</a></code> must run in the testing environment. Since <code>--vanilla</code> is inherited in the child process initiated from <code><a href="../reference/run_test.html">run_test()</a></code>, the only way to do this is to set an env variable when running <code><a href="../reference/run_test.html">run_test()</a></code> and check in the user R profile if it is set, and then activate the renv. This is done with <code>R_PRECOMMIT_HOOK_ENV</code>.</p></li>
+<li><p>Legacy hook testing: It is possible that someone updates the R package {precommit}, but not the hook revision (e.g. with <code><a href="../reference/autoupdate.html">precommit::autoupdate()</a></code>) or vice versa. If the hook revision is updated to <code>&gt;= 0.2.0</code>, all hook scripts and {precommit} functions called from the hook script are from the same version of {precommit}, so we don’t need to test hook compatibility. If the R package is updated but not the hook revision, old hook scripts are called with while the {precommit} functions in them are from a new package version. Hence, we need compatibility between new packages and old hook scripts, which is exactly what is tested with this workflow. Until there are breaking changes in the <em>hook script helpers</em> family of exported functions, there should not be a problem.</p></li>
+<li><p>complete testing: Tests hooks as well as usethis like access functionality with latest CRAN packages, on all platforms, with all installation methods.</p></li>
+<li><p>CRAN testing. On CRAN, complete testing is ran, tests that check pre-commit executable access are disabled.</p></li>
+<li><p>end-2-end testing: This simulates closely what happens when you run <code>git commit</code> with pre-commit activated: We update the <code>.pre-commit-config.yaml</code> to the pushed SHA and run <code>pre-commit run</code>, covering all hooks, to ensure in particular file linking, file permissions etc. in <code>.pre-commit-hooks.yaml</code> are correct for exported hooks.</p></li>
 </ul>
 </div>
-<div id="hooks-with-dependencies" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hooks-with-dependencies" class="anchor"></a>Hooks with dependencies:</h2>
-<p><strong>Read and write</strong></p>
-<ul>
-<li>styler: should run before roxygen because of caching. Caches.</li>
-<li>roxygen. Caches.</li>
-<li>codemeta: must be before tidy description.</li>
-<li>use-tidy-description.</li>
-</ul>
-<p><strong>Just read:</strong></p>
-<ul>
-<li>spell check; run after roxygen</li>
-<li>lintr: should run after styler.</li>
-<li>readme-rmd-rendered: Must run after styler.</li>
-<li>parsable-R</li>
-<li>no-browser-statement</li>
-<li>deps in desc.</li>
-</ul>
-</div>
-  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
