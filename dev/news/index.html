@@ -147,6 +147,15 @@
       <small>Source: <a href='https://github.com/lorenzwalthert/precommit/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="precommit-v0209000-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0.9000">
+<a href="#precommit-v0209000-development-version" class="anchor"></a>precommit v0.2.0.9000 (Development version)<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code>style-files</code> hook fails more informatively if required package is not listed in <code>additional_dependencies:</code> (<a href='https://github.com/lorenzwalthert/precommit/issues/333'>#333</a>).</li>
+</ul>
+</div>
     <div id="precommit-v020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#precommit-v020" class="anchor"></a>precommit v0.2.0<small> 2021-12-01 </small>
@@ -157,7 +166,7 @@
 <a href='https://github.com/lorenzwalthert/precommit/issues/315'>#315</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/313'>#313</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/308'>#308</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/301'>#301</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/300'>#300</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/295'>#295</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/285'>#285</a>, <a href='https://github.com/lorenzwalthert/precommit/issues/328'>#328</a>).</li>
 <li>support for continuous integration via <a href="https://pre-commit.ci">pre-commit.ci</a> and <a href="https://github.com/pre-commit/action">GitHub Actions</a>), that is, running the pre-commit hooks as part of a CI pipeline. This means that hook passing can be enforced for pull requests, even if the creator did not run the hooks locally. Further, the diff from running the hooks is committed and pushed back to the remote repository. This may fix the failing hook problems in some cases (e.g. <code>style-files</code>). See <code><a href="../articles/ci.html">vignette("ci")</a></code> for a comparison of the two services (<a href='https://github.com/lorenzwalthert/precommit/issues/318'>#318</a>).</li>
 </ul>
-<p>*API changes**</p>
+<p><strong>API changes</strong></p>
 <ul>
 <li>
 <code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains a new argument <code>ci</code> defaulting to <code>"native"</code> (for <a href="https://pre-commit.ci">pre-commit</a>) to set up continuous integration. Other allowed values are <code>"gha"</code> (for<br><a href="https://github.com/pre-commit/action">GitHub Actions</a>) or <code>NULL</code> (for no CI).</li>
