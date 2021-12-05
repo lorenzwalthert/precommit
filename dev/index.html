@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,12 +46,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -80,7 +76,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lorenzwalthert/precommit/">
+  <a href="https://github.com/lorenzwalthert/precommit/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -103,37 +99,37 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="useful-git-pre-commit-hooks-for-r" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#useful-git-pre-commit-hooks-for-r" class="anchor"></a>Useful git pre-commit hooks for R</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="useful-git-pre-commit-hooks-for-r">Useful git pre-commit hooks for R<a class="anchor" aria-label="anchor" href="#useful-git-pre-commit-hooks-for-r"></a>
+</h1></div>
 <!-- badges: start -->
 
-<p><a href="https://pre-commit.com">Pre-commit hooks</a> are tests that run each time you attempt to commit. If the tests pass, the commit will be made, otherwise not. A very basic test is to check if the code is parsable, making sure you have not forgotten a comma, brace or quote.</p>
+<p><a href="https://pre-commit.com" class="external-link">Pre-commit hooks</a> are tests that run each time you attempt to commit. If the tests pass, the commit will be made, otherwise not. A very basic test is to check if the code is parsable, making sure you have not forgotten a comma, brace or quote.</p>
 <p>The goal of this package is to twofold:</p>
 <ul>
 <li><p>Provide a <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html">set of hooks</a> that are useful when your git repo contains R code.</p></li>
-<li><p>Provide <a href="https://github.com/r-lib/usethis">usethis</a>-like functionality for common tasks such as installation and set-up and config file modification.</p></li>
+<li><p>Provide <a href="https://github.com/r-lib/usethis" class="external-link">usethis</a>-like functionality for common tasks such as installation and set-up and config file modification.</p></li>
 </ul>
 <p>The following online docs are available:</p>
 <ul>
 <li><p><a href="https://lorenzwalthert.github.io/precommit/">latest CRAN release</a>.</p></li>
 <li><p><a href="https://lorenzwalthert.github.io/precommit/dev/">GitHub development version</a>.</p></li>
 </ul>
-<p>These only cover the functionality added on top of the pre-commit framework by this package. Everything else is covered in the extensive <a href="https://pre-commit.com">online documentation</a> of the pre-commit framework itself, including how to create hooks for actions like <code>git push</code> or <code>git checkout</code>, create local hooks etc.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>These only cover the functionality added on top of the pre-commit framework by this package. Everything else is covered in the extensive <a href="https://pre-commit.com" class="external-link">online documentation</a> of the pre-commit framework itself, including how to create hooks for actions like <code>git push</code> or <code>git checkout</code>, create local hooks etc.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"precommit"</span><span class="op">)</span></code></pre></div>
-<p>To access pre-commit functionality from R, you also need to install the <a href="https://pre-commit.com">pre-commit framework</a> on which the hook from this repo build. The following command line methods are tested to work with this R package (and accessing them from outside R is easier and use is slightly faster):</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"precommit"</span><span class="op">)</span></code></pre></div>
+<p>To access pre-commit functionality from R, you also need to install the <a href="https://pre-commit.com" class="external-link">pre-commit framework</a> on which the hook from this repo build. The following command line methods are tested to work with this R package (and accessing them from outside R is easier and use is slightly faster):</p>
 <ul>
 <li><p><code>$ pip3 install pre-commit --user</code> (macOS, Linux and Windows) <strong>outside</strong> a conda or virtual environment.</p></li>
 <li><p><code>$ brew install pre-commit</code> (macOS).</p></li>
 </ul>
-<p>Alternatively, you can handle the installation from R using <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>:</p>
+<p>Alternatively, you can handle the installation from R using <a href="https://docs.conda.io/en/latest/miniconda.html" class="external-link">miniconda</a>:</p>
 <ul>
-<li><p>install miniconda if you don’t have it already: <code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()</a></code>. This needs reticulate &gt;= 1.14.</p></li>
+<li><p>install miniconda if you don’t have it already: <code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html" class="external-link">reticulate::install_miniconda()</a></code>. This needs reticulate &gt;= 1.14.</p></li>
 <li><p>install the pre-commit framework with <code><a href="reference/install_precommit.html">precommit::install_precommit()</a></code> into the conda environment <code>r-precommit</code>. Do not install other packages into this environment.</p></li>
 </ul>
 <p>Then, in a fresh R session:</p>
@@ -144,10 +140,10 @@
 <span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>The last command initializes pre-commit in your repo and performs some set-up tasks like creating the config file <code>.pre-commit-config.yaml</code>, where the hooks that will be run on <code>git commit</code> are specified. See <code>?precommit::use_precommit()</code> to see how you can use a custom <code>.pre-commit-config.yaml</code> instead of the default at initialization. You can (obviously) change edit the file manually at any time.</p>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>The next time you run <code>git commit</code>, the hooks listed in your <code>.pre-commit-config.yaml</code> will get executed before the commit. The helper function <code><a href="reference/open_config.html">precommit::open_config()</a></code> let’s you open and edit the <code>.pre-commit-config.yaml</code> conveniently from the RStudio console. When any file is changed due to running a hook or the hook script errors, the commit will fail. You can inspect the changes introduced by the hook and if satisfied, you can add the changes made by the hook to the index with <code>git add path/to/file</code> and attempt to commit again. Some hooks change files, like the styler hook, so all you need to do to make the hook pass is <code>git add</code> the changes introduced by the hook. Other hooks, like the parsable-R hook, will need your action, e.g. add a missing closing brace to a call like <code>library(styler</code>, before they pass at the next attempt. If all hooks pass, the commit is made. You can also <a href="https://pre-commit.com/#temporarily-disabling-hooks">temporarily disable hooks</a>. If you succeed, it should look like this:</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>The next time you run <code>git commit</code>, the hooks listed in your <code>.pre-commit-config.yaml</code> will get executed before the commit. The helper function <code><a href="reference/open_config.html">precommit::open_config()</a></code> let’s you open and edit the <code>.pre-commit-config.yaml</code> conveniently from the RStudio console. When any file is changed due to running a hook or the hook script errors, the commit will fail. You can inspect the changes introduced by the hook and if satisfied, you can add the changes made by the hook to the index with <code>git add path/to/file</code> and attempt to commit again. Some hooks change files, like the styler hook, so all you need to do to make the hook pass is <code>git add</code> the changes introduced by the hook. Other hooks, like the parsable-R hook, will need your action, e.g. add a missing closing brace to a call like <code>library(styler</code>, before they pass at the next attempt. If all hooks pass, the commit is made. You can also <a href="https://pre-commit.com/#temporarily-disabling-hooks" class="external-link">temporarily disable hooks</a>. If you succeed, it should look like this:</p>
 <p><img src="reference/figures/screenshot.png"><!-- --></p>
 <p>See the hooks provided by this repo under <code><a href="articles/available-hooks.html">vignette("available-hooks")</a></code>. You can also add other hooks from other repos, by extending the <code>.pre-commit-config.yaml</code> file, e.g. like this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">-</span><span class="at">   </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/pre-commit/precommit</span></span>
@@ -156,14 +152,14 @@
 <span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="kw">-</span><span class="at">   </span><span class="fu">id</span><span class="kw">:</span><span class="at"> check-added-large-files</span></span></code></pre></div>
 <p>To update the hook revisions, run <code><a href="reference/autoupdate.html">precommit::autoupdate()</a></code>.</p>
 </div>
-<div id="caution" class="section level2">
-<h2 class="hasAnchor">
-<a href="#caution" class="anchor"></a>Caution</h2>
-<p><strong>Do not abort while hooks are running in RStudio git tab.</strong> Non-staged changes are stashed to a temp directory and when you abort in RStudio, these changes are not brought back to you repo. Upvote <a href="https://github.com/rstudio/rstudio/issues/6471">this issue</a> to change this. We hope that in the future, the changes will be recovered in RStudio too. Note that this is only an issue with RStudio. Stashes are restored when you abort a <code>git commit</code> with <code>INT</code> (e.g. Ctrl+C) on the command line. To restore stashes, manually after hitting <em>abort</em> in the RStudio git tab, you can <code>git apply /path/to/patch_with_id</code> whereas you find the patch under your pre-commit cache, which is usually under <code>$HOME/.cache/pre-commit/</code>.</p>
+<div class="section level2">
+<h2 id="caution">Caution<a class="anchor" aria-label="anchor" href="#caution"></a>
+</h2>
+<p><strong>Do not abort while hooks are running in RStudio git tab.</strong> Non-staged changes are stashed to a temp directory and when you abort in RStudio, these changes are not brought back to you repo. Upvote <a href="https://github.com/rstudio/rstudio/issues/6471" class="external-link">this issue</a> to change this. We hope that in the future, the changes will be recovered in RStudio too. Note that this is only an issue with RStudio. Stashes are restored when you abort a <code>git commit</code> with <code>INT</code> (e.g. Ctrl+C) on the command line. To restore stashes, manually after hitting <em>abort</em> in the RStudio git tab, you can <code>git apply /path/to/patch_with_id</code> whereas you find the patch under your pre-commit cache, which is usually under <code>$HOME/.cache/pre-commit/</code>.</p>
 </div>
-<div id="update" class="section level2">
-<h2 class="hasAnchor">
-<a href="#update" class="anchor"></a>Update</h2>
+<div class="section level2">
+<h2 id="update">Update<a class="anchor" aria-label="anchor" href="#update"></a>
+</h2>
 <p>If you used {precommit} before, upgrade these three components for maximal compatibility:</p>
 <ul>
 <li><p>the R package {precommit} from CRAN with <code>install.packages("precommit")</code>.</p></li>
@@ -171,9 +167,9 @@
 <li><p>the upstream pre-commit framework. Use the update utilities provided by your installation method (i.e. <code>pip3</code> or <code>brew</code>). If you chose conda, you can use <code><a href="reference/update_precommit.html">precommit::update_precommit()</a></code>. If you don’t remember the installation method you chose, just choose any and then upgrade. We’ll warn you if you have multiple executables installed and point you to their location so you can get rid of all but one. You can check the version of you executable with <code><a href="reference/version_precommit.html">precommit::version_precommit()</a></code>. Updates to the pre-commit framework are not released in sync with the R or hook revision updates.</p></li>
 </ul>
 </div>
-<div id="uninstallation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#uninstallation" class="anchor"></a>Uninstallation</h2>
+<div class="section level2">
+<h2 id="uninstallation">Uninstallation<a class="anchor" aria-label="anchor" href="#uninstallation"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"repo"</span><span class="op">)</span> <span class="co"># just for the repo you are in.</span>
 <span class="fu"><a href="reference/uninstall_precommit.html">uninstall_precommit</a></span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span> <span class="co"># remove the pre-commit conda executable.</span></code></pre></div>
@@ -183,53 +179,64 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=precommit">https://​cloud.r-project.org/​package=precommit</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/lorenzwalthert/precommit/">https://​github.com/​lorenzwalthert/​precommit/​</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=precommit" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/lorenzwalthert/precommit/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://lorenzwalthert.com">Lorenz Walthert</a> <br><small class="roles"> Maintainer </small>  </li>
+<li><a href="authors.html#citation">Citing precommit</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=precommit"><img src="https://www.r-pkg.org/badges/version/precommit" alt="CRAN status"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/lorenzwalthert/precommit/actions"><img src="https://github.com/lorenzwalthert/precommit/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li>
+<a href="https://lorenzwalthert.com" class="external-link">Lorenz Walthert</a> <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=precommit" class="external-link"><img src="https://www.r-pkg.org/badges/version/precommit" alt="CRAN status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/lorenzwalthert/precommit/actions" class="external-link"><img src="https://github.com/lorenzwalthert/precommit/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://lorenzwalthert.com">Lorenz Walthert</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://lorenzwalthert.com" class="external-link">Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

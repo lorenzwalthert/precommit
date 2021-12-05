@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,12 +42,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -76,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lorenzwalthert/precommit/">
+  <a href="https://github.com/lorenzwalthert/precommit/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -103,7 +99,7 @@
       <h1 data-toc-skip>hook-order</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/master/vignettes/hook-order.Rmd"><code>vignettes/hook-order.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/HEAD/vignettes/hook-order.Rmd" class="external-link"><code>vignettes/hook-order.Rmd</code></a></small>
       <div class="hidden name"><code>hook-order.Rmd</code></div>
 
     </div>
@@ -111,17 +107,17 @@
     
     
 <p>Read only hooks should generally run only after write hooks.</p>
-<div id="rules-for-editing-this-document" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rules-for-editing-this-document" class="anchor"></a>Rules for editing this document</h2>
+<div class="section level2">
+<h2 id="rules-for-editing-this-document">Rules for editing this document<a class="anchor" aria-label="anchor" href="#rules-for-editing-this-document"></a>
+</h2>
 <ul>
 <li>Only add a dependency once, i.e. if styler must run before roxygen, add the requirement to styler or roxygen, not both. This makes keeping track easier.</li>
 <li>The hooks must appear in an order that meets all constraints, not just randomly order constraints.</li>
 </ul>
 </div>
-<div id="hooks-with-dependencies" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hooks-with-dependencies" class="anchor"></a>Hooks with dependencies:</h2>
+<div class="section level2">
+<h2 id="hooks-with-dependencies">Hooks with dependencies:<a class="anchor" aria-label="anchor" href="#hooks-with-dependencies"></a>
+</h2>
 <p><strong>Read and write</strong></p>
 <ul>
 <li>styler: should run before roxygen because of caching. Caches.</li>
@@ -152,11 +148,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://lorenzwalthert.com">Lorenz Walthert</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://lorenzwalthert.com" class="external-link">Lorenz Walthert</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
