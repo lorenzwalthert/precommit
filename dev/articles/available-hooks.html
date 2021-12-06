@@ -140,12 +140,8 @@
 <pre><code>  id: style-files
   args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]</code></pre>
 <ul>
-<li>If no permanent <a href="https://github.com/HenrikBengtsson/R.cache" class="external-link">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</li>
-</ul>
-<pre><code>  id: style-files
-  args: [--no-warn-cache]</code></pre>
-<ul>
-<li>Argument <code>cache-root</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.cache_root</code>. Default value: <code>styler-perm</code>. The argument determines the sub-directory under the {R.cache} cache directory that {styler} uses. If you want {styler} to auto-clean up caches older than 6 days, set this to <code>"styler"</code>. For more information, see <code><a href="https://styler.r-lib.org/reference/caching.html" class="external-link">help("caching", package = "styler")</a></code>.</li>
+<li><p>The argument <code>--no-warn-cache</code> is ignored but allowed for compatibility.</p></li>
+<li><p>Argument <code>cache-root</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.cache_root</code>. Default value: <code>styler-perm</code>. The argument determines the sub-directory under the {R.cache} cache directory that {styler} uses. If you want {styler} to auto-clean up caches older than 6 days, set this to <code>"styler"</code>. For more information, see <code><a href="https://styler.r-lib.org/reference/caching.html" class="external-link">help("caching", package = "styler")</a></code>.</p></li>
 </ul>
 <pre><code>  id: style-files
   args: [--cache-root=styler]</code></pre>
@@ -215,9 +211,7 @@ data/.*|
 <h2 id="roxygenize">
 <code>roxygenize</code><a class="anchor" aria-label="anchor" href="#roxygenize"></a>
 </h2>
-<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. If no permanent <a href="https://github.com/HenrikBengtsson/R.cache" class="external-link">R.cache</a> cache exists, the hook emits a warning which you can silence with <code>--no-warn-cache</code>.</p>
-<pre><code>  id: royxgenize
-  args: [--no-warn-cache] </code></pre>
+<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The option <code>--no-warn-cache</code> is ignored but allowed for compatibility.</p>
 <p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
 <p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
 <pre><code><span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span>
