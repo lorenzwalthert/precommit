@@ -132,13 +132,17 @@
 <li>You need to authenticate the pre-commit.ci App in GitHub.</li>
 <li>Limitations for the roxygenize hook:
 <ul>
+<li>{roxygen2} <a href="https://github.com/r-lib/roxygen2/issues/771" class="external-link">requires loading your package for the roxygenize hook</a>, which means you must list all dependencies of the package explicitly in <code>.pre-commit-config.yaml</code> under <code>id: roxygenize</code>. You can generate the required code with <code>precommit::snippet_generate('additional-deps-roxygenize')</code>. This is also required to run the hook locally.</li>
+<li>There is a <a href="https://github.com/pre-commit-ci/runner-image/issues/93#issuecomment-922505301" class="external-link">timeout of 120s for building a hook environment</a>, which might not be enough to build the hook environment for the roxygenize hook (if you package has many dependencies)</li>
 <li>`System dependencies are not supported. In particular, since {roxygen2} <a href="https://github.com/r-lib/roxygen2/issues/771" class="external-link">requires loading your package for the roxygenize hook</a>, this hook will fail if your package has system dependencies or any of your package’s dependencies has system dependencies that are not shipped with the package.</li>
-<li>There is a <a href="https://github.com/pre-commit-ci/runner-image/issues/93#issuecomment-922505301" class="external-link">timeout of 120s for building a hook environment</a>, which might not be enough to build the hook environment for the roxygenize hook (if you package has many dependencies), so you had to disable the roxygenize hook.</li>
 </ul>
 </li>
 </ul>
 <p><strong>Customization:</strong></p>
-<p>Please see the documentation of <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> on how to skip hooks, whether or not to auto-fix problems etc.</p>
+<p>You can skip a hook on <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> by setting the respective option in <code>.pre-commit-config.yaml</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span></code></pre></div>
+<p>Please see the documentation of <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> on whether or not to auto-fix problems as well as other configuration options.</p>
 </div>
 <div class="section level2">
 <h2 id="github-actions">GitHub Actions<a class="anchor" aria-label="anchor" href="#github-actions"></a>
