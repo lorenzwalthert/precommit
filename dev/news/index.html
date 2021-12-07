@@ -73,13 +73,13 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0.9000" id="precommit-v0209000-development-version">precommit v0.2.0.9000 (Development version)<a class="anchor" aria-label="anchor" href="#precommit-v0209000-development-version"></a></h2>
-<ul><li>
-<code>style-files</code> hook fails more informatively if required package is not listed in <code>additional_dependencies:</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/333" class="external-link">#333</a>).</li>
-<li>configure all git operations to use LF (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>).</li>
-<li>
-<code>deps-in-desc</code> always excludes <code>README.md</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/336" class="external-link">#336</a>).</li>
-<li>Document timeout and other problems with pre-commit.ci (<a href="https://github.com/lorenzwalthert/precommit/issues/335" class="external-link">#335</a>).</li>
-<li>simplify <code>roxygenize</code> problem handling (<a href="https://github.com/lorenzwalthert/precommit/issues/338" class="external-link">#338</a>).</li>
+<p><strong>API Changes</strong></p>
+<ul><li><p>The argument <code>--no-warn-cache</code> in the <code>style-files</code> and the <code>roxygenize</code> hook is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/340" class="external-link">#340</a>. <a href="https://github.com/lorenzwalthert/precommit/issues/341" class="external-link">#341</a>).</p></li>
+<li><p><code>style-files</code> hook fails more informatively if required package is not listed in <code>additional_dependencies:</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/333" class="external-link">#333</a>).</p></li>
+<li><p>configure all git operations to use LF (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>).</p></li>
+<li><p><code>deps-in-desc</code> always excludes <code>README.md</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/336" class="external-link">#336</a>).</p></li>
+<li><p>Document timeout and other problems with pre-commit.ci (<a href="https://github.com/lorenzwalthert/precommit/issues/335" class="external-link">#335</a>).</p></li>
+<li><p>simplify <code>roxygenize</code> problem handling (<a href="https://github.com/lorenzwalthert/precommit/issues/338" class="external-link">#338</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="precommit-v020">precommit v0.2.0<small>2021-12-01</small><a class="anchor" aria-label="anchor" href="#precommit-v020"></a></h2>
