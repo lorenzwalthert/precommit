@@ -107,9 +107,23 @@
     
     
 <div class="section level1">
-<h1 id="setting-up-cicd">Setting up CI/CD<a class="anchor" aria-label="anchor" href="#setting-up-cicd"></a>
+<h1 id="setting-up-ci">Setting up CI<a class="anchor" aria-label="anchor" href="#setting-up-ci"></a>
 </h1>
 <p>When initializing pre-commit in your repo with <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>, you can specify the Continuous integration provider with <code>ci = "native"</code> if you want to use <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> or <code>ci = "gha"</code> if you want to use GitHub Actions. For existing repos, see below.</p>
+<p>Pre-commit will run the hooks on all files, so instead of pushing, waiting and fixing issues locally, we recommend that you fix all problems before pushing by invoking pre-commit (roughly) the same way as it happens in the CI, which is described in the next section</p>
+</div>
+<div class="section level1">
+<h1 id="emulate-a-ci-run-locally">Emulate a CI run locally<a class="anchor" aria-label="anchor" href="#emulate-a-ci-run-locally"></a>
+</h1>
+<p>In the CI run, a command roughly equivalent to the following will be ran from the command line:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pre-commit</span> run --all-files</span></code></pre></div>
+<p>If you get an error and <code>pre-commit</code> is not on your <code>$PATH</code> (e.g. because you installed with <code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>), you can locate the executable from R with</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/path_precommit_exec.html">path_pre_commit_exec</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; "/usr/local/bin/pre-commit" </span></code></pre></div>
+<p>And run the command in your bash terminal like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">/usr/local/bin/pre-commit</span> run --all-files</span></code></pre></div>
+<p>Then fix the problems, stage the files and re-try until the command succeeds without more errors.</p>
 </div>
 <div class="section level1">
 <h1 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a>
@@ -140,8 +154,8 @@
 </ul>
 <p><strong>Customization:</strong></p>
 <p>You can skip a hook on <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> by setting the respective option in <code>.pre-commit-config.yaml</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span></code></pre></div>
 <p>Please see the documentation of <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> on whether or not to auto-fix problems as well as other configuration options.</p>
 </div>
 <div class="section level2">
