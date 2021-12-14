@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.1.9002</span>
       </span>
     </div>
 
@@ -105,9 +105,10 @@ managed by pre-commit. "forbid", the default, will cause  <code>use_precommit()<
 to fail if there are such hooks. "allow" will run these along with
 pre-commit. "remove" will delete them.</p></dd>
 <dt>open</dt>
-<dd><p>Whether or not to open the .pre-commit-config.yaml after
-it's been placed in your repo. The default is <code>TRUE</code> when working in
-RStudio. Otherwise, we recommend manually inspecting the file.</p></dd>
+<dd><p>Whether or not to open <code>.pre-commit-config.yaml</code> after
+it's been placed in your repo as well as
+<a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> (if <code>ci = "native"</code>). The default is
+<code>TRUE</code> when working in RStudio.</p></dd>
 <dt>install_hooks</dt>
 <dd><p>Whether to install environments for all available hooks.
 If <code>FALSE</code>, environments are installed with first commit.</p></dd>
