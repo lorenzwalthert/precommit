@@ -2,21 +2,21 @@
   "index_name": "lorenzwalthert_precommit",
   "start_urls": [
     {
-      "url": "https://lorenzwalthert.github.io/precommit//index.html",
+      "url": "https://lorenzwalthert.github.io/precommit/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://lorenzwalthert.github.io/precommit//reference",
+      "url": "https://lorenzwalthert.github.io/precommit/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://lorenzwalthert.github.io/precommit//articles",
+      "url": "https://lorenzwalthert.github.io/precommit/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://lorenzwalthert.github.io/precommit//sitemap.xml"
+    "https://lorenzwalthert.github.io/precommit/sitemap.xml"
   ],
   "selectors": {
     "homepage": {
