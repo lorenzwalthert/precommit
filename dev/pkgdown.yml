@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   FAQ: FAQ.html
@@ -8,7 +8,7 @@ articles:
   hook-order: hook-order.html
   testing: testing.html
   why-use-hooks: why-use-hooks.html
-last_built: 2022-01-10T21:36Z
+last_built: 2022-02-07T21:53Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit/reference
   article: https://lorenzwalthert.github.io/precommit/articles
