@@ -148,6 +148,11 @@
 </ul>
 <pre><code>  id: style-files
   args: [--cache-root=styler]</code></pre>
+<ul>
+<li>Argument <code>ignore-start</code> and <code>ignore-stop</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.ignore_start</code> and <code>styler.ignore_stop</code> respectively. Not set by default, so the {styler} defaults apply. This was introduced in {precommit} 0.2.2.9012. For example, if you want to restore old behavior of styler &lt; 1.6.2, where only the literals <code>styler: off</code> and <code>styler: on</code> were accepted, use this regex:</li>
+</ul>
+<pre><code>  id: style-files
+  args: [--ignore-start="^# styler: on$", --ignore-stop="^# styler: off$"]</code></pre>
 <p>This hook modifies files unless you specify <code>--dry=fail</code> (requires <code>{styler} &gt; 1.3.2</code>).</p>
 </div>
 <div class="section level3">
