@@ -86,6 +86,8 @@
 <code>deps-in-desc</code> now prints the original file (not a tempfile) also for <code>.Rmd</code> and <code>.Rnw</code> files.</li>
 <li>The template <code>.pre-commit-config.yaml</code> default to monthly hook updates (instead of weekly) to avoid notification triggers and git version convolution (<a href="https://github.com/lorenzwalthert/precommit/issues/370" class="external-link">#370</a>).</li>
 <li>Document advantages of pre-commit in vignette (<a href="https://github.com/lorenzwalthert/precommit/issues/379" class="external-link">#379</a>).</li>
+<li>
+<code><a href="../reference/use_precommit.html">use_precommit()</a></code> now exposes the argument <code>autoupdate</code>, defaulting to <code>TRUE</code>. This tells {precommit} whether or not to run <code><a href="../reference/autoupdate.html">autoupdate()</a></code> as part of the former function invocation (<a href="https://github.com/lorenzwalthert/precommit/issues/386" class="external-link">#386</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="precommit-v022">precommit v0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-v022"></a></h2>

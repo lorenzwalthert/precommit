@@ -84,6 +84,7 @@
   open <span class="op">=</span> <span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="op">)</span>,
   install_hooks <span class="op">=</span> <span class="cn">TRUE</span>,
   ci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"precommit.ci"</span>, <span class="st">"native"</span><span class="op">)</span>,
+  autoupdate <span class="op">=</span> <span class="cn">TRUE</span>,
   root <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -120,6 +121,9 @@ If <code>FALSE</code>, environments are installed with first commit.</p></dd>
 <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>. Alternatively, <code>"gha"</code> can be used
 to set up <a href="https://github.com/features/actions" class="external-link">GitHub Actions</a>. Set value
 to <code>NULL</code> if you don't want to use a continuous integration.</p></dd>
+<dt>autoupdate</dt>
+<dd><p>Whether or not to run <code><a href="autoupdate.html">autoupdate()</a></code> as part of this
+function call.</p></dd>
 <dt>root</dt>
 <dd><p>The path to the root directory of your project.</p></dd>
 </dl></div>

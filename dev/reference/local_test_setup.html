@@ -84,6 +84,7 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
   use_precommit <span class="op">=</span> <span class="cn">FALSE</span>,
   package <span class="op">=</span> <span class="cn">FALSE</span>,
   quiet <span class="op">=</span> <span class="cn">TRUE</span>,
+  autoupdate <span class="op">=</span> <span class="cn">FALSE</span>,
   <span class="va">...</span>,
   .local_envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
@@ -93,6 +94,9 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
     <h2>Arguments</h2>
     <dl><dt>git</dt>
 <dd><p>Whether or not to init git in the local directory.</p></dd>
+<dt>autoupdate</dt>
+<dd><p>Whether or not to run <code><a href="autoupdate.html">autoupdate()</a></code> as part of this
+fixture.</p></dd>
 <dt>.local_envir</dt>
 <dd><p><code>[environment]</code><br> The environment to use for scoping.</p></dd>
 <dt>use_precommmit</dt>
