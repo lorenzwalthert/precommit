@@ -106,3 +106,9 @@
     files: '(\.[rR]profile|\.R|\.Rmd|\.Rnw|\.r|\.rmd|\.rnw)$'
     exclude: 'renv/activate\.R'
     minimum_pre_commit_version: "2.13.0"
+-   id: pkgdown-check
+    name: pkgdown-check
+    description: check if _pkgdown.yml has the correct entries for references and articles.
+    entry: Rscript inst/hooks/exported/pkgdown-check.R
+    language: r
+    minimum_pre_commit_version: "2.13.0"
