@@ -575,7 +575,7 @@ run_test("pkgdown-check",
 run_test("pkgdown-check",
   file_name = c(
     "man/flie-true.Rd" = "flie-true.Rd",
-    "_pkgdown.yml" = "_pkgdown.yml",
+    "_pkgdown.yml" = "_pkgdown-index.yml",
     "DESCRIPTION" = "DESCRIPTION"
   ),
   suffix = "",
