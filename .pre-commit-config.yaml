@@ -82,6 +82,7 @@ repos:
           (?x)^(
           tests/testthat/in/.*|
           inst/renv-update\.R|
+          inst/hooks/exported/pkgdown-check.R|
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$

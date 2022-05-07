@@ -1,0 +1,12 @@
+reference:
+- title: "Workflow"
+  desc: >
+    Edit the pre-commit configuration
+- contents: 
+  - autoupdate
+
+articles:
+- title: Get started
+  navbar: ~
+  contents:
+  - pkgdown
