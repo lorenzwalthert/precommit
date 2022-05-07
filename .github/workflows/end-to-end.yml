@@ -69,6 +69,14 @@ jobs:
           pre-commit run --files DESCRIPTION 
           git add README*
           pre-commit run --files README.Rmd
+          cp tests/testthat/in/_pkgdown-index-articles.yml _pkgdown.yml
+          rm -rf vignettes
+          mkdir vignettes
+          cp tests/testthat/in/pkgdown.Rmd vignettes/
+          rm -rf man/
+          cp tests/testthat/in/autoupdate.Rd man/
+          pre-commit run --files _pkgdown.yml
+          pre-commit run --files man/autoupdate.Rd
           git reset HEAD --hard # restore initial state
         env:
           SKIP: consistent-release-tag

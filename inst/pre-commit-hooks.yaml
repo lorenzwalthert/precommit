@@ -112,3 +112,4 @@
     entry: Rscript inst/hooks/exported/pkgdown-check.R
     language: r
     minimum_pre_commit_version: "2.13.0"
+    files: '^man/|_pkgdown\.yml'
