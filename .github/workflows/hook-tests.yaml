@@ -68,7 +68,7 @@ jobs:
           source('renv/activate.R')
           renv::restore()
           # install hook-specific additional_dependencies from .pre-commit-config.yaml
-          renv::install('pkgdown')
+          renv::install(c('pkgdown', 'mockery'))
           renv::install(getwd(), dependencies = FALSE) 
           # needed to make sure renv is activated in run_test() 
           activate <- c(

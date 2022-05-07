@@ -86,6 +86,10 @@ repos:
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$
+    # -   id: pkgdown-check
+    #     additional_dependencies: 
+    #     -    pkgdown
+    #     -    mockery
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks: 

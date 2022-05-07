@@ -52,6 +52,7 @@ repos:
     -   id: pkgdown-check
         additional_dependencies: 
         -    pkgdown
+        -    mockery
 -   repo: local
     hooks:
     -   id: consistent-release-tag
