@@ -46,6 +46,9 @@ repos:
     -   id: no-browser-statement
     -   id: no-debug-statement
     -   id: deps-in-desc
+    -   id: pkgdown-check
+        additional_dependencies: 
+        -    pkgdown
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks: 

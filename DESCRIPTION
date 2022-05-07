@@ -33,6 +33,7 @@ Suggests:
     lintr,
     mockery,
     pkgload,
+    pkgdown,
     reticulate (>= 1.16),
     rmarkdown,
     roxygen2,

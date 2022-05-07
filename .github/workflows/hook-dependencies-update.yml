@@ -53,6 +53,7 @@ jobs:
             deps <- desc$get_deps()
             dont <- c(
               "yaml", "usethis", "withr", "rstudioapi", "precommit",
+              "pkgdown",
               "httr" # lintr -> httr  -> curl -> libcurl, but seems to give no erorr on
               # loading lintr, plus https://github.com/jimhester/lintr/issues/861
             )
