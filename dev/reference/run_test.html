@@ -88,12 +88,13 @@ when running.</p>
   <span class="va">hook_name</span>,
   file_name <span class="op">=</span> <span class="va">hook_name</span>,
   suffix <span class="op">=</span> <span class="st">".R"</span>,
-  error_msg <span class="op">=</span> <span class="cn">NULL</span>,
-  msg <span class="op">=</span> <span class="cn">NULL</span>,
+  std_err <span class="op">=</span> <span class="cn">NULL</span>,
+  std_out <span class="op">=</span> <span class="cn">NULL</span>,
   cmd_args <span class="op">=</span> <span class="cn">NULL</span>,
   artifacts <span class="op">=</span> <span class="cn">NULL</span>,
   file_transformer <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">files</span><span class="op">)</span> <span class="va">files</span>,
-  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>
+  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
+  expect_success <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">std_err</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -108,10 +109,10 @@ a named vector of length one where the name is the target location relative
 to the temporary location and the value is the source of the file.</p></dd>
 <dt>suffix</dt>
 <dd><p>The suffix of <code>file_name</code>.</p></dd>
-<dt>error_msg</dt>
+<dt>std_err</dt>
 <dd><p>An expected error message. If no error is expected, this
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></dd>
-<dt>msg</dt>
+<dt>std_out</dt>
 <dd><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></dd>
 <dt>cmd_args</dt>
 <dd><p>More arguments passed to the file. Pre-commit handles it as
@@ -133,17 +134,21 @@ is also applied to a temp copy of the reference file before a comparison is
 made.</p></dd>
 <dt>env</dt>
 <dd><p>The environment variables to set with <code><a href="https://rdrr.io/r/base/system2.html" class="external-link">base::system2()</a></code>.</p></dd>
+<dt>expect_success</dt>
+<dd><p>Whether or not an exit code 0 is expected. This can
+be derived from <code>std_err</code>, but sometimes, non-empty stderr does not mean
+error, but just a message.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
     <p>Two potential outcomes of a hooks are pass or fail. This is reflected on the
 level of the executable: Fail means the executable fails or the file is
 changed. Pass means the executable succeeds and the file is unchanged.
-We check if the executable passes as follows:</p><ul><li><p>If we expect success (by setting <code>error_msg</code> to <code>NULL</code>), we make sure
+We check if the executable passes as follows:</p><ul><li><p>If we expect success (by setting <code>std_err</code> to <code>NULL</code>), we make sure
 nothing was written to sterr and the file content does not change.</p></li>
 <li><p>If we expect failure, it can be due to changed file or due to failed
-executable. To check for failed executable, we set <code>error_msg</code> to
-the message we expect. To check changed file content, we set <code>error_msg</code> to
+executable. To check for failed executable, we set <code>std_err</code> to
+the message we expect. To check changed file content, we set <code>std_err</code> to
 <code>NA</code>.</p></li>
 </ul></div>
 

@@ -83,12 +83,13 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">run_test_impl</span><span class="op">(</span>
   <span class="va">path_executable</span>,
   <span class="va">path_candidate</span>,
-  <span class="va">error_msg</span>,
-  <span class="va">msg</span>,
+  <span class="va">std_err</span>,
+  <span class="va">std_out</span>,
   <span class="va">cmd_args</span>,
   <span class="va">artifacts</span>,
   <span class="va">file_transformer</span>,
-  <span class="va">env</span>
+  <span class="va">env</span>,
+  <span class="va">expect_success</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -99,10 +100,10 @@
 <dt>path_candidate</dt>
 <dd><p>The path to a file that should be modified by the
 executable.</p></dd>
-<dt>error_msg</dt>
+<dt>std_err</dt>
 <dd><p>An expected error message. If no error is expected, this
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></dd>
-<dt>msg</dt>
+<dt>std_out</dt>
 <dd><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></dd>
 <dt>cmd_args</dt>
 <dd><p>More arguments passed to the file. Pre-commit handles it as
@@ -114,6 +115,10 @@ of length one where the name is the target location relative to the
 temporary location and the value is the source of the file.</p></dd>
 <dt>env</dt>
 <dd><p>The environment variables to set with <code><a href="https://rdrr.io/r/base/system2.html" class="external-link">base::system2()</a></code>.</p></dd>
+<dt>expect_success</dt>
+<dd><p>Whether or not an exit code 0 is expected. This can
+be derived from <code>std_err</code>, but sometimes, non-empty stderr does not mean
+error, but just a message.</p></dd>
 </dl></div>
 
   </div>
