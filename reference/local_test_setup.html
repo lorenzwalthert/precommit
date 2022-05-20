@@ -18,25 +18,28 @@ temporary directory and optionally initiates git and pre-commit in it."><!-- mat
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/precommit.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/why-use-hooks.html">Why hooks?</a>
+      <a href="../articles/why-use-hooks.html">Why is this useful?</a>
     </li>
     <li>
-      <a href="../articles/available-hooks.html">Available hooks</a>
+      <a href="../articles/available-hooks.html">Available Hooks</a>
     </li>
     <li>
       <a href="../articles/ci.html">Continuous Integration</a>
@@ -84,6 +87,7 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
   use_precommit <span class="op">=</span> <span class="cn">FALSE</span>,
   package <span class="op">=</span> <span class="cn">FALSE</span>,
   quiet <span class="op">=</span> <span class="cn">TRUE</span>,
+  autoupdate <span class="op">=</span> <span class="cn">FALSE</span>,
   <span class="va">...</span>,
   .local_envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
@@ -93,6 +97,9 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
     <h2>Arguments</h2>
     <dl><dt>git</dt>
 <dd><p>Whether or not to init git in the local directory.</p></dd>
+<dt>autoupdate</dt>
+<dd><p>Whether or not to run <code><a href="autoupdate.html">autoupdate()</a></code> as part of this
+fixture.</p></dd>
 <dt>.local_envir</dt>
 <dd><p><code>[environment]</code><br> The environment to use for scoping.</p></dd>
 <dt>use_precommmit</dt>
@@ -111,7 +118,7 @@ temporary directory and optionally initiates git and pre-commit in it.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

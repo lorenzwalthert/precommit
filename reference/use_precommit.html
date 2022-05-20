@@ -17,25 +17,28 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/precommit.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/why-use-hooks.html">Why hooks?</a>
+      <a href="../articles/why-use-hooks.html">Why is this useful?</a>
     </li>
     <li>
-      <a href="../articles/available-hooks.html">Available hooks</a>
+      <a href="../articles/available-hooks.html">Available Hooks</a>
     </li>
     <li>
       <a href="../articles/ci.html">Continuous Integration</a>
@@ -84,6 +87,7 @@
   open <span class="op">=</span> <span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="op">)</span>,
   install_hooks <span class="op">=</span> <span class="cn">TRUE</span>,
   ci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"precommit.ci"</span>, <span class="st">"native"</span><span class="op">)</span>,
+  autoupdate <span class="op">=</span> <span class="va">install_hooks</span>,
   root <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -94,7 +98,7 @@
 <dd><p>Path or URL to a <code>.pre-commit-config.yaml</code>. This
 config file will be hard-copied into <code>root</code>. If <code>NULL</code>, we check if
 <code>root</code> is a package or project directory using
-<code><a href="https://rprojroot.r-lib.org//reference/find_root_file.html" class="external-link">rprojroot::find_package_root_file()</a></code>, and resort to an appropriate default
+<code><a href="https://rprojroot.r-lib.org/reference/find_root_file.html" class="external-link">rprojroot::find_package_root_file()</a></code>, and resort to an appropriate default
 config. See section 'Copying an existing config file'.</p></dd>
 <dt>force</dt>
 <dd><p>Whether or not to overwrite an existing ci config file (only
@@ -120,6 +124,9 @@ If <code>FALSE</code>, environments are installed with first commit.</p></dd>
 <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>. Alternatively, <code>"gha"</code> can be used
 to set up <a href="https://github.com/features/actions" class="external-link">GitHub Actions</a>. Set value
 to <code>NULL</code> if you don't want to use a continuous integration.</p></dd>
+<dt>autoupdate</dt>
+<dd><p>Whether or not to run <code><a href="autoupdate.html">autoupdate()</a></code> as part of this
+function call.</p></dd>
 <dt>root</dt>
 <dd><p>The path to the root directory of your project.</p></dd>
 </dl></div>
@@ -188,7 +195,7 @@ way.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

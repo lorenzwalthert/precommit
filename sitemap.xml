@@ -25,6 +25,9 @@
     <loc>https://lorenzwalthert.github.io/precommit/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://lorenzwalthert.github.io/precommit/articles/precommit.html</loc>
+  </url>
+  <url>
     <loc>https://lorenzwalthert.github.io/precommit/articles/testing.html</loc>
   </url>
   <url>
@@ -131,6 +134,9 @@
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit/reference/rev_read.html</loc>
+  </url>
+  <url>
+    <loc>https://lorenzwalthert.github.io/precommit/reference/robust_purl.html</loc>
   </url>
   <url>
     <loc>https://lorenzwalthert.github.io/precommit/reference/roxygen_assert_additional_dependencies.html</loc>

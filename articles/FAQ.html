@@ -35,27 +35,30 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="../articles/precommit.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/why-use-hooks.html">Why hooks?</a>
+      <a href="../articles/why-use-hooks.html">Why is this useful?</a>
     </li>
     <li>
-      <a href="../articles/available-hooks.html">Available hooks</a>
+      <a href="../articles/available-hooks.html">Available Hooks</a>
     </li>
     <li>
       <a href="../articles/ci.html">Continuous Integration</a>
@@ -118,7 +121,7 @@
 <div class="section level2">
 <h2 id="why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively">Why do some hooks not give me the same results as running the command interactively?<a class="anchor" aria-label="anchor" href="#why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively"></a>
 </h2>
-<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>, leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported language</a> in the pre-commit framework. The version of a package you use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for that reason be different from the one pre-commit uses. The point of using pre-commit is to take mental burden off your shoulders (and sometimes even caches results for speed), so there is no need to run functionality covered by the hooks manually anyways. If you need to know which package versions are used, look for the <code>renv.lock</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git tag specified under <code>rev:</code> in your <code>.pre-commit-config.yaml</code>.</p>
+<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>, leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported language</a> in the pre-commit framework. The version of a package you use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for that reason be different from the one pre-commit uses. The point of using pre-commit is to take mental burden off your shoulders (and sometimes even caches results for speed), so there is no need to run functionality covered by the hooks manually anyways. If you need to know which package versions are used, look for the <code>renv.lock</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git tag specified under <code>rev:</code> in your <code>.pre-commit-config.yaml</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="can-you-use-it-outside-rstudio">Can you use it outside RStudio?<a class="anchor" aria-label="anchor" href="#can-you-use-it-outside-rstudio"></a>
@@ -177,7 +180,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

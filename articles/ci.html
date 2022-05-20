@@ -35,27 +35,30 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="../articles/precommit.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/why-use-hooks.html">Why hooks?</a>
+      <a href="../articles/why-use-hooks.html">Why is this useful?</a>
     </li>
     <li>
-      <a href="../articles/available-hooks.html">Available hooks</a>
+      <a href="../articles/available-hooks.html">Available Hooks</a>
     </li>
     <li>
       <a href="../articles/ci.html">Continuous Integration</a>
@@ -105,18 +108,18 @@
 
     
     
-<div class="section level1">
-<h1 id="setting-up-ci">Setting up CI<a class="anchor" aria-label="anchor" href="#setting-up-ci"></a>
-</h1>
+<div class="section level2">
+<h2 id="setting-up-ci">Setting up CI<a class="anchor" aria-label="anchor" href="#setting-up-ci"></a>
+</h2>
 <p>When initializing pre-commit in your repo with <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>, you can specify the Continuous integration provider with <code>ci = "native"</code> if you want to use <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> or <code>ci = "gha"</code> if you want to use GitHub Actions. For existing repos, use <code><a href="../reference/use_ci.html">precommit::use_ci()</a></code>.</p>
 <p>Pre-commit will run the hooks on all files, so instead of pushing, waiting and fixing issues locally, we recommend that you fix all problems before pushing by invoking pre-commit (roughly) the same way as it happens in the CI, which is described in the next section.</p>
 </div>
-<div class="section level1">
-<h1 id="emulate-a-ci-run-locally">Emulate a CI run locally<a class="anchor" aria-label="anchor" href="#emulate-a-ci-run-locally"></a>
-</h1>
+<div class="section level2">
+<h2 id="emulate-a-ci-run-locally">Emulate a CI run locally<a class="anchor" aria-label="anchor" href="#emulate-a-ci-run-locally"></a>
+</h2>
 <p>In the CI run, a command roughly equivalent to the following will be ran from the command line:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pre-commit</span> run --all-files</span></code></pre></div>
-<p>If you get an error and <code>pre-commit</code> is not on your <code>$PATH</code> (e.g. because you installed with <code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>), you can locate the executable from R with</p>
+<p>If you get an error and <code>pre-commit</code> is not on your <code>$PATH</code> (e.g. because you installed with <code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>), you can locate the executable from R with</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/path_precommit_exec.html">path_pre_commit_exec</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; "/usr/local/bin/pre-commit" </span></code></pre></div>
@@ -124,13 +127,13 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">/usr/local/bin/pre-commit</span> run --all-files</span></code></pre></div>
 <p>Then fix the problems, stage the files and re-try until the command succeeds without more errors.</p>
 </div>
-<div class="section level1">
-<h1 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a>
-</h1>
-<p>Next, we quickly introduce the two options. We recommend <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>, but you might have to skip the roxygenize hook in the ci run under certain circumstances as explained below.</p>
 <div class="section level2">
-<h2 id="pre-commit-ci">pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit-ci"></a>
+<h2 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a>
 </h2>
+<p>Next, we quickly introduce the two options. We recommend <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>, but you might have to skip the roxygenize hook in the ci run under certain circumstances as explained below.</p>
+<div class="section level3">
+<h3 id="pre-commit-ci">pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit-ci"></a>
+</h3>
 <p><strong>Pros:</strong></p>
 <ul>
 <li>by the creator of pre-commit. Certain CI settings in <code>.pre-commit-config.yaml</code> <a href="https://pre-commit.ci" class="external-link">are supported</a>.</li>
@@ -142,15 +145,17 @@
 </ul>
 <p><strong>Cons:</strong></p>
 <ul>
-<li>You need to authenticate the pre-commit.ci App in GitHub.</li>
-<li>Limitations for the roxygenize hook:
+<li><p>You need to authenticate the <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> App in GitHub.</p></li>
+<li>
+<p>Limitations for the roxygenize hook:</p>
 <ul>
 <li>{roxygen2} <a href="https://github.com/r-lib/roxygen2/issues/771" class="external-link">requires loading your package for the roxygenize hook</a>, which means you must list all dependencies of the package explicitly in <code>.pre-commit-config.yaml</code> under <code>id: roxygenize</code>. You can generate the required code with <code>precommit::snippet_generate('additional-deps-roxygenize')</code>. This is also required to run the hook locally.</li>
 <li>There is a <a href="https://github.com/pre-commit-ci/runner-image/issues/93#issuecomment-922505301" class="external-link">timeout of 120s for building a hook environment</a>, which might not be enough time to build the hook environment for the roxygenize hook (if you package has many dependencies). This holds for local and remote execution.</li>
 <li>`System dependencies are not supported. In particular, since {roxygen2} <a href="https://github.com/r-lib/roxygen2/issues/771" class="external-link">requires loading your package for the roxygenize hook</a>, this hook will fail if your package has system dependencies or any of your package’s dependencies has system dependencies that are not shipped with the package.</li>
 </ul>
 </li>
-<li>To overcome the above limitations, you can:
+<li>
+<p>To overcome the above limitations, you can:</p>
 <ul>
 <li>Disable the hook completely (by commenting out the respective lines in <code>.pre-commit-config.yaml</code>).</li>
 <li>Use GitHub Actions as a CI provider instead with <code>precommit::use_ci("gha")</code>.</li>
@@ -163,9 +168,9 @@
 <p><strong>Customization:</strong></p>
 <p>Please see the documentation of <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> on whether or not to auto-fix problems as well as other configuration options.</p>
 </div>
-<div class="section level2">
-<h2 id="github-actions">GitHub Actions<a class="anchor" aria-label="anchor" href="#github-actions"></a>
-</h2>
+<div class="section level3">
+<h3 id="github-actions">GitHub Actions<a class="anchor" aria-label="anchor" href="#github-actions"></a>
+</h3>
 <p><strong>Pros:</strong></p>
 <ul>
 <li>more control over environment, e.g. system dependencies.</li>
@@ -175,7 +180,7 @@
 <p><strong>Cons:</strong></p>
 <ul>
 <li>out-of-the-box action is in <a href="https://github.com/pre-commit/action" class="external-link">maintenance only mode</a> and less feature complete than <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>. For example, if your hooks fail on first attempt, the corrections are committed and pushed, but they won’t trigger a new CI and you can’t make them do it without <a href="https://github.com/pre-commit/action/pull/49" class="external-link">exposing credentials</a>. The only way is to close and re-open the PR.</li>
-<li>No configuration options such as hook skipping supported that pre-commit.ci supports.</li>
+<li>No configuration options such as hook skipping supported that <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> supports.</li>
 <li>You need to maintain the workflow file with a lot of boilerplate code and when GitHub changes the syntax, you need to adapt it to prevent failing builds.</li>
 <li>You’ll have one additional file per provider (e.g. GitHub, Gitlab).</li>
 </ul>
@@ -200,7 +205,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
