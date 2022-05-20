@@ -95,7 +95,7 @@
 
       
 
-      </header><script src="precommit_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>precommit</h1>
@@ -139,10 +139,10 @@
 <p>The next time you run <code>git commit</code>, the hooks listed in your <code>.pre-commit-config.yaml</code> will get executed before the commit. The helper function <code><a href="../reference/open_config.html">precommit::open_config()</a></code> let’s you open and edit the <code>.pre-commit-config.yaml</code> conveniently from the RStudio console. When any file is changed due to running a hook or the hook script errors, the commit will fail. You can inspect the changes introduced by the hook and if satisfied, you can add the changes made by the hook to the index with <code>git add path/to/file</code> and attempt to commit again. Some hooks change files, like the styler hook, so all you need to do to make the hook pass is <code>git add</code> the changes introduced by the hook. Other hooks, like the parsable-R hook, will need your action, e.g. add a missing closing brace to a call like <code>library(styler</code>, before they pass at the next attempt. If all hooks pass, the commit is made. You can also <a href="https://pre-commit.com/#temporarily-disabling-hooks" class="external-link">temporarily disable hooks</a>. If you succeed, it should look like this:</p>
 <p><img src="../reference/figures/screenshot.png" width="320"></p>
 <p>See the hooks provided by this repo under <code><a href="../articles/available-hooks.html">vignette("available-hooks")</a></code>. You can also add other hooks from other repos, by extending the <code>.pre-commit-config.yaml</code> file, e.g. like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">-</span><span class="at">   </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/pre-commit/precommit</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="at">    </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v1.2.3</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="at">    </span><span class="fu">hooks</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="kw">-</span><span class="at">   </span><span class="fu">id</span><span class="kw">:</span><span class="at"> check-added-large-files</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at">   </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/pre-commit/precommit</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v1.2.3</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">hooks</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at">   </span><span class="fu">id</span><span class="kw">:</span><span class="at"> check-added-large-files</span></span></code></pre></div>
 <p>To update the hook revisions, run <code><a href="../reference/autoupdate.html">precommit::autoupdate()</a></code>.</p>
 </div>
 <div class="section level2">

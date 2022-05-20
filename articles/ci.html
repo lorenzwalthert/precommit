@@ -95,7 +95,7 @@
 
       
 
-      </header><script src="ci_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Continuous Integration</h1>
@@ -118,13 +118,13 @@
 <h2 id="emulate-a-ci-run-locally">Emulate a CI run locally<a class="anchor" aria-label="anchor" href="#emulate-a-ci-run-locally"></a>
 </h2>
 <p>In the CI run, a command roughly equivalent to the following will be ran from the command line:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pre-commit</span> run --all-files</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> run <span class="at">--all-files</span></span></code></pre></div>
 <p>If you get an error and <code>pre-commit</code> is not on your <code>$PATH</code> (e.g. because you installed with <code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>), you can locate the executable from R with</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/path_precommit_exec.html">path_pre_commit_exec</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; "/usr/local/bin/pre-commit" </span></code></pre></div>
 <p>And run the command in your bash terminal like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">/usr/local/bin/pre-commit</span> run --all-files</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin/pre-commit</span> run <span class="at">--all-files</span></span></code></pre></div>
 <p>Then fix the problems, stage the files and re-try until the command succeeds without more errors.</p>
 </div>
 <div class="section level2">
@@ -161,8 +161,8 @@
 <li>Use GitHub Actions as a CI provider instead with <code>precommit::use_ci("gha")</code>.</li>
 <li>Skip it on CI as described below</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">roxygenize</span><span class="kw">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">roxygenize</span><span class="kw">]</span></span></code></pre></div>
 </li>
 </ul>
 <p><strong>Customization:</strong></p>
