@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.2.9020</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -74,28 +74,6 @@
       <small>Source: <a href="https://github.com/lorenzwalthert/precommit/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.2.2.900" id="precommit-v022900-development-version">precommit v0.2.2.900* (Development version)<a class="anchor" aria-label="anchor" href="#precommit-v022900-development-version"></a></h2>
-<ul><li>New hook <code>no-debug-statement</code> checks for leftover <code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debug()</a></code> and <code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debugonce()</a></code> statements in the committed code (<a href="https://github.com/lorenzwalthert/precommit/issues/385" class="external-link">#385</a>, <a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>).</li>
-<li>The template <code>.pre-commit-config.yaml</code> does now include <code>file-contents-sorter</code> to sort <code>.Rbuildignore</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/366" class="external-link">#366</a>).</li>
-<li>Port codemeta hook to <code>language: r</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/350" class="external-link">#350</a>).</li>
-<li>Don’t include <code>R</code> as a dependency with <code>snippet_generate("additional-deps-roxygenize")</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/358" class="external-link">#358</a>).</li>
-<li>
-<code>roxygenize</code> hook now fails if it generates an <code>.Rd</code> file that is not tracked with version control (<a href="https://github.com/lorenzwalthert/precommit/issues/363" class="external-link">#363</a>).</li>
-<li>Ensure compatibility with {renv} (<a href="https://github.com/lorenzwalthert/precommit/issues/359" class="external-link">#359</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/375" class="external-link">#375</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/400" class="external-link">#400</a>).</li>
-<li>updating hook tag.</li>
-<li>
-<code>deps-in-desc</code> and <code>parsable-R</code> can now handle code chunk headers with where <code>purl</code> or <code>eval</code> are not literals like <code>TRUE</code>, but variables defined elsewhere in code (<a href="https://github.com/lorenzwalthert/precommit/issues/361" class="external-link">#361</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/382" class="external-link">#382</a>).</li>
-<li>
-<code>deps-in-desc</code> now prints the original file (not a tempfile) also for <code>.Rmd</code> and <code>.Rnw</code> files.</li>
-<li>The template <code>.pre-commit-config.yaml</code> default to monthly hook updates (instead of weekly) to avoid notification triggers and git version convolution (<a href="https://github.com/lorenzwalthert/precommit/issues/370" class="external-link">#370</a>).</li>
-<li>Document advantages of pre-commit in vignette (<a href="https://github.com/lorenzwalthert/precommit/issues/379" class="external-link">#379</a>).</li>
-<li>
-<code>style-files</code> now takes <code>ignore-start</code> and <code>ignore-stop</code> arguments, passed to <code>options("styler.ignore_start")</code> and <code>options("styler.ignore_stop")</code>. By default, {styler} defaults are used.</li>
-<li>
-<code><a href="../reference/use_precommit.html">use_precommit()</a></code> now exposes the argument <code>autoupdate</code>, defaulting to <code>TRUE</code>. This tells {precommit} whether or not to run <code><a href="../reference/autoupdate.html">autoupdate()</a></code> as part of the former function invocation (<a href="https://github.com/lorenzwalthert/precommit/issues/386" class="external-link">#386</a>).</li>
-<li>Refactor README into new README and a <em>Get started</em> vignette (<a href="https://github.com/lorenzwalthert/precommit/issues/388" class="external-link">#388</a>).</li>
-</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="precommit-v022">precommit v0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-v022"></a></h2>
 <p>This is a maintenance release on the request of CRAN (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>) and to improve experience with the <code>language: r</code> switch conducted in <code>v0.2.0</code>. In particular, note that projects using {renv} and RStudio are not very compatible with hook versions &gt; 0.1.3.9014 and <code><a href="../reference/autoupdate.html">autoupdate()</a></code> results in downgrading the hook versions (<a href="https://github.com/lorenzwalthert/precommit/issues/346" class="external-link">#346</a>).</p>
@@ -256,7 +234,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.0.9017" id="precommit-0009017">precommit 0.0.0.9017<a class="anchor" aria-label="anchor" href="#precommit-0009017"></a></h2>
-<ul><li><p><strong>BREAKING:</strong> If you used precommit &lt; 0.0.0.9017 (and if you choose a different installation strategy than <code>precommit::install_precommit()), you can link your existing  executable by setting the R option</code>precommit.executable` to the path where you stored the pre-commit executable.</p></li>
+<ul><li><p><strong>BREAKING:</strong> If you used precommit &lt; 0.0.0.9017 (and if you choose a different installation strategy than <code>precommit::install_precommit()), you can link your existing    executable by setting the R option</code>precommit.executable` to the path where you stored the pre-commit executable.</p></li>
 <li><p>Adding tools to work with hooks: <code><a href="../reference/install_precommit.html">install_precommit()</a></code>, <code><a href="../reference/use_precommit.html">use_precommit()</a></code>, <code><a href="../reference/uninstall_precommit.html">uninstall_precommit()</a></code>, <code><a href="../reference/open_config.html">open_config()</a></code> and <code><a href="../reference/open_config.html">open_wordlist()</a></code> using conda environments on all platforms.</p></li>
 <li><p>Make repo a fully R CMD CHECK compliant R package (includes moving hooks to <code>inst/bin</code> from <code>bin</code>.)</p></li>
 <li><p>renamed repo from pre-commit-hooks to precommit.</p></li>

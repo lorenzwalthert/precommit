@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.2.9020</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
 <p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks" class="external-link">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.2.2.9020
+    rev: v0.3.0.9000
     hooks:
     -   id: lintr
         args: [--warn-only, --key=value]</code></pre>
@@ -140,18 +140,18 @@
 <ul>
 <li>Argument <code>style_pkg</code> and <code>style_fun</code> default to <code>styler</code> and <code>tidyverse_style</code>. If you want to use another style guide than the tidyverse style guide, you can specify it like this:</li>
 </ul>
-<pre><code>  id: style-files
+<!-- --><pre><code>  id: style-files
   args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]</code></pre>
 <ul>
 <li><p>The argument <code>--no-warn-cache</code> is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code>.</p></li>
 <li><p>Argument <code>cache-root</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.cache_root</code>. Default value: <code>styler-perm</code>. The argument determines the sub-directory under the {R.cache} cache directory that {styler} uses. If you want {styler} to auto-clean up caches older than 6 days, set this to <code>"styler"</code>. For more information, see <code><a href="https://styler.r-lib.org/reference/caching.html" class="external-link">help("caching", package = "styler")</a></code>.</p></li>
 </ul>
-<pre><code>  id: style-files
+<!-- --><pre><code>  id: style-files
   args: [--cache-root=styler]</code></pre>
 <ul>
 <li>Argument <code>ignore-start</code> and <code>ignore-stop</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.ignore_start</code> and <code>styler.ignore_stop</code> respectively. Not set by default, so the {styler} defaults apply. This was introduced in {precommit} 0.2.2.9012. For example, if you want to restore old behavior of styler &lt; 1.6.2, where only the literals <code>styler: off</code> and <code>styler: on</code> were accepted, use this regex:</li>
 </ul>
-<pre><code>  id: style-files
+<!-- --><pre><code>  id: style-files
   args: [--ignore-start="^# styler: on$", --ignore-stop="^# styler: off$"]</code></pre>
 <p>This hook modifies files unless you specify <code>--dry=fail</code> (requires <code>{styler} &gt; 1.3.2</code>).</p>
 </div>
@@ -159,7 +159,7 @@
 <h3 id="readme-rmd-rendered">
 <code>readme-rmd-rendered</code><a class="anchor" aria-label="anchor" href="#readme-rmd-rendered"></a>
 </h3>
-<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently than <code>README.md</code>, i.e. remind you to render the <code>.Rmd</code> to <code>.md</code> before committing.</p>
+<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently than <code>README.md</code>, i.e. remind you to render the <code>.Rmd</code> to <code>.md</code> before committing.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div class="section level3">
@@ -189,7 +189,7 @@
 </h3>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.2.2.9020, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.0.9000, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 .*\.[rR]|
 .*\.feather|

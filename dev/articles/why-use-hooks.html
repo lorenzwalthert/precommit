@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.2.9020</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -127,13 +127,13 @@
 <ul>
 <li><p><strong>Focus on your code</strong>. Hooks are maintained, tested and documented <em>outside</em> of your repo, all you need a <code>.pre-commit-config.yaml</code> file to invoke them. No need to c/p hooks from one project to another or maintain boilerplate code.</p></li>
 <li><p><strong>A declarative configuration file for routine checks</strong>. File filtering for specific hooks, language version of hooks, when to trigger them (push, commit, merge), configuration options - all controlled via a single configuration file: <code>.pre-commit-config.yaml</code>.</p></li>
-<li><p><strong>Locally and remotely. Or just one of the two</strong>. You can use pre-commit locally and in the cloud with <a href="pre-commit.ci">pre-commit.ci</a>, where hooks can auto-fix issues like styling and push them back to GitHub. Exact same execution and configuration.</p></li>
+<li><p><strong>Locally and remotely. Or just one of the two</strong>. You can use pre-commit locally and in the cloud with <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>, where hooks can auto-fix issues like styling and push them back to GitHub. Exact same execution and configuration.</p></li>
 <li><p><strong>Dependency isolation.</strong> {precommit} leverages {renv} and hence ensures that anyone who uses the hooks uses the same version of the underlying tools, producing the same results, and does not touch your global R library or anything else unrelated to the hooks.</p></li>
 <li><p><strong>No git history convolution</strong>. Pre-commit detects problems before they enter your version control system, let’s you fix them, or fixes them automatically.</p></li>
 <li><p><strong>The power of the crowd.</strong> Easily use hooks other people have created in bash, R, Python and other languages. There are a wealth of useful hooks available, most listed <a href="https://pre-commit.com/hooks.html" class="external-link">here</a>. For example, <code>check-added-large-files</code> prevents you from committing big files, other hooks validate json or yaml files and so on.</p></li>
 <li><p><strong>Extensible.</strong>. You can write your own R code to run as a hook, very easily.</p></li>
-<li><p><strong>Standing on the shoulders of giants.</strong> Leveraging <a href="pre-commit.com">pre-commit.com</a> drastically reduces complexity and abstracts away a lot of logic that is not R specific for the maintainers of {precommit}.</p></li>
-<li><p><strong>Independent.</strong> pre-commit is not bound to GitHub, but runs on your local computer upon commit, and <a href="pre-commit.ci">pre-commit.ci</a> will support on other git hosts than GitHub in the future.</p></li>
+<li><p><strong>Standing on the shoulders of giants.</strong> Leveraging <a href="https://pre-commit.com" class="external-link">pre-commit.com</a> drastically reduces complexity and abstracts away a lot of logic that is not R specific for the maintainers of {precommit}.</p></li>
+<li><p><strong>Independent.</strong> pre-commit is not bound to GitHub, but runs on your local computer upon commit, and <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> will support on other git hosts than GitHub in the future.</p></li>
 </ul>
 <p>Have an idea for a hook? Please <a href="https://github.com/lorenzwalthert/precommit/issues" class="external-link">file an issue</a>.</p>
 </div>

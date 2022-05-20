@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.2.9020</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -122,7 +122,7 @@
 <div class="section level2">
 <h2 id="why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively">Why do some hooks not give me the same results as running the command interactively?<a class="anchor" aria-label="anchor" href="#why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively"></a>
 </h2>
-<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>, leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported language</a> in the pre-commit framework. The version of a package you use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for that reason be different from the one pre-commit uses. The point of using pre-commit is to take mental burden off your shoulders (and sometimes even caches results for speed), so there is no need to run functionality covered by the hooks manually anyways. If you need to know which package versions are used, look for the <code>renv.lock</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git tag specified under <code>rev:</code> in your <code>.pre-commit-config.yaml</code>.</p>
+<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>, leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported language</a> in the pre-commit framework. The version of a package you use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for that reason be different from the one pre-commit uses. The point of using pre-commit is to take mental burden off your shoulders (and sometimes even caches results for speed), so there is no need to run functionality covered by the hooks manually anyways. If you need to know which package versions are used, look for the <code>renv.lock</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git tag specified under <code>rev:</code> in your <code>.pre-commit-config.yaml</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="can-you-use-it-outside-rstudio">Can you use it outside RStudio?<a class="anchor" aria-label="anchor" href="#can-you-use-it-outside-rstudio"></a>
