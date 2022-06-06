@@ -110,6 +110,11 @@
     
     
 <div class="section level2">
+<h2 id="its-broken--missing-packages-etc--how-do-i-fix-it">It’s broken. Missing packages etc. How do I fix it?<a class="anchor" aria-label="anchor" href="#its-broken--missing-packages-etc--how-do-i-fix-it"></a>
+</h2>
+<p>Update the hook revisions with <code>$ pre-commit autoupdate</code> or <code>&gt; precommit::autoupdate()</code>. If this does not help, please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/articles/precommit.html#update">update instructions</a> in the package documentation. If that does not work, run <code>$ pre-commit clean</code> to clean the pre-commit cache. Then, try again. Although you could also clear the {renv} cache, this should only be a strategy of last resort, as it may break other {renv} projects on your machine and you’d have to do some re-storing there.</p>
+</div>
+<div class="section level2">
 <h2 id="how-does-it-work-whats-the-magic">How does it work? What’s the magic?<a class="anchor" aria-label="anchor" href="#how-does-it-work-whats-the-magic"></a>
 </h2>
 <p>No magic. Git <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" class="external-link">provides a mechanism for pre-commit hooks</a>. Since it’s cumbersome to copy bash scripts and keep them updated in some hidden <code>.git/</code> directory, people wrote frameworks to basically maintain these files. One of them is <a href="https://pre-commit.com" class="external-link">pre-commit.com</a>. So you call git to commit, git calls its internal hooks, these hooks (bash scripts in the simplest case) are provided by the pre-commit framework. And where does pre-commit get all it’s nice hooks from? From us.</p>
