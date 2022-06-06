@@ -77,6 +77,7 @@
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0.9000" id="precommit-v0309000">precommit v0.3.0.9000<a class="anchor" aria-label="anchor" href="#precommit-v0309000"></a></h2>
 <ul><li>Ensure sorting for <code>spell-check</code> hook is case-insensitive on all operating systems. This may re-order your whole <code>inst/WORDLIST</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/405" class="external-link">#405</a>).</li>
+<li>{git2r} is no longer needed for user side (<a href="https://github.com/lorenzwalthert/precommit/issues/417" class="external-link">#417</a>).</li>
 <li>Fix bug that prevented pkg load outside directories with precommit files (<a href="https://github.com/mpadge" class="external-link">@mpadge</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/413" class="external-link">#413</a>).</li>
 <li>hook <code>forbid-to-commit</code> in template <code>.pre-commit-config.yaml</code> has now the correct <code>exclude-files</code> regular expression to ignore <code>.csv</code>, <code>.RData</code>, <code>.Rds</code>, <code>.rds</code> and <code>.Rhistory</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/410" class="external-link">#410</a>).</li>
 <li>
