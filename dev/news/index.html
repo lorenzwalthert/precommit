@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.1.9000</span>
       </span>
     </div>
 
@@ -79,14 +79,17 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.0.9000" id="precommit-v0309000">precommit v0.3.0.9000<a class="anchor" aria-label="anchor" href="#precommit-v0309000"></a></h2>
-<ul><li>Ensure sorting for <code>spell-check</code> hook is case-insensitive on all operating systems. This may re-order your whole <code>inst/WORDLIST</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/405" class="external-link">#405</a>).</li>
-<li>{git2r} is no longer needed for user side (<a href="https://github.com/lorenzwalthert/precommit/issues/417" class="external-link">#417</a>).</li>
-<li>Fix bug that prevented pkg load outside directories with precommit files (<a href="https://github.com/mpadge" class="external-link">@mpadge</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/413" class="external-link">#413</a>).</li>
-<li>hook <code>forbid-to-commit</code> in template <code>.pre-commit-config.yaml</code> has now the correct <code>exclude-files</code> regular expression to ignore <code>.csv</code>, <code>.RData</code>, <code>.Rds</code>, <code>.rds</code> and <code>.Rhistory</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/410" class="external-link">#410</a>).</li>
-<li>
+<h2 class="page-header" data-toc-text="0.3.1" id="precommit-v031">precommit v0.3.1<small>2022-06-15</small><a class="anchor" aria-label="anchor" href="#precommit-v031"></a></h2>
+<p><strong>User visible changes</strong></p>
+<ul><li>
 <code>.pre-commit-config.yaml</code> templates now contain hook to validate the <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> configuration (<a href="https://github.com/lorenzwalthert/precommit/issues/407" class="external-link">#407</a>).</li>
-<li>
+<li>{git2r} is no longer needed for user side (<a href="https://github.com/lorenzwalthert/precommit/issues/417" class="external-link">#417</a>).</li>
+</ul><p><strong>Bug fixes</strong></p>
+<ul><li>Fix bug that prevented pkg load outside directories with precommit files (<a href="https://github.com/mpadge" class="external-link">@mpadge</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/413" class="external-link">#413</a>).</li>
+<li>Ensure sorting for <code>spell-check</code> hook is case-insensitive on all operating systems. This may re-order your whole <code>inst/WORDLIST</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/405" class="external-link">#405</a>).</li>
+<li>hook <code>forbid-to-commit</code> in template <code>.pre-commit-config.yaml</code> has now the correct <code>exclude-files</code> regular expression to ignore <code>.csv</code>, <code>.RData</code>, <code>.Rds</code>, <code>.rds</code> and <code>.Rhistory</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/410" class="external-link">#410</a>).</li>
+</ul><p><strong>Internals</strong></p>
+<ul><li>
 <code>options(install.packages.compile.from.source = "never")</code> is used in the CI to avoid failing builds due to missing build-time deps (<a href="https://github.com/lorenzwalthert/precommit/issues/412" class="external-link">#412</a>).</li>
 <li>All (R)md files in that repo are now formatted in a pandoc-compliant way (<a href="https://github.com/lorenzwalthert/precommit/issues/415" class="external-link">#415</a>).</li>
 </ul></div>
