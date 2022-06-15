@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -45,6 +45,10 @@
     </li>
     <li>
       <a href="../articles/FAQ.html">FAQ</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="../articles/index.html">More articles...</a>
     </li>
   </ul></li>
 <li>
@@ -75,6 +79,21 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.1" id="precommit-v031">precommit v0.3.1<small>2022-06-15</small><a class="anchor" aria-label="anchor" href="#precommit-v031"></a></h2>
+<p><strong>User visible changes</strong></p>
+<ul><li>
+<code>.pre-commit-config.yaml</code> templates now contain hook to validate the <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> configuration (<a href="https://github.com/lorenzwalthert/precommit/issues/407" class="external-link">#407</a>).</li>
+<li>{git2r} is no longer needed for user side (<a href="https://github.com/lorenzwalthert/precommit/issues/417" class="external-link">#417</a>).</li>
+</ul><p><strong>Bug fixes</strong></p>
+<ul><li>Fix bug that prevented pkg load outside directories with precommit files (<a href="https://github.com/mpadge" class="external-link">@mpadge</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/413" class="external-link">#413</a>).</li>
+<li>Ensure sorting for <code>spell-check</code> hook is case-insensitive on all operating systems. This may re-order your whole <code>inst/WORDLIST</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/405" class="external-link">#405</a>).</li>
+<li>hook <code>forbid-to-commit</code> in template <code>.pre-commit-config.yaml</code> has now the correct <code>exclude-files</code> regular expression to ignore <code>.csv</code>, <code>.RData</code>, <code>.Rds</code>, <code>.rds</code> and <code>.Rhistory</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/410" class="external-link">#410</a>).</li>
+</ul><p><strong>Internals</strong></p>
+<ul><li>
+<code>options(install.packages.compile.from.source = "never")</code> is used in the CI to avoid failing builds due to missing build-time deps (<a href="https://github.com/lorenzwalthert/precommit/issues/412" class="external-link">#412</a>).</li>
+<li>All (R)md files in that repo are now formatted in a pandoc-compliant way (<a href="https://github.com/lorenzwalthert/precommit/issues/415" class="external-link">#415</a>).</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0" id="precommit-v030">precommit v0.3.0<small>2022-05-20</small><a class="anchor" aria-label="anchor" href="#precommit-v030"></a></h2>
 <p><strong>API changes</strong></p>
 <ul><li>The <code>style-files</code> hook now takes <code>ignore-start</code> and <code>ignore-stop</code> arguments, passed to <code>options("styler.ignore_start")</code> and <code>options("styler.ignore_stop")</code>. By default, {styler} defaults are used.</li>
@@ -97,7 +116,7 @@
 <code>deps-in-desc</code> and <code>parsable-R</code> can now handle code chunk headers with where <code>purl</code> or <code>eval</code> are not literals like <code>TRUE</code>, but variables defined elsewhere in code (<a href="https://github.com/lorenzwalthert/precommit/issues/361" class="external-link">#361</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/382" class="external-link">#382</a>).</li>
 <li>
 <code>deps-in-desc</code> now prints the original file (not a tempfile) also for <code>.Rmd</code> and <code>.Rnw</code> files.</li>
-</ul><p>Thanks to all people who contributed to this release: <a href="https://github.com/assignUser" class="external-link">@assignUser</a>, <a href="https://github.com/danhalligan" class="external-link">@danhalligan</a>, <a href="https://github.com/gravesti" class="external-link">@gravesti</a>, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/KyleDCox" class="external-link">@KyleDCox</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>, <a href="https://github.com/MarkMc1089" class="external-link">@MarkMc1089</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, <a href="https://github.com/RoyalTS" class="external-link">@RoyalTS</a>, and <a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
+</ul><p>Thanks to all people who contributed to this release: <a href="https://github.com/assignUser" class="external-link"></a><a href="https://github.com/assignUser" class="external-link">@assignUser</a>, <a href="https://github.com/danhalligan" class="external-link"></a><a href="https://github.com/danhalligan" class="external-link">@danhalligan</a>, <a href="https://github.com/gravesti" class="external-link"></a><a href="https://github.com/gravesti" class="external-link">@gravesti</a>, <a href="https://github.com/hadley" class="external-link"></a><a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/KyleDCox" class="external-link"></a><a href="https://github.com/KyleDCox" class="external-link">@KyleDCox</a>, <a href="https://github.com/lorenzwalthert" class="external-link"></a><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/lukasfeick-sw" class="external-link"></a><a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>, <a href="https://github.com/MarkMc1089" class="external-link"></a><a href="https://github.com/MarkMc1089" class="external-link">@MarkMc1089</a>, <a href="https://github.com/pat-s" class="external-link"></a><a href="https://github.com/pat-s" class="external-link">@pat-s</a>, <a href="https://github.com/RoyalTS" class="external-link"></a><a href="https://github.com/RoyalTS" class="external-link">@RoyalTS</a>, and <a href="https://github.com/smingerson" class="external-link"></a><a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="precommit-v022">precommit v0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-v022"></a></h2>
@@ -116,7 +135,7 @@
 <li>Fixing more CRAN issues (<a href="https://github.com/lorenzwalthert/precommit/issues/348" class="external-link">#348</a>).</li>
 <li>Use RSMP for all packages (<a href="https://github.com/lorenzwalthert/precommit/issues/348" class="external-link">#348</a>).</li>
 </ul><p>Thanks to all people who contributed to this release:</p>
-<p><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
+<p><a href="https://github.com/lorenzwalthert" class="external-link"></a><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/pat-s" class="external-link"></a><a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/smingerson" class="external-link"></a><a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="precommit-v020">precommit v0.2.0<small>2021-12-01</small><a class="anchor" aria-label="anchor" href="#precommit-v020"></a></h2>
@@ -171,13 +190,13 @@
 <li>fixing typos (<a href="https://github.com/lorenzwalthert/precommit/issues/289" class="external-link">#289</a>).</li>
 <li>fix R CMD Check (<a href="https://github.com/lorenzwalthert/precommit/issues/284" class="external-link">#284</a>).</li>
 </ul><p>A big hand to all the contributors of this release:</p>
-<p><a href="https://github.com/adamblake" class="external-link">@adamblake</a>, <a href="https://github.com/arbues6" class="external-link">@arbues6</a>, <a href="https://github.com/b4D8" class="external-link">@b4D8</a>, <a href="https://github.com/bart1" class="external-link">@bart1</a>, <a href="https://github.com/dhersz" class="external-link">@dhersz</a>, <a href="https://github.com/joelnitta" class="external-link">@joelnitta</a>, <a href="https://github.com/jucor" class="external-link">@jucor</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>, <a href="https://github.com/MarkMc1089" class="external-link">@MarkMc1089</a>, <a href="https://github.com/njtierney" class="external-link">@njtierney</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, <a href="https://github.com/pwildenhain" class="external-link">@pwildenhain</a>, and <a href="https://github.com/rossdrucker" class="external-link">@rossdrucker</a></p>
+<p><a href="https://github.com/adamblake" class="external-link"></a><a href="https://github.com/adamblake" class="external-link">@adamblake</a>, <a href="https://github.com/arbues6" class="external-link"></a><a href="https://github.com/arbues6" class="external-link">@arbues6</a>, <a href="https://github.com/b4D8" class="external-link"></a><a href="https://github.com/b4D8" class="external-link">@b4D8</a>, <a href="https://github.com/bart1" class="external-link"></a><a href="https://github.com/bart1" class="external-link">@bart1</a>, <a href="https://github.com/dhersz" class="external-link"></a><a href="https://github.com/dhersz" class="external-link">@dhersz</a>, <a href="https://github.com/joelnitta" class="external-link"></a><a href="https://github.com/joelnitta" class="external-link">@joelnitta</a>, <a href="https://github.com/jucor" class="external-link"></a><a href="https://github.com/jucor" class="external-link">@jucor</a>, <a href="https://github.com/lorenzwalthert" class="external-link"></a><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/lukasfeick-sw" class="external-link"></a><a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>, <a href="https://github.com/MarkMc1089" class="external-link"></a><a href="https://github.com/MarkMc1089" class="external-link">@MarkMc1089</a>, <a href="https://github.com/njtierney" class="external-link"></a><a href="https://github.com/njtierney" class="external-link">@njtierney</a>, <a href="https://github.com/pat-s" class="external-link"></a><a href="https://github.com/pat-s" class="external-link">@pat-s</a>, <a href="https://github.com/pwildenhain" class="external-link"></a><a href="https://github.com/pwildenhain" class="external-link">@pwildenhain</a>, and <a href="https://github.com/rossdrucker" class="external-link"></a><a href="https://github.com/rossdrucker" class="external-link">@rossdrucker</a></p>
 <p>For previous versions of <code>NEWS.md</code> with news bullet per patch release, see the <a href="https://github.com/lorenzwalthert/precommit/blob/7a8740714ab868d20e981b8b80898d7be050e34e/NEWS.md" class="external-link">latest <code>NEWS.md</code> before gathering</a>.</p>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.3" id="precommit-v013">precommit v0.1.3<small>2020-10-10</small><a class="anchor" aria-label="anchor" href="#precommit-v013"></a></h2>
 <p>This is mainly a CRAN maintenance release because of <a href="https://github.com/lorenzwalthert/precommit/issues/201" class="external-link">#201</a> and includes some bug fixes and no API changes.</p>
-<p>A big hand to all the contributors of this release: <a href="https://github.com/fschoner" class="external-link">@fschoner</a>, <a href="https://github.com/krzyslom" class="external-link">@krzyslom</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/maurolepore" class="external-link">@maurolepore</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/zkamvar" class="external-link">@zkamvar</a>.</p>
+<p>A big hand to all the contributors of this release: <a href="https://github.com/fschoner" class="external-link"></a><a href="https://github.com/fschoner" class="external-link">@fschoner</a>, <a href="https://github.com/krzyslom" class="external-link"></a><a href="https://github.com/krzyslom" class="external-link">@krzyslom</a>, <a href="https://github.com/lorenzwalthert" class="external-link"></a><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/maurolepore" class="external-link"></a><a href="https://github.com/maurolepore" class="external-link">@maurolepore</a>, <a href="https://github.com/pat-s" class="external-link"></a><a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/zkamvar" class="external-link"></a><a href="https://github.com/zkamvar" class="external-link">@zkamvar</a>.</p>
 <p><strong>Minor Changes</strong></p>
 <ul><li>install_hooks in <code><a href="../reference/use_precommit.html">use_precommit()</a></code> should now work as expected (<a href="https://github.com/lorenzwalthert/precommit/issues/185" class="external-link">#185</a>).</li>
 <li>Switching from Travis to GitHub Actions (<a href="https://github.com/lorenzwalthert/precommit/issues/191" class="external-link">#191</a>).</li>
@@ -279,7 +298,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

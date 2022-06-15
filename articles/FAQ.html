@@ -14,7 +14,8 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="FAQ">
-<meta property="og:description" content="precommit">
+<meta property="og:description" content="Common questions and answers for pre-commit users.
+">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -65,6 +66,11 @@
     </li>
     <li>
       <a href="../articles/FAQ.html">FAQ</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
+      <a href="../articles/index.html">More articles...</a>
     </li>
   </ul>
 </li>
@@ -108,6 +114,11 @@
 
     
     
+<div class="section level2">
+<h2 id="its-broken--missing-packages-etc--how-do-i-fix-it">It’s broken. Missing packages etc. How do I fix it?<a class="anchor" aria-label="anchor" href="#its-broken--missing-packages-etc--how-do-i-fix-it"></a>
+</h2>
+<p>Update the hook revisions with <code>$ pre-commit autoupdate</code> or <code>&gt; precommit::autoupdate()</code>. If this does not help, please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/articles/precommit.html#update">update instructions</a> in the package documentation. If that does not work, run <code>$ pre-commit clean</code> to clean the pre-commit cache. Then, try again. Although you could also clear the {renv} cache, this should only be a strategy of last resort, as it may break other {renv} projects on your machine and you’d have to do some re-storing there.</p>
+</div>
 <div class="section level2">
 <h2 id="how-does-it-work-whats-the-magic">How does it work? What’s the magic?<a class="anchor" aria-label="anchor" href="#how-does-it-work-whats-the-magic"></a>
 </h2>
@@ -180,7 +191,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer>

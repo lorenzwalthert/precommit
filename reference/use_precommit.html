@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -45,6 +45,10 @@
     </li>
     <li>
       <a href="../articles/FAQ.html">FAQ</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="../articles/index.html">More articles...</a>
     </li>
   </ul></li>
 <li>
@@ -100,22 +104,32 @@ config file will be hard-copied into <code>root</code>. If <code>NULL</code>, we
 <code>root</code> is a package or project directory using
 <code><a href="https://rprojroot.r-lib.org/reference/find_root_file.html" class="external-link">rprojroot::find_package_root_file()</a></code>, and resort to an appropriate default
 config. See section 'Copying an existing config file'.</p></dd>
+
+
 <dt>force</dt>
 <dd><p>Whether or not to overwrite an existing ci config file (only
 relevant for <code>ci = "gha"</code>).</p></dd>
+
+
 <dt>legacy_hooks</dt>
 <dd><p>How to treat hooks already in the repo which are not
 managed by pre-commit. "forbid", the default, will cause  <code>use_precommit()</code>
 to fail if there are such hooks. "allow" will run these along with
 pre-commit. "remove" will delete them.</p></dd>
+
+
 <dt>open</dt>
 <dd><p>Whether or not to open <code>.pre-commit-config.yaml</code> after
 it's been placed in your repo as well as
 <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> (if <code>ci = "native"</code>). The default is
 <code>TRUE</code> when working in RStudio.</p></dd>
+
+
 <dt>install_hooks</dt>
 <dd><p>Whether to install environments for all available hooks.
 If <code>FALSE</code>, environments are installed with first commit.</p></dd>
+
+
 <dt>ci</dt>
 <dd><p>Specifies which continuous integration service to use. See
 <code><a href="../articles/ci.html">vignette("ci", package = "precommit")</a></code> for details. Defaults to
@@ -124,15 +138,22 @@ If <code>FALSE</code>, environments are installed with first commit.</p></dd>
 <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>. Alternatively, <code>"gha"</code> can be used
 to set up <a href="https://github.com/features/actions" class="external-link">GitHub Actions</a>. Set value
 to <code>NULL</code> if you don't want to use a continuous integration.</p></dd>
+
+
 <dt>autoupdate</dt>
 <dd><p>Whether or not to run <code><a href="autoupdate.html">autoupdate()</a></code> as part of this
 function call.</p></dd>
+
+
 <dt>root</dt>
 <dd><p>The path to the root directory of your project.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>NULL</code> (invisibly). The function is called for its side effects.</p>
+    
+
+<p><code>NULL</code> (invisibly). The function is called for its side effects.</p>
     </div>
     <div id="when-to-call-this-function-">
     <h2>When to call this function?</h2>
@@ -195,7 +216,7 @@ way.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

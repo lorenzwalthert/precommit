@@ -14,7 +14,8 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Available Hooks">
-<meta property="og:description" content="precommit">
+<meta property="og:description" content="Check out all hooks this repo contains and how they can be customized
+">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -65,6 +66,11 @@
     </li>
     <li>
       <a href="../articles/FAQ.html">FAQ</a>
+    </li>
+    <li class="divider">
+    </li>
+<li>
+      <a href="../articles/index.html">More articles...</a>
     </li>
   </ul>
 </li>
@@ -118,7 +124,7 @@
 <p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks" class="external-link">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.0
+    rev: v0.3.1
     hooks:
     -   id: lintr
         args: [--warn-only, --key=value]</code></pre>
@@ -188,7 +194,7 @@
 </h3>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.0, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.1, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 .*\.[rR]|
 .*\.feather|
@@ -253,7 +259,7 @@ data/.*|
 <h3 id="lintr">
 <code>lintr</code><a class="anchor" aria-label="anchor" href="#lintr"></a>
 </h3>
-<p>A hook to run <code><a href="https://rdrr.io/pkg/lintr/man/lint_file.html" class="external-link">lintr::lint()</a></code> to check that R files are lint free. Argument <code>warning_only</code> changes the behavior of the pre-commit to be non-blocking. You should set this with the field <code>verbose: true</code>.</p>
+<p>A hook to run <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code> to check that R files are lint free. Argument <code>warning_only</code> changes the behavior of the pre-commit to be non-blocking. You should set this with the field <code>verbose: true</code>.</p>
 <pre><code>  id: lintr
   args: [--warn_only]
   verbose: true</code></pre>
@@ -294,7 +300,7 @@ data/.*|
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer>
