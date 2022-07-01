@@ -235,9 +235,9 @@ data/.*|
 <p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The argument <code>--no-warn-cache</code> is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code>.</p>
 <p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
 <p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
-<pre><code><span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span>
-  <span class="va">additional_dependencies</span><span class="op">:</span>
-  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></code></pre>
+<pre><code><span>  <span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span></span>
+<span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
+<span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span></code></pre>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
 </div>
 <div class="section level3">
@@ -301,7 +301,7 @@ data/.*|
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
