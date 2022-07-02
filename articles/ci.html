@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -127,8 +127,8 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> run <span class="at">--all-files</span></span></code></pre></div>
 <p>If you get an error and <code>pre-commit</code> is not on your <code>$PATH</code> (e.g. because you installed with <code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>), you can locate the executable from R with</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/path_precommit_exec.html">path_pre_commit_exec</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; "/usr/local/bin/pre-commit" </span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/path_precommit_exec.html">path_pre_commit_exec</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; "/usr/local/bin/pre-commit" </span></span></code></pre></div>
 <p>And run the command in your bash terminal like this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin/pre-commit</span> run <span class="at">--all-files</span></span></code></pre></div>
 <p>Then fix the problems, stage the files and re-try until the command succeeds without more errors.</p>
@@ -211,7 +211,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
 <p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks" class="external-link">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.1
+    rev: v0.3.2
     hooks:
     -   id: lintr
         args: [--warn-only, --key=value]</code></pre>
@@ -194,7 +194,7 @@
 </h3>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.1, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.2, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
 <pre><code>(?x)^(
 .*\.[rR]|
 .*\.feather|
@@ -234,9 +234,9 @@ data/.*|
 <p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The argument <code>--no-warn-cache</code> is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code>.</p>
 <p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
 <p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
-<pre><code><span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span>
-  <span class="va">additional_dependencies</span><span class="op">:</span>
-  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></code></pre>
+<pre><code><span>  <span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span></span>
+<span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
+<span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span></code></pre>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
 </div>
 <div class="section level3">
@@ -300,7 +300,7 @@ data/.*|
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
