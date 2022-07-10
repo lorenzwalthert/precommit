@@ -226,13 +226,31 @@ roclets you specified in `DESCRIPTION`.
 ## `deps-in-desc`
 
 Checks if packages used with the `pkgname::fun()` syntax are listed in
-your DESCRIPTION file. Note that `README.Rmd` is never checked. Flag
-`allow_private_imports` lets the user specify that private imports into
-the package namespace are tolerable, e.g. `somepkg:::x()`. Flag not set
-by default, i.e. the hook will fail if such a call is found.
+your DESCRIPTION file. Note that `README.Rmd` is never checked.
 
+**Arguments**
+
+-   Flag `allow_private_imports` lets the user specify that private
+    imports into the package namespace are tolerable, e.g.
+    `somepkg:::x()`. Flag not set by default, i.e. the hook will fail if
+    such a call is found.
+
+```{=html}
+<!-- -->
+```
       id: deps-in-desc 
       args: [--allow_private_imports] 
+
+-   Argument `root` specifies the directory in the git repo that
+    contains the R package. Defaults to `.` since for most R package git
+    repos, the git and R package root coincide. Added in version
+    0.3.2.9000.
+
+```{=html}
+<!-- -->
+```
+    id: deps-in-desc 
+      args: [--root=<R package root>] 
 
 This hook does not modify the file `DESCRIPTION` because the user should
 decide for each package if it should go to `Imports:` or `Suggests:`,

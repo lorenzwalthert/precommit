@@ -213,6 +213,26 @@ run_test("deps-in-desc",
   artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION"))
 )
 
+# in sub directory with wrong root
+run_test("deps-in-desc",
+  suffix = "-fail.R", std_err = "contains a file",
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
+# in sub directory with correct root
+run_test("deps-in-desc",
+  cmd_args = "--root=rpkg",
+  suffix = "-fail.R", std_err = "Dependency check failed",
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
+# in sub directory with correct root
+run_test("deps-in-desc",
+  cmd_args = "--root=rpkg",
+  suffix = "-success.R", std_err = NULL,
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
 # with :::
 run_test("deps-in-desc",
   "deps-in-desc-dot3",

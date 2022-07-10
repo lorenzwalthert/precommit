@@ -2,10 +2,12 @@
 
 "Ensure all dependencies of the form pkg::fun are in DESCRIPTION
 Usage:
-  deps-in-desc [--allow_private_imports] <files>...
+  deps-in-desc [--allow_private_imports] [--root=<root_>]<files>...
 
 Options:
   --allow_private_imports  Whether or not to allow the use of ::: on imported functions.
+  --root=<root_>  Path relative to the git root that contains the R package root [default: .].
+
 " -> doc
 pre_installed <- c(
   "base", "boot", "class", "cluster", "codetools", "compiler",
@@ -16,6 +18,8 @@ pre_installed <- c(
 )
 
 arguments <- docopt::docopt(doc)
+arguments$files <- normalizePath(arguments$files) # because working directory changes to root
+setwd(normalizePath(arguments$root))
 deps_in_desc <- function(file, arguments) {
   if (basename(file) == "README.Rmd") {
     # is .Rbuildignored, dependencies irrelevant
@@ -70,6 +74,7 @@ deps_in_desc <- function(file, arguments) {
   }
   out
 }
+
 out <- lapply(arguments$files, deps_in_desc, arguments = arguments)
 if (!all(unlist(out))) {
   stop("Dependency check failed", call. = FALSE)
