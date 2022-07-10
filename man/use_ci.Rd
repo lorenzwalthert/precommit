@@ -18,7 +18,7 @@ use_ci(
 \code{"native"} on package loading (if unset). \code{"native"} sets up
 \href{https://pre-commit.ci}{pre-commit.ci}. Alternatively, \code{"gha"} can be used
 to set up \href{https://github.com/features/actions}{GitHub Actions}. Set value
-to \code{NULL} if you don't want to use a continuous integration.}
+to \code{NA} if you don't want to use a continuous integration.}
 
 \item{force}{Whether or not to overwrite an existing ci config file (only
 relevant for \code{ci = "gha"}).}

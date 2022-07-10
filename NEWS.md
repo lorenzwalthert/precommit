@@ -4,6 +4,11 @@ editor_options:
     wrap: 72
 ---
 
+# precommit v0.3.2.9000
+
+-   `use_ci()` is now documented to take `NA`, not `NULL` for argument
+    `ci` (#431).
+
 # precommit v0.3.2
 
 -   `parsable-R` hook now gives more context on where and how parsing
