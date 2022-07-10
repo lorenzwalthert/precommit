@@ -43,31 +43,25 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
   purrr::walk(path_template_config, update_rev_in_config,
     new_version = new_version
   )
-  last_release <- call_and_capture("git", "tag -l --sort=-taggerdate")$stdout[1]
 
+  last_release <- git_last_release()
   cli::cli_alert_success("Updated version in default config.")
-  msg1 <- glue::glue("Release {new_version}, see NEWS.md for details.")
-  msg2 <- glue::glue(
-    "Diff to previous release: ",
-    "https://github.com/lorenzwalthert/precommit/compare/",
-    "{last_release}...{new_version}"
-  )
   sys_call(
     "git",
     glue::glue(
       'commit DESCRIPTION {paste0(path_template_config, collapse = " ")} ',
-      '-m "{msg1}" -m "{msg2}"'
+      '-m "{release_msg1(last_release, new_version)}"'
     ),
     env = "SKIP=spell-check,consistent-release-tag"
   )
   cli::cli_alert_success("Committed DESCRIPTION and config template")
-  sys_call("git", glue::glue('tag -a {new_version} -m "{msg1}" -m "{msg2}"'))
+  if (!is_cran) {
+
+  }
   sys_call("./inst/hooks/local/consistent-release-tag.R", "--release-mode")
   cli::cli_alert_success("Tagged last commit with release version.")
   if (!is_cran) {
-    sys_call("git", glue::glue("push origin {new_version}"),
-      env = "SKIP=consistent-release-tag"
-    )
+    git_tag_release(last_release, new_version)
   }
 
   sys_call("git", glue::glue("push"),
@@ -83,6 +77,24 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
     release_complete(ask = FALSE, tag = new_version, is_cran = FALSE)
   }
 }
+
+git_tag_release <- function(last_release, new_version) {
+  sys_call("git", glue::glue('tag -a {new_version} -m "{release_msg(last_release, new_version)}"'))
+}
+
+git_last_release <- function() {
+  call_and_capture("git", "tag -l --sort=-taggerdate")$stdout[1]
+}
+
+release_msg <- function(last_release, new_version) {
+  glue::glue(
+    "Release {new_version}, see NEWS.md for details.\n\n",
+    "Diff to previous release: ",
+    "https://github.com/lorenzwalthert/precommit/compare/",
+    "{last_release}...{new_version}"
+  )
+}
+
 
 #' Complete the release
 #'
@@ -104,6 +116,9 @@ release_complete <- function(ask = TRUE, is_cran = ask, tag = NULL) {
     if (substr(tag, 1, 1) != "v") {
       rlang::abort("tag must start with v.")
     }
+    git_tag_release(
+      last_release = git_last_release(), new_version = tag
+    )
     sys_call("git", glue::glue("push origin {tag}"))
   }
   autoupdate() # only updates if tag is on the main branch

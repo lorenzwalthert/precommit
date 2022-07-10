@@ -77,7 +77,7 @@ use_precommit <- function(config_source = getOption("precommit.config_source"),
 #'   `"native"` on package loading (if unset). `"native"` sets up
 #'   [pre-commit.ci](https://pre-commit.ci). Alternatively, `"gha"` can be used
 #'   to set up [GitHub Actions](https://github.com/features/actions). Set value
-#'   to `NULL` if you don't want to use a continuous integration.
+#'   to `NA` if you don't want to use a continuous integration.
 #' @param force Whether or not to overwrite an existing ci config file (only
 #'   relevant for `ci = "gha"`).
 #' @param open Whether or not to open [pre-commit.ci](https://pre-commit.ci)

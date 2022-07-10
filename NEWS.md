@@ -4,6 +4,11 @@ editor_options:
     wrap: 72
 ---
 
+# precommit v0.3.2.9000
+
+-   `use_ci()` is now documented to take `NA`, not `NULL` for argument
+    `ci` (#431).
+
 # precommit v0.3.2
 
 -   `parsable-R` hook now gives more context on where and how parsing
@@ -11,7 +16,8 @@ editor_options:
 -   fixed R CMD check issues in devel (#425).
 -   move from *experimental* to *stable* (#426).
 
-Thanks to [&#x0040;danielinteractive](https://github.com/danielinteractive), [&#x0040;jonocarroll](https://github.com/jonocarroll) for their contributions.
+Thanks to [\@danielinteractive](https://github.com/danielinteractive),
+[\@jonocarroll](https://github.com/jonocarroll) for their contributions.
 
 # precommit v0.3.1
 
@@ -40,7 +46,8 @@ Thanks to [&#x0040;danielinteractive](https://github.com/danielinteractive), [&#
 -   All (R)md files in that repo are now formatted in a pandoc-compliant
     way (#415).
 
-Thanks to [&#x0040;danielinteractive](https://github.com/danielinteractive) and [&#x0040;mpadge](https://github.com/mpadge) for their contributions.
+Thanks to [\@danielinteractive](https://github.com/danielinteractive)
+and [\@mpadge](https://github.com/mpadge) for their contributions.
 
 # precommit v0.3.0
 
