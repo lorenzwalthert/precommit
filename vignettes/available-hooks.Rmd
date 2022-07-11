@@ -235,9 +235,8 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
     `somepkg:::x()`. Flag not set by default, i.e. the hook will fail if
     such a call is found.
 
-```{=html}
 <!-- -->
-```
+
       id: deps-in-desc 
       args: [--allow_private_imports] 
 
@@ -246,9 +245,8 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
     repos, the git and R package root coincide. Added in version
     0.3.2.9000.
 
-```{=html}
 <!-- -->
-```
+
     id: deps-in-desc 
       args: [--root=<R package root>] 
 
