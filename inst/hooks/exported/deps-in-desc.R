@@ -2,7 +2,7 @@
 
 "Ensure all dependencies of the form pkg::fun are in DESCRIPTION
 Usage:
-  deps-in-desc [--allow_private_imports] [--root=<root_>]<files>...
+  deps-in-desc [--allow_private_imports] [--root=<root_>] <files>...
 
 Options:
   --allow_private_imports  Whether or not to allow the use of ::: on imported functions.
