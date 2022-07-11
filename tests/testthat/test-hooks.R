@@ -257,7 +257,7 @@ run_test("deps-in-desc",
 run_test("deps-in-desc",
   "deps-in-desc",
   suffix = "-fail.Rmd", std_err = "Dependency check failed",
-  std_out = "in file `deps-in-desc-fail.Rmd`",
+  std_out = "deps-in-desc-fail.Rmd`: ttyzp",
   artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION"))
 )
 
