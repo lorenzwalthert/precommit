@@ -94,7 +94,8 @@ run_test_impl <- function(path_executable,
                           file_transformer,
                           env,
                           expect_success) {
-  tempdir <- fs::dir_create(fs::file_temp())
+  # ensure cannonical /private/var/... not /var/... on macOS
+  tempdir <- fs::path(normalizePath((fs::dir_create(fs::file_temp()))))
   copy_artifacts(artifacts, tempdir)
   # if name set use this, otherwise put in root
   path_candidate_temp <- fs::path(tempdir, names(path_candidate))
