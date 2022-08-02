@@ -244,9 +244,18 @@ data/.*|
 <h3 id="deps-in-desc">
 <code>deps-in-desc</code><a class="anchor" aria-label="anchor" href="#deps-in-desc"></a>
 </h3>
-<p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Note that <code>README.Rmd</code> is never checked. Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</p>
-<pre><code>  id: deps-in-desc 
+<p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Note that <code>README.Rmd</code> is never checked.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</li>
+</ul>
+<!-- --><pre><code>  id: deps-in-desc 
   args: [--allow_private_imports] </code></pre>
+<ul>
+<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.2.9000.</li>
+</ul>
+<!-- --><pre><code>id: deps-in-desc 
+  args: [--root=&lt;R package root&gt;] </code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html" class="external-link">usethis::use_package()</a></code>.</p>
 </div>
 <div class="section level3">
