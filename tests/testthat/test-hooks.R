@@ -213,6 +213,35 @@ run_test("deps-in-desc",
   artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION"))
 )
 
+# in sub directory with wrong root
+run_test("deps-in-desc",
+  suffix = "-fail.R", std_err = "contains a file",
+  file_transformer = function(files) {
+    fs::path_abs(fs::file_move(files, "rpkg"))
+  },
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
+# in sub directory with correct root
+run_test("deps-in-desc",
+  cmd_args = "--root=rpkg",
+  suffix = "-fail.R", std_err = "Dependency check failed",
+  file_transformer = function(files) {
+    fs::path_abs(fs::file_move(files, "rpkg"))
+  },
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
+# in sub directory with correct root
+run_test("deps-in-desc",
+  cmd_args = "--root=rpkg",
+  suffix = "-success.R", std_err = NULL,
+  file_transformer = function(files) {
+    fs::path_abs(fs::file_move(files, "rpkg"))
+  },
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
+
 # with :::
 run_test("deps-in-desc",
   "deps-in-desc-dot3",
@@ -237,7 +266,7 @@ run_test("deps-in-desc",
 run_test("deps-in-desc",
   "deps-in-desc",
   suffix = "-fail.Rmd", std_err = "Dependency check failed",
-  std_out = "in file `deps-in-desc-fail.Rmd`",
+  std_out = "deps-in-desc-fail.Rmd`: ttyzp",
   artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION"))
 )
 
