@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-"A hook to run usethis::use_tidy_description() to ensure dependencies are 
+"A hook to run usethis::use_tidy_description() to ensure dependencies are
 ordered alphabetically and fields are in standard order.
 
 Usage:

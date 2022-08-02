@@ -6,21 +6,23 @@ run_test("use-tidy-description", "DESCRIPTION", suffix = "")
 
 # in sub directory with correct root
 run_test("use-tidy-description",
-         "DESCRIPTION",
-         suffix = "",
-         cmd_args="--root=rpkg",
-         artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION")))
+  "DESCRIPTION",
+  suffix = "",
+  cmd_args = "--root=rpkg",
+  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+)
 
 
 
 # in sub directory with incorrect root
 # Need to generate the directoy `rpkg` but without DESCRIPTION file.
 run_test("use-tidy-description",
-         "DESCRIPTION",
-         suffix = "",
-         cmd_args="--root=rpkg",
-         std_err="No `DESCRIPTION` found in repository.",
-         artifacts = c("rpkg/README.md" = test_path("in/README.md")))
+  "DESCRIPTION",
+  suffix = "",
+  cmd_args = "--root=rpkg",
+  std_err = "No `DESCRIPTION` found in repository.",
+  artifacts = c("rpkg/README.md" = test_path("in/README.md"))
+)
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### style-files                                                             ####
@@ -393,22 +395,22 @@ run_test("roxygenize",
 
 # with outdated Rd present in correct root
 run_test("roxygenize",
-         file_name = c("rpkg/man/flie.Rd" = "flie.Rd"),
-         suffix = "",
-         std_err = NA,
-         cmd_args="--root=rpkg",
-         std_out = "Writing NAMESPACE",
-         artifacts = c(
-           "rpkg/DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
-           "rpkg/R/roxygenize.R" = test_path("in/roxygenize.R")
-         ),
-         file_transformer = function(files) {
-           git_init()
-           git2r::add(path = files)
-           # hack to add artifact to trigger diff_requires_roxygenize()
-           git2r::add(path = fs::path(fs::path_dir(fs::path_dir(files[1])), "rpkg/R"))
-           files
-         }
+  file_name = c("rpkg/man/flie.Rd" = "flie.Rd"),
+  suffix = "",
+  std_err = NA,
+  cmd_args = "--root=rpkg",
+  std_out = "Writing NAMESPACE",
+  artifacts = c(
+    "rpkg/DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
+    "rpkg/R/roxygenize.R" = test_path("in/roxygenize.R")
+  ),
+  file_transformer = function(files) {
+    git_init()
+    git2r::add(path = files)
+    # hack to add artifact to trigger diff_requires_roxygenize()
+    git2r::add(path = fs::path(fs::path_dir(fs::path_dir(files[1])), "rpkg/R"))
+    files
+  }
 )
 
 
@@ -416,7 +418,7 @@ run_test("roxygenize",
 run_test("roxygenize",
   file_name = c("rpkg1/R/roxygenize.R" = "roxygenize.R"),
   suffix = "",
-  cmd_args="--root=rpkg1",
+  cmd_args = "--root=rpkg1",
   std_err = "Please commit the new `.Rd` files",
   artifacts = c(
     "rpkg1/DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
@@ -427,22 +429,21 @@ run_test("roxygenize",
     git2r::add(path = files)
     files
   }
-  
 )
 
 # with Rd present in wrong root
 run_test("roxygenize",
-         file_name = c("R/roxygenize.R" = "roxygenize.R"),
-         suffix = "",
-         std_err = "Please commit the new `.Rd` files",
-         artifacts = c(
-           "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf")
-         ),
-         file_transformer = function(files) {
-           git_init()
-           git2r::add(path = files)
-           files
-         }
+  file_name = c("R/roxygenize.R" = "roxygenize.R"),
+  suffix = "",
+  std_err = "Please commit the new `.Rd` files",
+  artifacts = c(
+    "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf")
+  ),
+  file_transformer = function(files) {
+    git_init()
+    git2r::add(path = files)
+    files
+  }
 )
 
 
@@ -516,38 +517,42 @@ run_test("codemeta-description-update",
 
 # succeed in correct root
 run_test("codemeta-description-update",
-         file_name = c("rpkg/DESCRIPTION" = "DESCRIPTION",
-                       "rpkg/codemeta.json" = "codemeta.json"),
-         cmd_args="--root=rpkg",
-         suffix = "",
-         file_transformer = function(files) {
-           if (length(files) > 1) {
-             # transformer is called once on all files and once per file
-             content_2 <- readLines(files[2])
-             Sys.sleep(2)
-             writeLines(content_2, files[2])
-           }
-           files
-         }
+  file_name = c(
+    "rpkg/DESCRIPTION" = "DESCRIPTION",
+    "rpkg/codemeta.json" = "codemeta.json"
+  ),
+  cmd_args = "--root=rpkg",
+  suffix = "",
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[2])
+      Sys.sleep(2)
+      writeLines(content_2, files[2])
+    }
+    files
+  }
 )
 
 # # fail in wrong root
 run_test("codemeta-description-update",
-         file_name = c("rpkg/DESCRIPTION" = "DESCRIPTION",
-                       "rpkg/codemeta.json" = "codemeta.json",
-                       "rpkg2/codemeta.json" = "README.md"),
-         cmd_args="--root=rpkg2",
-         std_err="No `DESCRIPTION` found in repository.",
-         suffix = "",
-         file_transformer = function(files) {
-           if (length(files) > 1) {
-             # transformer is called once on all files and once per file
-             content_2 <- readLines(files[2])
-             Sys.sleep(2)
-             writeLines(content_2, files[2])
-           }
-           files
-         }
+  file_name = c(
+    "rpkg/DESCRIPTION" = "DESCRIPTION",
+    "rpkg/codemeta.json" = "codemeta.json",
+    "rpkg2/codemeta.json" = "README.md"
+  ),
+  cmd_args = "--root=rpkg2",
+  std_err = "No `DESCRIPTION` found in repository.",
+  suffix = "",
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[2])
+      Sys.sleep(2)
+      writeLines(content_2, files[2])
+    }
+    files
+  }
 )
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..

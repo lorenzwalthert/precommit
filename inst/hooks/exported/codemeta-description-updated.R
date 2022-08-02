@@ -1,13 +1,13 @@
 #!/usr/bin/env Rscript
 
-"A hook to make sure DESCRIPTION hasn’t been edited more recently than 
+"A hook to make sure DESCRIPTION hasn’t been edited more recently than
 codemeta.json.
 
 Usage:
   codemeta-description-updated [--root=<root_>] <_ignored>...
 
 Options:
-  --root=<root_>  Path relative to the git root that contains the R package 
+  --root=<root_>  Path relative to the git root that contains the R package
                   root [default: .].
 
 " -> doc
