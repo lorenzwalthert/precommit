@@ -61,9 +61,7 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
     sys_call("./inst/hooks/local/consistent-release-tag.R", "--release-mode")
   }
 
-  sys_call("git", glue::glue("push"),
-    env = "SKIP=consistent-release-tag"
-  )
+  sys_call("git", "push", env = "SKIP=consistent-release-tag")
   cli::cli_alert_success("Pushed commits and tags.")
   if (is_cran) {
     cli::cli_alert_info(paste(
