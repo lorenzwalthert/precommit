@@ -58,10 +58,10 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
   if (!is_cran) {
 
   }
-  sys_call("./inst/hooks/local/consistent-release-tag.R", "--release-mode")
   cli::cli_alert_success("Tagged last commit with release version.")
   if (!is_cran) {
     git_tag_release(last_release, new_version)
+    sys_call("./inst/hooks/local/consistent-release-tag.R", "--release-mode")
   }
 
   sys_call("git", glue::glue("push"),
