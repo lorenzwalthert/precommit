@@ -61,6 +61,9 @@ The following online docs are available:
 -   [GitHub development
     version](https://lorenzwalthert.github.io/precommit/dev/).
 
+-   [UseR 2022 talk on pre-commit for
+    R](https://www.youtube.com/watch?v=r3QXwfxQBLM&t=1280s)
+
 These only cover the functionality added on top of the pre-commit
 framework by this package. Everything else is covered in the extensive
 [online documentation](https://pre-commit.com) of the pre-commit
