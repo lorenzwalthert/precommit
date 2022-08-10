@@ -50,7 +50,7 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
     "git",
     glue::glue(
       'commit DESCRIPTION {paste0(path_template_config, collapse = " ")} ',
-      '-m "{release_msg1(last_release, new_version)}"'
+      '-m "{release_msg(last_release, new_version)}"'
     ),
     env = "SKIP=spell-check,consistent-release-tag"
   )
