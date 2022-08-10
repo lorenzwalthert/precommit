@@ -55,9 +55,6 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
     env = "SKIP=spell-check,consistent-release-tag"
   )
   cli::cli_alert_success("Committed DESCRIPTION and config template")
-  if (!is_cran) {
-
-  }
   cli::cli_alert_success("Tagged last commit with release version.")
   if (!is_cran) {
     git_tag_release(last_release, new_version)
@@ -80,6 +77,7 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
 
 git_tag_release <- function(last_release, new_version) {
   sys_call("git", glue::glue('tag -a {new_version} -m "{release_msg(last_release, new_version)}"'))
+  sys_call("git", glue::glue("push origin {new_version}"))
 }
 
 git_last_release <- function() {
@@ -119,7 +117,6 @@ release_complete <- function(ask = TRUE, is_cran = ask, tag = NULL) {
     git_tag_release(
       last_release = git_last_release(), new_version = tag
     )
-    sys_call("git", glue::glue("push origin {tag}"))
   }
   autoupdate() # only updates if tag is on the main branch
   desc::desc_bump_version("dev")
