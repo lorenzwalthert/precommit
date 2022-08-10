@@ -99,7 +99,7 @@ repos:
     # Only reuiqred when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
 -   repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: 9dd648a2cbce0c0ce09255695b63ea4823699bec
+    rev: a2260df7cc08de00d7312aeff68cea6bcba48c42
     hooks: 
     -   id: tidy-gitignore
 -   repo: local
