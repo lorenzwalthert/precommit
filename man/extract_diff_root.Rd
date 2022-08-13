@@ -4,7 +4,7 @@
 \alias{extract_diff_root}
 \title{Extract old and new lines from \verb{git diff --cached}}
 \usage{
-extract_diff_root(root = here::here())
+extract_diff_root(root = ".")
 }
 \arguments{
 \item{root}{The root of project.}

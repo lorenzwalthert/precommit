@@ -24,14 +24,14 @@ extract_diff_files <- function(files) {
 #' hook such as [roxygen2::roxygenize()] must run at all or not.
 #' @param root The root of project.
 #' @keywords internal
-extract_diff_root <- function(root = here::here()) {
+extract_diff_root <- function(root = ".") {
   assert_is_git_repo(root)
   repo <- git2r::repository(root)
   if (length(git2r::reflog(repo)) == 0) {
     # nothing committed yet
-    all_files <- git2r::status()$staged
+    all_r_source_files <- list.files("R/", full.names = TRUE)
 
-    purrr::map(all_files[grepl("^R/.*\\.[Rr]$", all_files)], readLines) %>%
+    purrr::map(all_r_source_files, readLines) %>%
       unlist() %>%
       unname()
   } else {
@@ -57,7 +57,7 @@ extract_diff_root <- function(root = here::here()) {
 #' diff_requires_run_roxygenize()
 #' }
 #' @export
-diff_requires_run_roxygenize <- function(root = here::here()) {
+diff_requires_run_roxygenize <- function(root = ".") {
   if (rlang::with_handlers(withr::with_namespace("git2r", FALSE), error = function(...) TRUE)) {
     generic <- paste0(
       " Please add the package as a dependency to ",
