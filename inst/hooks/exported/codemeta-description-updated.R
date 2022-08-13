@@ -4,7 +4,7 @@
 codemeta.json.
 
 Usage:
-  codemeta-description-updated [--root=<root_>] <_ignored>...
+  codemeta-description-updated [--root=<root_>] <files>...
 
 Options:
   --root=<root_>  Path relative to the git root that contains the R package
