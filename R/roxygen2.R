@@ -29,9 +29,9 @@ extract_diff_root <- function(root = ".") {
   repo <- git2r::repository(root)
   if (length(git2r::reflog(repo)) == 0) {
     # nothing committed yet
-    all_r_source_files <- list.files("R/", full.names = TRUE)
+    all_files <- git2r::status()$staged
 
-    purrr::map(all_r_source_files, readLines) %>%
+    purrr::map(all_files[grepl("^R/.*\\.[Rr]$", all_files)], readLines) %>%
       unlist() %>%
       unname()
   } else {

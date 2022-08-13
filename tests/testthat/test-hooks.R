@@ -405,10 +405,11 @@ run_test("roxygenize",
     "rpkg/R/roxygenize.R" = test_path("in/roxygenize.R")
   ),
   file_transformer = function(files) {
+    withr::local_dir("rpkg")
     git_init()
     git2r::add(path = files)
     # hack to add artifact to trigger diff_requires_roxygenize()
-    git2r::add(path = fs::path(fs::path_dir(fs::path_dir(files[1])), "rpkg/R"))
+    git2r::add(path = fs::path(fs::path_dir(fs::path_dir(files[1])), "R"))
     files
   }
 )
@@ -425,6 +426,7 @@ run_test("roxygenize",
     "rpkg2/R/roxygenize.R" = test_path("in/roxygenize.R")
   ),
   file_transformer = function(files) {
+    withr::local_dir("rpkg1")
     git_init()
     git2r::add(path = files)
     files
