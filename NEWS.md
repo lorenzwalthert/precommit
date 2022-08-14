@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# precommit v0.3.3
+# precommit v0.3.2.9001 (Development version)
 -   `codemeta-description-updated`, `roxygenize`, and 
     `use-tidy-description` now all support a `root` argument that 
     specifies the directory in the git repo that contains the R package. 
