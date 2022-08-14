@@ -223,6 +223,22 @@ This hook does not modify input files, but writes to `.Rd` files in
 `man/`, `NAMESPACE` and potentially others depending on which roxygen
 roclets you specified in `DESCRIPTION`.
 
+
+**Arguments**
+
+<!-- -->
+
+    id: roxygenize
+    args: [--root=<R package root>] 
+
+
+-   Argument `root` specifies the directory in the git repo that
+    contains the R package. Defaults to `.` since for most R package git
+    repos, the git and R package root coincide. Added in version
+    0.3.3.00000.
+
+
+
 ## `deps-in-desc`
 
 Checks if packages used with the `pkgname::fun()` syntax are listed in
@@ -248,7 +264,7 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
 <!-- -->
 
     id: deps-in-desc 
-      args: [--root=<R package root>] 
+    args: [--root=<R package root>] 
 
 This hook does not modify the file `DESCRIPTION` because the user should
 decide for each package if it should go to `Imports:` or `Suggests:`,
@@ -261,6 +277,19 @@ are ordered alphabetically and fields are in standard order.
 
 This hook does modify the file `DESCRIPTION`.
 
+**Arguments**
+
+<!-- -->
+
+    id: use-tidy-description
+    args: [--root=<R package root>] 
+
+
+-   Argument `root` specifies the directory in the git repo that
+    contains the R package. Defaults to `.` since for most R package git
+    repos, the git and R package root coincide. Added in version
+    0.3.3.00000.
+    
 ## `lintr`
 
 A hook to run `lintr::lint()` to check that R files are lint free.
@@ -288,3 +317,16 @@ i.e. remind you to run `codemetar::write_codemeta()` in order to keep
 `codemeta.json` in sync with `DESCRIPTION`.
 
 This hook does not modify any file.
+
+**Arguments**
+
+<!-- -->
+
+    id: codemeta-description-updated
+    args: [--root=<R package root>] 
+
+
+-   Argument `root` specifies the directory in the git repo that
+    contains the R package. Defaults to `.` since for most R package git
+    repos, the git and R package root coincide. Added in version
+    0.3.3.00000.
