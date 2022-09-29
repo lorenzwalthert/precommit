@@ -239,6 +239,13 @@ data/.*|
 <span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
 <span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span></code></pre>
 <p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
+<p><strong>Arguments</strong></p>
+<!-- -->
+<pre><code>id: roxygenize
+args: [--root=&lt;R package root&gt;] </code></pre>
+<ul>
+<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="deps-in-desc">
@@ -255,7 +262,7 @@ data/.*|
 <li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.2.9000.</li>
 </ul>
 <!-- --><pre><code>id: deps-in-desc 
-  args: [--root=&lt;R package root&gt;] </code></pre>
+args: [--root=&lt;R package root&gt;] </code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html" class="external-link">usethis::use_package()</a></code>.</p>
 </div>
 <div class="section level3">
@@ -264,6 +271,13 @@ data/.*|
 </h3>
 <p>A hook to run <code><a href="https://usethis.r-lib.org/reference/tidyverse.html" class="external-link">usethis::use_tidy_description()</a></code> to ensure dependencies are ordered alphabetically and fields are in standard order.</p>
 <p>This hook does modify the file <code>DESCRIPTION</code>.</p>
+<p><strong>Arguments</strong></p>
+<!-- -->
+<pre><code>id: use-tidy-description
+args: [--root=&lt;R package root&gt;] </code></pre>
+<ul>
+<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="lintr">
@@ -283,6 +297,13 @@ data/.*|
 <p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently than <code>codemeta.json</code>,</p>
 <p>i.e. remind you to run <code>codemetar::write_codemeta()</code> in order to keep <code>codemeta.json</code> in sync with <code>DESCRIPTION</code>.</p>
 <p>This hook does not modify any file.</p>
+<p><strong>Arguments</strong></p>
+<!-- -->
+<pre><code>id: codemeta-description-updated
+args: [--root=&lt;R package root&gt;] </code></pre>
+<ul>
+<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+</ul>
 </div>
 </div>
 <div class="footnotes">
