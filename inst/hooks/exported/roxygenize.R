@@ -14,13 +14,17 @@ This check should run *after* check that modify the files that are passed to
 them (like styler) because they will never modify their input .R files.
 
 Usage:
-  roxygenize [--no-warn-cache] <files>...
+  roxygenize [--no-warn-cache] [--root=<root_>] <files>...
 
 Options:
   --no-warn-cache  Suppress the warning about a missing permanent cache.
+  --root=<root_>  Path relative to the git root that contains the R package root [default: .].
 
 " -> doc
 arguments <- docopt::docopt(doc)
+arguments$files <- normalizePath(arguments$files) # because working directory changes to root
+setwd(arguments$root)
+
 if (packageVersion("precommit") < "0.1.3.9010") {
   rlang::abort(paste(
     "This hooks only works with the R package {precommit} >= 0.1.3.9010",

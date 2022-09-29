@@ -4,10 +4,20 @@ editor_options:
     wrap: 72
 ---
 
+# precommit v0.3.2.9001 (Development version)
+-   `codemeta-description-updated`, `roxygenize`, and 
+    `use-tidy-description` now all support a `root` argument that 
+    specifies the directory in the git repo that contains the R package. 
+    Defaults to `.` since for most R package git repos, the git and R package 
+    root coincide.
+
 # precommit v0.3.2.9000
 
 -   `use_ci()` is now documented to take `NA`, not `NULL` for argument
     `ci` (#431).
+-   `deps-in-desc`supports a `root` argument that  specifies the directory in 
+    the git repo that contains the R package.  Defaults to `.` since for most R 
+    package git repos, the git and R package root coincide.
 
 # precommit v0.3.2
 

@@ -4,7 +4,7 @@
 \alias{diff_requires_run_roxygenize}
 \title{Check if we should run roxygen.}
 \usage{
-diff_requires_run_roxygenize(root = here::here())
+diff_requires_run_roxygenize(root = ".")
 }
 \arguments{
 \item{root}{The root of project.}

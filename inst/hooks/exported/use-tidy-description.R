@@ -1,4 +1,24 @@
 #!/usr/bin/env Rscript
+
+"A hook to run usethis::use_tidy_description() to ensure dependencies are
+ordered alphabetically and fields are in standard order.
+
+Usage:
+  use-tidy-description [--root=<root_>] <files>...
+
+Options:
+  --root=<root_>  Path relative to the git root that contains the R package root [default: .].
+
+" -> doc
+
+
+arguments <- docopt::docopt(doc)
+setwd(arguments$root)
+
+if (!file.exists("DESCRIPTION")) {
+  rlang::abort("No `DESCRIPTION` found in repository.")
+}
+
 description <- desc::description$new()
 description_old <- description$clone(deep = TRUE)
 deps <- description$get_deps()

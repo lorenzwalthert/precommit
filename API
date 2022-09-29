@@ -3,7 +3,7 @@
 ## Exported functions
 
 autoupdate(root = here::here())
-diff_requires_run_roxygenize(root = here::here())
+diff_requires_run_roxygenize(root = ".")
 dirs_R.cache(hook_id)
 install_precommit(force = FALSE)
 may_require_permanent_cache(temp_cache_is_enough = FALSE)
