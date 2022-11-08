@@ -115,14 +115,27 @@
 
     
     
-<p>Below is a comprehensive list with all hooks from {precommit} as well as their arguments or flags, if they take any. With the standard config file that gets placed in your project with <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> all hooks should work out of the box, but you can further customize them as described below. Other repos also host hooks, many are listed <a href="https://pre-commit.com/hooks.html" class="external-link">here</a>.</p>
+<p>Below is a comprehensive list with all hooks from {precommit} as well
+as their arguments or flags, if they take any. With the standard config
+file that gets placed in your project with
+<code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> all hooks should work out of the
+box, but you can further customize them as described below. Other repos
+also host hooks, many are listed <a href="https://pre-commit.com/hooks.html" class="external-link">here</a>.</p>
 <div class="section level2">
 <h2 id="good-to-know">Good to know<a class="anchor" aria-label="anchor" href="#good-to-know"></a>
 </h2>
 <p><strong>File modification</strong></p>
-<p>Some hooks will fail without changing the files you want to commit, like the <code>lintr</code> hook - and you need to make manual changes for the hook to pass on the next attempt. Other hooks like the <code>roxygenize</code> hook write to files, and if that changes the file, the hook will fail, but this means for most hooks you won’t need to modify the file manually after the attempted commit, just stage the changes and try to commit again. Below, we indicate for every hook if it modifies files or not.</p>
+<p>Some hooks will fail without changing the files you want to commit,
+like the <code>lintr</code> hook - and you need to make manual changes
+for the hook to pass on the next attempt. Other hooks like the
+<code>roxygenize</code> hook write to files, and if that changes the
+file, the hook will fail, but this means for most hooks you won’t need
+to modify the file manually after the attempted commit, just stage the
+changes and try to commit again. Below, we indicate for every hook if it
+modifies files or not.</p>
 <p><strong>Arguments</strong></p>
-<p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks" class="external-link">pre-commit.com documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
+<p>Arguments for the hooks are specified as described in the <a href="https://pre-commit.com/#passing-arguments-to-hooks" class="external-link">pre-commit.com
+documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9003
@@ -130,7 +143,11 @@
     -   id: lintr
         args: [--warn-only, --key=value]</code></pre>
 <p><strong>Other hook settings</strong></p>
-<p>Apart from specifying the <code>args</code> key as described above, there are other hooks settings you can specify, e.g. file exclusion. If you don’t, they are inherited from the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks" class="external-link">pre-commit documentation</a>, for the available settings.</p>
+<p>Apart from specifying the <code>args</code> key as described above,
+there are other hooks settings you can specify, e.g. file exclusion. If
+you don’t, they are inherited from the default repository’s
+configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>). See the <a href="https://pre-commit.com/#pre-commit-configyaml---hooks" class="external-link">pre-commit
+documentation</a>, for the available settings.</p>
 </div>
 <div class="section level2">
 <h2 id="hooks">Hooks<a class="anchor" aria-label="anchor" href="#hooks"></a>
@@ -139,55 +156,84 @@
 <h3 id="style-files">
 <code>style-files</code><a class="anchor" aria-label="anchor" href="#style-files"></a>
 </h3>
-<p>A hook to style files with <a href="https://styler.r-lib.org" class="external-link">styler</a>. Only commit code corresponding to the tidyverse style guide. You can pass arguments to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a> using the <code>--key=value</code> syntax like this:</p>
+<p>A hook to style files with <a href="https://styler.r-lib.org" class="external-link">styler</a>. Only commit code
+corresponding to the tidyverse style guide. You can pass arguments to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a>
+using the <code>--key=value</code> syntax like this:</p>
 <pre><code>  id: style-files
   args: [--scope=spaces, --reindention=specify_reindention('#')]</code></pre>
-<p>In addition, the hook takes the following arguments that are not passed to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a>:</p>
+<p>In addition, the hook takes the following arguments that are not
+passed to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a>:</p>
 <ul>
-<li>Argument <code>style_pkg</code> and <code>style_fun</code> default to <code>styler</code> and <code>tidyverse_style</code>. If you want to use another style guide than the tidyverse style guide, you can specify it like this:</li>
+<li>Argument <code>style_pkg</code> and <code>style_fun</code> default
+to <code>styler</code> and <code>tidyverse_style</code>. If you want to
+use another style guide than the tidyverse style guide, you can specify
+it like this:</li>
 </ul>
 <!-- --><pre><code>  id: style-files
   args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]</code></pre>
 <ul>
-<li><p>The argument <code>--no-warn-cache</code> is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code>.</p></li>
-<li><p>Argument <code>cache-root</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.cache_root</code>. Default value: <code>styler-perm</code>. The argument determines the sub-directory under the {R.cache} cache directory that {styler} uses. If you want {styler} to auto-clean up caches older than 6 days, set this to <code>"styler"</code>. For more information, see <code><a href="https://styler.r-lib.org/reference/caching.html" class="external-link">help("caching", package = "styler")</a></code>.</p></li>
+<li><p>The argument <code>--no-warn-cache</code> is deprecated and will
+be removed in a future release. Please remove it from your
+<code>.pre-commit-config.yaml</code>.</p></li>
+<li><p>Argument <code>cache-root</code> is passed to
+<code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.cache_root</code>. Default
+value: <code>styler-perm</code>. The argument determines the
+sub-directory under the {R.cache} cache directory that {styler} uses. If
+you want {styler} to auto-clean up caches older than 6 days, set this to
+<code>"styler"</code>. For more information, see
+<code><a href="https://styler.r-lib.org/reference/caching.html" class="external-link">help("caching", package = "styler")</a></code>.</p></li>
 </ul>
 <!-- --><pre><code>  id: style-files
   args: [--cache-root=styler]</code></pre>
 <ul>
-<li>Argument <code>ignore-start</code> and <code>ignore-stop</code> is passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.ignore_start</code> and <code>styler.ignore_stop</code> respectively. Not set by default, so the {styler} defaults apply. This was introduced in {precommit} 0.2.2.9012. For example, if you want to restore old behavior of styler &lt; 1.6.2, where only the literals <code>styler: off</code> and <code>styler: on</code> were accepted, use this regex:</li>
+<li>Argument <code>ignore-start</code> and <code>ignore-stop</code> is
+passed to <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code> to set <code>styler.ignore_start</code>
+and <code>styler.ignore_stop</code> respectively. Not set by default, so
+the {styler} defaults apply. This was introduced in {precommit}
+0.2.2.9012. For example, if you want to restore old behavior of styler
+&lt; 1.6.2, where only the literals <code>styler: off</code> and
+<code>styler: on</code> were accepted, use this regex:</li>
 </ul>
 <!-- --><pre><code>  id: style-files
   args: [--ignore-start="^# styler: on$", --ignore-stop="^# styler: off$"]</code></pre>
-<p>This hook modifies files unless you specify <code>--dry=fail</code> (requires <code>{styler} &gt; 1.3.2</code>).</p>
+<p>This hook modifies files unless you specify <code>--dry=fail</code>
+(requires <code>{styler} &gt; 1.3.2</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="readme-rmd-rendered">
 <code>readme-rmd-rendered</code><a class="anchor" aria-label="anchor" href="#readme-rmd-rendered"></a>
 </h3>
-<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently than <code>README.md</code>, i.e. remind you to render the <code>.Rmd</code> to <code>.md</code> before committing.</p>
+<p>Make sure <code>README.Rmd</code> hasn’t been edited more recently
+than <code>README.md</code>, i.e. remind you to render the
+<code>.Rmd</code> to <code>.md</code> before committing.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div class="section level3">
 <h3 id="parsable-r">
 <code>parsable-R</code><a class="anchor" aria-label="anchor" href="#parsable-r"></a>
 </h3>
-<p>Checks if your <code>.R</code> and <code>.Rmd</code> files are “valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse()</a></code> on them (or their <code><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knitr::purl()</a></code>ed output for <code>.Rmd</code>) returns an error.</p>
+<p>Checks if your <code>.R</code> and <code>.Rmd</code> files are
+“valid” R code by checking if running <code><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse()</a></code> on them (or
+their <code><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knitr::purl()</a></code>ed output for <code>.Rmd</code>) returns
+an error.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div class="section level3">
 <h3 id="no-browser-statement">
 <code>no-browser-statement</code><a class="anchor" aria-label="anchor" href="#no-browser-statement"></a>
 </h3>
-<p>Guarantees you that you don’t accidentally commit code with a <code><a href="https://rdrr.io/r/base/browser.html" class="external-link">browser()</a></code> statement in it.</p>
+<p>Guarantees you that you don’t accidentally commit code with a
+<code><a href="https://rdrr.io/r/base/browser.html" class="external-link">browser()</a></code> statement in it.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div class="section level3">
 <h3 id="no-debug-statement">
 <code>no-debug-statement</code><a class="anchor" aria-label="anchor" href="#no-debug-statement"></a>
 </h3>
-<p>Guarantees you that you don’t accidentally commit code with a <code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debug()</a></code> or <code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debugonce()</a></code> statement in it.</p>
-<p>This hook does not modify files. This hook was added in version 0.2.2.9012.</p>
+<p>Guarantees you that you don’t accidentally commit code with a
+<code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debug()</a></code> or <code><a href="https://rdrr.io/r/base/debug.html" class="external-link">debugonce()</a></code> statement in it.</p>
+<p>This hook does not modify files. This hook was added in version
+0.2.2.9012.</p>
 </div>
 <div class="section level3">
 <h3 id="spell-check">
@@ -195,7 +241,16 @@
 </h3>
 <p>Checks spelling with <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <p><strong>Excluded files</strong></p>
-<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and <code>.pre-commit-config.yaml</code> is written to your repo (unless you specify <code>config_source</code> otherwise), we copy the expression in the <code>exclude:</code> key from spell check hook the default repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your config file, so you can easily add or remove some files. As of v0.3.2.9003, the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex syntax</a>:</p>
+<p>When you invoke <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> and
+<code>.pre-commit-config.yaml</code> is written to your repo (unless you
+specify <code>config_source</code> otherwise), we copy the expression in
+the <code>exclude:</code> key from spell check hook the default
+repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code>
+file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your
+config file, so you can easily add or remove some files. As of
+v0.3.2.9003, the following regex is used to exclude files following the
+<a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python
+regex syntax</a>:</p>
 <pre><code>(?x)^(
 .*\.[rR]|
 .*\.feather|
@@ -223,93 +278,152 @@
 data/.*|
 )$</code></pre>
 <p><strong>language</strong></p>
-<p>The <code>lang</code> arg will be passed to <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
+<p>The <code>lang</code> arg will be passed to
+<code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <pre><code>  id: spell-check
   args: [--lang=&lt;language&gt;]</code></pre>
-<p>This hook does not modify input files. It will add all words not found in the dictionary to <code>inst/WORDLIST</code>, assuming they were spelled correctly but were not in the dictionary. An example might be “RStudio”. The hook error message will contain all words written to <code>inst/WORDLIST</code>, so if there were really some typos, make sure to fix them and remove them from <code>inst/WORDLIST</code>. If there were not typos, or you fixed all, stage <code>inst/WORDLIST</code> and this time, the commit should pass.</p>
+<p>This hook does not modify input files. It will add all words not
+found in the dictionary to <code>inst/WORDLIST</code>, assuming they
+were spelled correctly but were not in the dictionary. An example might
+be “RStudio”. The hook error message will contain all words written to
+<code>inst/WORDLIST</code>, so if there were really some typos, make
+sure to fix them and remove them from <code>inst/WORDLIST</code>. If
+there were not typos, or you fixed all, stage <code>inst/WORDLIST</code>
+and this time, the commit should pass.</p>
 </div>
 <div class="section level3">
 <h3 id="roxygenize">
 <code>roxygenize</code><a class="anchor" aria-label="anchor" href="#roxygenize"></a>
 </h3>
-<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you commit your <code>.Rd</code> changes with the source changes. To take advantage of caching, you don’t need to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The argument <code>--no-warn-cache</code> is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code>.</p>
-<p>Because the hook will write the version of {roxygen2} to <code>DESCRIPTON</code>, you should either make sure the version you use when you call {roxygen2} interactively matches the one from in {precommit} or simply not run {roxygen2} manually.</p>
-<p>If you specify additional roclets through the <code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the dependencies explicitly such that <code>renv::install()</code> understands it, e.g.</p>
+<p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you
+commit your <code>.Rd</code> changes with the source changes. To take
+advantage of caching, you don’t need to run
+<code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The argument
+<code>--no-warn-cache</code> is deprecated and will be removed in a
+future release. Please remove it from your
+<code>.pre-commit-config.yaml</code>.</p>
+<p>Because the hook will write the version of {roxygen2} to
+<code>DESCRIPTON</code>, you should either make sure the version you use
+when you call {roxygen2} interactively matches the one from in
+{precommit} or simply not run {roxygen2} manually.</p>
+<p>If you specify additional roclets through the <code>Roxygen:</code>
+field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the
+dependencies explicitly such that <code>renv::install()</code>
+understands it, e.g.</p>
 <pre><code><span>  <span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span></span>
 <span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
 <span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span></code></pre>
-<p>This hook does not modify input files, but writes to <code>.Rd</code> files in <code>man/</code>, <code>NAMESPACE</code> and potentially others depending on which roxygen roclets you specified in <code>DESCRIPTION</code>.</p>
+<p>This hook does not modify input files, but writes to <code>.Rd</code>
+files in <code>man/</code>, <code>NAMESPACE</code> and potentially
+others depending on which roxygen roclets you specified in
+<code>DESCRIPTION</code>.</p>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: roxygenize
 args: [--root=&lt;R package root&gt;] </code></pre>
 <ul>
-<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+<li>Argument <code>root</code> specifies the directory in the git repo
+that contains the R package. Defaults to <code>.</code> since for most R
+package git repos, the git and R package root coincide. Added in version
+0.3.3.00000.</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="deps-in-desc">
 <code>deps-in-desc</code><a class="anchor" aria-label="anchor" href="#deps-in-desc"></a>
 </h3>
-<p>Checks if packages used with the <code>pkgname::fun()</code> syntax are listed in your DESCRIPTION file. Note that <code>README.Rmd</code> is never checked.</p>
+<p>Checks if packages used with the <code>pkgname::fun()</code> syntax
+are listed in your DESCRIPTION file. Note that <code>README.Rmd</code>
+is never checked.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li>Flag <code>allow_private_imports</code> lets the user specify that private imports into the package namespace are tolerable, e.g. <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will fail if such a call is found.</li>
+<li>Flag <code>allow_private_imports</code> lets the user specify that
+private imports into the package namespace are tolerable, e.g.
+<code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will
+fail if such a call is found.</li>
 </ul>
 <!-- --><pre><code>  id: deps-in-desc 
   args: [--allow_private_imports] </code></pre>
 <ul>
-<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.2.9000.</li>
+<li>Argument <code>root</code> specifies the directory in the git repo
+that contains the R package. Defaults to <code>.</code> since for most R
+package git repos, the git and R package root coincide. Added in version
+0.3.2.9000.</li>
 </ul>
 <!-- --><pre><code>id: deps-in-desc 
 args: [--root=&lt;R package root&gt;] </code></pre>
-<p>This hook does not modify the file <code>DESCRIPTION</code> because the user should decide for each package if it should go to <code>Imports:</code> or <code>Suggests:</code>, which can be done easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html" class="external-link">usethis::use_package()</a></code>.</p>
+<p>This hook does not modify the file <code>DESCRIPTION</code> because
+the user should decide for each package if it should go to
+<code>Imports:</code> or <code>Suggests:</code>, which can be done
+easily with <code><a href="https://usethis.r-lib.org/reference/use_package.html" class="external-link">usethis::use_package()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="use-tidy-description">
 <code>use-tidy-description</code><a class="anchor" aria-label="anchor" href="#use-tidy-description"></a>
 </h3>
-<p>A hook to run <code><a href="https://usethis.r-lib.org/reference/tidyverse.html" class="external-link">usethis::use_tidy_description()</a></code> to ensure dependencies are ordered alphabetically and fields are in standard order.</p>
+<p>A hook to run <code><a href="https://usethis.r-lib.org/reference/tidyverse.html" class="external-link">usethis::use_tidy_description()</a></code> to ensure
+dependencies are ordered alphabetically and fields are in standard
+order.</p>
 <p>This hook does modify the file <code>DESCRIPTION</code>.</p>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: use-tidy-description
 args: [--root=&lt;R package root&gt;] </code></pre>
 <ul>
-<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+<li>Argument <code>root</code> specifies the directory in the git repo
+that contains the R package. Defaults to <code>.</code> since for most R
+package git repos, the git and R package root coincide. Added in version
+0.3.3.00000.</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="lintr">
 <code>lintr</code><a class="anchor" aria-label="anchor" href="#lintr"></a>
 </h3>
-<p>A hook to run <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code> to check that R files are lint free. Argument <code>warning_only</code> changes the behavior of the pre-commit to be non-blocking. You should set this with the field <code>verbose: true</code>.</p>
+<p>A hook to run <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code> to check that R files are
+lint free. Argument <code>warning_only</code> changes the behavior of
+the pre-commit to be non-blocking. You should set this with the field
+<code>verbose: true</code>.</p>
 <pre><code>  id: lintr
   args: [--warn_only]
   verbose: true</code></pre>
-<p>When configured this way, lintr prints lint errors as they appear. Other arguments are not supported. Instead, <code>lintr</code> config should be specified in a <code>.lintr</code> config file in Debian Control Field Format as specified in the <a href="https://github.com/r-lib/lintr#project-configuration" class="external-link"><code>.lintr</code> documentation</a>.</p>
+<p>When configured this way, lintr prints lint errors as they appear.
+Other arguments are not supported. Instead, <code>lintr</code> config
+should be specified in a <code>.lintr</code> config file in Debian
+Control Field Format as specified in the <a href="https://github.com/r-lib/lintr#project-configuration" class="external-link"><code>.lintr</code>
+documentation</a>.</p>
 <p>This hook does not modify any file.</p>
 </div>
 <div class="section level3">
 <h3 id="codemeta-description-updated">
 <code>codemeta-description-updated</code><a class="anchor" aria-label="anchor" href="#codemeta-description-updated"></a>
 </h3>
-<p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently than <code>codemeta.json</code>,</p>
-<p>i.e. remind you to run <code>codemetar::write_codemeta()</code> in order to keep <code>codemeta.json</code> in sync with <code>DESCRIPTION</code>.</p>
+<p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently
+than <code>codemeta.json</code>,</p>
+<p>i.e. remind you to run <code>codemetar::write_codemeta()</code> in
+order to keep <code>codemeta.json</code> in sync with
+<code>DESCRIPTION</code>.</p>
 <p>This hook does not modify any file.</p>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: codemeta-description-updated
 args: [--root=&lt;R package root&gt;] </code></pre>
 <ul>
-<li>Argument <code>root</code> specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide. Added in version 0.3.3.00000.</li>
+<li>Argument <code>root</code> specifies the directory in the git repo
+that contains the R package. Defaults to <code>.</code> since for most R
+package git repos, the git and R package root coincide. Added in version
+0.3.3.00000.</li>
 </ul>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p>Note that there might be issues with arguments that contain special characters and you might have to quote them and the order of single, double and escaped quotes may not give identical results on one platform and may not be portable to all platforms either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Note that there might be issues with arguments that
+contain special characters and you might have to quote them and the
+order of single, double and escaped quotes may not give identical
+results on one platform and may not be portable to all platforms
+either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

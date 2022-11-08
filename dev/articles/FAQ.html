@@ -118,53 +118,105 @@
 <div class="section level2">
 <h2 id="its-broken--missing-packages-etc--how-do-i-fix-it">It’s broken. Missing packages etc. How do I fix it?<a class="anchor" aria-label="anchor" href="#its-broken--missing-packages-etc--how-do-i-fix-it"></a>
 </h2>
-<p>Update the hook revisions with <code>$ pre-commit autoupdate</code> or <code>&gt; precommit::autoupdate()</code>. If this does not help, please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/articles/precommit.html#update">update instructions</a> in the package documentation. If that does not work, run <code>$ pre-commit clean</code> to clean the pre-commit cache. Then, try again. Although you could also clear the {renv} cache, this should only be a strategy of last resort, as it may break other {renv} projects on your machine and you’d have to do some re-storing there.</p>
+<p>Update the hook revisions with <code>$ pre-commit autoupdate</code>
+or <code>&gt; precommit::autoupdate()</code>. If this does not help,
+please follow the <a href="https://lorenzwalthert.github.io/precommit/dev/articles/precommit.html#update">update
+instructions</a> in the package documentation. If that does not work,
+run <code>$ pre-commit clean</code> to clean the pre-commit cache. Then,
+try again. Although you could also clear the {renv} cache, this should
+only be a strategy of last resort, as it may break other {renv} projects
+on your machine and you’d have to do some re-storing there.</p>
 </div>
 <div class="section level2">
 <h2 id="how-does-it-work-whats-the-magic">How does it work? What’s the magic?<a class="anchor" aria-label="anchor" href="#how-does-it-work-whats-the-magic"></a>
 </h2>
-<p>No magic. Git <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" class="external-link">provides a mechanism for pre-commit hooks</a>. Since it’s cumbersome to copy bash scripts and keep them updated in some hidden <code>.git/</code> directory, people wrote frameworks to basically maintain these files. One of them is <a href="https://pre-commit.com" class="external-link">pre-commit.com</a>. So you call git to commit, git calls its internal hooks, these hooks (bash scripts in the simplest case) are provided by the pre-commit framework. And where does pre-commit get all it’s nice hooks from? From us.</p>
+<p>No magic. Git <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks" class="external-link">provides
+a mechanism for pre-commit hooks</a>. Since it’s cumbersome to copy bash
+scripts and keep them updated in some hidden <code>.git/</code>
+directory, people wrote frameworks to basically maintain these files.
+One of them is <a href="https://pre-commit.com" class="external-link">pre-commit.com</a>. So
+you call git to commit, git calls its internal hooks, these hooks (bash
+scripts in the simplest case) are provided by the pre-commit framework.
+And where does pre-commit get all it’s nice hooks from? From us.</p>
 </div>
 <div class="section level2">
-<h2 id="how-are-hooks-accessed-what-happens-if-theres-no-internet-connection">How are hooks accessed? What happens if there’s no internet connection?<a class="anchor" aria-label="anchor" href="#how-are-hooks-accessed-what-happens-if-theres-no-internet-connection"></a>
+<h2 id="how-are-hooks-accessed-what-happens-if-theres-no-internet-connection">How are hooks accessed? What happens if there’s no internet
+connection?<a class="anchor" aria-label="anchor" href="#how-are-hooks-accessed-what-happens-if-theres-no-internet-connection"></a>
 </h2>
-<p>Internet connection is required during installation (<code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>) and project initialization (<code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>) as well as when hooks are updated (<code><a href="../reference/autoupdate.html">precommit::autoupdate()</a></code>). Otherwise, no internet connection is required. During initialization, hooks from this repo will be placed in a virtual environment within the user cache and upon committing, they are called from a generic hook helper in <code>.git/hooks/</code>.</p>
+<p>Internet connection is required during installation
+(<code><a href="../reference/install_precommit.html">precommit::install_precommit()</a></code>) and project initialization
+(<code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>) as well as when hooks are
+updated (<code><a href="../reference/autoupdate.html">precommit::autoupdate()</a></code>). Otherwise, no internet
+connection is required. During initialization, hooks from this repo will
+be placed in a virtual environment within the user cache and upon
+committing, they are called from a generic hook helper in
+<code>.git/hooks/</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively">Why do some hooks not give me the same results as running the command interactively?<a class="anchor" aria-label="anchor" href="#why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively"></a>
+<h2 id="why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively">Why do some hooks not give me the same results as running the
+command interactively?<a class="anchor" aria-label="anchor" href="#why-do-some-hooks-not-give-me-the-same-results-as-running-the-command-interactively"></a>
 </h2>
-<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>, leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported language</a> in the pre-commit framework. The version of a package you use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for that reason be different from the one pre-commit uses. The point of using pre-commit is to take mental burden off your shoulders (and sometimes even caches results for speed), so there is no need to run functionality covered by the hooks manually anyways. If you need to know which package versions are used, look for the <code>renv.lock</code> file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git tag specified under <code>rev:</code> in your <code>.pre-commit-config.yaml</code>.</p>
+<p>Note that starting with <code>precommit &gt; 0.1.3</code>, hooks run
+in an isolated <a href="https://rstudio.github.io/renv/" class="external-link"><code>{renv}</code></a>,
+leveraging <a href="https://pre-commit.com/#r" class="external-link">R as a supported
+language</a> in the pre-commit framework. The version of a package you
+use interactively (e.g. <a href="https://roxygen2.r-lib.org/" class="external-link">roxygen2</a> to document) might for
+that reason be different from the one pre-commit uses. The point of
+using pre-commit is to take mental burden off your shoulders (and
+sometimes even caches results for speed), so there is no need to run
+functionality covered by the hooks manually anyways. If you need to know
+which package versions are used, look for the <code>renv.lock</code>
+file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a> at the git
+tag specified under <code>rev:</code> in your
+<code>.pre-commit-config.yaml</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="can-you-use-it-outside-rstudio">Can you use it outside RStudio?<a class="anchor" aria-label="anchor" href="#can-you-use-it-outside-rstudio"></a>
 </h2>
-<p>Yes, all but the <code><a href="../reference/open_config.html">open_config()</a></code> and <code><a href="../reference/open_config.html">open_wordlist()</a></code> to open files in RStudio.</p>
+<p>Yes, all but the <code><a href="../reference/open_config.html">open_config()</a></code> and
+<code><a href="../reference/open_config.html">open_wordlist()</a></code> to open files in RStudio.</p>
 </div>
 <div class="section level2">
-<h2 id="can-i-use-the-hooks-provided-in-this-package-without-installing-the-r-package">Can I use the hooks provided in this package without installing the R package?<a class="anchor" aria-label="anchor" href="#can-i-use-the-hooks-provided-in-this-package-without-installing-the-r-package"></a>
+<h2 id="can-i-use-the-hooks-provided-in-this-package-without-installing-the-r-package">Can I use the hooks provided in this package without installing the
+R package?<a class="anchor" aria-label="anchor" href="#can-i-use-the-hooks-provided-in-this-package-without-installing-the-r-package"></a>
 </h2>
-<p>Yes, you don’t need to manually install this package. Although technically speaking, this package will get installed into a virtual environment isolated from your global and project library.</p>
+<p>Yes, you don’t need to manually install this package. Although
+technically speaking, this package will get installed into a virtual
+environment isolated from your global and project library.</p>
 </div>
 <div class="section level2">
 <h2 id="how-can-i-make-sure-that-my-contributors-are-using-the-hooks">How can I make sure that my contributors are using the hooks?<a class="anchor" aria-label="anchor" href="#how-can-i-make-sure-that-my-contributors-are-using-the-hooks"></a>
 </h2>
-<p>They must follow the installation instructions in the README, i.e. run</p>
+<p>They must follow the installation instructions in the README,
+i.e. run</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"lorenzwalthert/precommit"</span><span class="op">)</span></span>
 <span><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/install_precommit.html">install_precommit</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">precommit</span><span class="fu">::</span><span class="fu"><a href="../reference/use_precommit.html">use_precommit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The last call can be omitted by users who have <a href="https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories" class="external-link">automatically enabled pre-commit hooks</a>.</p>
-<p>To enforce all hooks pass, you can follow the <a href="https://pre-commit.com/#usage-in-continuous-integration" class="external-link">advice on how to use pre-commit in a CI/CD setup</a>.</p>
+<p>The last call can be omitted by users who have <a href="https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories" class="external-link">automatically
+enabled pre-commit hooks</a>.</p>
+<p>To enforce all hooks pass, you can follow the <a href="https://pre-commit.com/#usage-in-continuous-integration" class="external-link">advice on
+how to use pre-commit in a CI/CD setup</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="should-i-list-precommit-as-a-dependency-of-my-package-in-description">Should I list <code>{precommit}</code> as a dependency of my package in DESCRIPTION?<a class="anchor" aria-label="anchor" href="#should-i-list-precommit-as-a-dependency-of-my-package-in-description"></a>
+<h2 id="should-i-list-precommit-as-a-dependency-of-my-package-in-description">Should I list <code>{precommit}</code> as a dependency of my package
+in DESCRIPTION?<a class="anchor" aria-label="anchor" href="#should-i-list-precommit-as-a-dependency-of-my-package-in-description"></a>
 </h2>
-<p>No, precommit is a dev dependency like <a href="https://devtools.r-lib.org/" class="external-link">devtools</a>, so it should not be listed in <code>DESCRIPTION</code>.</p>
+<p>No, precommit is a dev dependency like <a href="https://devtools.r-lib.org/" class="external-link">devtools</a>, so it
+should not be listed in <code>DESCRIPTION</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks">What if not all people who are committing to this repo want to use the hooks?<a class="anchor" aria-label="anchor" href="#what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks"></a>
+<h2 id="what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks">What if not all people who are committing to this repo want to use
+the hooks?<a class="anchor" aria-label="anchor" href="#what-if-not-all-people-who-are-committing-to-this-repo-want-to-use-the-hooks"></a>
 </h2>
-<p>This is not a problem, git will only run the hooks in a local repo after <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> has been run successfully from within this local repo on your machine. You can also uninstall anytime with <code><a href="../reference/uninstall_precommit.html">precommit::uninstall_precommit()</a></code>. Anyone who does not want to use the hooks simply should not run <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>. You can also temporarily disable hooks using the environment variable <code>SKIP</code> or the argument <code>--no-verify</code>, as described <a href="https://pre-commit.com/#temporarily-disabling-hooks" class="external-link">here</a>.</p>
+<p>This is not a problem, git will only run the hooks in a local repo
+after <code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code> has been run successfully
+from within this local repo on your machine. You can also uninstall
+anytime with <code><a href="../reference/uninstall_precommit.html">precommit::uninstall_precommit()</a></code>. Anyone who
+does not want to use the hooks simply should not run
+<code><a href="../reference/use_precommit.html">precommit::use_precommit()</a></code>. You can also temporarily
+disable hooks using the environment variable <code>SKIP</code> or the
+argument <code>--no-verify</code>, as described <a href="https://pre-commit.com/#temporarily-disabling-hooks" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="how-does-one-create-a-new-pre-commit-hook">How does one create a new pre-commit hook?<a class="anchor" aria-label="anchor" href="#how-does-one-create-a-new-pre-commit-hook"></a>

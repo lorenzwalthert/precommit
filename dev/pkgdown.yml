@@ -1,4 +1,4 @@
-pandoc: 2.14.2
+pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
@@ -9,7 +9,7 @@ articles:
   precommit: precommit.html
   testing: testing.html
   why-use-hooks: why-use-hooks.html
-last_built: 2022-10-04T07:16Z
+last_built: 2022-11-08T06:41Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit/reference
   article: https://lorenzwalthert.github.io/precommit/articles

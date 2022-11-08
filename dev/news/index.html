@@ -81,7 +81,8 @@
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.2.9001" id="precommit-v0329001-development-version">precommit v0.3.2.9001 (Development version)<a class="anchor" aria-label="anchor" href="#precommit-v0329001-development-version"></a></h2>
 <ul><li>
-<code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li></ul></div>
+<code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.2.9000" id="precommit-v0329000">precommit v0.3.2.9000<a class="anchor" aria-label="anchor" href="#precommit-v0329000"></a></h2>
 <ul><li>
@@ -142,7 +143,8 @@
 <h2 class="page-header" data-toc-text="0.2.2" id="precommit-v022">precommit v0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-v022"></a></h2>
 <p>This is a maintenance release on the request of CRAN (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>) and to improve experience with the <code>language: r</code> switch conducted in <code>v0.2.0</code>. In particular, note that projects using {renv} and RStudio are not very compatible with hook versions &gt; 0.1.3.9014 and <code><a href="../reference/autoupdate.html">autoupdate()</a></code> results in downgrading the hook versions (<a href="https://github.com/lorenzwalthert/precommit/issues/346" class="external-link">#346</a>).</p>
 <p><strong>API Changes</strong></p>
-<ul><li>The argument <code>--no-warn-cache</code> in the <code>style-files</code> and the <code>roxygenize</code> hook is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/340" class="external-link">#340</a>. <a href="https://github.com/lorenzwalthert/precommit/issues/341" class="external-link">#341</a>).</li></ul><p><strong>Other changes</strong></p>
+<ul><li>The argument <code>--no-warn-cache</code> in the <code>style-files</code> and the <code>roxygenize</code> hook is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/340" class="external-link">#340</a>. <a href="https://github.com/lorenzwalthert/precommit/issues/341" class="external-link">#341</a>).</li>
+</ul><p><strong>Other changes</strong></p>
 <ul><li>
 <code>style-files</code> hook fails more informatively if required package is not listed in <code>additional_dependencies:</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/333" class="external-link">#333</a>).</li>
 <li>configure all git operations to use LF (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>).</li>
@@ -237,18 +239,22 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.0.9048" id="precommit-v0009048">precommit v0.0.0.9048<a class="anchor" aria-label="anchor" href="#precommit-v0009048"></a></h2>
-<ul><li>Don’t allow legacy hooks by default, delete README hook from usethis informatively (<a href="https://github.com/lorenzwalthert/precommit/issues/167" class="external-link">#167</a>).</li></ul></div>
+<ul><li>Don’t allow legacy hooks by default, delete README hook from usethis informatively (<a href="https://github.com/lorenzwalthert/precommit/issues/167" class="external-link">#167</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.0.9046" id="precommit-v0009046">precommit v0.0.0.9046<a class="anchor" aria-label="anchor" href="#precommit-v0009046"></a></h2>
 <p><strong>Major Changes</strong></p>
 <ul><li>
-<code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new <code>install_hooks = TRUE</code> parameter. Now all hook environments defined in yaml config are by default installed in advance. (<a href="https://github.com/lorenzwalthert/precommit/issues/163" class="external-link">#163</a>)</li></ul></div>
+<code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new <code>install_hooks = TRUE</code> parameter. Now all hook environments defined in yaml config are by default installed in advance. (<a href="https://github.com/lorenzwalthert/precommit/issues/163" class="external-link">#163</a>)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.0.9044" id="precommit-v0009044">precommit v0.0.0.9044<a class="anchor" aria-label="anchor" href="#precommit-v0009044"></a></h2>
 <p><strong>Breaking Changes</strong></p>
 <ul><li>
-<code><a href="../reference/uninstall_precommit.html">uninstall_precommit()</a></code>’s <code>scope</code> argument value <code>"global"</code> was renamed to <code>"user"</code>.</li></ul><p><strong>Major Changes</strong></p>
-<ul><li>By default, the spell check hook now exposes a regex pattern in the default <code>.pre-commit-config-config.yaml</code> for the spell check hook for easy manipulation. Also, additional patterns were excluded such as <code>.sh</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/157" class="external-link">#157</a>).</li></ul><p><strong>Minor Changes</strong></p>
+<code><a href="../reference/uninstall_precommit.html">uninstall_precommit()</a></code>’s <code>scope</code> argument value <code>"global"</code> was renamed to <code>"user"</code>.</li>
+</ul><p><strong>Major Changes</strong></p>
+<ul><li>By default, the spell check hook now exposes a regex pattern in the default <code>.pre-commit-config-config.yaml</code> for the spell check hook for easy manipulation. Also, additional patterns were excluded such as <code>.sh</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/157" class="external-link">#157</a>).</li>
+</ul><p><strong>Minor Changes</strong></p>
 <ul><li>
 <code>DESCRIPTION</code> now links the pkgdown website in addition to the GitHub repo (<a href="https://github.com/lorenzwalthert/precommit/issues/155" class="external-link">#155</a>).</li>
 <li>
