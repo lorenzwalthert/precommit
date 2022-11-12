@@ -6,7 +6,7 @@ editor_options:
 
 # precommit v0.3.2.9003 (Development version)
 
--   new hook `pkgdown-check` to emulate a {pkgdown} build for reference and 
+-   new hook `pkgdown` to emulate a {pkgdown} build for reference and 
     articles (#393).
 -   `codemeta-description-updated`, `roxygenize`, and 
     `use-tidy-description` now all support a `root` argument that 

@@ -82,11 +82,11 @@ repos:
           (?x)^(
           tests/testthat/in/.*|
           inst/renv-update\.R|
-          inst/hooks/exported/pkgdown-check.R|
+          inst/hooks/exported/pkgdown.R|
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$
-#    -   id: pkgdown-check
+#    -   id: pkgdown
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks: 

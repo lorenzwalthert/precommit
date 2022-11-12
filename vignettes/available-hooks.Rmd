@@ -326,7 +326,7 @@ This hook does not modify any file.
     0.3.3.00000.
 
 
-## `pkgdown-check`
+## `pkgdown`
 
 Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the 
 correct entries for references and articles. 

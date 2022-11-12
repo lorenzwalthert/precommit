@@ -561,7 +561,7 @@ run_test("codemeta-description-update",
 ### pgkdown check                                                           ####
 
 # success index
-run_test("pkgdown-check",
+run_test("pkgdown",
   file_name = c(
     "man/autoudpate.Rd" = "autoupdate.Rd",
     "_pkgdown.yml" = "_pkgdown-index.yml",
@@ -571,7 +571,7 @@ run_test("pkgdown-check",
 )
 
 # failed index
-run_test("pkgdown-check",
+run_test("pkgdown",
   file_name = c(
     "man/flie-true.Rd" = "flie-true.Rd",
     "_pkgdown.yml" = "_pkgdown-index.yml",
@@ -582,7 +582,7 @@ run_test("pkgdown-check",
 )
 
 # failed articles
-run_test("pkgdown-check",
+run_test("pkgdown",
   file_name = c(
     "vignettes/pkgdown.Rmd" = "pkgdown.Rmd",
     "_pkgdown.yml" = "_pkgdown-articles.yml",
@@ -593,7 +593,7 @@ run_test("pkgdown-check",
 )
 
 # success index and article
-run_test("pkgdown-check",
+run_test("pkgdown",
   file_name = c(
     "man/autoudpate.Rd" = "autoupdate.Rd",
     "vignettes/pkgdown.Rmd" = "pkgdown.Rmd",
