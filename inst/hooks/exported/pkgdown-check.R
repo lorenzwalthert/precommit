@@ -1,10 +1,10 @@
 #!/usr/bin/env Rscript
 
 if (!require(pkgdown, quietly = TRUE)) {
-  stop("{pkgdown} could not be loaded.")
+  stop("{pkgdown} could not be loaded, please install it.")
 }
 if (!require(mockery, quietly = TRUE)) {
-  stop("{mockery} could not be loaded.")
+  stop("{mockery} could not be loaded, please install it.")
 }
 
 stub_render_page <- function(pkg, name, data, ...) {
@@ -13,6 +13,7 @@ stub_render_page <- function(pkg, name, data, ...) {
 stub(build_reference_index, "render_page", stub_render_page)
 stub(build_articles_index, "render_page", stub_render_page)
 config <- yaml::read_yaml(pkgdown:::pkgdown_config_path("."))
+
 tryCatch(
   {
     if ("reference" %in% names(config)) {
