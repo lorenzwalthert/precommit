@@ -5,11 +5,13 @@ editor_options:
 ---
 
 # precommit v0.3.2.9001 (Development version)
+
 -   `codemeta-description-updated`, `roxygenize`, and 
     `use-tidy-description` now all support a `root` argument that 
     specifies the directory in the git repo that contains the R package. 
     Defaults to `.` since for most R package git repos, the git and R package 
     root coincide.
+-   `style-files` now supports styling of R code in Quarto docs (#)
 
 # precommit v0.3.2.9000
 
