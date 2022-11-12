@@ -567,8 +567,7 @@ run_test("pkgdown-check",
     "_pkgdown.yml" = "_pkgdown-index.yml",
     "DESCRIPTION" = "DESCRIPTION"
   ),
-  suffix = "",
-  error_msg = NULL
+  suffix = "", std_err = NULL
 )
 
 # failed index
@@ -579,7 +578,7 @@ run_test("pkgdown-check",
     "DESCRIPTION" = "DESCRIPTION"
   ),
   suffix = "",
-  error_msg = "topic must be a known"
+  std_err = "topic must be a known"
 )
 
 # failed articles
@@ -590,7 +589,7 @@ run_test("pkgdown-check",
     "DESCRIPTION" = "DESCRIPTION"
   ),
   suffix = "",
-  error_msg = "why-use-hooks"
+  std_err = "why-use-hooks"
 )
 
 # success index and article
@@ -602,7 +601,7 @@ run_test("pkgdown-check",
     "DESCRIPTION" = "DESCRIPTION"
   ),
   suffix = "",
-  error_msg = NULL
+  std_err = NULL
 )
 
 

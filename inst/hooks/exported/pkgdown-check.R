@@ -23,6 +23,6 @@ tryCatch(
       build_articles_index()
     }
   },
-  error = function(e) e,
+  error = function(e) stop(e),
   warning = function(w) stop(w)
 )
