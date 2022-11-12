@@ -74,6 +74,7 @@ jobs:
           mkdir vignettes
           cp tests/testthat/in/pkgdown.Rmd vignettes/
           rm -rf man/
+          mkdir -p man
           cp tests/testthat/in/autoupdate.Rd man/
           pre-commit run --files _pkgdown.yml
           pre-commit run --files man/autoupdate.Rd
