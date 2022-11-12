@@ -2,7 +2,7 @@
 local({
 
   # the requested version of renv
-  version <- "0.15.2"
+  version <- "0.12.5"
 
   # the project directory
   project <- getwd()
@@ -94,8 +94,11 @@ local({
       return(repos)
   
     # if we're testing, re-use the test repositories
-    if (renv_bootstrap_tests_running())
-      return(getOption("renv.tests.repos"))
+    if (renv_bootstrap_tests_running()) {
+      repos <- getOption("renv.tests.repos")
+      if (!is.null(repos))
+        return(repos)
+    }
   
     # retrieve current repos
     repos <- getOption("repos")
@@ -185,43 +188,80 @@ local({
     if (fixup)
       mode <- "w+b"
   
-    utils::download.file(
+    args <- list(
       url      = url,
       destfile = destfile,
       mode     = mode,
       quiet    = TRUE
     )
   
+    if ("headers" %in% names(formals(utils::download.file)))
+      args$headers <- renv_bootstrap_download_custom_headers(url)
+  
+    do.call(utils::download.file, args)
+  
+  }
+  
+  renv_bootstrap_download_custom_headers <- function(url) {
+  
+    headers <- getOption("renv.download.headers")
+    if (is.null(headers))
+      return(character())
+  
+    if (!is.function(headers))
+      stopf("'renv.download.headers' is not a function")
+  
+    headers <- headers(url)
+    if (length(headers) == 0L)
+      return(character())
+  
+    if (is.list(headers))
+      headers <- unlist(headers, recursive = FALSE, use.names = TRUE)
+  
+    ok <-
+      is.character(headers) &&
+      is.character(names(headers)) &&
+      all(nzchar(names(headers)))
+  
+    if (!ok)
+      stop("invocation of 'renv.download.headers' did not return a named character vector")
+  
+    headers
+  
   }
   
   renv_bootstrap_download_cran_latest <- function(version) {
   
     spec <- renv_bootstrap_download_cran_latest_find(version)
-  
-    message("* Downloading renv ", version, " ... ", appendLF = FALSE)
-  
     type  <- spec$type
     repos <- spec$repos
   
-    info <- tryCatch(
-      utils::download.packages(
-        pkgs    = "renv",
-        destdir = tempdir(),
-        repos   = repos,
-        type    = type,
-        quiet   = TRUE
-      ),
+    message("* Downloading renv ", version, " ... ", appendLF = FALSE)
+  
+    baseurl <- utils::contrib.url(repos = repos, type = type)
+    ext <- if (identical(type, "source"))
+      ".tar.gz"
+    else if (Sys.info()[["sysname"]] == "Windows")
+      ".zip"
+    else
+      ".tgz"
+    name <- sprintf("renv_%s%s", version, ext)
+    url <- paste(baseurl, name, sep = "/")
+  
+    destfile <- file.path(tempdir(), name)
+    status <- tryCatch(
+      renv_bootstrap_download_impl(url, destfile),
       condition = identity
     )
   
-    if (inherits(info, "condition")) {
+    if (inherits(status, "condition")) {
       message("FAILED")
       return(FALSE)
     }
   
     # report success and return
     message("OK (downloaded ", type, ")")
-    info[1, 2]
+    destfile
   
   }
   
@@ -622,8 +662,8 @@ local({
     if (version == loadedversion)
       return(TRUE)
   
-    # assume four-component versions are from GitHub; three-component
-    # versions are from CRAN
+    # assume four-component versions are from GitHub;
+    # three-component versions are from CRAN
     components <- strsplit(loadedversion, "[.-]")[[1]]
     remote <- if (length(components) == 4L)
       paste("rstudio/renv", loadedversion, sep = "@")
@@ -678,7 +718,7 @@ local({
       return(profile)
   
     # check for a profile file (nothing to do if it doesn't exist)
-    path <- renv_bootstrap_paths_renv("profile", profile = FALSE)
+    path <- renv_bootstrap_paths_renv("profile", profile = FALSE, project = project)
     if (!file.exists(path))
       return(NULL)
   
@@ -805,9 +845,41 @@ local({
   
   renv_json_read <- function(file = NULL, text = NULL) {
   
+    jlerr <- NULL
+  
+    # if jsonlite is loaded, use that instead
+    if ("jsonlite" %in% loadedNamespaces()) {
+  
+      json <- catch(renv_json_read_jsonlite(file, text))
+      if (!inherits(json, "error"))
+        return(json)
+  
+      jlerr <- json
+  
+    }
+  
+    # otherwise, fall back to the default JSON reader
+    json <- catch(renv_json_read_default(file, text))
+    if (!inherits(json, "error"))
+      return(json)
+  
+    # report an error
+    if (!is.null(jlerr))
+      stop(jlerr)
+    else
+      stop(json)
+  
+  }
+  
+  renv_json_read_jsonlite <- function(file = NULL, text = NULL) {
     text <- paste(text %||% read(file), collapse = "\n")
+    jsonlite::fromJSON(txt = text, simplifyVector = FALSE)
+  }
+  
+  renv_json_read_default <- function(file = NULL, text = NULL) {
   
     # find strings in the JSON
+    text <- paste(text %||% read(file), collapse = "\n")
     pattern <- '["](?:(?:\\\\.)|(?:[^"\\\\]))*?["]'
     locs <- gregexpr(pattern, text, perl = TRUE)[[1]]
   
@@ -838,8 +910,9 @@ local({
   
     # transform the JSON into something the R parser understands
     transformed <- replaced
-    transformed <- gsub("[[{]", "list(", transformed)
-    transformed <- gsub("[]}]", ")", transformed)
+    transformed <- gsub("{}", "`names<-`(list(), character())", transformed, fixed = TRUE)
+    transformed <- gsub("[[{]", "list(", transformed, perl = TRUE)
+    transformed <- gsub("[]}]", ")", transformed, perl = TRUE)
     transformed <- gsub(":", "=", transformed, fixed = TRUE)
     text <- paste(transformed, collapse = "\n")
   

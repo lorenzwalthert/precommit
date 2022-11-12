@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.0.5",
+    "Version": "4.2.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -351,6 +351,11 @@
       "Repository": "CRAN",
       "Hash": "227045be9aee47e6dda9bb38ac870d67",
       "Requirements": []
+    },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.12.5",
+      "Source": "Repository"
     },
     "rex": {
       "Package": "rex",
