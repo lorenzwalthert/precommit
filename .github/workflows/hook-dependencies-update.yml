@@ -53,9 +53,8 @@ jobs:
             deps <- desc$get_deps()
             dont <- c(
               "yaml", "usethis", "withr", "rstudioapi", "precommit",
-              "pkgdown",
-              "httr" # lintr -> httr  -> curl -> libcurl, but seems to give no erorr on
-              # loading lintr, plus https://github.com/jimhester/lintr/issues/861
+              "pkgdown", "mockery",
+              "httr"
             )
             out <- c(out, "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "git2r", "desc", "mockery")
             out <- setdiff(c(unique(c(out, deps[deps$type == "Imports", ]$package))), dont)
