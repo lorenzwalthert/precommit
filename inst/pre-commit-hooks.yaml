@@ -18,7 +18,7 @@
     description: style files with styler
     entry: Rscript inst/hooks/exported/style-files.R
     language: r
-    files: '(\.[rR]profile|\.R|\.Rmd|\.Rnw|\.r|\.rmd|\.rnw)$'
+    files: '(\.[rR]profile|\.[rR]|\.[rR]md|\.[rR]nw|\.[qQ]md)$'
     exclude: 'renv/activate\.R'
     minimum_pre_commit_version: "2.13.0"
 -   id: no-browser-statement
