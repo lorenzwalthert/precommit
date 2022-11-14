@@ -292,7 +292,7 @@ local_test_setup <- function(git = TRUE,
 #' @param n The number of times we should try
 #' @keywords internal
 generate_uninstalled_pkg_name <- function(n = 10) {
-  additional_pkg <- paste0("package", digest::digest(Sys.time()))
+  additional_pkg <- paste0("package", rlang::hash(Sys.time()))
   if (rlang::is_installed(additional_pkg)) {
     if (n > 0) {
       generate_uninstalled_pkg_name(n - 1)

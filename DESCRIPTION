@@ -25,7 +25,6 @@ Imports:
     yaml
 Suggests: 
     desc,
-    digest,
     docopt (>= 0.7.1),
     git2r,
     glue,
