@@ -331,10 +331,12 @@ This hook does not modify any file.
 Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the 
 correct entries for references and articles. 
 This hook skips the time-consuming parts of building the index and reference and
-only performs the validation.
+only performs the validation. Hence we don't rely on the extensive dependency 
+graph of {pkgdown} being installed, including packages with heavy build-time 
+dependencies and system libraries.
 
 For this check, we rely on the the global R package library and require all 
-development dependencies of the package to be installed, as well as {pkgdown} 
-and {mockery}. 
+development dependencies of the package you want to run this hook for to be 
+installed, as well as {pkgdown} (without its dependencies) and {mockery}. 
 
 This hook does not modify files. Added in version 0.3.2.9003.
