@@ -11,6 +11,8 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: r-lib/actions/setup-pandoc@v2
+      
       - uses: r-lib/actions/setup-r@v2
       
       - uses: actions/checkout@v2
@@ -69,6 +71,15 @@ jobs:
           pre-commit run --files DESCRIPTION 
           git add README*
           pre-commit run --files README.Rmd
+          cp tests/testthat/in/_pkgdown-index-articles.yml _pkgdown.yml
+          rm -rf vignettes
+          mkdir vignettes
+          cp tests/testthat/in/pkgdown.Rmd vignettes/
+          rm -rf man/
+          mkdir -p man
+          cp tests/testthat/in/autoupdate.Rd man/
+          pre-commit run --files _pkgdown.yml
+          pre-commit run --files man/autoupdate.Rd
           git reset HEAD --hard # restore initial state
         env:
           SKIP: consistent-release-tag

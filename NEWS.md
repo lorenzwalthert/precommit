@@ -4,8 +4,10 @@ editor_options:
     wrap: 72
 ---
 
-# precommit v0.3.2.9001 (Development version)
+# precommit v0.3.2.9003 (Development version)
 
+-   new hook `pkgdown` to emulate a {pkgdown} build for reference and 
+    articles (#393).
 -   `codemeta-description-updated`, `roxygenize`, and 
     `use-tidy-description` now all support a `root` argument that 
     specifies the directory in the git repo that contains the R package. 

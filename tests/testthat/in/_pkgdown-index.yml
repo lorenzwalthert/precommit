@@ -1,0 +1,6 @@
+reference:
+- title: "Workflow"
+  desc: >
+    Edit the pre-commit configuration
+- contents: 
+  - autoupdate

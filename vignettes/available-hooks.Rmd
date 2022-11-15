@@ -223,7 +223,6 @@ This hook does not modify input files, but writes to `.Rd` files in
 `man/`, `NAMESPACE` and potentially others depending on which roxygen
 roclets you specified in `DESCRIPTION`.
 
-
 **Arguments**
 
 <!-- -->
@@ -231,13 +230,10 @@ roclets you specified in `DESCRIPTION`.
     id: roxygenize
     args: [--root=<R package root>] 
 
-
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
     repos, the git and R package root coincide. Added in version
     0.3.3.00000.
-
-
 
 ## `deps-in-desc`
 
@@ -284,12 +280,11 @@ This hook does modify the file `DESCRIPTION`.
     id: use-tidy-description
     args: [--root=<R package root>] 
 
-
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
     repos, the git and R package root coincide. Added in version
     0.3.3.00000.
-    
+
 ## `lintr`
 
 A hook to run `lintr::lint()` to check that R files are lint free.
@@ -325,8 +320,23 @@ This hook does not modify any file.
     id: codemeta-description-updated
     args: [--root=<R package root>] 
 
-
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
     repos, the git and R package root coincide. Added in version
     0.3.3.00000.
+
+
+## `pkgdown`
+
+Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the 
+correct entries for references and articles. 
+This hook skips the time-consuming parts of building the index and reference and
+only performs the validation. Hence we don't rely on the extensive dependency 
+graph of {pkgdown} being installed, including packages with heavy build-time 
+dependencies and system libraries.
+
+For this check, we rely on the the global R package library and require all 
+development dependencies of the package you want to run this hook for to be 
+installed, as well as {pkgdown} (without its dependencies) and {mockery}. 
+
+This hook does not modify files. Added in version 0.3.2.9003.
