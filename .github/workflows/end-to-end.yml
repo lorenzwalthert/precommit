@@ -47,9 +47,6 @@ jobs:
           remotes::install_cran('yaml')
         shell: Rscript {0}
 
-      - name: Install package
-        run: R CMD INSTALL .
-      
       - name: Prepare pre-commit
         run: |
           config_name_test <- "pre-commit-config.yaml"
