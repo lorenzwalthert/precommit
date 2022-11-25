@@ -58,7 +58,7 @@ repos:
 -   repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
     hooks:
-    # Only reuiqred when https://pre-commit.ci is used for config validation
+    # Only required when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
 -   repo: local
     hooks:
