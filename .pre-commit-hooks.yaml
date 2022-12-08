@@ -113,3 +113,10 @@
     language: script
     minimum_pre_commit_version: "2.13.0"
     files: '^man/|_pkgdown\.yml'
+-   id: cff-description-updated
+    name: cff-description-updated
+    description: make sure `CITATION.cff` is in sync with `DESCRIPTION`. It should be run after use-tidy-description
+    entry: Rscript inst/hooks/exported/cff-description-updated.R
+    language: r
+    files: '^DESCRIPTION$'
+    minimum_pre_commit_version: "2.13.0"
