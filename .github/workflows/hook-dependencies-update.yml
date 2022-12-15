@@ -11,7 +11,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       RSPM: "https://packagemanager.rstudio.com/all/__linux__/focal/latest"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-r@v2
       
