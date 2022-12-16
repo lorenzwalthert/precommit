@@ -86,7 +86,7 @@ repos:
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$
-#    -   id: pkgdown
+    -   id: pkgdown
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks: 
@@ -161,5 +161,5 @@ repos:
 default_stages: ["commit"]
 
 ci:
-    skip: [consistent-release-tag, spell-check-ordered-exclude]
+    skip: [consistent-release-tag, spell-check-ordered-exclude, pkgdown]
     autoupdate_schedule: monthly
