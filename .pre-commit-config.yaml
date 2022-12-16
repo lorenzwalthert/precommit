@@ -104,10 +104,11 @@ repos:
     rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
     hooks: 
     -   id: tidy-gitignore
--   repo: macisamuele/language-formatters-pre-commit-hooks
-    rev: 69e3714950b586b9d3f47d48ca92f281706bea85
+-   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.5.0
     hooks:
     -   id: pretty-format-yaml
+        args: [--autofix, --indent, '2']
 -   repo: local
     hooks:
     -   id: consistent-release-tag
