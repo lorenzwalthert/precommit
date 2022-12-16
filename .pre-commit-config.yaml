@@ -105,6 +105,7 @@ repos:
     hooks: 
     -   id: tidy-gitignore
 -   repo: macisamuele/language-formatters-pre-commit-hooks
+    rev: 69e3714950b586b9d3f47d48ca92f281706bea85
     hooks:
     -   id: pretty-format-yaml
 -   repo: local
