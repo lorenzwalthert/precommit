@@ -340,7 +340,7 @@ This hook does not modify any file.
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
-    repos, the git and R package root coincide.
+    repos, the git and R package root coincide. Added in version 0.3.2.9004.
 
 ## `pkgdown`
 
