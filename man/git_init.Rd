@@ -7,7 +7,7 @@
 git_init(path = ".")
 }
 \arguments{
-\item{path}{A path to where to init a git repository}
+\item{path}{The root of the repo.}
 }
 \description{
 In particular, to avoid CRAN errors

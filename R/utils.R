@@ -76,7 +76,7 @@ dirs_R.cache <- function(hook_id) {
 #'
 #' In particular, to avoid CRAN errors
 #' [lorenzwalthert/precommit#320](https://github.com/lorenzwalthert/precommit/issues/320).
-#' @inheritParams git2r::init
+#' @param path The root of the repo.
 #' @keywords internal
 git_init <- function(path = ".") {
   git2r::init(path = path)
