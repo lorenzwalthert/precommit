@@ -104,6 +104,9 @@ repos:
     rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
     hooks: 
     -   id: tidy-gitignore
+-   repo: macisamuele/language-formatters-pre-commit-hooks
+    hooks:
+    -   id: pretty-format-yaml
 -   repo: local
     hooks:
     -   id: consistent-release-tag
