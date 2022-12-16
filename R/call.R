@@ -77,7 +77,11 @@ call_precommit <- function(..., wait = TRUE) {
   }
 }
 
+#' Communicate a captured call
+#'
+#' Communicates a captured call.
 #' @param x The output of [call_and_capture()].
+#' @keywords internal
 communicate_captured_call <- function(x, preamble = "") {
   if (x$exit_status != 0) {
     trans <- rlang::abort
