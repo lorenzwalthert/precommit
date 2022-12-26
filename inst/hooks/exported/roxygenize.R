@@ -42,7 +42,7 @@ rd_files_before_roxygen <- list.files("man", pattern = "\\.Rd$")
 
 if (!is.null(cache)) {
   candidates <- intersect(
-    list.files(c("R", "man"), full.names = TRUE),
+    normalizePath(list.files(c("R", "man"), full.names = TRUE)),
     arguments$files
   )
   all_files <- file.info(candidates)
