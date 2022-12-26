@@ -4,7 +4,18 @@ editor_options:
     wrap: 72
 ---
 
-# precommit v0.3.2.9003 (Development version)
+
+# precommit v0.3.2.9007 (2022-12-26)
+
+- roxygenize cache invalidation is functional again (#464).
+- ensure local and remote pre-commit execution are the same for this repo 
+  (#463).
+- use new pkgdown hook in this repo (#460).
+- Use latest version of checkout action (#458).
+- improve spelling (#453).
+
+
+# precommit v0.3.2.9003 (2022-12-16)
 
 -   new hook `pkgdown` to emulate a {pkgdown} build for reference and 
     articles (#393).
@@ -12,9 +23,8 @@ editor_options:
     `use-tidy-description` now all support a `root` argument that 
     specifies the directory in the git repo that contains the R package. 
     Defaults to `.` since for most R package git repos, the git and R package 
-    root coincide.
--   `style-files` now supports styling of R code in Quarto docs (#)
-
+    root coincide (#432, #438).
+-   `style-files` now supports styling of R code in Quarto docs (#449).
 # precommit v0.3.2.9000
 
 -   `use_ci()` is now documented to take `NA`, not `NULL` for argument
