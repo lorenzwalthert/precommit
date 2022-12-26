@@ -79,19 +79,20 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9003" id="precommit-v0329003-development-version">precommit v0.3.2.9003 (Development version)<a class="anchor" aria-label="anchor" href="#precommit-v0329003-development-version"></a></h2>
-<ul><li>new hook <code>pkgdown</code> to emulate a {pkgdown} build for reference and articles (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</li>
-<li>
-<code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li>
-<li>
-<code>style-files</code> now supports styling of R code in Quarto docs (#)</li>
+<h2 class="page-header" data-toc-text="0.3.2.9007" id="precommit-v0329007-2022-12-26">precommit v0.3.2.9007 (2022-12-26)<a class="anchor" aria-label="anchor" href="#precommit-v0329007-2022-12-26"></a></h2>
+<ul><li>roxygenize cache invalidation is functional again (<a href="https://github.com/lorenzwalthert/precommit/issues/464" class="external-link">#464</a>).</li>
+<li>ensure local and remote pre-commit execution are the same for this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/463" class="external-link">#463</a>).</li>
+<li>use new pkgdown hook in this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/460" class="external-link">#460</a>).</li>
+<li>Use latest version of checkout action (<a href="https://github.com/lorenzwalthert/precommit/issues/458" class="external-link">#458</a>).</li>
+<li>improve spelling (<a href="https://github.com/lorenzwalthert/precommit/issues/453" class="external-link">#453</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9000" id="precommit-v0329000">precommit v0.3.2.9000<a class="anchor" aria-label="anchor" href="#precommit-v0329000"></a></h2>
-<ul><li>
-<code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</li>
-<li>
-<code>deps-in-desc</code>supports a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li>
+<h2 class="page-header" data-toc-text="0.3.2.9003" id="precommit-v0329003-2022-12-16">precommit v0.3.2.9003 (2022-12-16)<a class="anchor" aria-label="anchor" href="#precommit-v0329003-2022-12-16"></a></h2>
+<ul><li><p>new hook <code>pkgdown</code> to emulate a {pkgdown} build for reference and articles (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</p></li>
+<li><p><code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide (<a href="https://github.com/lorenzwalthert/precommit/issues/432" class="external-link">#432</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/438" class="external-link">#438</a>).</p></li>
+<li><p><code>style-files</code> now supports styling of R code in Quarto docs (<a href="https://github.com/lorenzwalthert/precommit/issues/449" class="external-link">#449</a>). # precommit v0.3.2.9000</p></li>
+<li><p><code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</p></li>
+<li><p><code>deps-in-desc</code>supports a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.2" id="precommit-v032">precommit v0.3.2<small>2022-07-01</small><a class="anchor" aria-label="anchor" href="#precommit-v032"></a></h2>
