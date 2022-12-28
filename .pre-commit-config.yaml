@@ -168,6 +168,6 @@ ci:
     - consistent-release-tag
     - hooks-config-to-inst
     - spell-check-exclude-identical
-    - forbid-to-commit
+    # - forbid-to-commit
     - spell-check-ordered-exclude
     autoupdate_schedule: monthly
