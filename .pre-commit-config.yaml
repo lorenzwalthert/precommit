@@ -161,5 +161,8 @@ repos:
 default_stages: ["commit"]
 
 ci:
-    skip: [consistent-release-tag, spell-check-ordered-exclude, pkgdown]
+    skip:
+    - pkgdown
+    - consistent-release-tag
+    - spell-check-ordered-exclude
     autoupdate_schedule: monthly
