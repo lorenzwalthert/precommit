@@ -169,5 +169,5 @@ ci:
     - hooks-config-to-inst
     - spell-check-exclude-identical
     # - forbid-to-commit
-    - spell-check-ordered-exclude
+    # - spell-check-ordered-exclude
     autoupdate_schedule: monthly
