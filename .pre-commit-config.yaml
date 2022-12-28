@@ -157,12 +157,17 @@ repos:
         -    yaml
         -    purrr
         -    rlang
-
+        
 default_stages: ["commit"]
 
 ci:
     skip:
+    # remote
     - pkgdown
+    # local
     - consistent-release-tag
+    - hooks-config-to-inst
+    - spell-check-exclude-identical
+    - forbid-to-commit
     - spell-check-ordered-exclude
     autoupdate_schedule: monthly
