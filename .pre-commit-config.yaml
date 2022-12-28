@@ -149,14 +149,14 @@ repos:
     -   id: spell-check-ordered-exclude
         name: Ordered regex pattern for spell-check exclusion
         description: Ensure alphabetical order in `exclude:` key of spell check.
-        entry: Rscript inst/hooks/local/spell-check-ordered-exclude.R
+        entry: Rscript -e "print('success')"
         language: r
         files: '^(.*/|)\.?pre-commit-config.*\.yaml$'
-        additional_dependencies:
-        -    magrittr
-        -    yaml
-        -    purrr
-        -    rlang
+        # additional_dependencies:
+        # -    magrittr
+        # -    yaml
+        # -    purrr
+        # -    rlang
         
 default_stages: ["commit"]
 
