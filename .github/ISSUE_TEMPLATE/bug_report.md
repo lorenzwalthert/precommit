@@ -30,3 +30,4 @@ A clear and concise description of what you expected to happen.
 
 - My operating system is: 
 - [ ] My project uses {renv}.
+- [ ] the otuput of `packageVersion('renv')`
