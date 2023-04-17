@@ -81,9 +81,11 @@ repos:
     -   id: deps-in-desc
         exclude: > 
           (?x)^(
+          inst/hooks/exported/pkgdown.R|
           tests/testthat/in/.*|
           inst/renv-update\.R|
-          inst/hooks/exported/pkgdown.R|
+          inst/update-dependency-graph-existing-packages\.R|
+          inst/update-existing-hook-dependencies\.R|
           renv/activate.R|
           vignettes/FAQ\.Rmd|
           )$
