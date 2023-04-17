@@ -13,6 +13,8 @@
 ^inst/WORDLIST$
 ^inst/hooks/local$
 ^inst/renv-update\.R$
+^inst/update-dependency-graph-existing-packages\.R$
+^inst/update-existing-hook-dependencies\.R$
 ^pkgdown$
 ^renv$
 ^renv\.lock$
