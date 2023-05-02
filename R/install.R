@@ -62,7 +62,7 @@ install_impl <- function() {
 
   stop(
     "For debugging: these are files next to python executable ",
-    list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", pattern = 'pre|bin|Script', include.dirs = TRUE)
+    list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", pattern = 'pre-commit.exe', recursive = TRUE)
   )
 }
 
