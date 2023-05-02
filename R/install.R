@@ -62,7 +62,10 @@ install_impl <- function() {
 
   stop(
     "For debugging: these are files next to python executable ",
-    call_and_capture("conda", c("info", "--base"))
+    paste0(
+      jsonlite::fromJSON(call_and_capture("conda", c("env", "list", "--json"))$stdout)$envs,
+      collapse = ", "
+    )
   )
 }
 
