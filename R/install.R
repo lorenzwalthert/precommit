@@ -59,11 +59,24 @@ install_impl <- function() {
   }
   reticulate::conda_install("r-precommit", packages = "pre-commit")
   # C:\Users\runneradmin\AppData\Local\r-miniconda\envs\r-precommit/python.exe
-
-  stop(
-    "For debugging: these are files next to python executable ",
-    list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", pattern = 'pre-commit.exe', recursive = TRUE)
-  )
+  # C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit\\Scripts\\pre-commit.exe
+  # stop(
+  #   "For debugging: these are files next to python executable ",
+  #   list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", pattern = 'pre-commit', recursive = TRUE)
+  # )
+  if (path_derive_precommit_exec_conda() == "") {
+    base_dir <- grep("r-precommit", gsub("r-precommit.*", "r-precommit", reticulate::conda_list()$python, ), value = TRUE)[1]
+    rlang::abort(c(
+      paste0(
+        "Please open an issue on https://github.com/lorenzwalthert/precommit and ",
+        "report the below:\nFailed to install pre-commit in a location known to R ",
+        "precommit. Here are candidates from the conda root (",
+        base_dir,
+        "):"
+      ),
+      list.files(base_dir, pattern = "pre-commit", recursive = TRUE)
+    ))
+  }
 }
 
 #' Updates pre-commit on your system with conda
