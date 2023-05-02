@@ -62,7 +62,7 @@ install_impl <- function() {
 
   stop(
     "For debugging: these are files next to python executable ",
-    call_and_capture("conda", c("info", "--base"))$stdout
+    call_and_capture("conda", c("info", "--base"))
   )
 }
 
