@@ -60,7 +60,10 @@ install_impl <- function() {
   reticulate::conda_install("r-precommit", packages = "pre-commit")
   # C:\Users\runneradmin\AppData\Local\r-miniconda\envs\r-precommit/python.exe
 
-  stop("For debugging: these are files next to python executable ", list.files(dirname(reticulate::conda_python("r-precommit")), pattern = "commit"))
+  stop(
+    "For debugging: these are files next to python executable ",
+    call_and_capture("conda", c("info", "--base"))$stdout
+  )
 }
 
 #' Updates pre-commit on your system with conda
