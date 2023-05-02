@@ -62,10 +62,7 @@ install_impl <- function() {
 
   stop(
     "For debugging: these are files next to python executable ",
-    paste0(
-      jsonlite::fromJSON(call_and_capture("conda", c("env", "list", "--json"))$stdout)$envs,
-      collapse = ", "
-    )
+    list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", include.dirs = TRUE)
   )
 }
 
