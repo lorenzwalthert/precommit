@@ -207,6 +207,7 @@ path_derive_precommit_exec_conda_impl <- function(conda_env) {
     {
       ls <- reticulate::conda_list()
       path_reticulate <- fs::path_dir(ls[ls$name == conda_env, "python"][1])
+      cat("path_reticulate:", path_reticulate)
       derived <- fs::path(
         # if windows, remove bin/ and use just base directory
         ifelse(is_windows(), fs::path_dir(path_reticulate), path_reticulate),
@@ -214,6 +215,7 @@ path_derive_precommit_exec_conda_impl <- function(conda_env) {
         ifelse(is_windows(), "Scripts", ""),
         precommit_executable_file()
       )
+      cat("derived", derived)
       unname(ifelse(file_exists(derived), derived, ""))
     },
     error = function(e) ""
