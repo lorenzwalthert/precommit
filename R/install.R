@@ -55,17 +55,14 @@ install_precommit <- function(force = FALSE) {
 #' @keywords internal
 install_impl <- function() {
   if (!"r-precommit" %in% reticulate::conda_list()$name) {
-    reticulate::conda_create("r-precommit", python_version = "3.10")
+    reticulate::conda_create("r-precommit")
   }
   reticulate::conda_install("r-precommit", packages = "pre-commit")
-  # C:\Users\runneradmin\AppData\Local\r-miniconda\envs\r-precommit/python.exe
-  # C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit\\Scripts\\pre-commit.exe
-  # stop(
-  #   "For debugging: these are files next to python executable ",
-  #   list.files("C:\\Users\\RUNNER~1\\AppData\\Local\\R-MINI~1\\envs\\r-precommit", pattern = 'pre-commit', recursive = TRUE)
-  # )
   if (path_derive_precommit_exec_conda() == "") {
-    base_dir <- grep("r-precommit", gsub("r-precommit.*", "r-precommit", reticulate::conda_list()$python, ), value = TRUE)[1]
+    base_dir <- grep(
+      "r-precommit", gsub("r-precommit.*", "r-precommit", reticulate::conda_list()$python, ),
+      value = TRUE
+    )[1]
     rlang::abort(c(
       paste0(
         "Please open an issue on https://github.com/lorenzwalthert/precommit and ",
