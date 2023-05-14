@@ -68,7 +68,7 @@ jobs:
         run: |
           source('renv/activate.R')
           renv::restore()
-          options(install.packages.compile.from.source = "never", pkgType = "binary")
+          options(pkgType = "binary")
           # install hook-specific additional_dependencies from .pre-commit-config.yaml
           renv::install(c('pkgdown', 'mockery'))
           renv::install(getwd(), dependencies = FALSE) 
