@@ -34,12 +34,11 @@ jobs:
           - {os: windows-latest, r: 'devel',   installation_method: 'conda'}
 
           # Linux
-          - {os: ubuntu-latest,   r: 'release', installation_method: 'pip', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest", http-user-agent: "R/4.0.0 (ubuntu-18.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
-          - {os: ubuntu-latest,   r: 'release', installation_method: 'conda', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest", http-user-agent: "R/4.0.0 (ubuntu-18.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
+          - {os: ubuntu-latest,   r: 'release', installation_method: 'pip', use-public-rspm: true}
+          - {os: ubuntu-latest,   r: 'release', installation_method: 'conda', use-public-rspm: true}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       PRECOMMIT_INSTALLATION_METHOD: ${{ matrix.config.installation_method }}
 
@@ -52,29 +51,6 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
 
       - uses: r-lib/actions/setup-pandoc@v2
-
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
-
-      - name: Restore R package cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
-      - name: Install system dependencies (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          while read -r cmd
-          do
-            eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "18.04"))')
-
       - name: Install system dependencies (brew)
         if: matrix.config.installation_method == 'brew'
         run: brew install pre-commit
@@ -83,10 +59,9 @@ jobs:
         run: |
           pip3 install setuptools --user
           pip3 install pre-commit --user
-      - name: Install dependencies
+      - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: Remove reticulate for other installation methods
         run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
           # installation methods other than conda don't need reticulate
           if (Sys.getenv("PRECOMMIT_INSTALLATION_METHOD") != 'conda') {
             remove.packages('reticulate') 
