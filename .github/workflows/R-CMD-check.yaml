@@ -88,6 +88,7 @@ jobs:
             Sys.setenv("_R_CHECK_FORCE_SUGGESTS_" = "False")
           }
           remotes::install_local() # circumvent https://github.com/r-lib/rcmdcheck/issues/136
+          install.packages("rcmdcheck")
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
