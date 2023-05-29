@@ -10,6 +10,7 @@ Averick
 bd
 beaefa
 behaviour
+bioconductor
 bliblablupp
 cfe
 ci
@@ -92,6 +93,7 @@ Liberapay
 liberapay
 licensors
 Lifecycle
+LinkingTo
 lintr
 loadCache
 lorenz
@@ -215,6 +217,7 @@ Upvote
 UseR
 usethis
 usr
+vcs
 VignetteBuilder
 Walthert
 walthert
