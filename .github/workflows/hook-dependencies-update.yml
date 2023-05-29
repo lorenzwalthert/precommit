@@ -33,7 +33,10 @@ jobs:
       - name: update existing packages
         run: |
           options(
-              repos = c(CRAN = "https://packagemanager.rstudio.com/all/latest"), 
+              repos = c(
+                RSPM = "https://packagemanager.rstudio.com/all/latest",
+                CRAN = "https://cran.rstudio.com"
+              ), 
               install.packages.compile.from.source = "never"
           )
           install.packages("renv")
