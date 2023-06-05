@@ -456,25 +456,8 @@
     },
     "styler": {
       "Package": "styler",
-      "Version": "1.8.1.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "r-lib",
-      "RemoteRepo": "styler",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "96f859daf39f5973851c06506d7827808eea28a8",
-      "RemoteHost": "api.github.com",
-      "Hash": "1d898a96339553cc49c9afbc57e15713",
-      "Requirements": [
-        "R.cache",
-        "cli",
-        "magrittr",
-        "purrr",
-        "rlang",
-        "rprojroot",
-        "vctrs",
-        "withr"
-      ]
+      "Version": "1.10.0",
+      "Source": "Repository"
     },
     "vctrs": {
       "Package": "vctrs",
