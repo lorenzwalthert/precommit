@@ -12,7 +12,14 @@ hook_deps <- function(root) {
   out <- names(renv:::renv_package_dependencies(out))
   return(sort(out))
 }
-options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/latest"))
+options(
+  repos = c(
+    RSPM = "https://packagemanager.rstudio.com/all/latest",
+    CRAN = "https://cran.rstudio.com"
+  ),
+  install.packages.compile.from.source = "never"
+)
+
 options(renv.snapshot.filter = hook_deps)
 
 renv::snapshot(type = "custom", prompt = FALSE)

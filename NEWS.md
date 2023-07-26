@@ -3,7 +3,16 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+# precommit v0.3.2.9013
 
+* Don't depend on dev version of styler to avoid GitHub rate limit hit (#486).
+
+# precommit v0.3.2.9009
+
+* add Posit CRAN mirror to ensure macOS binary installs are possible (#488).
+* use `ubuntu-latest` instead of pinned version for tests (#481).
+* correct typo (#465) and fix error message (#470).
+* remove {digest} dependency (#471).
 
 # precommit v0.3.2.9007 (2022-12-26)
 

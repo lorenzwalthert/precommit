@@ -1,6 +1,6 @@
 Package: precommit
 Title: Pre-Commit Hooks
-Version: 0.3.2.9008
+Version: 0.3.2.9014
 Author: Lorenz Walthert
 Maintainer: Lorenz Walthert <lorenz.walthert@icloud.com>
 Description: Useful git hooks for R building on top of the multi-language
@@ -20,7 +20,6 @@ Imports:
     R.cache,
     rlang,
     rprojroot,
-    rstudioapi,
     withr,
     yaml
 Suggests: 
@@ -36,6 +35,7 @@ Suggests:
     reticulate (>= 1.16),
     rmarkdown,
     roxygen2,
+    rstudioapi,
     spelling,
     styler,
     testthat (>= 2.1.0),
