@@ -3,6 +3,12 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+# precommit v0.3.2.9015
+
+* Update dependencies.
+* Refactored hook dependency update scripts. 
+* Please see tag diff for more details.
+
 # precommit v0.3.2.9013
 
 * Don't depend on dev version of styler to avoid GitHub rate limit hit (#486).
