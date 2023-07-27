@@ -18,4 +18,8 @@ source("renv/activate.R")
 renv::restore()
 options(renv.snapshot.filter = hook_deps)
 
+# TODO snapshot looks up from which repo the packages were installed.
+# Hence, setting the repo option only affects new installs. Solution:
+# - manually replace cran with rspm in renv.lock
+# - first activate renv, restore renv and then run this script
 renv::snapshot(type = "custom", prompt = FALSE)
