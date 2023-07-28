@@ -236,18 +236,6 @@
       ],
       "Hash": "47b5f30c720c23999b913a1a635cf0bb"
     },
-    "git2r": {
-      "Package": "git2r",
-      "Version": "0.32.0",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "graphics",
-        "utils"
-      ],
-      "Hash": "1882d7a76fd8c14b2322865f74c9a348"
-    },
     "glue": {
       "Package": "glue",
       "Version": "1.6.2",
@@ -333,14 +321,9 @@
     },
     "lintr": {
       "Package": "lintr",
-      "Version": "3.0.2.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "r-lib",
-      "RemoteRepo": "lintr",
-      "RemoteRef": "main",
-      "RemoteSha": "4ef15f9689e7384e83a8e3250825006e95293bf5",
+      "Version": "3.1.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "backports",
@@ -355,7 +338,7 @@
         "xml2",
         "xmlparsedata"
       ],
-      "Hash": "fd19bcfedd9515297fdc318cbe7505d3"
+      "Hash": "2b4b803af6017e93b67ddaf0eacba918"
     },
     "magrittr": {
       "Package": "magrittr",

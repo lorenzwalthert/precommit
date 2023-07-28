@@ -7,7 +7,7 @@
 diff_requires_run_roxygenize(root = ".")
 }
 \arguments{
-\item{root}{The root of project.}
+\item{root}{The root of the git repo.}
 }
 \value{
 A logical vector of length 1.
