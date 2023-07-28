@@ -69,7 +69,7 @@ call_precommit <- function(..., wait = TRUE) {
   if (is_conda_installation()) {
     call_and_capture(
       reticulate::conda_binary(),
-      c("run", "-n", "r-precommit", path_precommit_exec(), ...),
+      c("run", "-n", "r-precommit", "pre-commit", ...),
       wait = wait
     )
   } else {
