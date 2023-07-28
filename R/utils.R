@@ -38,10 +38,6 @@ is_package <- function(root = here::here()) {
     magrittr::not()
 }
 
-add_trailing_linebreak <- function(x) {
-  paste0(x, "\n")
-}
-
 #' Name the input
 #'
 #' @param x A vector.

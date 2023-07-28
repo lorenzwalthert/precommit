@@ -2,8 +2,8 @@ options(
   repos = c(CRAN = "https://packagemanager.rstudio.com/all/latest"),
   install.packages.compile.from.source = "never"
 )
-install.packages("renv")
-install.packages("jsonlite")
+renv::install("renv")
+renv::install("jsonlite")
 renv_deps <- names(jsonlite::read_json("renv.lock")$Packages)
 renv::load()
 renv::restore(prompt = FALSE)
