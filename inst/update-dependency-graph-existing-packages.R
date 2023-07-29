@@ -1,3 +1,5 @@
+source("renv/activate.R")
+
 hook_deps <- function(root) {
   out <- renv::dependencies("inst/hooks/exported/")$Package
   desc <- desc::desc()
@@ -13,10 +15,10 @@ hook_deps <- function(root) {
   return(sort(out))
 }
 options(
-  repos = c(
-    RSPM = "https://packagemanager.rstudio.com/all/latest",
-    CRAN = "https://cran.rstudio.com"
-  ),
+  # repos = c(
+  #   RSPM = "https://packagemanager.rstudio.com/all/latest",
+  #   CRAN = "https://cran.rstudio.com"
+  # ),
   install.packages.compile.from.source = "never"
 )
 

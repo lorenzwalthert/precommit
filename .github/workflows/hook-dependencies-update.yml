@@ -1,6 +1,10 @@
 on:
   schedule:
     - cron:  '50 08 18 * *'
+  pull_request:
+    branches:
+      - '*'
+
 
 name: Hook dependency updates
 
@@ -9,19 +13,20 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RSPM: "https://packagemanager.rstudio.com/all/__linux__/focal/latest"
     steps:
       - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-r@v2
-      
-      - name: Cache packages
-        uses: actions/cache@v3
         with:
-          path: ${{ env.RENV_PATHS_ROOT }}
-          key: renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            renv-
+          use-public-rspm: true
+
+      # - name: Cache packages
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ${{ env.RENV_PATHS_ROOT }}
+      #     key: renv-${{ hashFiles('**/renv.lock') }}
+      #     restore-keys: |
+      #       renv-
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
@@ -30,10 +35,10 @@ jobs:
           Rscript -e "install.packages('remotes'); remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-      - name: update existing packages
-        run: Rscript inst/update-dependency-graph-existing-packages.R
       - name: update dependency graph among packages
         run: Rscript inst/update-existing-hook-dependencies.R
+      - name: update existing packages
+        run: Rscript inst/update-dependency-graph-existing-packages.R
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:

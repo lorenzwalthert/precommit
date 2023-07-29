@@ -1,5 +1,7 @@
+source("renv/activate.R")
+
 options(
-  repos = c(CRAN = "https://packagemanager.rstudio.com/all/latest"),
+  # repos = c(CRAN = "https://packagemanager.rstudio.com/all/latest"),
   install.packages.compile.from.source = "never"
 )
 renv::install("renv")
