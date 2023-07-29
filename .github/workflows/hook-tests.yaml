@@ -2,9 +2,6 @@ on:
   pull_request:
     branches:
       - '*'
-  push:
-    branches:
-      - hook-dependencies-update
 
 
 name: Hook tests
