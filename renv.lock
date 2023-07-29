@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.0",
+    "Version": "4.3.1",
     "Repositories": [
       {
         "Name": "RSPM",
@@ -422,11 +422,6 @@
         "utils"
       ],
       "Hash": "63d15047eb239f95160112bcadc4fcb9"
-    },
-    "renv": {
-      "Package": "renv",
-      "Version": "0.17.3",
-      "Source": "Repository"
     },
     "rex": {
       "Package": "rex",
