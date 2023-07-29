@@ -1,9 +1,6 @@
 on:
   schedule:
-    - cron:  '50 08 18 * *'
-  pull_request:
-    branches:
-      - '*'
+    - cron:  '20,25,30, * * * *'
 
 
 name: Hook dependency updates
