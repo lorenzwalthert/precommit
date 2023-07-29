@@ -425,13 +425,8 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.0",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "utils"
-      ],
-      "Hash": "c321cd99d56443dbffd1c9e673c0c1a2"
+      "Version": "0.17.3",
+      "Source": "Repository"
     },
     "rex": {
       "Package": "rex",
