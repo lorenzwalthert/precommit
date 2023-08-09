@@ -55,9 +55,25 @@ install_precommit <- function(force = FALSE) {
 #' @keywords internal
 install_impl <- function() {
   if (!"r-precommit" %in% reticulate::conda_list()$name) {
-    reticulate::conda_create("r-precommit")
+    reticulate::conda_create("r-precommit", python_version = "3.11")
   }
   reticulate::conda_install("r-precommit", packages = "pre-commit")
+  if (path_derive_precommit_exec_conda() == "") {
+    base_dir <- grep(
+      "r-precommit", gsub("r-precommit.*", "r-precommit", reticulate::conda_list()$python, ),
+      value = TRUE
+    )[1]
+    rlang::abort(c(
+      paste0(
+        "Please open an issue on https://github.com/lorenzwalthert/precommit and ",
+        "report the below:\nFailed to install pre-commit in a location known to R ",
+        "precommit. Here are candidates from the conda root (",
+        base_dir,
+        "):"
+      ),
+      list.files(base_dir, pattern = "pre-commit", recursive = TRUE)
+    ))
+  }
 }
 
 #' Updates pre-commit on your system with conda
