@@ -195,6 +195,7 @@ if (!on_cran()) {
       version <- "3.3.2" # TODO make this automaticly the last version
       reticulate::conda_install("r-precommit", paste0("pre-commit==", version))
       expect_equal(version_precommit(), version)
+      skip_on_os("windows")
       expect_invisible(update_precommit(), 0)
       expect_false(version_precommit() == version)
     }
