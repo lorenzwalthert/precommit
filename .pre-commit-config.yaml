@@ -73,11 +73,6 @@ repos:
           (?x)^(
           tests/testthat/in/.*|
           )$
-    -   id: no-print-statement
-        exclude: > 
-          (?x)^(
-          tests/testthat/in/.*|
-          )$
     -   id: no-debug-statement
         exclude: >
           (?x)^(
