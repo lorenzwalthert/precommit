@@ -146,6 +146,13 @@ Guarantees you that you don't accidentally commit code with a
 
 This hook does not modify files.
 
+## `no-print-statement`
+
+Guarantees you that you don't accidentally commit code with a
+`print()` statement in it.
+
+This hook does not modify files.
+
 ## `no-debug-statement`
 
 Guarantees you that you don't accidentally commit code with a `debug()`

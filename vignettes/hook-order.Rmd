@@ -37,4 +37,5 @@ Read only hooks should generally run only after write hooks.
 -   readme-rmd-rendered: Must run after styler.
 -   parsable-R
 -   no-browser-statement
+-   no-print-statement
 -   deps in desc.
