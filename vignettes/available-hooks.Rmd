@@ -151,7 +151,8 @@ This hook does not modify files.
 Guarantees you that you don't accidentally commit code with a
 `print()` statement in it.
 
-This hook does not modify files.
+This hook does not modify files. This hook was added in version
+0.3.2.9020.
 
 ## `no-debug-statement`
 
