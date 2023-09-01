@@ -170,7 +170,7 @@
     },
     "cyclocomp": {
       "Package": "cyclocomp",
-      "Version": "1.1.0",
+      "Version": "1.1.1",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -180,7 +180,7 @@
         "remotes",
         "withr"
       ],
-      "Hash": "53cbed70a2f7472d48fb6aef08442f25"
+      "Hash": "cdc4a473222b0112d4df0bcfbed12d44"
     },
     "desc": {
       "Package": "desc",
@@ -528,7 +528,7 @@
     },
     "styler": {
       "Package": "styler",
-      "Version": "1.10.1",
+      "Version": "1.10.2",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -543,7 +543,7 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "b0911fdb2c682f526f6e9c131fd40a1f"
+      "Hash": "d61238fd44fc63c8adf4565efe8eb682"
     },
     "vctrs": {
       "Package": "vctrs",
