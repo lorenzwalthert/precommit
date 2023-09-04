@@ -43,7 +43,7 @@ jobs:
       PRECOMMIT_INSTALLATION_METHOD: ${{ matrix.config.installation_method }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
         with:
