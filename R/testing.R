@@ -64,6 +64,17 @@ run_test <- function(hook_name,
     env = env,
     expect_success = expect_success
   )
+  run_test_impl(
+    path_executable, path_candidate,
+    std_err = std_err,
+    std_out = std_out,
+    cmd_args = cmd_args,
+    artifacts = ensure_named(artifacts),
+    file_transformer = file_transformer,
+    env = env,
+    expect_success = expect_success,
+    substitute_spaces = TRUE
+  )
 }
 
 #' Implement a test run
@@ -84,6 +95,9 @@ run_test <- function(hook_name,
 #' @param expect_success Whether or not an exit code 0 is expected. This can
 #'   be derived from `std_err`, but sometimes, non-empty stderr does not mean
 #'   error, but just a message.
+#' @param substitute_spaces If TRUE, the temporary file has spaces substiuted for
+#'   any and all hyphens, to ensure that the test runs when there are spaces encoded
+#'   in the filename (In some instances, spaces are a problem for docopt).
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
@@ -93,12 +107,16 @@ run_test_impl <- function(path_executable,
                           artifacts,
                           file_transformer,
                           env,
-                          expect_success) {
+                          expect_success,
+                          substitute_spaces = FALSE) {
   # ensure cannonical /private/var/... not /var/... on macOS
   tempdir <- fs::path(normalizePath((fs::dir_create(fs::file_temp()))))
   copy_artifacts(artifacts, tempdir)
   # if name set use this, otherwise put in root
   path_candidate_temp <- fs::path(tempdir, names(path_candidate))
+  if(substitute_spaces){
+    path_candidate_temp <- gsub("-", " ", path_candidate_temp)
+  }
   fs::dir_create(fs::path_dir(path_candidate_temp))
   fs::file_copy(path_candidate, path_candidate_temp, overwrite = TRUE)
   path_candidate_temp <- withr::with_dir(

@@ -13,7 +13,8 @@ run_test_impl(
   artifacts,
   file_transformer,
   env,
-  expect_success
+  expect_success,
+  substitute_spaces = FALSE
 )
 }
 \arguments{
@@ -40,6 +41,10 @@ temporary location and the value is the source of the file.}
 \item{expect_success}{Whether or not an exit code 0 is expected. This can
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
+
+\item{substitute_spaces}{If TRUE, the temporary file has spaces substiuted for
+any and all hyphens, to ensure that the test runs when there are spaces encoded
+in the filename (In some instances, spaces are a problem for docopt).}
 }
 \description{
 Implement a test run
