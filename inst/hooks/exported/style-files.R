@@ -41,7 +41,7 @@ if (length(keys) > 0) {
 # docopt provides special processing for a single string, and it treats a
 # 1-element vector as a string, which is a problem.
 # So, we force it to process the args as a vector by add a no-opt empty string.
-arguments <- docopt::docopt(doc, c(args, ''))
+arguments <- docopt::docopt(doc, c(args, ""))
 if (packageVersion("styler") < "1.3.2") {
   stop(
     "Your styler version is outdated. ",

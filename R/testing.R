@@ -51,9 +51,7 @@ run_test <- function(hook_name,
                      file_transformer = function(files) files,
                      env = character(),
                      expect_success = is.null(std_err),
-                     substitute_spaces = NULL
-                     ) {
-
+                     substitute_spaces = NULL) {
   withr::local_envvar(list(R_PRECOMMIT_HOOK_ENV = "1"))
   path_executable <- fs::dir_ls(system.file(
     fs::path("hooks", "exported"),
@@ -64,9 +62,9 @@ run_test <- function(hook_name,
   }
   path_candidate <- paste0(testthat::test_path("in", file_name), suffix) %>%
     ensure_named(names(file_name), fs::path_file)
-  if(is.null(substitute_spaces)){
+  if (is.null(substitute_spaces)) {
     # set default value based on if there are any hyphens in teh filename
-    substitute_spaces <- any(grepl('-', basename(path_candidate)))
+    substitute_spaces <- any(grepl("-", basename(path_candidate)))
   }
 
   run_test_impl(
@@ -79,7 +77,7 @@ run_test <- function(hook_name,
     env = env,
     expect_success = expect_success
   )
-  if(substitute_spaces){
+  if (substitute_spaces) {
     run_test_impl(
       path_executable, path_candidate,
       std_err = std_err,
@@ -131,7 +129,7 @@ run_test_impl <- function(path_executable,
   copy_artifacts(artifacts, tempdir)
   # if name set use this, otherwise put in root
   path_candidate_temp <- fs::path(tempdir, names(path_candidate))
-  if(substitute_spaces){
+  if (substitute_spaces) {
     path_candidate_temp <- gsub("-", " ", path_candidate_temp)
   }
   fs::dir_create(fs::path_dir(path_candidate_temp))
@@ -180,7 +178,7 @@ hook_state_create <- function(tempdir,
                               env) {
   withr::local_dir(tempdir)
   files <- fs::path_rel(path_candidate_temp, tempdir)
-  if(any(grepl(' ', files))){
+  if (any(grepl(" ", files))) {
     # this filename has spaces. To get system2 to interpolate it correctly
     # (and how it will be provided in real contexts), it needs to be quoted.
     files <- paste0('"', files, '"')
