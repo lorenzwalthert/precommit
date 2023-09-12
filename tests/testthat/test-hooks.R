@@ -211,7 +211,8 @@ run_test(
   "parsable-R",
   suffix = "-fail.Rmd",
   std_out = "parsable-R-fail.Rmd",
-  std_err = "1 1"
+  std_err = "1 1",
+  substitute_spaces = FALSE
 )
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
@@ -303,7 +304,8 @@ run_test("deps-in-desc",
   "deps-in-desc",
   suffix = "-fail.Rmd", std_err = "Dependency check failed",
   std_out = "deps-in-desc-fail.Rmd`: ttyzp",
-  artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION"))
+  artifacts = c("DESCRIPTION" = test_path("in/DESCRIPTION")),
+  substitute_spaces = FALSE
 )
 
 run_test("deps-in-desc",

@@ -43,8 +43,8 @@ be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
 
 \item{substitute_spaces}{If TRUE, the temporary file has spaces substiuted for
-any and all hyphens, to ensure that the test runs when there are spaces encoded
-in the filename (In some instances, spaces are a problem for docopt).}
+any and all hyphens - this is intended to be set by internal calls from
+\code{run_test}.}
 }
 \description{
 Implement a test run

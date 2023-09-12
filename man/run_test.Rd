@@ -14,7 +14,8 @@ run_test(
   artifacts = NULL,
   file_transformer = function(files) files,
   env = character(),
-  expect_success = is.null(std_err)
+  expect_success = is.null(std_err),
+  substitute_spaces = NULL
 )
 }
 \arguments{
@@ -55,6 +56,13 @@ made.}
 \item{expect_success}{Whether or not an exit code 0 is expected. This can
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
+
+\item{substitute_spaces}{If TRUE, the test is run twice, once in the general
+context and once in which the filenames have spaces substiuted for all
+hyphens. This is important because docopt behaves differently if the
+arguments are a length-1 character vector with spaces.
+If no parameter provided, default is TRUE if there are hyphens to
+substitute, FALSE otherwise.}
 }
 \description{
 Tests for the executables used as pre-commit hooks via \code{entrypoint} in

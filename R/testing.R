@@ -32,6 +32,13 @@
 #'   seems to remove hidden files, so we must also rename it. The transformation
 #'   is also applied to a temp copy of the reference file before a comparison is
 #'   made.
+#' @param substitute_spaces If TRUE, the test is run twice, once in the general
+#'   context and once in which the filenames have spaces substiuted for all
+#'   hyphens. This is important because docopt behaves differently if the
+#'   arguments are a length-1 character vector with spaces.
+#'   If no parameter provided, default is TRUE if there are hyphens to
+#'   substitute, FALSE otherwise.
+
 #' @inheritParams run_test_impl
 #' @keywords internal
 run_test <- function(hook_name,
@@ -43,7 +50,10 @@ run_test <- function(hook_name,
                      artifacts = NULL,
                      file_transformer = function(files) files,
                      env = character(),
-                     expect_success = is.null(std_err)) {
+                     expect_success = is.null(std_err),
+                     substitute_spaces = NULL
+                     ) {
+
   withr::local_envvar(list(R_PRECOMMIT_HOOK_ENV = "1"))
   path_executable <- fs::dir_ls(system.file(
     fs::path("hooks", "exported"),
@@ -54,6 +64,11 @@ run_test <- function(hook_name,
   }
   path_candidate <- paste0(testthat::test_path("in", file_name), suffix) %>%
     ensure_named(names(file_name), fs::path_file)
+  if(is.null(substitute_spaces)){
+    # set default value based on if there are any hyphens in teh filename
+    substitute_spaces <- any(grepl('-', basename(path_candidate)))
+  }
+
   run_test_impl(
     path_executable, path_candidate,
     std_err = std_err,
@@ -64,17 +79,19 @@ run_test <- function(hook_name,
     env = env,
     expect_success = expect_success
   )
-  run_test_impl(
-    path_executable, path_candidate,
-    std_err = std_err,
-    std_out = std_out,
-    cmd_args = cmd_args,
-    artifacts = ensure_named(artifacts),
-    file_transformer = file_transformer,
-    env = env,
-    expect_success = expect_success,
-    substitute_spaces = TRUE
-  )
+  if(substitute_spaces){
+    run_test_impl(
+      path_executable, path_candidate,
+      std_err = std_err,
+      std_out = std_out,
+      cmd_args = cmd_args,
+      artifacts = ensure_named(artifacts),
+      file_transformer = file_transformer,
+      env = env,
+      expect_success = expect_success,
+      substitute_spaces = TRUE
+    )
+  }
 }
 
 #' Implement a test run
@@ -96,8 +113,8 @@ run_test <- function(hook_name,
 #'   be derived from `std_err`, but sometimes, non-empty stderr does not mean
 #'   error, but just a message.
 #' @param substitute_spaces If TRUE, the temporary file has spaces substiuted for
-#'   any and all hyphens, to ensure that the test runs when there are spaces encoded
-#'   in the filename (In some instances, spaces are a problem for docopt).
+#'   any and all hyphens - this is intended to be set by internal calls from
+#'   `run_test`.
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
@@ -163,6 +180,12 @@ hook_state_create <- function(tempdir,
                               env) {
   withr::local_dir(tempdir)
   files <- fs::path_rel(path_candidate_temp, tempdir)
+  if(any(grepl(' ', files))){
+    # this filename has spaces. To get system2 to interpolate it correctly (
+    # (and how it will be provided in real contexts), it needs to be quoted.
+    files <- paste0('"', files, '"')
+  }
+
   # https://stat.ethz.ch/pipermail/r-devel/2018-February/075507.html
   system2(paste0(Sys.getenv("R_HOME"), "/bin/Rscript"),
     args = as.character(c(path_executable, cmd_args, files)),
