@@ -181,7 +181,7 @@ hook_state_create <- function(tempdir,
   withr::local_dir(tempdir)
   files <- fs::path_rel(path_candidate_temp, tempdir)
   if(any(grepl(' ', files))){
-    # this filename has spaces. To get system2 to interpolate it correctly (
+    # this filename has spaces. To get system2 to interpolate it correctly
     # (and how it will be provided in real contexts), it needs to be quoted.
     files <- paste0('"', files, '"')
   }
