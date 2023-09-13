@@ -219,8 +219,29 @@ run_test(
 # success
 run_test("spell-check", suffix = "-success.md", std_err = NULL)
 
-# basic failure
-run_test("spell-check", suffix = "-fail.md", std_err = "Spell check failed")
+# basic failure creates WORDLIST
+run_test(
+  "spell-check",
+  suffix = "-fail.md",
+  std_err = "Spell check failed",
+  post_hook_assert = function(tempdir) {
+    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
+    testthat::expect_true(fs::file_exists(wordlist_path))
+    testthat::expect_equal(readLines(wordlist_path), "fsssile")
+  }
+)
+
+# basic failure updates WORDLIST
+run_test(
+  "spell-check",
+  suffix = "-fail-2.md",
+  std_err = "Spell check failed",
+  post_hook_assert = function(tempdir) {
+    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
+    testthat::expect_true(fs::file_exists(wordlist_path))
+    testthat::expect_equal(readLines(wordlist_path), c("fsssile", "ttle"))
+  }
+)
 
 # success with wordlist
 run_test("spell-check",
