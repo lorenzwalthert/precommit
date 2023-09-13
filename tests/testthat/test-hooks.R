@@ -258,7 +258,7 @@ run_test(
 # failure with --no-update does not update WORDLIST
 run_test(
   "spell-check",
-  suffix = "-fail-2",
+  suffix = "-fail-2.md",
   std_err = "Spell check failed",
   cmd_args = "--no-update",
   artifacts = c("inst/WORDLIST" = test_path("in/WORDLIST")),
