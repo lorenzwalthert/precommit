@@ -17,10 +17,12 @@ if (file.exists(path_wordlist)) {
   ignore <- readLines(path_wordlist, encoding = "UTF-8")
   action <- "update"
 } else {
-  if (!dir.exists(dirname(path_wordlist))) {
-    dir.create(dirname(path_wordlist))
+  if (isFALSE(arguments$no_update)) {
+    if (!dir.exists(dirname(path_wordlist))) {
+      dir.create(dirname(path_wordlist))
+    }
+    file.create(path_wordlist)
   }
-  file.create(path_wordlist)
   ignore <- character()
   action <- "create"
 }
