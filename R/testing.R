@@ -43,7 +43,8 @@ run_test <- function(hook_name,
                      artifacts = NULL,
                      file_transformer = function(files) files,
                      env = character(),
-                     expect_success = is.null(std_err)) {
+                     expect_success = is.null(std_err),
+                     post_hook_assert = NULL) {
   withr::local_envvar(list(R_PRECOMMIT_HOOK_ENV = "1"))
   path_executable <- fs::dir_ls(system.file(
     fs::path("hooks", "exported"),
@@ -62,7 +63,8 @@ run_test <- function(hook_name,
     artifacts = ensure_named(artifacts),
     file_transformer = file_transformer,
     env = env,
-    expect_success = expect_success
+    expect_success = expect_success,
+    post_hook_assert = post_hook_assert
   )
 }
 
@@ -84,6 +86,8 @@ run_test <- function(hook_name,
 #' @param expect_success Whether or not an exit code 0 is expected. This can
 #'   be derived from `std_err`, but sometimes, non-empty stderr does not mean
 #'   error, but just a message.
+#' @param post_hook_assert A function executed at the end of a test case.
+#'   Useful for checking a correctness of a state and contents of `tempdir`.
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
@@ -93,7 +97,8 @@ run_test_impl <- function(path_executable,
                           artifacts,
                           file_transformer,
                           env,
-                          expect_success) {
+                          expect_success,
+                          post_hook_assert) {
   # ensure cannonical /private/var/... not /var/... on macOS
   tempdir <- fs::path(normalizePath((fs::dir_create(fs::file_temp()))))
   copy_artifacts(artifacts, tempdir)
@@ -128,6 +133,9 @@ run_test_impl <- function(path_executable,
     std_out,
     exit_status
   )
+  if (is.function(post_hook_assert)) {
+    post_hook_assert(tempdir)
+  }
 }
 
 
