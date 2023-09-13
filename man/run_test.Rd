@@ -14,7 +14,8 @@ run_test(
   artifacts = NULL,
   file_transformer = function(files) files,
   env = character(),
-  expect_success = is.null(std_err)
+  expect_success = is.null(std_err),
+  post_hook_assert = NULL
 )
 }
 \arguments{
@@ -55,6 +56,9 @@ made.}
 \item{expect_success}{Whether or not an exit code 0 is expected. This can
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
+
+\item{post_hook_assert}{A function executed at the end of a test case.
+Useful for checking a correctness of a state and contents of \code{tempdir}.}
 }
 \description{
 Tests for the executables used as pre-commit hooks via \code{entrypoint} in

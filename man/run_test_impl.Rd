@@ -13,7 +13,8 @@ run_test_impl(
   artifacts,
   file_transformer,
   env,
-  expect_success
+  expect_success,
+  post_hook_assert
 )
 }
 \arguments{
@@ -40,6 +41,9 @@ temporary location and the value is the source of the file.}
 \item{expect_success}{Whether or not an exit code 0 is expected. This can
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
+
+\item{post_hook_assert}{A function executed at the end of a test case.
+Useful for checking a correctness of a state and contents of \code{tempdir}.}
 }
 \description{
 Implement a test run
