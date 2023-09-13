@@ -243,6 +243,32 @@ run_test(
   }
 )
 
+# failure with --no-update does not create WORDLIST
+run_test(
+  "spell-check",
+  suffix = "-fail.md",
+  std_err = "Spell check failed",
+  cmd_args = "--no-update",
+  post_hook_assert = function(tempdir) {
+    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
+    testthat::expect_false(fs::file_exists(wordlist_path))
+  }
+)
+
+# failure with --no-update does not update WORDLIST
+run_test(
+  "spell-check",
+  suffix = "-fail-2",
+  std_err = "Spell check failed",
+  cmd_args = "--no-update",
+  artifacts = c("inst/WORDLIST" = test_path("in/WORDLIST")),
+  post_hook_assert = function(tempdir) {
+    words_before <- readLines(test_path("in/WORDLIST"))
+    words_after <- readLines(fs::path(tempdir, "inst", "WORDLIST"))
+    testthat::expect_equal(words_after, words_before)
+  }
+)
+
 # success with wordlist
 run_test("spell-check",
   suffix = "-wordlist-success.md",
