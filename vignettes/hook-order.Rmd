@@ -21,21 +21,23 @@ Read only hooks should generally run only after write hooks.
 -   Only add a dependency once, i.e. if styler must run before roxygen, add the requirement to styler or roxygen, not both. This makes keeping track easier.
 -   The hooks must appear in an order that meets all constraints, not just randomly order constraints.
 
-## Hooks with dependencies:
+## Hooks with dependencies
 
-**Read and write**
+### Read and write
 
--   styler: should run before roxygen because of caching. Caches.
--   roxygen. Caches.
--   codemeta: must be before tidy description.
--   use-tidy-description.
+-   style-files - caches; should run before roxygenize because of the caching
+-   roxygenize - caches
+-   codemeta-description-updated - must be before use-tidy-description
+-   use-tidy-description
+-   spell-check - updates `inst/WORDLIST`; should run after roxygenize
 
-**Just read:**
+### Read only
 
--   spell check; run after roxygen
--   lintr: should run after styler.
--   readme-rmd-rendered: Must run after styler.
+-   lintr - should run after styler
+-   readme-rmd-rendered - must run after styler
 -   parsable-R
 -   no-browser-statement
 -   no-print-statement
--   deps in desc.
+-   no-debug-statement
+-   deps-in-desc
+-   pkgdown
