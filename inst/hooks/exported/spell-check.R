@@ -38,7 +38,7 @@ if (nrow(spelling_errors) > 0) {
     original = unique(c(ignore, spelling_errors$word))
   )
   ignore_df$lower <- tolower(ignore_df$original)
-  ignore_df <- ignore_df[order(ignore_df$lower), ]
+  ignore_df <- ignore_df[order(ignore_df$lower, method = "radix"), ]
   ignore <- ignore_df$original[ignore_df$lower != ""] # drop blanks if any
   writeLines(ignore, path_wordlist)
   cat(
