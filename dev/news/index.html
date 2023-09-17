@@ -79,24 +79,32 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9015" id="precommit-v0329015">precommit v0.3.2.9015<a class="anchor" aria-label="anchor" href="#precommit-v0329015"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.2.9020" id="precommit-0329020">precommit 0.3.2.9020<a class="anchor" aria-label="anchor" href="#precommit-0329020"></a></h2>
+<ul><li>Make sorting consistent with spelling::update_wordlist (<a href="https://github.com/lorenzwalthert/precommit/issues/514" class="external-link">#514</a>).</li>
+<li>Bump actions/checkout from 3 to 4 (<a href="https://github.com/lorenzwalthert/precommit/issues/509" class="external-link">#509</a>).</li>
+<li>Discover and check for rogue print statements (<a href="https://github.com/lorenzwalthert/precommit/issues/505" class="external-link">#505</a>).</li>
+<li>Use python 3.10 by default for conda envs(<a href="https://github.com/lorenzwalthert/precommit/issues/477" class="external-link">#477</a>).</li>
+<li>Hook dependencies update (<a href="https://github.com/lorenzwalthert/precommit/issues/503" class="external-link">#503</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/506" class="external-link">#506</a> <a href="https://github.com/lorenzwalthert/precommit/issues/508" class="external-link">#508</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/513" class="external-link">#513</a>).</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.2.9015" id="precommit-0329015">precommit 0.3.2.9015<a class="anchor" aria-label="anchor" href="#precommit-0329015"></a></h2>
 <ul><li>Update dependencies.</li>
 <li>Refactored hook dependency update scripts.</li>
 <li>Please see tag diff for more details.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9013" id="precommit-v0329013">precommit v0.3.2.9013<a class="anchor" aria-label="anchor" href="#precommit-v0329013"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.2.9013" id="precommit-0329013">precommit 0.3.2.9013<a class="anchor" aria-label="anchor" href="#precommit-0329013"></a></h2>
 <ul><li>Don’t depend on dev version of styler to avoid GitHub rate limit hit (<a href="https://github.com/lorenzwalthert/precommit/issues/486" class="external-link">#486</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9009" id="precommit-v0329009">precommit v0.3.2.9009<a class="anchor" aria-label="anchor" href="#precommit-v0329009"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.2.9009" id="precommit-0329009">precommit 0.3.2.9009<a class="anchor" aria-label="anchor" href="#precommit-0329009"></a></h2>
 <ul><li>add Posit CRAN mirror to ensure macOS binary installs are possible (<a href="https://github.com/lorenzwalthert/precommit/issues/488" class="external-link">#488</a>).</li>
 <li>use <code>ubuntu-latest</code> instead of pinned version for tests (<a href="https://github.com/lorenzwalthert/precommit/issues/481" class="external-link">#481</a>).</li>
 <li>correct typo (<a href="https://github.com/lorenzwalthert/precommit/issues/465" class="external-link">#465</a>) and fix error message (<a href="https://github.com/lorenzwalthert/precommit/issues/470" class="external-link">#470</a>).</li>
 <li>remove {digest} dependency (<a href="https://github.com/lorenzwalthert/precommit/issues/471" class="external-link">#471</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9007" id="precommit-v0329007-2022-12-26">precommit v0.3.2.9007 (2022-12-26)<a class="anchor" aria-label="anchor" href="#precommit-v0329007-2022-12-26"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.2.9007" id="precommit-0329007-2022-12-26">precommit 0.3.2.9007 (2022-12-26)<a class="anchor" aria-label="anchor" href="#precommit-0329007-2022-12-26"></a></h2>
 <ul><li>roxygenize cache invalidation is functional again (<a href="https://github.com/lorenzwalthert/precommit/issues/464" class="external-link">#464</a>).</li>
 <li>ensure local and remote pre-commit execution are the same for this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/463" class="external-link">#463</a>).</li>
 <li>use new pkgdown hook in this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/460" class="external-link">#460</a>).</li>
@@ -104,15 +112,22 @@
 <li>improve spelling (<a href="https://github.com/lorenzwalthert/precommit/issues/453" class="external-link">#453</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9003" id="precommit-v0329003-2022-12-16">precommit v0.3.2.9003 (2022-12-16)<a class="anchor" aria-label="anchor" href="#precommit-v0329003-2022-12-16"></a></h2>
-<ul><li><p>new hook <code>pkgdown</code> to emulate a {pkgdown} build for reference and articles (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</p></li>
-<li><p><code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide (<a href="https://github.com/lorenzwalthert/precommit/issues/432" class="external-link">#432</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/438" class="external-link">#438</a>).</p></li>
-<li><p><code>style-files</code> now supports styling of R code in Quarto docs (<a href="https://github.com/lorenzwalthert/precommit/issues/449" class="external-link">#449</a>). # precommit v0.3.2.9000</p></li>
-<li><p><code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</p></li>
-<li><p><code>deps-in-desc</code>supports a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</p></li>
+<h2 class="page-header" data-toc-text="0.3.2.9003" id="precommit-0329003-2022-12-16">precommit 0.3.2.9003 (2022-12-16)<a class="anchor" aria-label="anchor" href="#precommit-0329003-2022-12-16"></a></h2>
+<ul><li>new hook <code>pkgdown</code> to emulate a {pkgdown} build for reference and articles (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</li>
+<li>
+<code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide (<a href="https://github.com/lorenzwalthert/precommit/issues/432" class="external-link">#432</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/438" class="external-link">#438</a>).</li>
+<li>
+<code>style-files</code> now supports styling of R code in Quarto docs (<a href="https://github.com/lorenzwalthert/precommit/issues/449" class="external-link">#449</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2" id="precommit-v032">precommit v0.3.2<small>2022-07-01</small><a class="anchor" aria-label="anchor" href="#precommit-v032"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.2.9000" id="precommit-0329000">precommit 0.3.2.9000<a class="anchor" aria-label="anchor" href="#precommit-0329000"></a></h2>
+<ul><li>
+<code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</li>
+<li>
+<code>deps-in-desc</code>supports a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.2" id="precommit-032">precommit 0.3.2<small>2022-07-01</small><a class="anchor" aria-label="anchor" href="#precommit-032"></a></h2>
 <ul><li>
 <code>parsable-R</code> hook now gives more context on where and how parsing fails (<a href="https://github.com/lorenzwalthert/precommit/issues/423" class="external-link">#423</a>).</li>
 <li>fixed R CMD check issues in devel (<a href="https://github.com/lorenzwalthert/precommit/issues/425" class="external-link">#425</a>).</li>
@@ -120,7 +135,7 @@
 </ul><p>Thanks to <a href="https://github.com/danielinteractive" class="external-link">@danielinteractive</a>, <a href="https://github.com/jonocarroll" class="external-link">@jonocarroll</a> for their contributions.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.1" id="precommit-v031">precommit v0.3.1<small>2022-06-15</small><a class="anchor" aria-label="anchor" href="#precommit-v031"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.1" id="precommit-031">precommit 0.3.1<small>2022-06-15</small><a class="anchor" aria-label="anchor" href="#precommit-031"></a></h2>
 <p><strong>User visible changes</strong></p>
 <ul><li>
 <code>.pre-commit-config.yaml</code> templates now contain hook to validate the <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> configuration (<a href="https://github.com/lorenzwalthert/precommit/issues/407" class="external-link">#407</a>).</li>
@@ -136,7 +151,7 @@
 </ul><p>Thanks to <a href="https://github.com/danielinteractive" class="external-link">@danielinteractive</a> and <a href="https://github.com/mpadge" class="external-link">@mpadge</a> for their contributions.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.0" id="precommit-v030">precommit v0.3.0<small>2022-05-20</small><a class="anchor" aria-label="anchor" href="#precommit-v030"></a></h2>
+<h2 class="page-header" data-toc-text="0.3.0" id="precommit-030">precommit 0.3.0<small>2022-05-20</small><a class="anchor" aria-label="anchor" href="#precommit-030"></a></h2>
 <p><strong>API changes</strong></p>
 <ul><li>The <code>style-files</code> hook now takes <code>ignore-start</code> and <code>ignore-stop</code> arguments, passed to <code>options("styler.ignore_start")</code> and <code>options("styler.ignore_stop")</code>. By default, {styler} defaults are used.</li>
 <li>
@@ -161,7 +176,7 @@
 </ul><p>Thanks to all people who contributed to this release: <a href="https://github.com/assignUser" class="external-link">@assignUser</a>, <a href="https://github.com/danhalligan" class="external-link">@danhalligan</a>, <a href="https://github.com/gravesti" class="external-link">@gravesti</a>, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/KyleDCox" class="external-link">@KyleDCox</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/lukasfeick-sw" class="external-link">@lukasfeick-sw</a>, <a href="https://github.com/MarkMc1089" class="external-link">@MarkMc1089</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, <a href="https://github.com/RoyalTS" class="external-link">@RoyalTS</a>, and <a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.2.2" id="precommit-v022">precommit v0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-v022"></a></h2>
+<h2 class="page-header" data-toc-text="0.2.2" id="precommit-022">precommit 0.2.2<small>2021-12-14</small><a class="anchor" aria-label="anchor" href="#precommit-022"></a></h2>
 <p>This is a maintenance release on the request of CRAN (<a href="https://github.com/lorenzwalthert/precommit/issues/337" class="external-link">#337</a>) and to improve experience with the <code>language: r</code> switch conducted in <code>v0.2.0</code>. In particular, note that projects using {renv} and RStudio are not very compatible with hook versions &gt; 0.1.3.9014 and <code><a href="../reference/autoupdate.html">autoupdate()</a></code> results in downgrading the hook versions (<a href="https://github.com/lorenzwalthert/precommit/issues/346" class="external-link">#346</a>).</p>
 <p><strong>API Changes</strong></p>
 <ul><li>The argument <code>--no-warn-cache</code> in the <code>style-files</code> and the <code>roxygenize</code> hook is deprecated and will be removed in a future release. Please remove it from your <code>.pre-commit-config.yaml</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/340" class="external-link">#340</a>. <a href="https://github.com/lorenzwalthert/precommit/issues/341" class="external-link">#341</a>).</li>
@@ -181,7 +196,7 @@
 <p><a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/smingerson" class="external-link">@smingerson</a>.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.2.0" id="precommit-v020">precommit v0.2.0<small>2021-12-01</small><a class="anchor" aria-label="anchor" href="#precommit-v020"></a></h2>
+<h2 class="page-header" data-toc-text="0.2.0" id="precommit-020">precommit 0.2.0<small>2021-12-01</small><a class="anchor" aria-label="anchor" href="#precommit-020"></a></h2>
 <p>This version marks the switch to <a href="https://pre-commit.com/#r" class="external-link"><code>language: r</code></a> of all existing hooks. This means two things:</p>
 <ul><li>creation of isolated pre-commit environments: No more manual dependency management for hooks nor conflicts with your global R library and more consistent output of hooks from different collaborators in a project. Thanks to {renv}’s excellent <a href="https://rstudio.github.io/renv/articles/renv.html#cache-1" class="external-link">caching</a>, this hardly consumes any space and is fast. This requires the Python package <code>pre-commit &gt;= 2.11.1</code> (ideally even <code>&gt;= 2.13.0</code>). See *Installation/Update** below (<a href="https://github.com/lorenzwalthert/precommit/issues/233" class="external-link">#233</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/250" class="external-link">#250</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/260" class="external-link">#260</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/264" class="external-link">#264</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/273" class="external-link">#273</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/315" class="external-link">#315</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/313" class="external-link">#313</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/308" class="external-link">#308</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/301" class="external-link">#301</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/300" class="external-link">#300</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/295" class="external-link">#295</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/285" class="external-link">#285</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/328" class="external-link">#328</a>).</li>
 <li>support for continuous integration via <a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a> and <a href="https://github.com/pre-commit/action" class="external-link">GitHub Actions</a>), that is, running the pre-commit hooks as part of a CI pipeline. This means that hook passing can be enforced for pull requests, even if the creator did not run the hooks locally. Further, the diff from running the hooks is committed and pushed back to the remote repository. This may fix the failing hook problems in some cases (e.g. <code>style-files</code>). See <code><a href="../articles/ci.html">vignette("ci")</a></code> for a comparison of the two services (<a href="https://github.com/lorenzwalthert/precommit/issues/318" class="external-link">#318</a>).</li>
@@ -237,7 +252,7 @@
 <p>For previous versions of <code>NEWS.md</code> with news bullet per patch release, see the <a href="https://github.com/lorenzwalthert/precommit/blob/7a8740714ab868d20e981b8b80898d7be050e34e/NEWS.md" class="external-link">latest <code>NEWS.md</code> before gathering</a>.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.1.3" id="precommit-v013">precommit v0.1.3<small>2020-10-10</small><a class="anchor" aria-label="anchor" href="#precommit-v013"></a></h2>
+<h2 class="page-header" data-toc-text="0.1.3" id="precommit-013">precommit 0.1.3<small>2020-10-10</small><a class="anchor" aria-label="anchor" href="#precommit-013"></a></h2>
 <p>This is mainly a CRAN maintenance release because of <a href="https://github.com/lorenzwalthert/precommit/issues/201" class="external-link">#201</a> and includes some bug fixes and no API changes.</p>
 <p>A big hand to all the contributors of this release: <a href="https://github.com/fschoner" class="external-link">@fschoner</a>, <a href="https://github.com/krzyslom" class="external-link">@krzyslom</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/maurolepore" class="external-link">@maurolepore</a>, <a href="https://github.com/pat-s" class="external-link">@pat-s</a>, and <a href="https://github.com/zkamvar" class="external-link">@zkamvar</a>.</p>
 <p><strong>Minor Changes</strong></p>
@@ -250,26 +265,26 @@
 <code><a href="../reference/uninstall_precommit.html">precommit::uninstall_precommit()</a></code> now correctly removes <code>^\\.pre-commit-config.yaml$</code>from <code>.Rbuildignore</code> and does not show a prompt (<a href="https://github.com/lorenzwalthert/precommit/issues/199" class="external-link">#199</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.1.2" id="precommit-v012">precommit v0.1.2<small>2020-06-13</small><a class="anchor" aria-label="anchor" href="#precommit-v012"></a></h2>
+<h2 class="page-header" data-toc-text="0.1.2" id="precommit-012">precommit 0.1.2<small>2020-06-13</small><a class="anchor" aria-label="anchor" href="#precommit-012"></a></h2>
 <p>Initial CRAN release. See <a href="https://lorenzwalthert.github.io/precommit/" class="uri">https://lorenzwalthert.github.io/precommit/</a>.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9049" id="precommit-v0009049">precommit v0.0.0.9049<a class="anchor" aria-label="anchor" href="#precommit-v0009049"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9049" id="precommit-0009049">precommit 0.0.0.9049<a class="anchor" aria-label="anchor" href="#precommit-0009049"></a></h2>
 <ul><li>Roxygen hook cache only includes files that are part of the index and will hence be able to use the cache in cases it was previously invalidated without need (<a href="https://github.com/lorenzwalthert/precommit/issues/171" class="external-link">#171</a>).</li>
 <li>styler hook should fail if styling any file fails (<a href="https://github.com/lorenzwalthert/precommit/issues/174" class="external-link">#174</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9048" id="precommit-v0009048">precommit v0.0.0.9048<a class="anchor" aria-label="anchor" href="#precommit-v0009048"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9048" id="precommit-0009048">precommit 0.0.0.9048<a class="anchor" aria-label="anchor" href="#precommit-0009048"></a></h2>
 <ul><li>Don’t allow legacy hooks by default, delete README hook from usethis informatively (<a href="https://github.com/lorenzwalthert/precommit/issues/167" class="external-link">#167</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9046" id="precommit-v0009046">precommit v0.0.0.9046<a class="anchor" aria-label="anchor" href="#precommit-v0009046"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9046" id="precommit-0009046">precommit 0.0.0.9046<a class="anchor" aria-label="anchor" href="#precommit-0009046"></a></h2>
 <p><strong>Major Changes</strong></p>
 <ul><li>
 <code><a href="../reference/use_precommit.html">use_precommit()</a></code> gains new <code>install_hooks = TRUE</code> parameter. Now all hook environments defined in yaml config are by default installed in advance. (<a href="https://github.com/lorenzwalthert/precommit/issues/163" class="external-link">#163</a>)</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9044" id="precommit-v0009044">precommit v0.0.0.9044<a class="anchor" aria-label="anchor" href="#precommit-v0009044"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9044" id="precommit-0009044">precommit 0.0.0.9044<a class="anchor" aria-label="anchor" href="#precommit-0009044"></a></h2>
 <p><strong>Breaking Changes</strong></p>
 <ul><li>
 <code><a href="../reference/uninstall_precommit.html">uninstall_precommit()</a></code>’s <code>scope</code> argument value <code>"global"</code> was renamed to <code>"user"</code>.</li>
@@ -282,7 +297,7 @@
 <code>.Renviron</code>, <code>.Rrofile</code>, <code>.RData</code>, <code>.feather</code> and <code>.Rds</code> is now also excluded from the spell checking hook.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9042" id="precommit-v0009042">precommit v0.0.0.9042<a class="anchor" aria-label="anchor" href="#precommit-v0009042"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9042" id="precommit-0009042">precommit 0.0.0.9042<a class="anchor" aria-label="anchor" href="#precommit-0009042"></a></h2>
 <p><strong>Breaking Changes</strong></p>
 <p>A major API review was conducted to make the package ready for a CRAN submission in <a href="https://github.com/lorenzwalthert/precommit/issues/152" class="external-link">#152</a>:</p>
 <ul><li>all functions have the argument <code>path_root</code> renamed to <code>root</code>.</li>
@@ -297,17 +312,17 @@
 <li>the hook <code>spell-check</code> does no longer take the hook argument <code>ignore-files</code> since this was inconsistent with the pre-commit framework. To exclude additional files, specify the <code>exclude:</code> key in your <code>.pre-commit-config.yaml</code> file. If you like to keep excluding the default files, make sure you include the <a href="https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#spell-check">default regex</a> (<a href="https://github.com/lorenzwalthert/precommit/issues/153" class="external-link">#153</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9040" id="precommit-v0009040">precommit v0.0.0.9040<a class="anchor" aria-label="anchor" href="#precommit-v0009040"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9040" id="precommit-0009040">precommit 0.0.0.9040<a class="anchor" aria-label="anchor" href="#precommit-0009040"></a></h2>
 <ul><li>roxygenize hook now only ran when <code>git diff --cached</code> contains roxygen comments (<a href="https://github.com/lorenzwalthert/precommit/issues/151" class="external-link">#151</a>).</li>
 <li>conda is a suggested dependency now, so those who choose a different installation method have a more lightweight dependency graph (<a href="https://github.com/lorenzwalthert/precommit/issues/136" class="external-link">#136</a>).</li>
 <li>Use more thoughtful order for hooks, between pkg and project (<a href="https://github.com/lorenzwalthert/precommit/issues/142" class="external-link">#142</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9031" id="precommit-v0009031-up-to-v0009038">precommit v0.0.0.9031 up to v0.0.0.9038<a class="anchor" aria-label="anchor" href="#precommit-v0009031-up-to-v0009038"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9038" id="precommit-0009038">precommit 0.0.0.9038<a class="anchor" aria-label="anchor" href="#precommit-0009038"></a></h2>
 <p>Test release process.</p>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.0.0.9030" id="precommit-v0009030">precommit v0.0.0.9030<a class="anchor" aria-label="anchor" href="#precommit-v0009030"></a></h2>
+<h2 class="page-header" data-toc-text="0.0.0.9030" id="precommit-0009030">precommit 0.0.0.9030<a class="anchor" aria-label="anchor" href="#precommit-0009030"></a></h2>
 <ul><li>auto-detect pre-commit executable when installed via pip for Linux (<a href="https://github.com/lorenzwalthert/precommit/issues/120" class="external-link">#120</a>), macOS (<a href="https://github.com/lorenzwalthert/precommit/issues/131" class="external-link">#131</a>).</li>
 <li>auto-detect pre-commit executable when installed via brew for macOS (<a href="https://github.com/lorenzwalthert/precommit/issues/132" class="external-link">#132</a>).</li>
 <li>
