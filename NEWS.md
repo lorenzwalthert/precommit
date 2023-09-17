@@ -1,26 +1,32 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-# precommit v0.3.2.9015
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# precommit 0.3.2.9020
+
+- Make sorting consistent with spelling::update_wordlist (#514).
+- Bump actions/checkout from 3 to 4 (#509).
+- Discover and check for rogue print statements (#505).
+- Use python 3.10 by default for conda envs(#477).
+- Hook dependencies update (#503, #506 #508, #513).
+
+
+# precommit 0.3.2.9015
 
 * Update dependencies.
 * Refactored hook dependency update scripts. 
 * Please see tag diff for more details.
 
-# precommit v0.3.2.9013
+# precommit 0.3.2.9013
 
 * Don't depend on dev version of styler to avoid GitHub rate limit hit (#486).
 
-# precommit v0.3.2.9009
+# precommit 0.3.2.9009
 
 * add Posit CRAN mirror to ensure macOS binary installs are possible (#488).
 * use `ubuntu-latest` instead of pinned version for tests (#481).
 * correct typo (#465) and fix error message (#470).
 * remove {digest} dependency (#471).
 
-# precommit v0.3.2.9007 (2022-12-26)
+# precommit 0.3.2.9007 (2022-12-26)
 
 - roxygenize cache invalidation is functional again (#464).
 - ensure local and remote pre-commit execution are the same for this repo 
@@ -30,7 +36,7 @@ editor_options:
 - improve spelling (#453).
 
 
-# precommit v0.3.2.9003 (2022-12-16)
+# precommit 0.3.2.9003 (2022-12-16)
 
 -   new hook `pkgdown` to emulate a {pkgdown} build for reference and 
     articles (#393).
@@ -40,7 +46,8 @@ editor_options:
     Defaults to `.` since for most R package git repos, the git and R package 
     root coincide (#432, #438).
 -   `style-files` now supports styling of R code in Quarto docs (#449).
-# precommit v0.3.2.9000
+
+# precommit 0.3.2.9000
 
 -   `use_ci()` is now documented to take `NA`, not `NULL` for argument
     `ci` (#431).
@@ -48,7 +55,7 @@ editor_options:
     the git repo that contains the R package.  Defaults to `.` since for most R 
     package git repos, the git and R package root coincide.
 
-# precommit v0.3.2
+# precommit 0.3.2
 
 -   `parsable-R` hook now gives more context on where and how parsing
     fails (#423).
@@ -58,7 +65,7 @@ editor_options:
 Thanks to [\@danielinteractive](https://github.com/danielinteractive),
 [\@jonocarroll](https://github.com/jonocarroll) for their contributions.
 
-# precommit v0.3.1
+# precommit 0.3.1
 
 **User visible changes**
 
@@ -88,7 +95,7 @@ Thanks to [\@danielinteractive](https://github.com/danielinteractive),
 Thanks to [\@danielinteractive](https://github.com/danielinteractive)
 and [\@mpadge](https://github.com/mpadge) for their contributions.
 
-# precommit v0.3.0
+# precommit 0.3.0
 
 **API changes**
 
@@ -144,7 +151,7 @@ Thanks to all people who contributed to this release:
 [\@RoyalTS](https://github.com/RoyalTS), and
 [\@smingerson](https://github.com/smingerson).
 
-# precommit v0.2.2
+# precommit 0.2.2
 
 This is a maintenance release on the request of CRAN (#337) and to
 improve experience with the `language: r` switch conducted in `v0.2.0`.
@@ -179,7 +186,7 @@ Thanks to all people who contributed to this release:
 [\@pat-s](https://github.com/pat-s), and
 [\@smingerson](https://github.com/smingerson).
 
-# precommit v0.2.0
+# precommit 0.2.0
 
 This version marks the switch to
 [`language: r`](https://pre-commit.com/#r) of all existing hooks. This
@@ -319,7 +326,7 @@ For previous versions of `NEWS.md` with news bullet per patch release,
 see the [latest `NEWS.md` before
 gathering](https://github.com/lorenzwalthert/precommit/blob/7a8740714ab868d20e981b8b80898d7be050e34e/NEWS.md).
 
-# precommit v0.1.3
+# precommit 0.1.3
 
 This is mainly a CRAN maintenance release because of #201 and includes
 some bug fixes and no API changes.
@@ -344,23 +351,23 @@ A big hand to all the contributors of this release:
     `^\\.pre-commit-config.yaml$`from `.Rbuildignore` and does not show
     a prompt (#199).
 
-# precommit v0.1.2
+# precommit 0.1.2
 
 Initial CRAN release. See <https://lorenzwalthert.github.io/precommit/>.
 
-# precommit v0.0.0.9049
+# precommit 0.0.0.9049
 
 -   Roxygen hook cache only includes files that are part of the index
     and will hence be able to use the cache in cases it was previously
     invalidated without need (#171).
 -   styler hook should fail if styling any file fails (#174).
 
-# precommit v0.0.0.9048
+# precommit 0.0.0.9048
 
 -   Don't allow legacy hooks by default, delete README hook from usethis
     informatively (#167).
 
-# precommit v0.0.0.9046
+# precommit 0.0.0.9046
 
 **Major Changes**
 
@@ -368,7 +375,7 @@ Initial CRAN release. See <https://lorenzwalthert.github.io/precommit/>.
     all hook environments defined in yaml config are by default
     installed in advance. (#163)
 
-# precommit v0.0.0.9044
+# precommit 0.0.0.9044
 
 **Breaking Changes**
 
@@ -389,7 +396,7 @@ Initial CRAN release. See <https://lorenzwalthert.github.io/precommit/>.
 -   `.Renviron`, `.Rrofile`, `.RData`, `.feather` and `.Rds` is now also
     excluded from the spell checking hook.
 
-# precommit v0.0.0.9042
+# precommit 0.0.0.9042
 
 **Breaking Changes**
 
@@ -418,7 +425,7 @@ Additional breaking changes are:
     regex](https://lorenzwalthert.github.io/precommit/articles/available-hooks.html#spell-check)
     (#153).
 
-# precommit v0.0.0.9040
+# precommit 0.0.0.9040
 
 -   roxygenize hook now only ran when `git diff --cached` contains
     roxygen comments (#151).
@@ -426,11 +433,11 @@ Additional breaking changes are:
     installation method have a more lightweight dependency graph (#136).
 -   Use more thoughtful order for hooks, between pkg and project (#142).
 
-# precommit v0.0.0.9031 up to v0.0.0.9038
+# precommit 0.0.0.9038
 
 Test release process.
 
-# precommit v0.0.0.9030
+# precommit 0.0.0.9030
 
 -   auto-detect pre-commit executable when installed via pip for Linux
     (#120), macOS (#131).
