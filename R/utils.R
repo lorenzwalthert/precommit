@@ -95,7 +95,7 @@ git_init <- function(path = ".") {
 #' @param ... Additional parameters passed to `docopt`
 #' @family hook script helpers
 #' @keywords internal
-# @export
+#' @export
 precommit_docopt <- function(doc, args = commandArgs(trailingOnly=TRUE), ...) {
   precommit_docopt(doc, c(args, ""), ...)
 }
