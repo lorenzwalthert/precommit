@@ -13,7 +13,7 @@ Options:
 " -> doc
 
 
-arguments <- precommit_docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 setwd(arguments$root)
 
 # adapted from https://github.com/lorenzwalthert/precommit/blob/f4413cfe6282c84f7176160d06e1560860c8bd3d/inst/hooks/exported/readme-rmd-rendered

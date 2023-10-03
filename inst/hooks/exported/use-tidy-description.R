@@ -12,7 +12,7 @@ Options:
 " -> doc
 
 
-arguments <- precommit_docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 setwd(arguments$root)
 
 if (!file.exists("DESCRIPTION")) {

@@ -6,7 +6,7 @@ Usage:
   consistent-release-tag [--release-mode] [<files>...]
 
 " -> doc
-arguments <- precommit_docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 
 
 # This hook checks that all versions in config files and the git tag that
