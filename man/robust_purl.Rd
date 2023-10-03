@@ -19,6 +19,7 @@ Other hook script helpers:
 \code{\link{diff_requires_run_roxygenize}()},
 \code{\link{dirs_R.cache}()},
 \code{\link{may_require_permanent_cache}()},
+\code{\link{precommit_docopt}()},
 \code{\link{roxygen_assert_additional_dependencies}()},
 \code{\link{roxygenize_with_cache}()}
 }
