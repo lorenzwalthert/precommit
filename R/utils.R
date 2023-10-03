@@ -97,7 +97,7 @@ git_init <- function(path = ".") {
 #' @keywords internal
 #' @export
 precommit_docopt <- function(doc, args = commandArgs(trailingOnly=TRUE), ...) {
-  precommit_docopt(doc, c(args, ""), ...)
+  docopt::docopt(doc, c(args, ""), ...)
 }
 
 #' Read the refs corresponding to a hooks repo
