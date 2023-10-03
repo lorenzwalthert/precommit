@@ -83,6 +83,22 @@ git_init <- function(path = ".") {
   )
 }
 
+#' Provide a singular interface for hook calls to docopt
+#'
+#' docopt provides different processing for a single string
+#' than an array/vector, and so this function wraps docopt
+#' to
+#'
+#' @param doc \code{character} vector with command line specification
+#' @param args \code{character} vector of commandline arguments.
+#'   Defaults to \code{commandArgs(trailingOnly=TRUE)}.
+#' @param ... Additional parameters passed to `docopt`
+#' @family hook script helpers
+#' @keywords internal
+# @export
+precommit_docopt <- function(doc, args = commandArgs(trailingOnly=TRUE), ...) {
+  precommit_docopt(doc, c(args, ""), ...)
+}
 
 #' Read the refs corresponding to a hooks repo
 #' @keywords internal

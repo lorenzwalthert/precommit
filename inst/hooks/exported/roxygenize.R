@@ -21,7 +21,7 @@ Options:
   --root=<root_>  Path relative to the git root that contains the R package root [default: .].
 
 " -> doc
-arguments <- docopt::docopt(doc)
+arguments <- precommit_docopt(doc)
 arguments$files <- normalizePath(arguments$files) # because working directory changes to root
 setwd(arguments$root)
 
