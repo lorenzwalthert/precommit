@@ -149,7 +149,7 @@ hook_state_create <- function(tempdir,
 
   # quote any individual filenames with spaces so the shell identifies them
   # each as a single term
-  files <- ifelse( grepl(' ', files), shQuote(files), files)
+  files <- shQuote(files)
 
   system2(paste0(Sys.getenv("R_HOME"), "/bin/Rscript"),
     args = as.character(c(path_executable, cmd_args, files)),

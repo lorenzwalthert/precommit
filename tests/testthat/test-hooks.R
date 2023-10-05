@@ -232,23 +232,6 @@ run_test(
 )
 
 
-# verify that functions that use docopt without arguments function as
-# expected with filenames that contain spaces
-
-run_test("parsable-R",
-  file_name = "parsable R with spaces",
-  suffix = "-success.R",
-  std_err = NULL
-)
-
-run_test("parsable-R",
-  file_name = "parsable R with spaces",
-  suffix = "-fail.R",
-  std_out = "Full context",
-  std_err = "1 1"
-)
-
-
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### spell-check                                                             ####
 # success

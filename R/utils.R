@@ -89,14 +89,14 @@ git_init <- function(path = ".") {
 #' than an array/vector, and so this function wraps docopt
 #' to
 #'
-#' @param doc \code{character} vector with command line specification
-#' @param args \code{character} vector of commandline arguments.
-#'   Defaults to \code{commandArgs(trailingOnly=TRUE)}.
+#' @param doc `character` vector with command line specification
+#' @param args `character` vector of commandline arguments.
+#'   Defaults to `commandArgs(trailingOnly=TRUE)`.
 #' @param ... Additional parameters passed to `docopt`
 #' @family hook script helpers
 #' @keywords internal
 #' @export
-precommit_docopt <- function(doc, args = commandArgs(trailingOnly=TRUE), ...) {
+precommit_docopt <- function(doc, args = commandArgs(trailingOnly = TRUE), ...) {
   docopt::docopt(doc, c(args, ""), ...)
 }
 
