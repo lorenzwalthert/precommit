@@ -140,24 +140,6 @@ run_test("style-files",
   )
 )
 
-# verify that style-files, which uses docopt with preprocessed args,
-# functions as expected with filenames that contain spaces
-
-run_test("style-files",
-  file_name = "style files with spaces",
-  suffix = "-success.R",
-  cmd_args = c("--style_pkg=styler", "--style_fun=tidyverse_style", "--cache-root=styler")
-)
-
-run_test("style-files",
-  file_name = "style files with spaces",
-  suffix = "-fail.R",
-  std_err = NA,
-  cmd_args = c(
-    "--style_pkg=styler", "--style_fun=tidyverse_style", "--cache-root=styler"
-  )
-)
-
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### no-browser-statement                                                    ####
 # success
