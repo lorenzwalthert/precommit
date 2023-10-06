@@ -86,8 +86,11 @@ git_init <- function(path = ".") {
 #' Provide a singular interface for hook calls to docopt
 #'
 #' docopt provides different processing for a single string
-#' than an array/vector, and so this function wraps docopt
-#' to
+#' than an array/vector. As `"string"`` and `c("string")`
+#' are semantically equivalent in R, this can create problems
+#' when a single parameter is provided. Thus, this function
+#' wraps docopt to ensure that the args will always be
+#' interpretted as a vector.
 #'
 #' @param doc `character` vector with command line specification
 #' @param args `character` vector of commandline arguments.
