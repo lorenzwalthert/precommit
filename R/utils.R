@@ -90,10 +90,10 @@ git_init <- function(path = ".") {
 #' are semantically equivalent in R, this can create problems
 #' when a single parameter is provided. Thus, this function
 #' wraps docopt to ensure that the args will always be
-#' interpretted as a vector.
+#' interpreted as a vector.
 #'
 #' @param doc `character` vector with command line specification
-#' @param args `character` vector of commandline arguments.
+#' @param args `character` vector of command line arguments.
 #'   Defaults to `commandArgs(trailingOnly=TRUE)`.
 #' @param ... Additional parameters passed to `docopt`
 #' @family hook script helpers
