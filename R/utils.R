@@ -95,7 +95,7 @@ git_init <- function(path = ".") {
 #' @param doc `character` vector with command line specification. 
 #' @param args `character` vector of command line arguments.
 #'   Defaults to `commandArgs(trailingOnly=TRUE)`.
-#' @param ... Additional parameters passed to `docopt`
+#' @param ... Additional parameters passed to `docopt`.
 #' @family hook script helpers
 #' @keywords internal
 #' @export
