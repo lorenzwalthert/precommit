@@ -7,12 +7,12 @@
 precommit_docopt(doc, args = commandArgs(trailingOnly = TRUE), ...)
 }
 \arguments{
-\item{doc}{\code{character} vector with command line specification}
+\item{doc}{\code{character} vector with command line specification.}
 
 \item{args}{\code{character} vector of command line arguments.
 Defaults to \code{commandArgs(trailingOnly=TRUE)}.}
 
-\item{...}{Additional parameters passed to \code{docopt}}
+\item{...}{Additional parameters passed to \code{docopt}.}
 }
 \description{
 docopt provides different processing for a single string
@@ -21,6 +21,10 @@ are semantically equivalent in R, this can create problems
 when a single parameter is provided. Thus, this function
 wraps docopt to ensure that the args will always be
 interpreted as a vector.
+}
+\details{
+This function is only exported for use in hook scripts, but it's not intended
+to be called by the end-user directly.
 }
 \seealso{
 Other hook script helpers: 
