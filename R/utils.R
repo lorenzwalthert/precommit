@@ -92,7 +92,7 @@ git_init <- function(path = ".") {
 #' wraps docopt to ensure that the args will always be
 #' interpreted as a vector.
 #'
-#' @param doc `character` vector with command line specification. 
+#' @param doc `character` vector with command line specification.
 #' @param args `character` vector of command line arguments.
 #'   Defaults to `commandArgs(trailingOnly=TRUE)`.
 #' @param ... Additional parameters passed to `docopt`.
