@@ -92,6 +92,8 @@ git_init <- function(path = ".") {
 #' wraps docopt to ensure that the args will always be
 #' interpreted as a vector.
 #'
+#' This function is only exported for use in hook scripts, but it's not intended
+#' to be called by the end-user directly.
 #' @param doc `character` vector with command line specification.
 #' @param args `character` vector of command line arguments.
 #'   Defaults to `commandArgs(trailingOnly=TRUE)`.
