@@ -140,7 +140,6 @@ run_test("style-files",
   )
 )
 
-
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### no-browser-statement                                                    ####
 # success
@@ -213,6 +212,7 @@ run_test(
   std_out = "parsable-R-fail.Rmd",
   std_err = "1 1"
 )
+
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### spell-check                                                             ####

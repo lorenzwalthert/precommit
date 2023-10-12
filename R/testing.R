@@ -146,6 +146,11 @@ hook_state_create <- function(tempdir,
   withr::local_dir(tempdir)
   files <- fs::path_rel(path_candidate_temp, tempdir)
   # https://stat.ethz.ch/pipermail/r-devel/2018-February/075507.html
+
+  # quote any individual filenames with spaces so the shell identifies them
+  # each as a single term
+  files <- shQuote(files)
+
   system2(paste0(Sys.getenv("R_HOME"), "/bin/Rscript"),
     args = as.character(c(path_executable, cmd_args, files)),
     stderr = path_stderr, stdout = path_stdout, env = env

@@ -17,7 +17,7 @@ pre_installed <- c(
   "survival", "tcltk", "tools", "utils"
 )
 
-arguments <- docopt::docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 arguments$files <- normalizePath(arguments$files) # because working directory changes to root
 setwd(normalizePath(arguments$root))
 deps_in_desc <- function(file, arguments) {

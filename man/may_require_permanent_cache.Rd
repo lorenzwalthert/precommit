@@ -20,6 +20,7 @@ if someone updates the R package {precommit} but not the hook revisions.
 Other hook script helpers: 
 \code{\link{diff_requires_run_roxygenize}()},
 \code{\link{dirs_R.cache}()},
+\code{\link{precommit_docopt}()},
 \code{\link{robust_purl}()},
 \code{\link{roxygen_assert_additional_dependencies}()},
 \code{\link{roxygenize_with_cache}()}
