@@ -69,7 +69,7 @@ roxygen_assert_additional_dependencies <- function() {
   }
 }
 
-#' Roxygen depending on cache state
+#' Roxygen and add a cache entry
 #'
 #' This function is only exported for use in hook scripts, but it's not intended
 #' to be called by the end-user directly.
@@ -80,31 +80,29 @@ roxygen_assert_additional_dependencies <- function() {
 #' @importFrom R.cache saveCache
 # fails if accessed with R.cache::saveCache()!
 roxygenize_with_cache <- function(key, dirs) {
-  if (diff_requires_run_roxygenize()) {
-    out <- rlang::with_handlers(
-      roxygen2::roxygenise(),
-      error = function(e) e
-    )
-    if (
-      inherits(out, "packageNotFoundError") ||
-        ("message" %in% names(out) && grepl("Dependency package(\\(s\\))? .* not available", out$message))
-    ) {
-      rlang::abort(paste0(
-        conditionMessage(out),
-        " Please add the package as a dependency to ",
-        "`.pre-commit-config.yaml` -> `id: roxygenize` -> ",
-        "`additional_dependencies` and try again. The package must be ",
-        "specified so `renv::install()` understands it, e.g. like this:\n\n",
-        "    -   id: roxygenize",
-        "
+  out <- rlang::with_handlers(
+    roxygen2::roxygenise(),
+    error = function(e) e
+  )
+  if (
+    inherits(out, "packageNotFoundError") ||
+      ("message" %in% names(out) && grepl("Dependency package(\\(s\\))? .* not available", out$message))
+  ) {
+    rlang::abort(paste0(
+      conditionMessage(out),
+      " Please add the package as a dependency to ",
+      "`.pre-commit-config.yaml` -> `id: roxygenize` -> ",
+      "`additional_dependencies` and try again. The package must be ",
+      "specified so `renv::install()` understands it, e.g. like this:\n\n",
+      "    -   id: roxygenize",
+      "
         additional_dependencies:
         - r-lib/pkgapi\n\n"
-      ))
-    } else if (inherits(out, "error")) {
-      rlang::abort(conditionMessage(out))
-    } else if (inherits(out, "warning")) {
-      rlang::warn(conditionMessage(out))
-    }
-    saveCache(object = Sys.time(), key = key, dirs = dirs)
+    ))
+  } else if (inherits(out, "error")) {
+    rlang::abort(conditionMessage(out))
+  } else if (inherits(out, "warning")) {
+    rlang::warn(conditionMessage(out))
   }
+  saveCache(object = Sys.time(), key = key, dirs = dirs)
 }

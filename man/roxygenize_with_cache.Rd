@@ -2,7 +2,7 @@
 % Please edit documentation in R/roxygen2.R
 \name{roxygenize_with_cache}
 \alias{roxygenize_with_cache}
-\title{Roxygen depending on cache state}
+\title{Roxygen and add a cache entry}
 \usage{
 roxygenize_with_cache(key, dirs)
 }

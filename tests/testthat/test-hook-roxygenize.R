@@ -1,4 +1,4 @@
-test_that("roxygen runs are done if necessary", {
+test_that("relevant diffs can be detected", {
   withr::with_tempdir({
     fs::dir_create("R")
     # when new lines are added
