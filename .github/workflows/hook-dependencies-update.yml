@@ -1,7 +1,7 @@
 on:
   schedule:
     - cron:  '50 8 1,15 * *'
-  workflow_dispatch
+  workflow_dispatch:
 
 
 name: Hook dependency updates
