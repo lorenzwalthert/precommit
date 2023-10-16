@@ -10,7 +10,7 @@ jobs:
   hook-dependencies-update:
     runs-on: ubuntu-20.04
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.PRECOMMIT_HOOK_DEPENDENCY_UPDATE }}
     steps:
       - uses: actions/checkout@v4
 
