@@ -122,6 +122,7 @@ repos:
         -    rlang
         -    git2r
         -    desc
+        -    lorenzwalthert/precommit
         stages: [commit, push]
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst
