@@ -207,16 +207,6 @@
       ],
       "Hash": "b18a9cf3c003977b0cc49d5e76ebe48d"
     },
-    "docopt": {
-      "Package": "docopt",
-      "Version": "0.7.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "methods"
-      ],
-      "Hash": "e9eeef7931ee99ca0093f3f20b88e09b"
-    },
     "evaluate": {
       "Package": "evaluate",
       "Version": "0.22",
@@ -273,7 +263,7 @@
     },
     "hunspell": {
       "Package": "hunspell",
-      "Version": "3.0.2",
+      "Version": "3.0.3",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -281,7 +271,7 @@
         "Rcpp",
         "digest"
       ],
-      "Hash": "656219b6f3f605499d7cdbe208656639"
+      "Hash": "e957e989ea17f937964f0d46b0f0bca0"
     },
     "knitr": {
       "Package": "knitr",
@@ -576,7 +566,7 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.6.3",
+      "Version": "0.6.4",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -586,7 +576,7 @@
         "lifecycle",
         "rlang"
       ],
-      "Hash": "d0ef2856b83dc33ea6e255caf6229ee2"
+      "Hash": "266c1ca411266ba8f365fcc726444b87"
     },
     "withr": {
       "Package": "withr",
