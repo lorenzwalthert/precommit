@@ -9,7 +9,7 @@ hook_deps <- function(root) {
     "pkgdown", "mockery",
     "httr"
   )
-  out <- c(out, "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "desc", "mockery")
+  out <- c(out, "docopt", "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "desc", "mockery")
   out <- setdiff(c(unique(c(out, deps[deps$type == "Imports", ]$package))), dont)
   out <- names(renv:::renv_package_dependencies(out))
   return(sort(out))
