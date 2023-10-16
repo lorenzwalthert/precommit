@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      REPO_PAT_PUSH: {{ secrets.PRECOMMIT_HOOK_DEPENDENCY_UPDATE }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,7 +40,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
-          token: REPO_PAT_PUSH
+          token: ${{ secrets.PRECOMMIT_HOOK_DEPENDENCY_UPDATE }}
           commit-message: Update renv dependencies
           branch: hook-dependencies-update
           delete-branch: true
