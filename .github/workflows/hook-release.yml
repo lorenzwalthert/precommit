@@ -1,3 +1,5 @@
+name: hook-release 
+
 on:
   pull_request:
     types:
