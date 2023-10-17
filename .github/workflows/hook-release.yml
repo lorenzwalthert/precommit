@@ -5,7 +5,7 @@ on:
 
 jobs:
   if_merged:
-    if: github.event.pull_request.merged == true && gihub.head_ref == 'hook-dependencies-update'
+    if: github.event.pull_request.merged == true && github.head_ref == 'hook-dependencies-update'
     runs-on: ubuntu-latest
     steps:
     - run: |
