@@ -128,14 +128,6 @@ options.
 
 **Cons:**
 
--   out-of-the-box action is in [maintenance only
-    mode](https://github.com/pre-commit/action) and less feature
-    complete than [pre-commit.ci](https://pre-commit.ci). For example,
-    if your hooks fail on first attempt, the corrections are committed
-    and pushed, but they won't trigger a new CI and you can't make them
-    do it without [exposing
-    credentials](https://github.com/pre-commit/action/pull/49). The only
-    way is to close and re-open the PR.
 -   No configuration options such as hook skipping supported that
     [pre-commit.ci](https://pre-commit.ci) supports.
 -   You need to maintain the workflow file with a lot of boilerplate
