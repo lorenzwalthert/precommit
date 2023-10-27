@@ -48,7 +48,7 @@ if (!is.null(cache)) {
   all_files <- file.info(candidates)
   last_modified <- max(all_files$mtime)
   if (last_modified > cache[[1]]) {
-    if (diff_requires_run_roxygenize()) {
+    if (precommit::diff_requires_run_roxygenize()) {
       precommit::roxygenize_with_cache(key = wd, dirs = path_relative_cache)
     }
   }
