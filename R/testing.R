@@ -86,6 +86,8 @@ run_test <- function(hook_name,
 #' @param expect_success Whether or not an exit code 0 is expected. This can
 #'   be derived from `std_err`, but sometimes, non-empty stderr does not mean
 #'   error, but just a message.
+#' @param read_only If `TRUE` and `artifacts` are not `NULL`, then assert that hook
+#'   did not modify the artifacts.
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
