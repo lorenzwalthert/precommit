@@ -33,6 +33,8 @@ jobs:
           Rscript -e "install.packages('remotes'); remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
+      - name: update PPM URL
+        run: Rscript inst/update-ppm-url.R
       - name: update dependency graph among packages
         run: Rscript inst/update-existing-hook-dependencies.R
       - name: update existing packages
