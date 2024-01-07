@@ -52,7 +52,7 @@ repos:
     rev: {rev}
     hooks:
     -   id: lintr
-        args: [--warn-only, --key=value]
+        args: [--warn_only, --key=value]
 "))
 ```
 
