@@ -13,7 +13,8 @@ run_test_impl(
   artifacts,
   file_transformer,
   env,
-  expect_success
+  expect_success,
+  read_only
 )
 }
 \arguments{
@@ -40,6 +41,9 @@ temporary location and the value is the source of the file.}
 \item{expect_success}{Whether or not an exit code 0 is expected. This can
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
+
+\item{read_only}{If \code{TRUE} and \code{artifacts} are not \code{NULL}, then assert that hook
+did not modify the artifacts.}
 }
 \description{
 Implement a test run
