@@ -98,7 +98,8 @@ when running.</p>
 <span>  artifacts <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  file_transformer <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">files</span><span class="op">)</span> <span class="va">files</span>,</span>
 <span>  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  expect_success <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">std_err</span><span class="op">)</span></span>
+<span>  expect_success <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">std_err</span><span class="op">)</span>,</span>
+<span>  read_only <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -160,6 +161,11 @@ made.</p></dd>
 <dd><p>Whether or not an exit code 0 is expected. This can
 be derived from <code>std_err</code>, but sometimes, non-empty stderr does not mean
 error, but just a message.</p></dd>
+
+
+<dt>read_only</dt>
+<dd><p>If <code>TRUE</code> and <code>artifacts</code> are not <code>NULL</code>, then assert that hook
+did not modify the artifacts.</p></dd>
 
 </dl></div>
     <div id="details">

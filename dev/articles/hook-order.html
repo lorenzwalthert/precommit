@@ -127,25 +127,36 @@ just randomly order constraints.</li>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="hooks-with-dependencies">Hooks with dependencies:<a class="anchor" aria-label="anchor" href="#hooks-with-dependencies"></a>
+<h2 id="hooks-with-dependencies">Hooks with dependencies<a class="anchor" aria-label="anchor" href="#hooks-with-dependencies"></a>
 </h2>
-<p><strong>Read and write</strong></p>
+<div class="section level3">
+<h3 id="read-and-write">Read and write<a class="anchor" aria-label="anchor" href="#read-and-write"></a>
+</h3>
 <ul>
-<li>styler: should run before roxygen because of caching. Caches.</li>
-<li>roxygen. Caches.</li>
-<li>codemeta: must be before tidy description.</li>
-<li>use-tidy-description.</li>
+<li>style-files - caches; should run before roxygenize because of the
+caching</li>
+<li>roxygenize - caches</li>
+<li>codemeta-description-updated - must be before
+use-tidy-description</li>
+<li>use-tidy-description</li>
+<li>spell-check - updates <code>inst/WORDLIST</code>; should run after
+roxygenize</li>
 </ul>
-<p><strong>Just read:</strong></p>
+</div>
+<div class="section level3">
+<h3 id="read-only">Read only<a class="anchor" aria-label="anchor" href="#read-only"></a>
+</h3>
 <ul>
-<li>spell check; run after roxygen</li>
-<li>lintr: should run after styler.</li>
-<li>readme-rmd-rendered: Must run after styler.</li>
+<li>lintr - should run after styler</li>
+<li>readme-rmd-rendered - must run after styler</li>
 <li>parsable-R</li>
 <li>no-browser-statement</li>
 <li>no-print-statement</li>
-<li>deps in desc.</li>
+<li>no-debug-statement</li>
+<li>deps-in-desc</li>
+<li>pkgdown</li>
 </ul>
+</div>
 </div>
   </div>
 
