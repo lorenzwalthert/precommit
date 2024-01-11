@@ -1,5 +1,3 @@
-source("renv/activate.R")
-
 options(
   repos = c(RSPM = renv::lockfile_read()$R$Repositories$RSPM), # CRAN is not an option, always use PPM
   install.packages.check.source = "no", # don't check if source packages are available
@@ -7,6 +5,7 @@ options(
 )
 renv::install("jsonlite")
 renv_deps <- names(jsonlite::read_json("renv.lock")$Packages)
+source("renv/activate.R")
 renv::load()
 renv::restore(prompt = FALSE)
 can_be_updated <- renv::update(setdiff(renv_deps, "renv"), prompt = FALSE, check = FALSE)
