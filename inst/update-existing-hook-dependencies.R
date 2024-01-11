@@ -1,5 +1,4 @@
 source("inst/update-renv-prepare.R")
-renv::install("jsonlite")
 renv_deps <- names(jsonlite::read_json("renv.lock")$Packages)
 source("renv/activate.R")
 renv::load()
