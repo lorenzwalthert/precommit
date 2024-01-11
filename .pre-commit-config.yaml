@@ -83,7 +83,7 @@ repos:
           (?x)^(
           inst/hooks/exported/pkgdown.R|
           tests/testthat/in/.*|
-          inst/renv-update\.R|
+          inst/update-renv-prepare.R|
           inst/update-ppm-url.R|
           inst/update-dependency-graph-existing-packages\.R|
           inst/update-existing-hook-dependencies\.R|
