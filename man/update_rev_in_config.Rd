@@ -2,7 +2,7 @@
 % Please edit documentation in R/release.R
 \name{update_rev_in_config}
 \alias{update_rev_in_config}
-\title{Updates the hook version ref of {precommit} in a \code{.pre-commit-config} file}
+\title{Updates the hook version ref of \{precommit\} in a \code{.pre-commit-config} file}
 \usage{
 update_rev_in_config(new_version, path = "inst/pre-commit-config.yaml")
 }
