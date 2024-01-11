@@ -1,5 +1,3 @@
-source("renv/activate.R")
-
 hook_deps <- function(root) {
   out <- renv::dependencies("inst/hooks/exported/")$Package
   desc <- desc::desc()
@@ -16,6 +14,7 @@ hook_deps <- function(root) {
 }
 
 source("inst/update-renv-prepare.R")
+source("renv/activate.R")
 options(renv.snapshot.filter = hook_deps)
 
 renv::snapshot(type = "custom", prompt = FALSE)
