@@ -251,7 +251,7 @@ run_test("deps-in-desc",
 
 # in sub directory with wrong root
 run_test("deps-in-desc",
-  suffix = "-fail.R", std_err = "contains a file",
+  suffix = "-fail.R", std_err = "Could not find R package",
   file_transformer = function(files) {
     fs::path_abs(fs::file_move(files, "rpkg"))
   },
