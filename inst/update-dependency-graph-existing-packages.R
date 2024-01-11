@@ -1,5 +1,3 @@
-source("renv/activate.R")
-
 hook_deps <- function(root) {
   out <- renv::dependencies("inst/hooks/exported/")$Package
   desc <- desc::desc()
@@ -14,14 +12,9 @@ hook_deps <- function(root) {
   out <- names(renv:::renv_package_dependencies(out))
   return(sort(out))
 }
-options(
-  # repos = c(
-  #   RSPM = "https://packagemanager.rstudio.com/all/latest",
-  #   CRAN = "https://cran.rstudio.com"
-  # ),
-  install.packages.compile.from.source = "never"
-)
 
+source("inst/update-renv-prepare.R")
+source("renv/activate.R")
 options(renv.snapshot.filter = hook_deps)
 
 renv::snapshot(type = "custom", prompt = FALSE)
