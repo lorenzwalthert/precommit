@@ -5,10 +5,6 @@
       {
         "Name": "RSPM",
         "URL": "https://packagemanager.posit.co/cran/2023-11-17"
-      },
-      {
-        "Name": "CRAN",
-        "URL": "https://cran.rstudio.com"
       }
     ]
   },
