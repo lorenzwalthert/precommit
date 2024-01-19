@@ -2,7 +2,7 @@
 % Please edit documentation in R/cache.R
 \name{may_require_permanent_cache}
 \alias{may_require_permanent_cache}
-\title{Issue a warning if \code{{R.cache}} uses temporary cache only}
+\title{Issue a warning if \{R.cache\} uses temporary cache only}
 \usage{
 may_require_permanent_cache(temp_cache_is_enough = FALSE)
 }
@@ -11,10 +11,10 @@ may_require_permanent_cache(temp_cache_is_enough = FALSE)
 }
 \description{
 This function used to check if a permanent cache was available and issue a
-warning if not, but since {R.cache} version \verb{0.15.0} (release date
+warning if not, but since \{R.cache\} version \verb{0.15.0} (release date
 2021-04-27), a permanent directory will be used automatically, so this check
 if redundant. the function is kept in the package for compatibility, i.e.
-if someone updates the R package {precommit} but not the hook revisions.
+if someone updates the R package \{precommit\} but not the hook revisions.
 }
 \seealso{
 Other hook script helpers: 
