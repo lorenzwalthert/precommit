@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -93,7 +93,8 @@
 <span>  <span class="va">artifacts</span>,</span>
 <span>  <span class="va">file_transformer</span>,</span>
 <span>  <span class="va">env</span>,</span>
-<span>  <span class="va">expect_success</span></span>
+<span>  <span class="va">expect_success</span>,</span>
+<span>  <span class="va">read_only</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -138,6 +139,11 @@ temporary location and the value is the source of the file.</p></dd>
 be derived from <code>std_err</code>, but sometimes, non-empty stderr does not mean
 error, but just a message.</p></dd>
 
+
+<dt>read_only</dt>
+<dd><p>If <code>TRUE</code> and <code>artifacts</code> are not <code>NULL</code>, then assert that hook
+did not modify the artifacts.</p></dd>
+
 </dl></div>
 
   </div>
@@ -152,7 +158,7 @@ error, but just a message.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

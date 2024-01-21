@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -79,6 +79,7 @@
 
 
 <div id="general" class="section level1">
+
 <p>Before making a pull request, discuss your ideas in an issue. # Adding new hooks</p>
 <p>To create a new hook, have a look at the <a href="https://pre-commit.com/#new-hooks" class="external-link">official documentation</a> on creating new hooks, then have a look at existing hooks in this repo. The actual executables are defined in <a href="https://github.com/lorenzwalthert/precommit/tree/main/inst/hooks" class="external-link"><code>inst/hooks/</code></a>. In the script, you can expect the passed command line arguments to be all options, finally the files that should be processed with the hook.</p>
 <p>For the scripts to become a hook, they need to be <em>registered</em> in <a href="https://github.com/lorenzwalthert/precommit/blob/main/.pre-commit-hooks.yaml" class="external-link"><code>.pre-commit-hooks.yaml</code></a>. As of pre-commit 2.11, R is a <a href="https://pre-commit.com/#r" class="external-link">supported language of pre-commit</a>. Hence, it should have <code>language: r</code> in <code>.pre-commit-hooks.yaml</code> and then (for compatibility) a shebang in the <code>entrypoint</code> script.</p>
@@ -113,7 +114,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

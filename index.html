@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -110,7 +110,9 @@
 <div class="page-header"><h1 id="useful-git-pre-commit-hooks-for-r">Useful git pre-commit hooks for R<a class="anchor" aria-label="anchor" href="#useful-git-pre-commit-hooks-for-r"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end --><p><a href="https://pre-commit.com" class="external-link">Pre-commit hooks</a> are tests that run each time you attempt to commit. If the tests pass, the commit will be made, otherwise not. A very basic test is to check if the code is parsable, making sure you have not forgotten a comma, brace or quote. You can run hooks locally and/or in the cloud:</p>
+
+<!-- badges: end -->
+<p><a href="https://pre-commit.com" class="external-link">Pre-commit hooks</a> are tests that run each time you attempt to commit. If the tests pass, the commit will be made, otherwise not. A very basic test is to check if the code is parsable, making sure you have not forgotten a comma, brace or quote. You can run hooks locally and/or in the cloud:</p>
 <ul>
 <li><p>As a check before local commits: This requires installing pre-commit.</p></li>
 <li><p>As a CI check with <a href="https://pre-commit.ci" class="external-link uri">https://pre-commit.ci</a>: If you want to enforce passing hooks on pull requests (and auto-fix trivial problems like styling) even if the committer does not have a local installation.</p></li>
@@ -127,7 +129,10 @@
 <div class="section level2">
 <h2 id="why-do-i-need-pre-commit-hooks">Why do I need pre-commit hooks?<a class="anchor" aria-label="anchor" href="#why-do-i-need-pre-commit-hooks"></a>
 </h2>
-<figure><img src="reference/figures/pre-commit-meme.jpeg" width="500" align="center" href="https://twitter.com/dataandme/status/1255510799273132032"><figcaption>By <a href="https://twitter.com/dataandme/status/1255510799273132032" class="external-link">Mara Averick</a></figcaption></figure><p>For a more in-depth explanation and even more reasons, see <code><a href="articles/why-use-hooks.html">vignette("why-use-hooks")</a></code>.</p>
+<figure><p><img src="reference/figures/pre-commit-meme.jpeg" width="500" align="center" href="https://twitter.com/dataandme/status/1255510799273132032"></p>
+<figcaption>
+By <a href="https://twitter.com/dataandme/status/1255510799273132032" class="external-link">Mara Averick</a>
+</figcaption></figure><p>For a more in-depth explanation and even more reasons, see <code><a href="articles/why-use-hooks.html">vignette("why-use-hooks")</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
@@ -136,6 +141,7 @@
 <ul>
 <li><p><a href="https://lorenzwalthert.github.io/precommit/">latest CRAN release</a>.</p></li>
 <li><p><a href="https://lorenzwalthert.github.io/precommit/dev/">GitHub development version</a>.</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=r3QXwfxQBLM&amp;t=1280s" class="external-link">UseR 2022 talk on pre-commit for R</a></p></li>
 </ul>
 <p>These only cover the functionality added on top of the pre-commit framework by this package. Everything else is covered in the extensive <a href="https://pre-commit.com" class="external-link">online documentation</a> of the pre-commit framework itself, including how to create hooks for actions like <code>git push</code> or <code>git checkout</code>, create local hooks etc.</p>
 </div>
@@ -194,7 +200,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
