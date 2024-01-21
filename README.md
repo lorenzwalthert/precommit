@@ -1,3 +1,8 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -42,11 +47,13 @@ The goal of this package is to twofold:
 ## Why do I need pre-commit hooks?
 
 <figure>
+
 <img src="man/figures/pre-commit-meme.jpeg" width="500" align="center" href="https://twitter.com/dataandme/status/1255510799273132032"/>
-<figcaption>
-By <a href=https://twitter.com/dataandme/status/1255510799273132032>Mara
-Averick</a>
-</figcaption>
+
+<figcaption>By
+<a href=https://twitter.com/dataandme/status/1255510799273132032>Mara
+Averick</a></figcaption>
+
 </figure>
 
 For a more in-depth explanation and even more reasons, see

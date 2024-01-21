@@ -60,6 +60,7 @@ repos:
           inst/usethis-legacy-hook|
           LICENSE|
           renv/.*|
+          revdep/.*|
           tests/testthat/in/.*|
           )$
     -   id: readme-rmd-rendered
