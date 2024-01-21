@@ -17,12 +17,12 @@ local_test_setup(
 \arguments{
 \item{git}{Whether or not to init git in the local directory.}
 
+\item{use_precommit}{Whether or not to \code{\link[=use_precommit]{use_precommit()}}.}
+
 \item{autoupdate}{Whether or not to run \code{\link[=autoupdate]{autoupdate()}} as part of this
 fixture.}
 
 \item{.local_envir}{\verb{[environment]}\cr The environment to use for scoping.}
-
-\item{use_precommmit}{Whether or not to \code{\link[=use_precommit]{use_precommit()}}.}
 }
 \description{
 Similar to the \code{local_()} family from \code{{withr}}, this function creates a
