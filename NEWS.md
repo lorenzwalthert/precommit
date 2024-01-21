@@ -1,59 +1,74 @@
-<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
-
-# precommit 0.3.2.9020
-
-- Make sorting consistent with spelling::update_wordlist (#514).
-- Bump actions/checkout from 3 to 4 (#509).
-- Discover and check for rogue print statements (#505).
-- Use python 3.10 by default for conda envs(#477).
-- Hook dependencies update (#503, #506 #508, #513).
+# precommit 0.4.0
 
 
-# precommit 0.3.2.9015
-
-* Update dependencies.
-* Refactored hook dependency update scripts. 
-* Please see tag diff for more details.
-
-# precommit 0.3.2.9013
-
-* Don't depend on dev version of styler to avoid GitHub rate limit hit (#486).
-
-# precommit 0.3.2.9009
-
-* add Posit CRAN mirror to ensure macOS binary installs are possible (#488).
-* use `ubuntu-latest` instead of pinned version for tests (#481).
-* correct typo (#465) and fix error message (#470).
-* remove {digest} dependency (#471).
-
-# precommit 0.3.2.9007 (2022-12-26)
-
-- roxygenize cache invalidation is functional again (#464).
-- ensure local and remote pre-commit execution are the same for this repo 
-  (#463).
-- use new pkgdown hook in this repo (#460).
-- Use latest version of checkout action (#458).
-- improve spelling (#453).
+Apart from two new hooks, many bug fixes and a few minor features, this release
+focused on improving the user experience when installing the hooks, which caused 
+users the most troubles. We enabled fast hook installation without the need for build 
+time or system dependencies on all platforms thanks to the Posit Package Manager 
+and removal of dependencies {git2r} and {digest}. 
 
 
-# precommit 0.3.2.9003 (2022-12-16)
+**Features** 
 
--   new hook `pkgdown` to emulate a {pkgdown} build for reference and 
-    articles (#393).
--   `codemeta-description-updated`, `roxygenize`, and 
-    `use-tidy-description` now all support a `root` argument that 
-    specifies the directory in the git repo that contains the R package. 
-    Defaults to `.` since for most R package git repos, the git and R package 
-    root coincide (#432, #438).
--   `style-files` now supports styling of R code in Quarto docs (#449).
+- New hook: `no-print-statement` discovers and check for rogue print 
+  statements (#505).
+- New hook: `pkgdown` runs `pkgdown::check_pkgdown()` to ensure the {pkgdown}
+  config is valid (#393).
+- add Posit CRAN mirror to ensure macOS binary installs are possible (#488).
+- `codemeta-description-updated`, `roxygenize`, and `use-tidy-description` now 
+  all support a `root` argument that specifies the directory in the git repo 
+  that contains the R package. Defaults to `.` since for most R package git 
+  repos, the git and R package root coincide (#432, #438).
+- `style-files` now supports styling of R code in Quarto docs (#449).
+- `style-files` now supports file names with spaces (#516).
+- Use python 3.10 by default for conda envs (#477).
 
-# precommit 0.3.2.9000
+**Bug Fixes**
 
+- Make sorting consistent with `spelling::update_wordlist` (#514).
+- Don't depend on dev version of styler to avoid GitHub rate limit hit (#486).
+- fix roxygenize cache invalidation (#464, #520).
+- fix missing namespace prefixing in roxygen hook (#525).
+
+
+**Documentation**
+
+- improve spelling (#453).  
 -   `use_ci()` is now documented to take `NA`, not `NULL` for argument
     `ci` (#431).
--   `deps-in-desc`supports a `root` argument that  specifies the directory in 
-    the git repo that contains the R package.  Defaults to `.` since for most R 
-    package git repos, the git and R package root coincide.
+- correct typo (#465) and fix error message (#470).
+
+**Dependencies**
+
+- remove {digest} dependency (#471).
+- remove {git2r} dependency (#497).
+- Hook dependencies update (#503, #506 #508, #513, #540, #538, #527, #521, #519).
+
+**Infrastructure**
+
+- Refactored hook dependency update scripts and fixed bug with repos.
+- Automatic hook dependency updates (#539, #532).
+- use `ubuntu-latest` instead of pinned version for tests (#481).
+- use new {pkgdown} hook in this repo (#460).
+- `read-only` flag for testing (#529).
+- Bump actions/checkout (#509, #458) and others (#533).
+- ensure local and remote pre-commit execution are the same for this repo 
+  (#463).
+
+**Other**
+
+- Adjust to latest {roxygen2} CRAN release (#536).
+
+
+Changelog from dev releases is collapsed into this patch release at the time
+this release is created. If you need releases by dev release, i.e. 0.3.2.x, 
+checkout this file at git tag `v0.3.2.9020`.
+
+A big thanks goes to all people who made this release reality:
+
+[&#x0040;AliSajid](https://github.com/AliSajid), [&#x0040;averissimo](https://github.com/averissimo), [&#x0040;clarkliming](https://github.com/clarkliming), [&#x0040;danielinteractive](https://github.com/danielinteractive), [&#x0040;denn173](https://github.com/denn173), [&#x0040;dependabot[bot]](https://github.com/dependabot), [&#x0040;EzicJ](https://github.com/EzicJ), [&#x0040;fabianegli](https://github.com/fabianegli), [&#x0040;hadley](https://github.com/hadley), [&#x0040;IndrajeetPatil](https://github.com/IndrajeetPatil), [&#x0040;jashapiro](https://github.com/jashapiro), [&#x0040;joelnitta](https://github.com/joelnitta), [&#x0040;jonathanckt](https://github.com/jonathanckt), [&#x0040;jsnel](https://github.com/jsnel), [&#x0040;kcphila](https://github.com/kcphila), [&#x0040;KoderKow](https://github.com/KoderKow), [&#x0040;KyleDCox](https://github.com/KyleDCox), [&#x0040;lorenzwalthert](https://github.com/lorenzwalthert), [&#x0040;m-muecke](https://github.com/m-muecke), [&#x0040;mythichamster](https://github.com/mythichamster), [&#x0040;ns-rse](https://github.com/ns-rse), [&#x0040;pre-commit-ci[bot]](https://github.com/pre-commit-ci), [&#x0040;russHyde](https://github.com/russHyde), [&#x0040;sempwn](https://github.com/sempwn), [&#x0040;stefanoborini](https://github.com/stefanoborini), [&#x0040;thefabnab](https://github.com/thefabnab), [&#x0040;TNonet](https://github.com/TNonet), [&#x0040;TymekDev](https://github.com/TymekDev), and [&#x0040;yogat3ch](https://github.com/yogat3ch).
+
+
 
 # precommit 0.3.2
 

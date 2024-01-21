@@ -274,7 +274,7 @@ not_conda <- function() {
 #' @param git Whether or not to init git in the local directory.
 #' @param autoupdate Whether or not to run [autoupdate()] as part of this
 #'   fixture.
-#' @param use_precommmit Whether or not to [use_precommit()].
+#' @param use_precommit Whether or not to [use_precommit()].
 #' @keywords internal
 local_test_setup <- function(git = TRUE,
                              use_precommit = FALSE,
