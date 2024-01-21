@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2.9028</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -79,53 +79,48 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9020" id="precommit-0329020">precommit 0.3.2.9020<a class="anchor" aria-label="anchor" href="#precommit-0329020"></a></h2>
-<ul><li>Make sorting consistent with spelling::update_wordlist (<a href="https://github.com/lorenzwalthert/precommit/issues/514" class="external-link">#514</a>).</li>
-<li>Bump actions/checkout from 3 to 4 (<a href="https://github.com/lorenzwalthert/precommit/issues/509" class="external-link">#509</a>).</li>
-<li>Discover and check for rogue print statements (<a href="https://github.com/lorenzwalthert/precommit/issues/505" class="external-link">#505</a>).</li>
-<li>Use python 3.10 by default for conda envs(<a href="https://github.com/lorenzwalthert/precommit/issues/477" class="external-link">#477</a>).</li>
-<li>Hook dependencies update (<a href="https://github.com/lorenzwalthert/precommit/issues/503" class="external-link">#503</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/506" class="external-link">#506</a> <a href="https://github.com/lorenzwalthert/precommit/issues/508" class="external-link">#508</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/513" class="external-link">#513</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9015" id="precommit-0329015">precommit 0.3.2.9015<a class="anchor" aria-label="anchor" href="#precommit-0329015"></a></h2>
-<ul><li>Update dependencies.</li>
-<li>Refactored hook dependency update scripts.</li>
-<li>Please see tag diff for more details.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9013" id="precommit-0329013">precommit 0.3.2.9013<a class="anchor" aria-label="anchor" href="#precommit-0329013"></a></h2>
-<ul><li>Don’t depend on dev version of styler to avoid GitHub rate limit hit (<a href="https://github.com/lorenzwalthert/precommit/issues/486" class="external-link">#486</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9009" id="precommit-0329009">precommit 0.3.2.9009<a class="anchor" aria-label="anchor" href="#precommit-0329009"></a></h2>
-<ul><li>add Posit CRAN mirror to ensure macOS binary installs are possible (<a href="https://github.com/lorenzwalthert/precommit/issues/488" class="external-link">#488</a>).</li>
-<li>use <code>ubuntu-latest</code> instead of pinned version for tests (<a href="https://github.com/lorenzwalthert/precommit/issues/481" class="external-link">#481</a>).</li>
-<li>correct typo (<a href="https://github.com/lorenzwalthert/precommit/issues/465" class="external-link">#465</a>) and fix error message (<a href="https://github.com/lorenzwalthert/precommit/issues/470" class="external-link">#470</a>).</li>
-<li>remove {digest} dependency (<a href="https://github.com/lorenzwalthert/precommit/issues/471" class="external-link">#471</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9007" id="precommit-0329007-2022-12-26">precommit 0.3.2.9007 (2022-12-26)<a class="anchor" aria-label="anchor" href="#precommit-0329007-2022-12-26"></a></h2>
-<ul><li>roxygenize cache invalidation is functional again (<a href="https://github.com/lorenzwalthert/precommit/issues/464" class="external-link">#464</a>).</li>
-<li>ensure local and remote pre-commit execution are the same for this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/463" class="external-link">#463</a>).</li>
-<li>use new pkgdown hook in this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/460" class="external-link">#460</a>).</li>
-<li>Use latest version of checkout action (<a href="https://github.com/lorenzwalthert/precommit/issues/458" class="external-link">#458</a>).</li>
-<li>improve spelling (<a href="https://github.com/lorenzwalthert/precommit/issues/453" class="external-link">#453</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9003" id="precommit-0329003-2022-12-16">precommit 0.3.2.9003 (2022-12-16)<a class="anchor" aria-label="anchor" href="#precommit-0329003-2022-12-16"></a></h2>
-<ul><li>new hook <code>pkgdown</code> to emulate a {pkgdown} build for reference and articles (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</li>
+<h2 class="page-header" data-toc-text="0.4.0" id="precommit-040">precommit 0.4.0<a class="anchor" aria-label="anchor" href="#precommit-040"></a></h2>
+<p>Apart from two new hooks, many bug fixes and a few minor features, this release focused on improving the user experience when installing the hooks, which caused users the most troubles. We enabled fast hook installation without the need for build time or system dependencies on all platforms thanks to the Posit Package Manager and removal of dependencies {git2r} and {digest}.</p>
+<p><strong>Features</strong></p>
+<ul><li>New hook: <code>no-print-statement</code> discovers and check for rogue print statements (<a href="https://github.com/lorenzwalthert/precommit/issues/505" class="external-link">#505</a>).</li>
+<li>New hook: <code>pkgdown</code> runs <code><a href="https://pkgdown.r-lib.org/reference/check_pkgdown.html" class="external-link">pkgdown::check_pkgdown()</a></code> to ensure the {pkgdown} config is valid (<a href="https://github.com/lorenzwalthert/precommit/issues/393" class="external-link">#393</a>).</li>
+<li>add Posit CRAN mirror to ensure macOS binary installs are possible (<a href="https://github.com/lorenzwalthert/precommit/issues/488" class="external-link">#488</a>).</li>
 <li>
 <code>codemeta-description-updated</code>, <code>roxygenize</code>, and <code>use-tidy-description</code> now all support a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide (<a href="https://github.com/lorenzwalthert/precommit/issues/432" class="external-link">#432</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/438" class="external-link">#438</a>).</li>
 <li>
 <code>style-files</code> now supports styling of R code in Quarto docs (<a href="https://github.com/lorenzwalthert/precommit/issues/449" class="external-link">#449</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.2.9000" id="precommit-0329000">precommit 0.3.2.9000<a class="anchor" aria-label="anchor" href="#precommit-0329000"></a></h2>
-<ul><li>
-<code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</li>
 <li>
-<code>deps-in-desc</code>supports a <code>root</code> argument that specifies the directory in the git repo that contains the R package. Defaults to <code>.</code> since for most R package git repos, the git and R package root coincide.</li>
-</ul></div>
+<code>style-files</code> now supports file names with spaces (<a href="https://github.com/lorenzwalthert/precommit/issues/516" class="external-link">#516</a>).</li>
+<li>Use python 3.10 by default for conda envs (<a href="https://github.com/lorenzwalthert/precommit/issues/477" class="external-link">#477</a>).</li>
+</ul><p><strong>Bug Fixes</strong></p>
+<ul><li>Make sorting consistent with <code><a href="https://docs.ropensci.org/spelling/reference/wordlist.html" class="external-link">spelling::update_wordlist</a></code> (<a href="https://github.com/lorenzwalthert/precommit/issues/514" class="external-link">#514</a>).</li>
+<li>Don’t depend on dev version of styler to avoid GitHub rate limit hit (<a href="https://github.com/lorenzwalthert/precommit/issues/486" class="external-link">#486</a>).</li>
+<li>fix roxygenize cache invalidation (<a href="https://github.com/lorenzwalthert/precommit/issues/464" class="external-link">#464</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/520" class="external-link">#520</a>).</li>
+<li>fix missing namespace prefixing in roxygen hook (<a href="https://github.com/lorenzwalthert/precommit/issues/525" class="external-link">#525</a>).</li>
+</ul><p><strong>Documentation</strong></p>
+<ul><li>improve spelling (<a href="https://github.com/lorenzwalthert/precommit/issues/453" class="external-link">#453</a>).<br></li>
+<li>
+<code><a href="../reference/use_ci.html">use_ci()</a></code> is now documented to take <code>NA</code>, not <code>NULL</code> for argument <code>ci</code> (<a href="https://github.com/lorenzwalthert/precommit/issues/431" class="external-link">#431</a>).</li>
+<li>correct typo (<a href="https://github.com/lorenzwalthert/precommit/issues/465" class="external-link">#465</a>) and fix error message (<a href="https://github.com/lorenzwalthert/precommit/issues/470" class="external-link">#470</a>).</li>
+</ul><p><strong>Dependencies</strong></p>
+<ul><li>remove {digest} dependency (<a href="https://github.com/lorenzwalthert/precommit/issues/471" class="external-link">#471</a>).</li>
+<li>remove {git2r} dependency (<a href="https://github.com/lorenzwalthert/precommit/issues/497" class="external-link">#497</a>).</li>
+<li>Hook dependencies update (<a href="https://github.com/lorenzwalthert/precommit/issues/503" class="external-link">#503</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/506" class="external-link">#506</a> <a href="https://github.com/lorenzwalthert/precommit/issues/508" class="external-link">#508</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/513" class="external-link">#513</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/540" class="external-link">#540</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/538" class="external-link">#538</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/527" class="external-link">#527</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/521" class="external-link">#521</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/519" class="external-link">#519</a>).</li>
+</ul><p><strong>Infrastructure</strong></p>
+<ul><li>Refactored hook dependency update scripts and fixed bug with repos.</li>
+<li>Automatic hook dependency updates (<a href="https://github.com/lorenzwalthert/precommit/issues/539" class="external-link">#539</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/532" class="external-link">#532</a>).</li>
+<li>use <code>ubuntu-latest</code> instead of pinned version for tests (<a href="https://github.com/lorenzwalthert/precommit/issues/481" class="external-link">#481</a>).</li>
+<li>use new {pkgdown} hook in this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/460" class="external-link">#460</a>).</li>
+<li>
+<code>read-only</code> flag for testing (<a href="https://github.com/lorenzwalthert/precommit/issues/529" class="external-link">#529</a>).</li>
+<li>Bump actions/checkout (<a href="https://github.com/lorenzwalthert/precommit/issues/509" class="external-link">#509</a>, <a href="https://github.com/lorenzwalthert/precommit/issues/458" class="external-link">#458</a>) and others (<a href="https://github.com/lorenzwalthert/precommit/issues/533" class="external-link">#533</a>).</li>
+<li>ensure local and remote pre-commit execution are the same for this repo (<a href="https://github.com/lorenzwalthert/precommit/issues/463" class="external-link">#463</a>).</li>
+</ul><p><strong>Other</strong></p>
+<ul><li>Adjust to latest {roxygen2} CRAN release (<a href="https://github.com/lorenzwalthert/precommit/issues/536" class="external-link">#536</a>).</li>
+</ul><p>Changelog from dev releases is collapsed into this patch release at the time this release is created. If you need releases by dev release, i.e. 0.3.2.x, checkout this file at git tag <code>v0.3.2.9020</code>.</p>
+<p>A big thanks goes to all people who made this release reality:</p>
+<p><a href="https://github.com/AliSajid" class="external-link">@AliSajid</a>, <a href="https://github.com/averissimo" class="external-link">@averissimo</a>, <a href="https://github.com/clarkliming" class="external-link">@clarkliming</a>, <a href="https://github.com/danielinteractive" class="external-link">@danielinteractive</a>, <a href="https://github.com/denn173" class="external-link">@denn173</a>, <a href="https://github.com/dependabot" class="external-link">@dependabot[bot]</a>, <a href="https://github.com/EzicJ" class="external-link">@EzicJ</a>, <a href="https://github.com/fabianegli" class="external-link">@fabianegli</a>, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/IndrajeetPatil" class="external-link">@IndrajeetPatil</a>, <a href="https://github.com/jashapiro" class="external-link">@jashapiro</a>, <a href="https://github.com/joelnitta" class="external-link">@joelnitta</a>, <a href="https://github.com/jonathanckt" class="external-link">@jonathanckt</a>, <a href="https://github.com/jsnel" class="external-link">@jsnel</a>, <a href="https://github.com/kcphila" class="external-link">@kcphila</a>, <a href="https://github.com/KoderKow" class="external-link">@KoderKow</a>, <a href="https://github.com/KyleDCox" class="external-link">@KyleDCox</a>, <a href="https://github.com/lorenzwalthert" class="external-link">@lorenzwalthert</a>, <a href="https://github.com/m-muecke" class="external-link">@m-muecke</a>, <a href="https://github.com/mythichamster" class="external-link">@mythichamster</a>, <a href="https://github.com/ns-rse" class="external-link">@ns-rse</a>, <a href="https://github.com/pre-commit-ci" class="external-link">@pre-commit-ci[bot]</a>, <a href="https://github.com/russHyde" class="external-link">@russHyde</a>, <a href="https://github.com/sempwn" class="external-link">@sempwn</a>, <a href="https://github.com/stefanoborini" class="external-link">@stefanoborini</a>, <a href="https://github.com/thefabnab" class="external-link">@thefabnab</a>, <a href="https://github.com/TNonet" class="external-link">@TNonet</a>, <a href="https://github.com/TymekDev" class="external-link">@TymekDev</a>, and <a href="https://github.com/yogat3ch" class="external-link">@yogat3ch</a>.</p>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.2" id="precommit-032">precommit 0.3.2<small>2022-07-01</small><a class="anchor" aria-label="anchor" href="#precommit-032"></a></h2>
 <ul><li>
