@@ -2,11 +2,11 @@
 
 "Spell check for files
 Usage:
-  spell-check [--lang=<language>] [--no-update] <files>...
+  spell-check [--lang=<language>] [--read-only] <files>...
 
 Options:
   --lang=<language> Passed to `spelling::spell_check_files()` [default: en_US]
-  --no-update       Don't update inst/WORDLIST with errors (new words)
+  --read-only       Don't update inst/WORDLIST with errors (new words)
 
 " -> doc
 
@@ -17,7 +17,7 @@ if (file.exists(path_wordlist)) {
   ignore <- readLines(path_wordlist, encoding = "UTF-8")
   action <- "update"
 } else {
-  if (isFALSE(arguments$no_update)) {
+  if (isFALSE(arguments$read_only)) {
     if (!dir.exists(dirname(path_wordlist))) {
       dir.create(dirname(path_wordlist))
     }
@@ -37,8 +37,8 @@ spelling_errors <- spelling::spell_check_files(
 if (nrow(spelling_errors) > 0) {
   cat("The following spelling errors were found:\n")
   print(spelling_errors)
-  if (isTRUE(arguments$no_update)) {
-    cat("Hint: you can enable an automatic updating of WORDLIST with errors (new words) by removing the --no-update flag.\n")
+  if (isTRUE(arguments$read_only)) {
+    cat("Hint: you can enable an automatic updating of WORDLIST with errors (new words) by removing the --read-only flag.\n")
   } else {
     ignore_df <- data.frame(
       original = unique(c(ignore, spelling_errors$word))
@@ -55,7 +55,7 @@ if (nrow(spelling_errors) > 0) {
       "- remove it again manually from inst/WORDLIST to make sure it's not\n",
       "  ignored in the future.\n",
       "Then, try committing again.\n",
-      "Hint: you can disable this behavior by providing a --no-update flag.\n"
+      "Hint: you can disable this behavior by providing a --read-only flag.\n"
     )
   }
   stop("Spell check failed", call. = FALSE)

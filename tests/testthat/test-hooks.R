@@ -224,7 +224,7 @@ run_test(
   "spell-check",
   suffix = "-fail.md",
   std_err = "Spell check failed",
-  cmd_args = "--no-update",
+  cmd_args = "--read-only",
   read_only = TRUE
 )
 
@@ -233,7 +233,7 @@ run_test(
   "spell-check",
   suffix = "-fail-2.md",
   std_err = "Spell check failed",
-  cmd_args = "--no-update",
+  cmd_args = "--read-only",
   artifacts = c("inst/WORDLIST" = test_path("in/WORDLIST")),
   read_only = TRUE
 )
