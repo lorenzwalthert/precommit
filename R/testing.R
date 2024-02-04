@@ -86,8 +86,9 @@ run_test <- function(hook_name,
 #' @param expect_success Whether or not an exit code 0 is expected. This can
 #'   be derived from `std_err`, but sometimes, non-empty stderr does not mean
 #'   error, but just a message.
-#' @param read_only If `TRUE` and `artifacts` are not `NULL`, then assert that hook
-#'   did not modify the artifacts.
+#' @param read_only If `TRUE`, then assert that no new files were created.
+#'   Additionally, if `artifacts` are not `NULL`, then assert that hook did not
+#'   modify the artifacts.
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
@@ -112,6 +113,7 @@ run_test_impl <- function(path_executable,
   )
   path_stderr <- tempfile()
   path_stdout <- tempfile()
+  files_before_hook <- fs::dir_ls(tempdir, all = TRUE, recurse = TRUE)
   exit_status <- hook_state_create(
     tempdir,
     path_candidate_temp,
@@ -133,12 +135,17 @@ run_test_impl <- function(path_executable,
     std_out,
     exit_status
   )
-  if (isTRUE(read_only) && !is.null(artifacts)) {
-    purrr::iwalk(artifacts, function(reference_path, temp_path) {
-      artifact_before_hook <- readLines(testthat::test_path(reference_path))
-      artifact_after_hook <- readLines(fs::path_join(c(tempdir, temp_path)))
-      testthat::expect_equal(artifact_before_hook, artifact_after_hook)
-    })
+  if (isTRUE(read_only)) {
+    files_after_hook <- fs::dir_ls(tempdir, all = TRUE, recurse = TRUE)
+    testthat::expect_equal(files_before_hook, files_after_hook)
+
+    if (!is.null(artifacts)) {
+      purrr::iwalk(artifacts, function(reference_path, temp_path) {
+        artifact_before_hook <- readLines(reference_path)
+        artifact_after_hook <- readLines(fs::path_join(c(tempdir, temp_path)))
+        testthat::expect_equal(artifact_before_hook, artifact_after_hook)
+      })
+    }
   }
 }
 

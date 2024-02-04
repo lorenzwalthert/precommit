@@ -57,8 +57,9 @@ made.}
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
 
-\item{read_only}{If \code{TRUE} and \code{artifacts} are not \code{NULL}, then assert that hook
-did not modify the artifacts.}
+\item{read_only}{If \code{TRUE}, then assert that no new files were created.
+Additionally, if \code{artifacts} are not \code{NULL}, then assert that hook did not
+modify the artifacts.}
 }
 \description{
 Tests for the executables used as pre-commit hooks via \code{entrypoint} in
