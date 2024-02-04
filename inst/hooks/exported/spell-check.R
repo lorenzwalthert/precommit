@@ -10,7 +10,7 @@ Options:
 
 " -> doc
 
-arguments <- docopt::docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 path_wordlist <- file.path("inst", "WORDLIST")
 files <- arguments$files
 if (file.exists(path_wordlist)) {

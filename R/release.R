@@ -144,7 +144,7 @@ release_prechecks <- function(bump, is_cran) {
   dsc
 }
 
-#' Updates the hook version ref of {precommit} in a `.pre-commit-config` file
+#' Updates the hook version ref of \{precommit\} in a `.pre-commit-config` file
 #'
 #' This is useful in the release process because when releasing a new version,
 #' we must make sure the template that is used with `precommit::use_precommit()`

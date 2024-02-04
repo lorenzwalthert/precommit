@@ -1,4 +1,4 @@
-test_that("roxygen runs are done if necessary", {
+test_that("relevant diffs can be detected", {
   withr::with_tempdir({
     fs::dir_create("R")
     # when new lines are added
@@ -154,7 +154,7 @@ test_that("warns if there is any other warning", {
     "R/blur.R"
   )
 
-  expect_warning(
+  expect_message(
     roxygenize_with_cache(list(getwd()), dirs = dirs_R.cache("roxygenize")),
     "(with|a) @name"
   )

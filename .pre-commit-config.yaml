@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.2.9019
+    rev: v0.4.0
     hooks: 
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --cache-root=styler-perm]
@@ -60,6 +60,7 @@ repos:
           inst/usethis-legacy-hook|
           LICENSE|
           renv/.*|
+          revdep/.*|
           tests/testthat/in/.*|
           )$
     -   id: readme-rmd-rendered
@@ -83,7 +84,8 @@ repos:
           (?x)^(
           inst/hooks/exported/pkgdown.R|
           tests/testthat/in/.*|
-          inst/renv-update\.R|
+          inst/update-renv-prepare.R|
+          inst/update-ppm-url.R|
           inst/update-dependency-graph-existing-packages\.R|
           inst/update-existing-hook-dependencies\.R|
           renv/activate.R|
@@ -91,7 +93,7 @@ repos:
           )$
     -   id: pkgdown
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks: 
     -   id: check-added-large-files
     -   id: end-of-file-fixer
@@ -99,7 +101,7 @@ repos:
     -   id: file-contents-sorter
         files: '^\.Rbuildignore$'
 -   repo: https://github.com/pre-commit-ci/pre-commit-ci-config
-    rev: v1.5.1
+    rev: v1.6.1
     hooks:
     # Only required when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
@@ -117,11 +119,12 @@ repos:
         -    docopt
         -    fs
         -    yaml
-        -    purrr 
-        -    rlang 
+        -    purrr
+        -    glue
+        -    rlang
         -    git2r
         -    desc
-        -    glue
+        -    lorenzwalthert/precommit
         stages: [commit, push]
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst

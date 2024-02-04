@@ -18,4 +18,5 @@
 ^pkgdown$
 ^renv$
 ^renv\.lock$
+^revdep$
 ^scratch$

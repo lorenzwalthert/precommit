@@ -21,7 +21,7 @@ Options:
   --root=<root_>  Path relative to the git root that contains the R package root [default: .].
 
 " -> doc
-arguments <- docopt::docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 arguments$files <- normalizePath(arguments$files) # because working directory changes to root
 setwd(arguments$root)
 
@@ -48,7 +48,9 @@ if (!is.null(cache)) {
   all_files <- file.info(candidates)
   last_modified <- max(all_files$mtime)
   if (last_modified > cache[[1]]) {
-    precommit::roxygenize_with_cache(key = wd, dirs = path_relative_cache)
+    if (precommit::diff_requires_run_roxygenize()) {
+      precommit::roxygenize_with_cache(key = wd, dirs = path_relative_cache)
+    }
   }
 } else {
   precommit::roxygenize_with_cache(key = wd, dirs = path_relative_cache)

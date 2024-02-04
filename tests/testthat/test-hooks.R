@@ -140,7 +140,6 @@ run_test("style-files",
   )
 )
 
-
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### no-browser-statement                                                    ####
 # success
@@ -214,59 +213,29 @@ run_test(
   std_err = "1 1"
 )
 
+
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### spell-check                                                             ####
 # success
 run_test("spell-check", suffix = "-success.md", std_err = NULL)
 
-# basic failure creates WORDLIST
-run_test(
-  "spell-check",
-  suffix = "-fail.md",
-  std_err = "Spell check failed",
-  post_hook_assert = function(tempdir) {
-    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
-    testthat::expect_true(fs::file_exists(wordlist_path))
-    testthat::expect_equal(readLines(wordlist_path), "fsssile")
-  }
-)
-
-# basic failure updates WORDLIST
-run_test(
-  "spell-check",
-  suffix = "-fail-2.md",
-  std_err = "Spell check failed",
-  post_hook_assert = function(tempdir) {
-    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
-    testthat::expect_true(fs::file_exists(wordlist_path))
-    testthat::expect_equal(readLines(wordlist_path), c("fsssile", "ttle"))
-  }
-)
-
-# failure with --no-update does not create WORDLIST
+# failure with --read-only does not create WORDLIST
 run_test(
   "spell-check",
   suffix = "-fail.md",
   std_err = "Spell check failed",
   cmd_args = "--no-update",
-  post_hook_assert = function(tempdir) {
-    wordlist_path <- fs::path(tempdir, "inst", "WORDLIST")
-    testthat::expect_false(fs::file_exists(wordlist_path))
-  }
+  read_only = TRUE
 )
 
-# failure with --no-update does not update WORDLIST
+# failure with --read-only does not update WORDLIST
 run_test(
   "spell-check",
   suffix = "-fail-2.md",
   std_err = "Spell check failed",
   cmd_args = "--no-update",
   artifacts = c("inst/WORDLIST" = test_path("in/WORDLIST")),
-  post_hook_assert = function(tempdir) {
-    words_before <- readLines(test_path("in/WORDLIST"))
-    words_after <- readLines(fs::path(tempdir, "inst", "WORDLIST"))
-    testthat::expect_equal(words_after, words_before)
-  }
+  read_only = TRUE
 )
 
 # success with wordlist
@@ -298,7 +267,7 @@ run_test("deps-in-desc",
 
 # in sub directory with wrong root
 run_test("deps-in-desc",
-  suffix = "-fail.R", std_err = "contains a file",
+  suffix = "-fail.R", std_err = "Could not find R package",
   file_transformer = function(files) {
     fs::path_abs(fs::file_move(files, "rpkg"))
   },

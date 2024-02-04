@@ -2,7 +2,7 @@
 % Please edit documentation in R/roxygen2.R
 \name{roxygenize_with_cache}
 \alias{roxygenize_with_cache}
-\title{Roxygen depending on cache state}
+\title{Roxygen and add a cache entry}
 \usage{
 roxygenize_with_cache(key, dirs)
 }
@@ -24,6 +24,7 @@ Other hook script helpers:
 \code{\link{diff_requires_run_roxygenize}()},
 \code{\link{dirs_R.cache}()},
 \code{\link{may_require_permanent_cache}()},
+\code{\link{precommit_docopt}()},
 \code{\link{robust_purl}()},
 \code{\link{roxygen_assert_additional_dependencies}()}
 }

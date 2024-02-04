@@ -14,7 +14,7 @@ run_test_impl(
   file_transformer,
   env,
   expect_success,
-  post_hook_assert
+  read_only
 )
 }
 \arguments{
@@ -42,8 +42,8 @@ temporary location and the value is the source of the file.}
 be derived from \code{std_err}, but sometimes, non-empty stderr does not mean
 error, but just a message.}
 
-\item{post_hook_assert}{A function executed at the end of a test case.
-Useful for checking a correctness of a state and contents of \code{tempdir}.}
+\item{read_only}{If \code{TRUE} and \code{artifacts} are not \code{NULL}, then assert that hook
+did not modify the artifacts.}
 }
 \description{
 Implement a test run

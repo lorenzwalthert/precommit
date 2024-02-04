@@ -38,7 +38,7 @@ if (length(keys) > 0) {
   doc <- gsub("<files>...", insert, paste0(doc, paste(key_value_pairs, collapse = "\n")))
 }
 
-arguments <- docopt::docopt(doc, args)
+arguments <- precommit::precommit_docopt(doc, args)
 if (packageVersion("styler") < "1.3.2") {
   stop(
     "Your styler version is outdated. ",

@@ -2,8 +2,8 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.2.9019
-    hooks: 
+    rev: v0.4.0
+    hooks:
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style]    
     -   id: roxygenize

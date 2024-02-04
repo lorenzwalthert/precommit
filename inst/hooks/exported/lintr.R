@@ -10,7 +10,7 @@ Options:
                Otherwise, lints will never be shown to the user.
 " -> doc
 
-arguments <- docopt::docopt(doc)
+arguments <- precommit::precommit_docopt(doc)
 
 lintr_staged <- grepl(
   "modified:.*\\.lintr", system2("git", "status", stdout = TRUE)
