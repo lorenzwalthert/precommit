@@ -196,6 +196,14 @@ The `lang` arg will be passed to `spelling::spell_check_files()`.
       id: spell-check
       args: [--lang=<language>]
 
+**read only**
+
+The `--read-only` flag will be passed to spell check. This flag makes
+this hook idempotent.
+
+      id: spell-check
+      args: [--read-only]
+
 This hook does not modify input files. It will add all words not found
 in the dictionary to `inst/WORDLIST`, assuming they were spelled
 correctly but were not in the dictionary. An example might be "RStudio".
@@ -204,6 +212,8 @@ The hook error message will contain all words written to
 them and remove them from `inst/WORDLIST`. If there were not typos, or
 you fixed all, stage `inst/WORDLIST` and this time, the commit should
 pass.
+
+To opt out of updating `inst/WORDLIST` provide the `--read-only` flag.
 
 ## `roxygenize`
 

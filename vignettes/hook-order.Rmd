@@ -29,7 +29,7 @@ Read only hooks should generally run only after write hooks.
 -   roxygenize - caches
 -   codemeta-description-updated - must be before use-tidy-description
 -   use-tidy-description
--   spell-check - updates `inst/WORDLIST`; should run after roxygenize
+-   spell-check - updates `inst/WORDLIST` (unless `--read-only` arg is specified); should run after roxygenize
 
 ### Read only
 
