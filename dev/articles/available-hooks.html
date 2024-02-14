@@ -291,6 +291,11 @@ data/.*|
 <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <pre><code>  id: spell-check
   args: [--lang=&lt;language&gt;]</code></pre>
+<p><strong>read only</strong></p>
+<p>The <code>--read-only</code> flag will be passed to spell check. This
+flag makes this hook idempotent.</p>
+<pre><code>  id: spell-check
+  args: [--read-only]</code></pre>
 <p>This hook does not modify input files. It will add all words not
 found in the dictionary to <code>inst/WORDLIST</code>, assuming they
 were spelled correctly but were not in the dictionary. An example might
@@ -299,6 +304,8 @@ be “RStudio”. The hook error message will contain all words written to
 sure to fix them and remove them from <code>inst/WORDLIST</code>. If
 there were not typos, or you fixed all, stage <code>inst/WORDLIST</code>
 and this time, the commit should pass.</p>
+<p>To opt out of updating <code>inst/WORDLIST</code> provide the
+<code>--read-only</code> flag.</p>
 </div>
 <div class="section level3">
 <h3 id="roxygenize">
