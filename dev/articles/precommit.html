@@ -187,10 +187,10 @@ disable hooks</a>. If you succeed, it should look like this:</p>
 <code><a href="../articles/available-hooks.html">vignette("available-hooks")</a></code>. You can also add other hooks
 from other repos, by extending the <code>.pre-commit-config.yaml</code>
 file, e.g. like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at">   </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/pre-commit/precommit</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v1.2.3</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">hooks</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at">   </span><span class="fu">id</span><span class="kw">:</span><span class="at"> check-added-large-files</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="kw">-</span><span class="at">   </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/pre-commit/precommit</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="at">    </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v1.2.3</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="at">    </span><span class="fu">hooks</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at">   </span><span class="fu">id</span><span class="kw">:</span><span class="at"> check-added-large-files</span></span></code></pre></div>
 <p>To update the hook revisions, run
 <code><a href="../reference/autoupdate.html">precommit::autoupdate()</a></code>.</p>
 </div>
