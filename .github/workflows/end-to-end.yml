@@ -63,6 +63,7 @@ jobs:
         run: | 
           echo 'one' > README.Rmd
           echo 'one' >> codemeta.json
+          echo 'one' >> CITATION.cff
           echo 'one' > README.md
           echo "#' some code\n#'\n#' @param here.\n#' @name somethings\nNULL" > R/test.R # overwrite if anything there
           brew install pre-commit
