@@ -118,7 +118,7 @@ run_test("style-files",
 run_test("style-files",
   file_name = "style-files-cmd",
   suffix = "-success.R",
-  std_err = "scope must be one",
+  std_err = ifelse(packageVersion("styler") < package_version("1.10.3"), "scope must be one", "`scope` must be one"),
   cmd_args = c("--scope=space", "--cache-root=styler")
 )
 
