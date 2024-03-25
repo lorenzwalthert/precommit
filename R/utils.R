@@ -30,7 +30,7 @@ is_conda_installation <- function() {
 }
 
 is_package <- function(root = here::here()) {
-  rlang::with_handlers(
+  rlang::try_fetch(
     rprojroot::find_package_root_file(path = root),
     error = function(e) NULL
   ) %>%
@@ -129,7 +129,7 @@ has_git <- function() {
 is_git_repo <- function(root = here::here()) {
   withr::local_dir(root)
   if (has_git()) {
-    rlang::with_handlers(
+    rlang::try_fetch(
       {
         output <- call_and_capture(
           "git",

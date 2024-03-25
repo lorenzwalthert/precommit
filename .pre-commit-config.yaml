@@ -106,7 +106,7 @@ repos:
     # Only required when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
 -   repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: 475bf5d96927a1887ce2863ff3075b1d7240bc51
+    rev: 0.1.2
     hooks: 
     -   id: tidy-gitignore
 -   repo: local

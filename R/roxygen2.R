@@ -39,7 +39,7 @@ diff_requires_run_roxygenize <- function(root = ".") {
 #' @keywords internal
 #' @export
 roxygen_assert_additional_dependencies <- function() {
-  out <- rlang::with_handlers(
+  out <- rlang::try_fetch(
     # roxygen2 will load: https://github.com/r-lib/roxygen2/issues/771
     pkgload::load_all(quiet = TRUE),
     error = function(e) {
@@ -80,7 +80,7 @@ roxygen_assert_additional_dependencies <- function() {
 #' @importFrom R.cache saveCache
 # fails if accessed with R.cache::saveCache()!
 roxygenize_with_cache <- function(key, dirs) {
-  out <- rlang::with_handlers(
+  out <- rlang::try_fetch(
     roxygen2::roxygenise(),
     error = function(e) e
   )
