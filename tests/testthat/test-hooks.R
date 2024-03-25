@@ -39,7 +39,7 @@ run_test("style-files",
 
 run_test("style-files",
   suffix = "-fail-parse.R", cmd_args = c("--cache-root=styler"),
-  std_err = ifelse(getRversion() >= package_version("4.4"), "syntax error", "unexpected")
+  std_err = "unexpected"
 )
 
 # success with cmd args
