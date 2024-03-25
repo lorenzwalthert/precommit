@@ -139,8 +139,14 @@ release_prechecks <- function(bump, is_cran) {
   dsc <- desc::description$new()
   suppressMessages(dsc$bump_version(bump))
   new_version <- paste0("v", dsc$get_version())
+  if (is_cran) {
+    release_branch <- paste0("rc-", new_version)
+    if (!(release_branch %in% names(git2r::branches()))) {
+      rlang::abort(paste0("need to be on branch ", release_branch))
+    }
+  }
   abort_if_not_yes("Your target release has version {new_version}, correct?")
-  abort_if_not_yes("Did you prepare NEWS.md for this version ({new_version})?")
+  abort_if_not_yes("Did you commit NEWS.md for this version ({new_version})?")
   dsc
 }
 
