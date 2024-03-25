@@ -84,7 +84,7 @@ set_config_source <- function(config_source,
 
     target <- fs::path_ext_set(tmp, fs::path_ext(config_source))
     utils::download.file(config_source, target, quiet = TRUE)
-    rlang::with_handlers(
+    rlang::try_fetch(
       yaml::read_yaml(target, fileEncoding = "UTF-8"),
       error = function(e) {
         rlang::abort(paste0(
