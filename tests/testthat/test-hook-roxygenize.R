@@ -128,7 +128,7 @@ test_that("fails gratefully when not installed package is required according to 
     suppressWarnings(
       roxygenize_with_cache(list(getwd()), dirs = dirs_R.cache("roxygenize"))
     ),
-    "The package .*required"
+    "The package.*required"
   )
 })
 

@@ -52,7 +52,7 @@ test_that("GitHub Action CI setup works", {
     root = getwd(),
     open = FALSE, verbose = FALSE
   )
-  expect_error(use_ci("stuff"), "must be one of")
+  expect_error(use_ci("stuff", root = getwd()), "must be one of")
   use_ci("gha", root = getwd())
   expect_true(file_exists(".github/workflows/pre-commit.yaml"))
 })
