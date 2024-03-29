@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
       </span>
     </div>
 
@@ -137,7 +137,7 @@ modifies files or not.</p>
 documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.0
+    rev: v0.4.1
     hooks:
     -   id: lintr
         args: [--warn_only, --key=value]</code></pre>
@@ -255,7 +255,7 @@ specify <code>config_source</code> otherwise), we copy the expression in
 the <code>exclude:</code> key from spell check hook the default
 repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code>
 file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your
-config file, so you can easily add or remove some files. As of v0.4.0,
+config file, so you can easily add or remove some files. As of v0.4.1,
 the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex
 syntax</a>:</p>
 <pre><code>(?x)^(
@@ -289,6 +289,11 @@ data/.*|
 <code><a href="https://docs.ropensci.org/spelling/reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
 <pre><code>  id: spell-check
   args: [--lang=&lt;language&gt;]</code></pre>
+<p><strong>read only</strong></p>
+<p>The <code>--read-only</code> flag will be passed to spell check. This
+flag makes this hook idempotent.</p>
+<pre><code>  id: spell-check
+  args: [--read-only]</code></pre>
 <p>This hook does not modify input files. It will add all words not
 found in the dictionary to <code>inst/WORDLIST</code>, assuming they
 were spelled correctly but were not in the dictionary. An example might
@@ -297,6 +302,8 @@ be “RStudio”. The hook error message will contain all words written to
 sure to fix them and remove them from <code>inst/WORDLIST</code>. If
 there were not typos, or you fixed all, stage <code>inst/WORDLIST</code>
 and this time, the commit should pass.</p>
+<p>To opt out of updating <code>inst/WORDLIST</code> provide the
+<code>--read-only</code> flag.</p>
 </div>
 <div class="section level3">
 <h3 id="roxygenize">
