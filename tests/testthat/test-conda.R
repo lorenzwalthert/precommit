@@ -181,8 +181,9 @@ if (!on_cran()) {
   })
   test_that("can update via conda", {
     if (not_conda()) {
+      local_mocked_bindings(assert_reticulate_is_installed = function(...) NULL)
       expect_error(
-        with_mock(update_precommit(), "precommit:::assert_reticulate_is_installed" = function(...) NULL),
+        update_precommit(),
         paste(
           "You can only update your pre-commit executable via the R API if you",
           "chose the installation method via conda"
