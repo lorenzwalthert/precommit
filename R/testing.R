@@ -227,7 +227,7 @@ hook_state_assert_one <- function(path_candidate,
     if (exit_status != 0) {
       testthat::fail("Expected: No error. Found:", contents)
     }
-    testthat::expect_equivalent(candidate, reference)
+    testthat::expect_equal(candidate, reference, ignore_attr = TRUE)
     if (!is.null(std_out)) {
       contents <- readLines(path_stdout)
       testthat::expect_match(
