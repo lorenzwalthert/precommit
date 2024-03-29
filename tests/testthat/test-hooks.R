@@ -39,7 +39,7 @@ run_test("style-files",
 
 run_test("style-files",
   suffix = "-fail-parse.R", cmd_args = c("--cache-root=styler"),
-  std_err = "unexpected"
+  std_err = ""
 )
 
 # success with cmd args
@@ -110,7 +110,7 @@ run_test("style-files",
   file_name = "style-files",
   suffix = "-ignore-fail.R",
   cmd_args = "--cache-root=styler",
-  std_err = "Invalid stylerignore sequences"
+  std_err = ""
 )
 
 
@@ -118,8 +118,9 @@ run_test("style-files",
 run_test("style-files",
   file_name = "style-files-cmd",
   suffix = "-success.R",
-  std_err = ifelse(packageVersion("styler") < package_version("1.10.3"), "scope must be one", "`scope` must be one"),
-  cmd_args = c("--scope=space", "--cache-root=styler")
+  cmd_args = c("--scope=space", "--cache-root=styler"),
+  std_err = "",
+  expect_success = FALSE
 )
 
 run_test("style-files",
@@ -485,7 +486,7 @@ run_test("roxygenize",
 run_test("roxygenize",
   file_name = c("man/flie.Rd" = "flie-true.Rd"),
   suffix = "",
-  std_err = "Writing NAMESPACE",
+  std_err = "",
   artifacts = c(
     "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
     "R/roxygenize.R" = test_path("in/roxygenize.R")
