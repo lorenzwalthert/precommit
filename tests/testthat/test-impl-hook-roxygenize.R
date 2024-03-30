@@ -1,4 +1,5 @@
 test_that("relevant diffs can be detected", {
+  skip_on_cran()
   withr::with_tempdir({
     fs::dir_create("R")
     # when new lines are added
@@ -42,6 +43,7 @@ test_that("relevant diffs can be detected", {
 })
 
 test_that("change in formals alone triggers invalidation", {
+  skip_on_cran()
   # when the function formals change but nothing else
   withr::with_tempdir({
     fs::dir_create("R")
@@ -77,6 +79,7 @@ test_that("asserting installed dependencies", {
 })
 
 test_that("roxygenize works in general", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(c("#' This is a title", "#'", "#' More", "#' @name test", "NULL"), "R/blur.R")
   # works
@@ -89,6 +92,7 @@ test_that("roxygenize works in general", {
 
 
 test_that("fails when package is called but not installed in roclets", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(c("NULL"), "R/blur.R")
   # works
@@ -107,6 +111,7 @@ test_that("fails when package is called but not installed in roclets", {
 
 
 test_that("fails gratefully when not installed package is called (packageNotFoundError)", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(generate_uninstalled_pkg_call(), "R/blur.R")
   # works
@@ -119,6 +124,7 @@ test_that("fails gratefully when not installed package is called (packageNotFoun
 })
 
 test_that("fails gratefully when not installed package is required according to `DESCRIPTION`", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   desc::desc_set_deps(
     tibble::tibble(type = "Imports", package = generate_uninstalled_pkg_name(), version = "*")
@@ -134,6 +140,7 @@ test_that("fails gratefully when not installed package is required according to 
 
 
 test_that("fails when there is invalid code", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
   # when there is a missing package
@@ -145,6 +152,7 @@ test_that("fails when there is invalid code", {
 })
 
 test_that("warns if there is any other warning", {
+  skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
   writeLines(
