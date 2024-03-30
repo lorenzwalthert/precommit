@@ -590,6 +590,94 @@ run_test("codemeta-description-update",
 )
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
+### codemeata                                                               ####
+run_test("cff-description-updated",
+  file_name = c("CITATION.cff"),
+  suffix = "",
+  std_err = "No `DESCRIPTION` found in repository.",
+  std_out = NULL,
+)
+
+run_test("cff-description-updated",
+  file_name = c("DESCRIPTION"),
+  suffix = "",
+  std_err = "No `CITATION.cff` found in repository.",
+  std_out = NULL,
+)
+
+# outdated
+run_test("cff-description-updated",
+  file_name = c("DESCRIPTION", "CITATION.cff"),
+  suffix = "",
+  std_err = "out of date",
+  std_out = NULL,
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[1])
+      Sys.sleep(2)
+      writeLines(content_2, files[1])
+    }
+    files
+  }
+)
+
+# succeed
+run_test("cff-description-updated",
+  file_name = c("DESCRIPTION", "CITATION.cff"),
+  suffix = "",
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[2])
+      Sys.sleep(2)
+      writeLines(content_2, files[2])
+    }
+    files
+  }
+)
+
+# succeed in correct root
+run_test("cff-description-updated",
+  file_name = c(
+    "rpkg/DESCRIPTION" = "DESCRIPTION",
+    "rpkg/CITATION.cff" = "CITATION.cff"
+  ),
+  cmd_args = "--root=rpkg",
+  suffix = "",
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[2])
+      Sys.sleep(2)
+      writeLines(content_2, files[2])
+    }
+    files
+  }
+)
+
+# # fail in wrong root
+run_test("cff-description-updated",
+  file_name = c(
+    "rpkg/DESCRIPTION" = "DESCRIPTION",
+    "rpkg/CITATION.cff" = "CITATION.cff",
+    "rpkg2/CITATION.cff" = "README.md"
+  ),
+  cmd_args = "--root=rpkg2",
+  std_err = "No `DESCRIPTION` found in repository.",
+  suffix = "",
+  file_transformer = function(files) {
+    if (length(files) > 1) {
+      # transformer is called once on all files and once per file
+      content_2 <- readLines(files[2])
+      Sys.sleep(2)
+      writeLines(content_2, files[2])
+    }
+    files
+  }
+)
+
+### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### pgkdown check                                                           ####
 
 # success index
