@@ -45,42 +45,44 @@ run_test("codemeta-description-update",
   }
 )
 
-# succeed in correct root
-run_test("codemeta-description-update",
-  file_name = c(
-    "rpkg/DESCRIPTION" = "DESCRIPTION",
-    "rpkg/codemeta.json" = "codemeta.json"
-  ),
-  cmd_args = "--root=rpkg",
-  suffix = "",
-  file_transformer = function(files) {
-    if (length(files) > 1) {
-      # transformer is called once on all files and once per file
-      content_2 <- readLines(files[2])
-      Sys.sleep(2)
-      writeLines(content_2, files[2])
+if (!on_cran()) {
+  # succeed in correct root
+  run_test("codemeta-description-update",
+    file_name = c(
+      "rpkg/DESCRIPTION" = "DESCRIPTION",
+      "rpkg/codemeta.json" = "codemeta.json"
+    ),
+    cmd_args = "--root=rpkg",
+    suffix = "",
+    file_transformer = function(files) {
+      if (length(files) > 1) {
+        # transformer is called once on all files and once per file
+        content_2 <- readLines(files[2])
+        Sys.sleep(2)
+        writeLines(content_2, files[2])
+      }
+      files
     }
-    files
-  }
-)
+  )
 
-# # fail in wrong root
-run_test("codemeta-description-update",
-  file_name = c(
-    "rpkg/DESCRIPTION" = "DESCRIPTION",
-    "rpkg/codemeta.json" = "codemeta.json",
-    "rpkg2/codemeta.json" = "README.md"
-  ),
-  cmd_args = "--root=rpkg2",
-  std_err = "No `DESCRIPTION` found in repository.",
-  suffix = "",
-  file_transformer = function(files) {
-    if (length(files) > 1) {
-      # transformer is called once on all files and once per file
-      content_2 <- readLines(files[2])
-      Sys.sleep(2)
-      writeLines(content_2, files[2])
+  # # fail in wrong root
+  run_test("codemeta-description-update",
+    file_name = c(
+      "rpkg/DESCRIPTION" = "DESCRIPTION",
+      "rpkg/codemeta.json" = "codemeta.json",
+      "rpkg2/codemeta.json" = "README.md"
+    ),
+    cmd_args = "--root=rpkg2",
+    std_err = "No `DESCRIPTION` found in repository.",
+    suffix = "",
+    file_transformer = function(files) {
+      if (length(files) > 1) {
+        # transformer is called once on all files and once per file
+        content_2 <- readLines(files[2])
+        Sys.sleep(2)
+        writeLines(content_2, files[2])
+      }
+      files
     }
-    files
-  }
-)
+  )
+}

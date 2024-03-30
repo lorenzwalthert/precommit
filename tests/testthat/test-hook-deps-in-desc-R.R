@@ -20,24 +20,26 @@ run_test("deps-in-desc",
 )
 
 # in sub directory with correct root
-run_test("deps-in-desc",
-  cmd_args = "--root=rpkg",
-  suffix = "-fail.R", std_err = "Dependency check failed",
-  file_transformer = function(files) {
-    fs::path_abs(fs::file_move(files, "rpkg"))
-  },
-  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
-)
+if (!on_cran()) {
+  run_test("deps-in-desc",
+    cmd_args = "--root=rpkg",
+    suffix = "-fail.R", std_err = "Dependency check failed",
+    file_transformer = function(files) {
+      fs::path_abs(fs::file_move(files, "rpkg"))
+    },
+    artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+  )
+  # in sub directory with correct root
+  run_test("deps-in-desc",
+    cmd_args = "--root=rpkg",
+    suffix = "-success.R", std_err = NULL,
+    file_transformer = function(files) {
+      fs::path_abs(fs::file_move(files, "rpkg"))
+    },
+    artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
+  )
+}
 
-# in sub directory with correct root
-run_test("deps-in-desc",
-  cmd_args = "--root=rpkg",
-  suffix = "-success.R", std_err = NULL,
-  file_transformer = function(files) {
-    fs::path_abs(fs::file_move(files, "rpkg"))
-  },
-  artifacts = c("rpkg/DESCRIPTION" = test_path("in/DESCRIPTION"))
-)
 
 # with :::
 run_test("deps-in-desc",
