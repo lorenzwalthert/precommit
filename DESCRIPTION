@@ -29,7 +29,6 @@ Suggests:
     glue,
     knitr,
     lintr,
-    mockery,
     pkgload,
     pkgdown,
     reticulate (>= 1.16),

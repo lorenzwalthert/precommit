@@ -83,7 +83,7 @@ test_that("roxygenize works in general", {
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(c("#' This is a title", "#'", "#' More", "#' @name test", "NULL"), "R/blur.R")
   # works
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   expect_message(
     roxygenize_with_cache(list(getwd()), dirs = dirs_R.cache("roxygenize")),
     "test\\.Rd"
@@ -96,7 +96,7 @@ test_that("fails when package is called but not installed in roclets", {
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(c("NULL"), "R/blur.R")
   # works
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   # when there is a missing package
   roxygen_field <- paste0(
     'list(markdown = TRUE, roclets = c("rd", "namespace", "collate", "',
@@ -115,7 +115,7 @@ test_that("fails gratefully when not installed package is called (packageNotFoun
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
   writeLines(generate_uninstalled_pkg_call(), "R/blur.R")
   # works
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   # when there is a missing package
   expect_error(
     roxygenize_with_cache(list(getwd()), dirs = dirs_R.cache("roxygenize")),
@@ -129,7 +129,7 @@ test_that("fails gratefully when not installed package is required according to 
   desc::desc_set_deps(
     tibble::tibble(type = "Imports", package = generate_uninstalled_pkg_name(), version = "*")
   )
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   expect_error(
     suppressWarnings(
       roxygenize_with_cache(list(getwd()), dirs = dirs_R.cache("roxygenize"))
@@ -142,7 +142,7 @@ test_that("fails gratefully when not installed package is required according to 
 test_that("fails when there is invalid code", {
   skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   # when there is a missing package
   writeLines(c("invalid code stuff /3kj"), "R/more.R")
   expect_error(
@@ -154,7 +154,7 @@ test_that("fails when there is invalid code", {
 test_that("warns if there is any other warning", {
   skip_on_cran()
   local_test_setup(git = FALSE, use_precommit = FALSE, package = TRUE)
-  mockery::stub(roxygenize_with_cache, "diff_requires_run_roxygenize", TRUE)
+  local_mocked_bindings(diff_requires_run_roxygenize = function(...) TRUE)
   writeLines(
     c(
       "#' This is a title", "#'", "#' More", "#", "NULL"
