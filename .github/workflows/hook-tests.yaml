@@ -61,7 +61,7 @@ jobs:
           options(install.packages.compile.from.source = "never", pkgType = "binary")
           renv::restore()
           # install hook-specific additional_dependencies from .pre-commit-config.yaml
-          renv::install(c('pkgdown', 'mockery'))
+          renv::install(c('pkgdown'))
           renv::install(getwd(), dependencies = FALSE) 
           # needed to make sure renv is activated in run_test() 
           activate <- c(
@@ -97,12 +97,15 @@ jobs:
       - name: Test
         run: |
           pkgload::load_all()
-          testthat::test_file(
-            "tests/testthat/test-hooks.R",
-            reporter = testthat::MultiReporter$new(list(
-              testthat::CheckReporter$new(), testthat::FailReporter$new()
-            ))
-          )
+          hook_test_files <- as.character(fs::dir_ls('tests/testthat/', regexp = "test-hook-.*\\.R", type = "file"))
+          tester <- function(file) {
+            testthat::test_file(file,
+              reporter = testthat::MultiReporter$new(list(
+                testthat::CheckReporter$new(), testthat::FailReporter$new()
+              ))
+            )
+          }
+          purrr::walk(hook_test_files, tester)
         shell: Rscript {0}
       - name: Show testthat output
         if: always()

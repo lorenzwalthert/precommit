@@ -32,6 +32,15 @@ path_precommit_exec <- function(check_if_exists = TRUE) {
   final
 }
 
+#' Get the operating System
+#'
+#' Can't mock base package (either because it's an `.Internal` or for some other
+#' reason).
+#' @keywords internal
+get_os <- function() {
+  tolower(Sys.info()[["sysname"]])
+}
+
 #' @rdname path_precommit_exec
 #' @examples
 #' \dontrun{
@@ -56,7 +65,7 @@ path_pre_commit_exec <- function(check_if_exists = TRUE) {
 #' @keywords internal
 path_derive_precommit_exec <- function() {
   path <- path_derive_precommit_exec_path()
-  os <- tolower(Sys.info()[["sysname"]])
+  os <- get_os()
   if (os == "darwin") {
     path <- c(path, path_derive_precommit_exec_macOS())
   } else if (os == "windows") {

@@ -181,8 +181,9 @@ if (!on_cran()) {
   })
   test_that("can update via conda", {
     if (not_conda()) {
+      local_mocked_bindings(assert_reticulate_is_installed = function(...) NULL)
       expect_error(
-        with_mock(update_precommit(), "precommit:::assert_reticulate_is_installed" = function(...) NULL),
+        update_precommit(),
         paste(
           "You can only update your pre-commit executable via the R API if you",
           "chose the installation method via conda"
@@ -201,3 +202,39 @@ if (!on_cran()) {
     }
   })
 }
+
+test_that("Autoupdate is not conducted when renv present in incompatible setup", {
+  skip_on_cran()
+
+  # mock old pre-commit and renv versions
+  local_mocked_bindings(version_precommit = function(...) "2.13.0")
+
+  local_test_setup(
+    git = TRUE, use_precommit = TRUE, install_hooks = FALSE, open = FALSE
+  )
+  initial <- rev_read() %>%
+    rev_as_pkg_version()
+  # simulate adding {renv}
+  writeLines("", "renv.lock")
+
+  # should downgrade rev
+  expect_error(
+    ensure_renv_precommit_compat(
+      package_version_renv = package_version("0.13.0"), root = getwd()
+    ),
+    "Please update"
+  )
+  downgraded <- rev_read() %>%
+    rev_as_pkg_version()
+  expect_true(downgraded == initial)
+
+  # simulate removing {renv} should be updated
+  fs::file_delete("renv.lock")
+  expect_warning(
+    ensure_renv_precommit_compat(
+      package_version("0.13.0"),
+      root = getwd()
+    ),
+    NA
+  )
+})

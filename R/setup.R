@@ -167,7 +167,7 @@ autoupdate <- function(root = here::here()) {
 
 ensure_renv_precommit_compat <- function(package_version_renv = utils::packageVersion("renv"),
                                          root = here::here()) {
-  is_precommit <- suppressWarnings(rlang::with_handlers(
+  is_precommit <- suppressWarnings(rlang::try_fetch(
     unname(read.dcf("DESCRIPTION")[, "Package"]) == "precommit",
     error = function(e) FALSE
   ))
@@ -189,7 +189,7 @@ ensure_renv_precommit_compat <- function(package_version_renv = utils::packageVe
     }
 
     rev <- rev_read(path_config)
-    should_fail <- rlang::with_handlers(
+    should_fail <- rlang::try_fetch(
       {
         rev <- rev_as_pkg_version(rev)
         maximal_rev <- package_version("0.1.3.9014")
@@ -279,7 +279,7 @@ snippet_generate <- function(snippet = "",
       "supported for {.url pre-commit.ci}. See ",
       '{.code vignette("ci", package = "precommit")} for details and solutions.'
     ))
-    remote_deps <- rlang::with_handlers(
+    remote_deps <- rlang::try_fetch(
       desc::desc_get_field("Remotes"),
       error = function(e) character()
     )

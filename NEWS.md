@@ -1,3 +1,13 @@
+# precommit 0.4.1
+
+This release ensures unit tests can handle the error messages from {styler} 
+correctly that were modified slightly. Apart from hook dependency updates, this
+release adds no user-facing changes.
+
+Thanks [&#x0040;joshpersi](https://github.com/joshpersi) for contributing to this 
+release.
+
+
 # precommit 0.4.0
 
 
