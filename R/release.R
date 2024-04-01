@@ -98,6 +98,7 @@ release_msg <- function(last_release, new_version) {
 #' @param tag The tag to push. `NULL` will derive the tag from `DESCRIPTION`.
 #' @keywords internal
 release_complete <- function(ask = TRUE, is_cran = ask, tag = NULL) {
+  abort_if_not_yes("Are you on main branch with no changes in worktree?")
   if (git_branch_get() != "main") {
     rlang::abort("Must be on main to complete the release.")
   }
