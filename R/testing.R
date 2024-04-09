@@ -273,6 +273,17 @@ not_conda <- function() {
   Sys.getenv("PRECOMMIT_INSTALLATION_METHOD") != "conda"
 }
 
+#' Reduce a check to the empty string on CRAN
+#'
+#' In testing, we don't want to rely on exact error messages or stdout on CRAN
+#' for third-party packages, since this would complicate the release process for
+#' dependencies of \{precommit\}.
+#' @param string The string to test.
+#' @keywords internal
+empty_on_cran <- function(string) {
+  ifelse(on_cran(), "", string)
+}
+
 #' Testing utilities
 #'
 #' Similar to the `local_()` family from `{withr}`, this function creates a
