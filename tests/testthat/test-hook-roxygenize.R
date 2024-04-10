@@ -3,7 +3,7 @@ run_test("roxygenize",
   file_name = c("man/flie.Rd" = "flie.Rd"),
   suffix = "",
   std_err = NA,
-  std_out = "Writing NAMESPACE",
+  std_out = empty_on_cran("Writing NAMESPACE"),
   artifacts = c(
     "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
     "R/roxygenize.R" = test_path("in/roxygenize.R")
@@ -24,7 +24,7 @@ if (!on_cran()) {
     suffix = "",
     std_err = NA,
     cmd_args = "--root=rpkg",
-    std_out = "Writing NAMESPACE",
+    std_out = empty_on_cran("Writing NAMESPACE"),
     artifacts = c(
       "rpkg/DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
       "rpkg/R/roxygenize.R" = test_path("in/roxygenize.R")
@@ -79,7 +79,7 @@ run_test("roxygenize",
 run_test("roxygenize",
   file_name = c("man/flie.Rd" = "flie-true.Rd"),
   suffix = "",
-  std_err = "Writing NAMESPACE",
+  std_err = empty_on_cran("Writing NAMESPACE"),
   artifacts = c(
     "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf"),
     "R/roxygenize.R" = test_path("in/roxygenize.R")

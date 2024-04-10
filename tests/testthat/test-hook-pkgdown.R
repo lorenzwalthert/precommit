@@ -16,7 +16,7 @@ run_test("pkgdown",
     "DESCRIPTION" = "DESCRIPTION"
   ),
   suffix = "",
-  std_err = "topic must be a known"
+  std_err = empty_on_cran("topic must be a known")
 )
 
 # failed articles
