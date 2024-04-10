@@ -1,3 +1,8 @@
+# precommit 0.4.2
+
+Release relax the dependency on third-party error messages in our unit tests (#555).
+
+
 # precommit 0.4.1
 
 This release ensures unit tests can handle the error messages from {styler} 
