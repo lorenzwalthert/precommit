@@ -9,7 +9,7 @@ articles:
   precommit: precommit.html
   testing: testing.html
   why-use-hooks: why-use-hooks.html
-last_built: 2024-04-09T15:53Z
+last_built: 2024-04-10T12:30Z
 urls:
   reference: https://lorenzwalthert.github.io/precommit/reference
   article: https://lorenzwalthert.github.io/precommit/articles
