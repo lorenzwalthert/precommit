@@ -28,7 +28,6 @@ validate_renv_lock <- function(renv_path, renv_lock_schema) {
   )
 }
 
-#files <- list.files(recursive = TRUE)
 out <- lapply(files, function(path) {
   is_renv_lock <- grepl("^.*renv\\.lock$", path)
   if (is_renv_lock) {

@@ -1,3 +1,4 @@
+additionalProperties
 ae
 Affero
 api
@@ -53,6 +54,7 @@ env
 EOF
 eval
 exlucded
+fA
 fi
 fs
 fsf
@@ -152,6 +154,12 @@ readLines
 readme
 recognised
 relicensing
+RemoteHost
+RemoteRef
+RemoteRepo
+RemoteSha
+RemoteType
+RemoteUsername
 renv
 Renviron
 repo
@@ -216,6 +224,7 @@ unlist
 unname
 Unstaged
 Upvote
+uri
 UseR
 usethis
 usr

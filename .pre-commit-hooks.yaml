@@ -122,7 +122,7 @@
     files: '^man/|_pkgdown\.yml'
 -   id: validate-renv-lock
     name: validate-renv-lock
-    description: Validate that your `renv.lock`` file is valid json and fits the {renv} schema
+    description: Validate that your `renv.lock` file is valid json and fits the {renv} schema
     entry: Rscript inst/hooks/exported/validate-renv-lock.R
     language: r
     minimum_pre_commit_version: "2.13.0"
