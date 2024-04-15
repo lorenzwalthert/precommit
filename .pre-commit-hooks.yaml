@@ -123,7 +123,7 @@
 -   id: validate-renv-lock
     name: validate-renv-lock
     description: Validate that your `renv.lock`` file is valid json and fits the {renv} schema
-    entry: inst/hooks/exported/validate-renv-lock.R
+    entry: Rscript inst/hooks/exported/validate-renv-lock.R
     language: r
     minimum_pre_commit_version: "2.13.0"
     files: '^renv\.lock$'
