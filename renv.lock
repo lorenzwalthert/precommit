@@ -22,7 +22,7 @@
         "digest",
         "utils"
       ],
-      "Hash": "fe539c3f8efb7410c3ae2cf5fe6c0f8"
+      "Hash": "fe539ca3f8efb7410c3ae2cf5fe6c0f8"
     },
     "R.methodsS3": {
       "Package": "R.methodsS3",
@@ -33,7 +33,7 @@
         "R",
         "utils"
       ],
-      "Hash": "278c286fd6e9e75d02e8f731ea445c8"
+      "Hash": "278c286fd6e9e75d0c2e8f731ea445c8"
     },
     "R.oo": {
       "Package": "R.oo",
@@ -118,7 +118,7 @@
       "Package": "cli",
       "Version": "3.6.2",
       "Source": "Repository",
-      "Repository": true,
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "utils"
