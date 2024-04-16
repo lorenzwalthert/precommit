@@ -1,16 +1,5 @@
 #!/usr/bin/env Rscript
 
-if (!require(readr, quietly = TRUE)) {
-  stop("{readr} could not be loaded, please install it.")
-}
-
-if (!require(jsonvalidate, quietly = TRUE)) {
-  stop("{jsonvalidate} could not be loaded, please install it.")
-}
-
-library(readr)
-library(jsonvalidate)
-
 files <- commandArgs(trailing = TRUE)
 renv_schema <- '{
   "$schema": "http://json-schema.org/draft-07/schema#",
