@@ -14,7 +14,7 @@
       "Version": "3.4.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Requirements": [
+      "Requirments": [
         "MASS",
         "R",
         "cli",
