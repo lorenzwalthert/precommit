@@ -84,6 +84,7 @@ issuehunt
 isTRUE
 jpeg
 json
+jsonvalidate
 KernSmooth
 knitr
 Ko
@@ -152,6 +153,7 @@ Rds
 rds
 readLines
 readme
+readr
 recognised
 relicensing
 RemoteHost

@@ -103,11 +103,10 @@ validate_renv_lock <- function(renv_path, renv_lock_schema) {
 out <- lapply(files, function(path) {
   is_renv_lock <- grepl("^.*renv\\.lock$", path)
   if (is_renv_lock) {
-    print(paste0(path, " is a renv.lock file"))
     tryCatch(
       validate_renv_lock(path, renv_schema),
       error = function(error) {
-        cat(c("renv.lock at", path, "failed validation. Full context:\n"))
+        cat(c("{renv} lock file at path", path, "failed validation. Full context:\n"))
         stop(conditionMessage(error), call. = FALSE)
       }
     )
