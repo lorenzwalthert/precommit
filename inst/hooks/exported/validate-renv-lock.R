@@ -130,7 +130,7 @@ renv_schema <- '{
               "type": "string"
             },
             "examples": [
-              [ 
+              [
                 "R",
                 "jsonlite",
                 "lifecycle",
