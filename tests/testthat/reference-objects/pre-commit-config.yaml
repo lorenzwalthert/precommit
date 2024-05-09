@@ -59,6 +59,7 @@ repos:
           )$
     -   id: readme-rmd-rendered
     -   id: parsable-R
+    -   id: parsable-roxygen
     -   id: no-browser-statement
     -   id: no-print-statement
     -   id: no-debug-statement

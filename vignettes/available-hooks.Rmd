@@ -139,6 +139,13 @@ returns an error.
 
 This hook does not modify files.
 
+## `parsable-roxygen`
+
+Checks if roxygen comments within your `.R` files are "valid" by checking if
+running `roxygen2::parse_file()` on them returns a warning.
+
+This hook does not modify files.
+
 ## `no-browser-statement`
 
 Guarantees you that you don't accidentally commit code with a
