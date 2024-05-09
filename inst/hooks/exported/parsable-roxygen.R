@@ -7,6 +7,10 @@ out <- lapply(files, function(path) {
     warning = function(w) {
       cat(c("Roxygen commentary in file ", path, " is not parsable. Full context:\n"))
       stop(conditionMessage(w), call. = FALSE)
+    },
+    error = function(e) {
+      cat(c("File ", path, " is not parsable. Full context:\n"))
+      stop(conditionMessage(e), call. = FALSE)
     }
   )
 })
