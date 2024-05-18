@@ -57,7 +57,6 @@ jobs:
       - name: Install system dependencies (pip)
         if: matrix.config.installation_method == 'pip'
         run: |
-          pip3 install setuptools --user
           pip3 install pre-commit --user
       - uses: r-lib/actions/setup-r-dependencies@v2
       - name: Remove reticulate for other installation methods
