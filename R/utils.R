@@ -24,7 +24,7 @@ path_if_exist <- function(...) {
 
 is_conda_installation <- function() {
   grepl(
-    "conda3?/envs/r-precommit/(bin|Scripts)/pre-commit(\\.exe)?",
+    "(r-miniconda-.*|conda3?)/envs/r-precommit/(bin|Scripts)/pre-commit(\\.exe)?",
     getOption("precommit.executable")
   )
 }
