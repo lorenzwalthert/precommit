@@ -437,6 +437,11 @@
       ],
       "Hash": "3ee025083e66f18db6cf27b56e23e141"
     },
+    "renv": {
+      "Package": "renv",
+      "Version": "1.0.5",
+      "Source": "Repository"
+    },
     "rex": {
       "Package": "rex",
       "Version": "1.2.1",
