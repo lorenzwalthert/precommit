@@ -1,3 +1,5 @@
+# .R ----
+
 # success
 run_test("lintr",
   suffix = "-success.R",
@@ -12,3 +14,11 @@ run_test(
   "lintr",
   suffix = "-fail.R", cmd_args = "--warn_only", std_err = NULL
 )
+
+# .qmd ----
+
+# success
+run_test("lintr", suffix = "-success.qmd", std_err = NULL)
+
+# failure
+run_test("lintr", suffix = "-fail.qmd", std_err = "not lint free")
