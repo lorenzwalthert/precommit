@@ -1,0 +1,8 @@
+---
+title: "Test doc: success lintr"
+format: html
+---
+
+```{r}
+sum(1, 2)
+```
