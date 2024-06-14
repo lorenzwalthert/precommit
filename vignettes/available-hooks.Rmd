@@ -358,3 +358,18 @@ development dependencies of the package you want to run this hook for to be
 installed, as well as {pkgdown} (without its dependencies).
 
 This hook does not modify files. Added in version 0.3.2.9003.
+
+## `validate-renv-lock`
+
+Validate that your `renv.lock` file is valid json and fits the {renv} schema. 
+
+In general you should _not_ be editing `renv.lock` manually. 
+Instead you should use the functions in the 
+[official {renv} documentation](https://rstudio.github.io/renv/index.html).
+
+This hook seeks to add an extra check for changes to prevent committing 
+accidental edits, whether from troubleshooting or otherwise.
+
+This hook does not modify files.
+
+      id: validate-renv-lock
