@@ -49,6 +49,13 @@
     language: r
     files: '\.[rR](md)?$'
     minimum_pre_commit_version: "2.13.0"
+-   id: parsable-roxygen
+    name: parsable-roxygen
+    description: check if roxygen comments in a .R file are parsable
+    entry: Rscript inst/hooks/exported/parsable-roxygen.R
+    language: r
+    files: '\.[rR]$'
+    minimum_pre_commit_version: "2.13.0"
 -   id: readme-rmd-rendered
     name: readme-rmd-rendered
     description: make sure README.Rmd hasn't been edited more recently than `README.md`

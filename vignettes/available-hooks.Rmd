@@ -139,6 +139,29 @@ returns an error.
 
 This hook does not modify files.
 
+## `parsable-roxygen`
+
+Checks if roxygen comments within your `.R` files are "valid" by checking if
+running `roxygen2::parse_file()` on them returns any messages.
+
+This hook does not modify files.
+
+**no eval**
+
+The `--no-eval` flag causes `roxygen2::parse_file()` to be run with`env = NULL`.
+This means each file will be parsed, but code will not be evaluated - neither
+any explicit code in the file, nor any `@eval` tags within roxygen comments.
+This can be useful if your files contain anything other than
+"simple object declarations" (e.g. [box modules](https://github.com/klmr/box/)
+containing `box::use()` calls).
+
+Inline R code within roxygen comments (i.e. within backticks) is **not**
+evaluated by this hook, whether or not `--no-eval` is specified.
+
+      id: parsable-roxygen
+      args: [--no-eval]
+    
+
 ## `no-browser-statement`
 
 Guarantees you that you don't accidentally commit code with a
