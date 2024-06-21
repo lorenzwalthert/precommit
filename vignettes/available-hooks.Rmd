@@ -155,8 +155,8 @@ This can be useful if your files contain anything other than
 "simple object declarations" (e.g. [box modules](https://github.com/klmr/box/)
 containing `box::use()` calls).
 
-If `--no-eval` is set, inline code within roxygen comments (i.e. within
-backticks) _will_ still be evaluated, but in a new empty environment.
+Inline R code within roxygen comments (i.e. within backticks) is **not**
+evaluated by this hook, whether or not `--no-eval` is specified.
 
       id: parsable-roxygen
       args: [--no-eval]
