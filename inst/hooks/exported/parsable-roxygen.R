@@ -17,10 +17,11 @@ out <- lapply(arguments$files, function(path) {
     msg <- capture.output(
       roxygen2::parse_file(
         path,
-        env = if (isTRUE(arguments$no_eval))
+        env = if (isTRUE(arguments$no_eval)) {
           NULL
-        else
+        } else {
           roxygen2::env_file(path)
+        }
       ),
       type = "message"
     ),
