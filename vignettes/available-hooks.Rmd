@@ -142,7 +142,7 @@ This hook does not modify files.
 ## `parsable-roxygen`
 
 Checks if roxygen comments within your `.R` files are "valid" by checking if
-running `roxygen2::parse_file()` on them returns a warning.
+running `roxygen2::parse_file()` on them returns any messages.
 
 This hook does not modify files.
 
