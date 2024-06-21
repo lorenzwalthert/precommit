@@ -1,11 +1,27 @@
 #!/usr/bin/env Rscript
-files <- commandArgs(trailing = TRUE)
 
-out <- lapply(files, function(path) {
+"Check whether roxygen comments within files are valid
+Usage:
+  parsable-roxygen [--no-eval] <files>...
+
+Options:
+  --no-eval  Parse, but do not evaluate, file contents - this also suppresses evaluation of `@eval` tags
+
+" -> doc
+
+arguments <- precommit::precommit_docopt(doc)
+
+out <- lapply(arguments$files, function(path) {
   tryCatch(
     # Capture any messages from roxygen2:::warn_roxy()
     msg <- capture.output(
-      roxygen2::parse_file(path, env = NULL),
+      roxygen2::parse_file(
+        path,
+        env = if (isTRUE(arguments$no_eval))
+          NULL
+        else
+          roxygen2::env_file(path)
+      ),
       type = "message"
     ),
 
