@@ -4,3 +4,4 @@ reference:
     Edit the pre-commit configuration
 - contents: 
   - autoupdate
+url: https://example.com
