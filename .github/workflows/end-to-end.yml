@@ -69,11 +69,12 @@ jobs:
           echo 'running R/test.R'
           pre-commit run --files R/test.R 
           
+          echo 'one' >> codemeta.json
+          cp tests/testthat/reference-objects/DESCRIPTION .
           echo 'running DESCRIPTION'
           pre-commit run --files DESCRIPTION 
           
           echo 'one' > README.Rmd
-          echo 'one' >> codemeta.json
           echo 'one' > README.md
           git add README*
           echo 'running README'
@@ -86,7 +87,6 @@ jobs:
           rm -rf man/
           mkdir -p man
           cp tests/testthat/in/autoupdate.Rd man/
-          cp tests/testthat/reference-objects/DESCRIPTION .
           echo 'running _pkgdown.yml'
           pre-commit run --files _pkgdown.yml
           
