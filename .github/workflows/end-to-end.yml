@@ -61,6 +61,7 @@ jobs:
 
       - name: Run pre-commit
         run: | 
+          cat DESCRIPTION
           echo 'one' > README.Rmd
           echo 'one' >> codemeta.json
           echo 'one' > README.md
