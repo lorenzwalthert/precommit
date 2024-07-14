@@ -63,36 +63,41 @@ jobs:
         run: | 
           brew install pre-commit
           pre-commit install --install-hooks
-          cat DESCRIPTION
           
-          echo "#' some code\n#'\n#' @param here.\n#' @name somethings\nNULL" > R/test.R # overwrite if anything there
           echo 'running R/test.R'
+          echo "#' some code\n#'\n#' @param here.\n#' @name somethings\nNULL" > R/test.R # overwrite if anything there
           pre-commit run --files R/test.R 
           
-          cp tests/testthat/reference-objects/DESCRIPTION .
-          sleep 1
-          echo 'one' >> codemeta.json
           echo 'running DESCRIPTION'
+          cp tests/testthat/reference-objects/DESCRIPTION .
+          sleep 2
+          echo 'one' >> codemeta.json
           pre-commit run --files DESCRIPTION 
           
+          echo 'running README'
           echo 'one' > README.Rmd
+          sleep 1
           echo 'one' > README.md
           git add README*
-          echo 'running README'
           pre-commit run --files README.Rmd
           
+          echo 'running _pkgdown.yml'
           cp tests/testthat/in/_pkgdown-index-articles.yml _pkgdown.yml
           rm -rf vignettes
           mkdir vignettes
           cp tests/testthat/in/pkgdown.Rmd vignettes/
-          rm -rf man/
-          mkdir -p man
-          cp tests/testthat/in/autoupdate.Rd man/
-          echo 'running _pkgdown.yml'
           pre-commit run --files _pkgdown.yml
           
           echo 'running man/autoupdate.Rd'
-          pre-commit run --files man/autoupdate.Rd
           git reset HEAD --hard # restore initial state
+          git clean -f 
+          rm -rf man/
+          mkdir -p man
+          cp tests/testthat/in/autoupdate.Rd man/
+          SKIP=pkgdown,consistent-release-tag pre-commit run --files man/autoupdate.Rd
+          
+          git reset HEAD --hard # restore initial state
+          git clean -f 
+          
         env:
           SKIP: consistent-release-tag
