@@ -62,15 +62,16 @@ jobs:
       - name: Run pre-commit
         run: | 
           brew install pre-commit
-          pre-commit install
+          pre-commit install --install-hooks
           cat DESCRIPTION
           
           echo "#' some code\n#'\n#' @param here.\n#' @name somethings\nNULL" > R/test.R # overwrite if anything there
           echo 'running R/test.R'
           pre-commit run --files R/test.R 
           
-          echo 'one' >> codemeta.json
           cp tests/testthat/reference-objects/DESCRIPTION .
+          sleep 1
+          echo 'one' >> codemeta.json
           echo 'running DESCRIPTION'
           pre-commit run --files DESCRIPTION 
           
