@@ -83,6 +83,9 @@ jobs:
           
           echo 'running _pkgdown.yml'
           cp tests/testthat/in/_pkgdown-index-articles.yml _pkgdown.yml
+          rm -rf man/
+          mkdir man
+          cp tests/testthat/in/autoupdate.Rd man/autoudpate.Rd
           rm -rf vignettes
           mkdir vignettes
           cp tests/testthat/in/pkgdown.Rmd vignettes/
