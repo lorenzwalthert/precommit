@@ -97,7 +97,7 @@ jobs:
           rm -rf man/
           mkdir -p man
           cp tests/testthat/in/autoupdate.Rd man/
-          SKIP=pkgdown,consistent-release-tag pre-commit run --files man/autoupdate.Rd
+          pre-commit run roxygenize --files man/autoupdate.Rd
           
           git reset HEAD --hard # restore initial state
           git clean -f 
