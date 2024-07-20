@@ -18,21 +18,6 @@ jobs:
         with:
           use-public-rspm: true
 
-      # - name: Cache packages
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ env.RENV_PATHS_ROOT }}
-      #     key: renv-${{ hashFiles('**/renv.lock') }}
-      #     restore-keys: |
-      #       renv-
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
-        env:
-          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
-        run: |
-          Rscript -e "install.packages('remotes'); remotes::install_github('r-hub/sysreqs')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
       - name: install runtime dependencies
         run: Rscript -e "install.packages(c('renv', 'jsonlite'))"
       - name: update PPM URL
