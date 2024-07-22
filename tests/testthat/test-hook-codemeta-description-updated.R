@@ -1,15 +1,20 @@
 run_test("codemeta-description-update",
   file_name = c("codemeta.json"),
   suffix = "",
-  std_err = "No `DESCRIPTION` found in repository.",
-  std_out = NULL,
+  std_out = "No `DESCRIPTION` found in repository.",
+  std_err = "",
+  expect_success = FALSE,
+  read_only = TRUE,
 )
 
 run_test("codemeta-description-update",
   file_name = c("DESCRIPTION"),
   suffix = "",
-  std_err = "No `codemeta.json` found in repository.",
-  std_out = NULL,
+  std_out = "No `codemeta.json` found in repository.",
+  std_err = "",
+  # voluntary
+  expect_success = FALSE,
+  read_only = TRUE
 )
 
 
@@ -17,8 +22,9 @@ run_test("codemeta-description-update",
 run_test("codemeta-description-update",
   file_name = c("DESCRIPTION", "codemeta.json"),
   suffix = "",
-  std_err = "out of date",
-  std_out = NULL,
+  std_err = "",
+  expect_success = FALSE,
+  std_out = "out of date",
   file_transformer = function(files) {
     if (length(files) > 1) {
       # transformer is called once on all files and once per file

@@ -175,7 +175,9 @@ hook_state_create <- function(tempdir,
     cmdargs = as.character(c(cmd_args, files)),
     stderr = path_stderr,
     stdout = path_stdout,
-    env = c(callr::rcmd_safe_env(), env)
+    env = c(callr::rcmd_safe_env(), env),
+    fail_on_status = FALSE,
+    show = FALSE
   )
   output$status
 }
