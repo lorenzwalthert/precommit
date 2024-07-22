@@ -170,10 +170,14 @@ hook_state_create <- function(tempdir,
   # each as a single term
   files <- shQuote(files)
 
-  system2(paste0(Sys.getenv("R_HOME"), "/bin/Rscript"),
-    args = as.character(c(path_executable, cmd_args, files)),
-    stderr = path_stderr, stdout = path_stdout, env = env
+  output <- callr::rscript(
+    script = path_executable,
+    cmdargs = as.character(c(cmd_args, files)),
+    stderr = path_stderr,
+    stdout = path_stdout,
+    env = c(callr::rcmd_safe_env(), env)
   )
+  output$status
 }
 
 #' Check if the hook produced what you want
