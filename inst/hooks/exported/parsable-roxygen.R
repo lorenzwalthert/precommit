@@ -2,10 +2,10 @@
 
 "Check whether roxygen comments within files are valid
 Usage:
-  parsable-roxygen [--no-eval] <files>...
+  parsable-roxygen [--eval] <files>...
 
 Options:
-  --no-eval  Parse, but do not evaluate, file contents - this also suppresses evaluation of `@eval` tags
+  --eval  Evaluate file contents after parsing - this is required if `@eval` tags must be evaluated
 
 " -> doc
 
@@ -17,10 +17,10 @@ out <- lapply(arguments$files, function(path) {
     msg <- capture.output(
       roxygen2::parse_file(
         path,
-        env = if (isTRUE(arguments$no_eval)) {
-          NULL
-        } else {
+        env = if (isTRUE(arguments$eval)) {
           roxygen2::env_file(path)
+        } else {
+          NULL
         }
       ),
       type = "message"
