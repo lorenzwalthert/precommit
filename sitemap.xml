@@ -1,192 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/404.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/FAQ.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/available-hooks.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/ci.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/hook-order.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/testing.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/articles/why-use-hooks.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/index.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/autoupdate.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/call_and_capture.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/call_precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/communicate_captured_call.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/copy_artifacts.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/diff_requires_run_roxygenize.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/dirs_R.cache.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/empty_on_cran.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/ensure_named.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/fallback_doc.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/generate_uninstalled_pkg_name.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/get_os.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/git_init.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/hook_state_assert.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/hook_state_create.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/install_impl.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/install_precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/local_test_setup.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/may_require_permanent_cache.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/not_conda.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/open_config.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_conda.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_impl.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_path.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_win_python3plus_base.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/path_precommit_exec.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/precommit-package.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/precommit_docopt.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/precommit_executable_file.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/release_complete.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/release_gh.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/rev_read.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/robust_purl.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/roxygen_assert_additional_dependencies.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/roxygenize_with_cache.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/run_test.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/run_test_impl.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/set_config_source.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/snippet_generate.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/uninstall_precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/update_impl.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/update_precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/update_rev_in_config.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/use_ci.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/use_precommit.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/use_precommit_config.html</loc>
-  </url>
-  <url>
-    <loc>https://lorenzwalthert.github.io/precommit/reference/version_precommit.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://lorenzwalthert.github.io/precommit/404.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/CONTRIBUTING.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/LICENSE.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/FAQ.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/available-hooks.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/ci.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/hook-order.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/index.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/testing.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/articles/why-use-hooks.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/authors.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/index.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/news/index.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/autoupdate.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/call_and_capture.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/call_precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/communicate_captured_call.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/copy_artifacts.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/diff_requires_run_roxygenize.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/dirs_R.cache.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/empty_on_cran.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/ensure_named.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/fallback_doc.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/generate_uninstalled_pkg_name.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/get_os.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/git_init.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/hook_state_assert.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/hook_state_create.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/index.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/install_impl.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/install_precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/local_test_setup.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/may_require_permanent_cache.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/not_conda.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/open_config.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_conda.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_impl.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_path.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_derive_precommit_exec_win_python3plus_base.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/path_precommit_exec.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/precommit-package.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/precommit_docopt.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/precommit_executable_file.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/release_complete.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/release_gh.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/rev_read.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/robust_purl.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/roxygen_assert_additional_dependencies.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/roxygenize_with_cache.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/run_test.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/run_test_impl.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/set_config_source.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/snippet_generate.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/uninstall_precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/update_impl.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/update_precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/update_rev_in_config.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/use_ci.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/use_precommit.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/use_precommit_config.html</loc></url>
+<url><loc>https://lorenzwalthert.github.io/precommit/reference/version_precommit.html</loc></url>
 </urlset>
+

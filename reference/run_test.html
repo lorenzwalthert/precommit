@@ -5,7 +5,7 @@ when running."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/li
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -19,7 +19,7 @@ when running."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/li
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -33,7 +33,7 @@ when running."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/li
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -59,25 +59,25 @@ when running."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/li
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/lorenzwalthert/precommit/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul><form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off"></div>
       </form>
-      
+
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Run a test</h1>
-    <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/HEAD/R/testing.R" class="external-link"><code>R/testing.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/main/R/testing.R" class="external-link"><code>R/testing.R</code></a></small>
     <div class="hidden name"><code>run_test.Rd</code></div>
     </div>
 
@@ -105,43 +105,45 @@ when running.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>hook_name</dt>
+
+
+<dl><dt id="arg-hook-name">hook_name<a class="anchor" aria-label="anchor" href="#arg-hook-name"></a></dt>
 <dd><p>The name of the hook in <code>inst/hooks/exported/</code>, without
 file extension.</p></dd>
 
 
-<dt>file_name</dt>
+<dt id="arg-file-name">file_name<a class="anchor" aria-label="anchor" href="#arg-file-name"></a></dt>
 <dd><p>The file to test in <code>tests/in</code> (without extension). Can be
 a named vector of length one where the name is the target location relative
 to the temporary location and the value is the source of the file.</p></dd>
 
 
-<dt>suffix</dt>
+<dt id="arg-suffix">suffix<a class="anchor" aria-label="anchor" href="#arg-suffix"></a></dt>
 <dd><p>The suffix of <code>file_name</code>.</p></dd>
 
 
-<dt>std_err</dt>
+<dt id="arg-std-err">std_err<a class="anchor" aria-label="anchor" href="#arg-std-err"></a></dt>
 <dd><p>An expected error message. If no error is expected, this
 can be <code>NULL</code>. In that case, the <code>comparator</code> is applied.</p></dd>
 
 
-<dt>std_out</dt>
+<dt id="arg-std-out">std_out<a class="anchor" aria-label="anchor" href="#arg-std-out"></a></dt>
 <dd><p>The expected stdout message. If <code>NULL</code>, this check is omitted.</p></dd>
 
 
-<dt>cmd_args</dt>
+<dt id="arg-cmd-args">cmd_args<a class="anchor" aria-label="anchor" href="#arg-cmd-args"></a></dt>
 <dd><p>More arguments passed to the file. Pre-commit handles it as
 described <a href="https://pre-commit.com/#arguments-pattern-in-hooks" class="external-link">here</a>.</p></dd>
 
 
-<dt>artifacts</dt>
+<dt id="arg-artifacts">artifacts<a class="anchor" aria-label="anchor" href="#arg-artifacts"></a></dt>
 <dd><p>Path with artifact files to copy to the temp directory root where
 the test is run. If you don't target the root, this can be a named vector
 of length one where the name is the target location relative to the
 temporary location and the value is the source of the file.</p></dd>
 
 
-<dt>file_transformer</dt>
+<dt id="arg-file-transformer">file_transformer<a class="anchor" aria-label="anchor" href="#arg-file-transformer"></a></dt>
 <dd><p>A function that takes the file names as input and is
 ran right before the hook script is invoked, returning the path to the
 files, potentially modified (if renamed). This can be useful if you need to
@@ -153,17 +155,17 @@ is also applied to a temp copy of the reference file before a comparison is
 made.</p></dd>
 
 
-<dt>env</dt>
+<dt id="arg-env">env<a class="anchor" aria-label="anchor" href="#arg-env"></a></dt>
 <dd><p>The environment variables to set with <code><a href="https://rdrr.io/r/base/system2.html" class="external-link">base::system2()</a></code>.</p></dd>
 
 
-<dt>expect_success</dt>
+<dt id="arg-expect-success">expect_success<a class="anchor" aria-label="anchor" href="#arg-expect-success"></a></dt>
 <dd><p>Whether or not an exit code 0 is expected. This can
 be derived from <code>std_err</code>, but sometimes, non-empty stderr does not mean
 error, but just a message.</p></dd>
 
 
-<dt>read_only</dt>
+<dt id="arg-read-only">read_only<a class="anchor" aria-label="anchor" href="#arg-read-only"></a></dt>
 <dd><p>If <code>TRUE</code>, then assert that no new files were created.
 Additionally, if <code>artifacts</code> are not <code>NULL</code>, then assert that hook did not
 modify the artifacts.</p></dd>
@@ -194,16 +196,16 @@ the message we expect. To check changed file content, we set <code>std_err</code
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: 'ae5363c86f48f4117b4f2b9beaefa28f',
     indexName: 'lorenzwalthert_precommit',
     inputSelector: 'input#search-input.form-control',

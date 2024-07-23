@@ -22,7 +22,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -51,7 +51,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -82,7 +82,7 @@
 <li>
   <a href="https://github.com/lorenzwalthert/precommit/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -91,7 +91,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -99,7 +99,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -107,7 +107,7 @@
       <h1 data-toc-skip>Available Hooks</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/HEAD/vignettes/available-hooks.Rmd" class="external-link"><code>vignettes/available-hooks.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/lorenzwalthert/precommit/blob/main/vignettes/available-hooks.Rmd" class="external-link"><code>vignettes/available-hooks.Rmd</code></a></small>
       <div class="hidden name"><code>available-hooks.Rmd</code></div>
 
     </div>
@@ -137,7 +137,7 @@ modifies files or not.</p>
 documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.2
+    rev: v0.4.3
     hooks:
     -   id: lintr
         args: [--warn_only, --key=value]</code></pre>
@@ -255,7 +255,7 @@ specify <code>config_source</code> otherwise), we copy the expression in
 the <code>exclude:</code> key from spell check hook the default
 repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code>
 file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your
-config file, so you can easily add or remove some files. As of v0.4.2,
+config file, so you can easily add or remove some files. As of v0.4.3,
 the following regex is used to exclude files following the <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python regex
 syntax</a>:</p>
 <pre><code>(?x)^(
@@ -460,9 +460,7 @@ either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -475,17 +473,17 @@ either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: 'ae5363c86f48f4117b4f2b9beaefa28f',
     indexName: 'lorenzwalthert_precommit',
     inputSelector: 'input#search-input.form-control',
