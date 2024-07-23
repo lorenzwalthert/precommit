@@ -10,9 +10,7 @@ hook_state_assert(
   path_candidate_temp,
   file_transformer,
   path_stdout,
-  path_stderr,
   expect_success,
-  std_err,
   std_out,
   exit_status
 )

@@ -37,13 +37,12 @@
 run_test <- function(hook_name,
                      file_name = hook_name,
                      suffix = ".R",
-                     std_err = NULL,
-                     std_out = NULL,
+                     std_out = "",
                      cmd_args = NULL,
                      artifacts = NULL,
                      file_transformer = function(files) files,
                      env = character(),
-                     expect_success = is.null(std_err),
+                     expect_success,
                      read_only = FALSE) {
   withr::local_envvar(list(R_PRECOMMIT_HOOK_ENV = "1"))
   path_executable <- fs::dir_ls(system.file(
@@ -57,7 +56,6 @@ run_test <- function(hook_name,
     ensure_named(names(file_name), fs::path_file)
   run_test_impl(
     path_executable, path_candidate,
-    std_err = std_err,
     std_out = std_out,
     cmd_args = cmd_args,
     artifacts = ensure_named(artifacts),
@@ -92,7 +90,6 @@ run_test <- function(hook_name,
 #' @keywords internal
 run_test_impl <- function(path_executable,
                           path_candidate,
-                          std_err,
                           std_out,
                           cmd_args,
                           artifacts,
@@ -124,29 +121,16 @@ run_test_impl <- function(path_executable,
     env
   )
   hook_state_assert(
-    path_candidate,
-    tempdir,
-    path_candidate_temp,
-    file_transformer,
-    path_stdout,
-    path_stderr,
-    expect_success,
-    std_err,
-    std_out,
-    exit_status
+    path_candidate = path_candidate,
+    tempdir = tempdir,
+    path_candidate_temp = path_candidate_temp,
+    file_transformer = file_transformer,
+    path_stdout = path_stdout,
+    expect_success = expect_success,
+    std_out = std_out,
+    exit_status = exit_status
   )
-  if (isTRUE(read_only)) {
-    files_after_hook <- fs::dir_ls(tempdir, all = TRUE, recurse = TRUE)
-    testthat::expect_equal(files_before_hook, files_after_hook)
-
-    if (!is.null(artifacts)) {
-      purrr::iwalk(artifacts, function(reference_path, temp_path) {
-        artifact_before_hook <- readLines(reference_path)
-        artifact_after_hook <- readLines(fs::path_join(c(tempdir, temp_path)))
-        testthat::expect_equal(artifact_before_hook, artifact_after_hook)
-      })
-    }
-  }
+  hook_state_assert_ready_only(tempdir, files_before_hook = files_before_hook, artifacts = artifacts)
 }
 
 
@@ -173,7 +157,7 @@ hook_state_create <- function(tempdir,
   output <- callr::rscript(
     script = path_executable,
     cmdargs = as.character(c(cmd_args, files)),
-    stderr = path_stderr,
+    stderr = path_stdout,
     stdout = path_stdout,
     env = c(callr::rcmd_safe_env(), env),
     fail_on_status = FALSE,
@@ -191,9 +175,7 @@ hook_state_assert <- function(path_candidate,
                               path_candidate_temp,
                               file_transformer,
                               path_stdout,
-                              path_stderr,
                               expect_success,
-                              std_err,
                               std_out,
                               exit_status) {
   purrr::map2(path_candidate, path_candidate_temp,
@@ -201,9 +183,7 @@ hook_state_assert <- function(path_candidate,
     tempdir = tempdir,
     file_transformer = file_transformer,
     path_stdout = path_stdout,
-    path_stderr = path_stderr,
     expect_success = expect_success,
-    std_err = std_err,
     std_out = std_out,
     exit_status = exit_status
   )
@@ -214,9 +194,7 @@ hook_state_assert_one <- function(path_candidate,
                                   path_candidate_temp,
                                   file_transformer,
                                   path_stdout,
-                                  path_stderr,
                                   expect_success,
-                                  std_err,
                                   std_out,
                                   exit_status) {
   candidate <- readLines(path_candidate_temp)
@@ -227,43 +205,30 @@ hook_state_assert_one <- function(path_candidate,
     file_transformer(path_temp)
   )
   reference <- readLines(path_temp)
-  if (expect_success) {
-    # file not changed + no stderr
-    contents <- readLines(path_stderr)
-    if (exit_status != 0) {
-      testthat::fail("Expected: No error. Found:", contents)
-    }
-    testthat::expect_equal(candidate, reference, ignore_attr = TRUE)
-    if (!is.null(std_out)) {
-      contents <- readLines(path_stdout)
-      testthat::expect_match(
-        paste(contents, collapse = "\n"), std_out,
-        fixed = TRUE
-      )
-    }
-  } else if (!expect_success) {
-    # either file changed or stderr
-    if (is.na(std_err)) {
-      if (identical(candidate, reference)) {
-        testthat::fail(paste0(
-          path_candidate, " and ", path_candidate_temp,
-          " are not supposed to be identical but they are"
-        ))
-      }
-    } else {
-      contents <- readLines(path_stderr)
-      testthat::expect_match(
-        paste(contents, collapse = "\n"), std_err,
-        fixed = TRUE
-      )
-      if (!is.null(std_out)) {
-        contents <- readLines(path_stdout)
-        testthat::expect_match(
-          paste(contents, collapse = "\n"), std_out,
-          fixed = TRUE
-        )
-      }
-      testthat::expect_false(exit_status == 0)
+  # assert exit status
+  is_success <- exit_status == 0
+  testthat::expect_equal(is_success, expect_success)
+
+  # assert stdout
+  contents <- readLines(path_stdout)
+  testthat::expect_match(
+    paste(contents, collapse = "\n"), std_out,
+    fixed = TRUE
+  )
+}
+
+
+hook_state_assert_ready_only <- function(read_only, tempdir, files_before_hook, artifacts) {
+  if (isTRUE(read_only)) {
+    files_after_hook <- fs::dir_ls(tempdir, all = TRUE, recurse = TRUE)
+    testthat::expect_equal(files_before_hook, files_after_hook)
+
+    if (!is.null(artifacts)) {
+      purrr::iwalk(artifacts, function(reference_path, temp_path) {
+        artifact_before_hook <- readLines(reference_path)
+        artifact_after_hook <- readLines(fs::path_join(c(tempdir, temp_path)))
+        testthat::expect_equal(artifact_before_hook, artifact_after_hook)
+      })
     }
   }
 }
