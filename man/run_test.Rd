@@ -8,13 +8,12 @@ run_test(
   hook_name,
   file_name = hook_name,
   suffix = ".R",
-  std_err = NULL,
-  std_out = NULL,
+  std_out = "",
   cmd_args = NULL,
   artifacts = NULL,
   file_transformer = function(files) files,
   env = character(),
-  expect_success = is.null(std_err),
+  expect_success,
   read_only = FALSE
 )
 }
@@ -27,9 +26,6 @@ a named vector of length one where the name is the target location relative
 to the temporary location and the value is the source of the file.}
 
 \item{suffix}{The suffix of \code{file_name}.}
-
-\item{std_err}{An expected error message. If no error is expected, this
-can be \code{NULL}. In that case, the \code{comparator} is applied.}
 
 \item{std_out}{The expected stdout message. If \code{NULL}, this check is omitted.}
 

@@ -23,6 +23,7 @@ Imports:
     withr,
     yaml
 Suggests: 
+    callr,
     desc,
     docopt (>= 0.7.1),
     git2r,

@@ -7,7 +7,6 @@
 run_test_impl(
   path_executable,
   path_candidate,
-  std_err,
   std_out,
   cmd_args,
   artifacts,
@@ -22,9 +21,6 @@ run_test_impl(
 
 \item{path_candidate}{The path to a file that should be modified by the
 executable.}
-
-\item{std_err}{An expected error message. If no error is expected, this
-can be \code{NULL}. In that case, the \code{comparator} is applied.}
 
 \item{std_out}{The expected stdout message. If \code{NULL}, this check is omitted.}
 
@@ -45,6 +41,9 @@ error, but just a message.}
 \item{read_only}{If \code{TRUE}, then assert that no new files were created.
 Additionally, if \code{artifacts} are not \code{NULL}, then assert that hook did not
 modify the artifacts.}
+
+\item{std_err}{An expected error message. If no error is expected, this
+can be \code{NULL}. In that case, the \code{comparator} is applied.}
 }
 \description{
 Implement a test run
