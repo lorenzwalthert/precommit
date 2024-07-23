@@ -1,3 +1,14 @@
+# precommit 0.4.3
+
+* Drop legacy hook tests (#578).
+* Extend pkgdown hook tests for latest release where URLs are checked too (#577).
+* Fix test to pass with new pkgdown error message (#564).
+* fix path resolution for conda (#564).
+* Lint .qmd docs also (#570).
+* Update hook dependencies (#581).
+
+Thanks to all who contributed to this release: [&#x0040;boxydog](https://github.com/boxydog),  [&#x0040;hadley](https://github.com/hadley), [&#x0040;IndrajeetPatil](https://github.com/IndrajeetPatil), [&#x0040;jcken95](https://github.com/jcken95), [&#x0040;jeancochrane](https://github.com/jeancochrane), [&#x0040;jrdnbradford](https://github.com/jrdnbradford), [&#x0040;lorenzwalthert](https://github.com/lorenzwalthert), [&#x0040;owenjonesuob](https://github.com/owenjonesuob), and [&#x0040;TymekDev](https://github.com/TymekDev).
+
 # precommit 0.4.2
 
 Release relax the dependency on third-party error messages in our unit tests (#555).
@@ -175,7 +186,7 @@ Thanks to all people who contributed to this release:
 [\@hadley](https://github.com/hadley),
 [\@KyleDCox](https://github.com/KyleDCox),
 [\@lorenzwalthert](https://github.com/lorenzwalthert),
-[\@lukasfeick-sw](https://github.com/lukasfeick-sw),
+@lukasfeick-sw,
 [\@MarkMc1089](https://github.com/MarkMc1089),
 [\@pat-s](https://github.com/pat-s),
 [\@RoyalTS](https://github.com/RoyalTS), and
@@ -345,7 +356,7 @@ A big hand to all the contributors of this release:
 [\@joelnitta](https://github.com/joelnitta),
 [\@jucor](https://github.com/jucor),
 [\@lorenzwalthert](https://github.com/lorenzwalthert),
-[\@lukasfeick-sw](https://github.com/lukasfeick-sw),
+@lukasfeick-sw,
 [\@MarkMc1089](https://github.com/MarkMc1089),
 [\@njtierney](https://github.com/njtierney),
 [\@pat-s](https://github.com/pat-s),

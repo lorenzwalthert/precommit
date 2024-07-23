@@ -55,24 +55,25 @@ if (!on_cran()) {
       files
     }
   )
+
+  # with Rd present in wrong root
+  run_test("roxygenize",
+    file_name = c("R/roxygenize.R" = "roxygenize.R"),
+    suffix = "",
+    std_err = "Please commit the new `.Rd` files",
+    artifacts = c(
+      "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf")
+    ),
+    file_transformer = function(files) {
+      git_init()
+      git2r::add(path = files)
+      files
+    }
+  )
 }
 
 
 
-# with Rd present in wrong root
-run_test("roxygenize",
-  file_name = c("R/roxygenize.R" = "roxygenize.R"),
-  suffix = "",
-  std_err = "Please commit the new `.Rd` files",
-  artifacts = c(
-    "DESCRIPTION" = test_path("in/DESCRIPTION-no-deps.dcf")
-  ),
-  file_transformer = function(files) {
-    git_init()
-    git2r::add(path = files)
-    files
-  }
-)
 
 
 # with up to date rd present

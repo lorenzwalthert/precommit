@@ -266,6 +266,10 @@ on_cran <- function() {
   !identical(Sys.getenv("NOT_CRAN"), "true")
 }
 
+on_windows_on_cran <- function() {
+  on_cran() && is_windows()
+}
+
 #' The testing environment does not use a conda environment if the env variable
 #' PRECOMMIT_INSTALLATION_METHOD is not 'conda'.
 #' @keywords internal

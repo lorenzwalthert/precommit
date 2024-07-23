@@ -9,16 +9,18 @@ run_test("lintr",
 # failure
 run_test("lintr", suffix = "-fail.R", std_err = "not lint free")
 
-# warning
-run_test(
-  "lintr",
-  suffix = "-fail.R", cmd_args = "--warn_only", std_err = NULL
-)
+if (!on_windows_on_cran()) {
+  # warning
+  run_test(
+    "lintr",
+    suffix = "-fail.R", cmd_args = "--warn_only", std_err = NULL
+  )
 
-# .qmd ----
+  # .qmd ----
 
-# success
-run_test("lintr", suffix = "-success.qmd", std_err = NULL)
+  # success
+  run_test("lintr", suffix = "-success.qmd", std_err = NULL)
 
-# failure
-run_test("lintr", suffix = "-fail.qmd", std_err = "not lint free")
+  # failure
+  run_test("lintr", suffix = "-fail.qmd", std_err = "not lint free")
+}

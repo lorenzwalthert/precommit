@@ -142,6 +142,7 @@ precommithooks
 proj
 purrr
 py
+qmd
 Rbuildignore
 rc
 RData
