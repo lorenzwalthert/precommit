@@ -139,6 +139,34 @@ returns an error.
 
 This hook does not modify files.
 
+## `parsable-roxygen`
+
+Checks if roxygen comments within your `.R` files are "valid" by checking if
+running `roxygen2::parse_file()` on them returns any messages.
+
+This hook does not modify files.
+
+**eval**
+
+By default, each file will be parsed, but code will not be evaluated - neither
+any explicit code in the file, nor any `@eval` tags within roxygen comments.
+
+If your commentary contains `@eval` tags which you would prefer to evaluate, you
+can specify the `--eval` flag, which will cause the file's code to be evaluated
+in an environment created by `roxygen2::env_file()`. Note that dependencies of
+the code to evaluate must be available for pre-commit. You may list these as
+`additional_dependencies:` for the `parsable-roxygen` hook in
+`.pre-commit-config.yaml`.
+
+Inline R code within roxygen comments (i.e. within backticks) is **not**
+evaluated by this hook, whether or not `--eval` is specified. You would need
+to run the `roxygenize` hook for that.
+
+      id: parsable-roxygen
+      args: [--eval]
+    
+This hook was added in version 0.4.3.9000.
+
 ## `no-browser-statement`
 
 Guarantees you that you don't accidentally commit code with a
