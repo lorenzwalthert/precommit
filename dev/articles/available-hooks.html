@@ -219,6 +219,34 @@ an error.</p>
 <p>This hook does not modify files.</p>
 </div>
 <div class="section level3">
+<h3 id="parsable-roxygen">
+<code>parsable-roxygen</code><a class="anchor" aria-label="anchor" href="#parsable-roxygen"></a>
+</h3>
+<p>Checks if roxygen comments within your <code>.R</code> files are
+“valid” by checking if running <code><a href="https://roxygen2.r-lib.org/reference/parse_package.html" class="external-link">roxygen2::parse_file()</a></code> on
+them returns any messages.</p>
+<p>This hook does not modify files.</p>
+<p><strong>eval</strong></p>
+<p>By default, each file will be parsed, but code will not be evaluated
+- neither any explicit code in the file, nor any <code>@eval</code> tags
+within roxygen comments.</p>
+<p>If your commentary contains <code>@eval</code> tags which you would
+prefer to evaluate, you can specify the <code>--eval</code> flag, which
+will cause the file’s code to be evaluated in an environment created by
+<code><a href="https://roxygen2.r-lib.org/reference/parse_package.html" class="external-link">roxygen2::env_file()</a></code>. Note that dependencies of the code to
+evaluate must be available for pre-commit. You may list these as
+<code>additional_dependencies:</code> for the
+<code>parsable-roxygen</code> hook in
+<code>.pre-commit-config.yaml</code>.</p>
+<p>Inline R code within roxygen comments (i.e. within backticks) is
+<strong>not</strong> evaluated by this hook, whether or not
+<code>--eval</code> is specified. You would need to run the
+<code>roxygenize</code> hook for that.</p>
+<pre><code>  id: parsable-roxygen
+  args: [--eval]</code></pre>
+<p>This hook was added in version 0.4.3.9000.</p>
+</div>
+<div class="section level3">
 <h3 id="no-browser-statement">
 <code>no-browser-statement</code><a class="anchor" aria-label="anchor" href="#no-browser-statement"></a>
 </h3>
