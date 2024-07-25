@@ -1,18 +1,18 @@
-# success - code evaluated
-run_test(
-  "parsable-roxygen",
-  suffix = "-success.R",
-  std_out = "A random print statement",
-  std_err = NULL,
-  read_only = TRUE
-)
-
 # success - code not evaluated
 run_test(
   "parsable-roxygen",
   suffix = "-success.R",
-  cmd_args = "--no-eval",
   std_out = NULL,
+  std_err = NULL,
+  read_only = TRUE
+)
+
+# success - code evaluated
+run_test(
+  "parsable-roxygen",
+  suffix = "-success.R",
+  cmd_args = "--eval",
+  std_out = "A random print statement",
   std_err = NULL,
   read_only = TRUE
 )
@@ -30,15 +30,6 @@ run_test(
 run_test(
   "parsable-roxygen",
   suffix = "-fail2.R",
-  std_out = "File ",
-  std_err = "unexpected '}'",
-  read_only = TRUE
-)
-
-
-run_test(
-  "parsable-roxygen",
-  suffix = "-fail4.R",
   std_out = "File ",
   std_err = "unexpected '}'",
   read_only = TRUE

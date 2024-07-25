@@ -11,6 +11,10 @@ Options:
 
 arguments <- precommit::precommit_docopt(doc)
 
+if (packageVersion("roxygen2") < package_version("7.3.0")) {
+  rlang::abort("You need at least version 7.3.0 of {roxygen2} to run this hook.")
+}
+
 out <- lapply(arguments$files, function(path) {
   tryCatch(
     # Capture any messages from roxygen2:::warn_roxy()
