@@ -54,10 +54,14 @@ jobs:
       - name: Install system dependencies (brew)
         if: matrix.config.installation_method == 'brew'
         run: brew install pre-commit
-      - name: Install system dependencies (pip)
-        if: matrix.config.installation_method == 'pip'
+      - name: Install system dependencies (pip, non-macOS)
+        if: matrix.config.installation_method == 'pip' && matrix.config.os != 'macOS-latest'
         run: |
           pip3 install pre-commit --user
+      - name: Install system dependencies (pip, macOS)
+        if: matrix.config.installation_method == 'pip' && matrix.config.os == 'macOS-latest'
+        run: |
+          pip3 install pre-commit --user --break-system-packages
       - uses: r-lib/actions/setup-r-dependencies@v2
       - name: Remove reticulate for other installation methods
         run: |
