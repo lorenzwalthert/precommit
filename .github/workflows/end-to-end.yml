@@ -58,6 +58,10 @@ jobs:
           # hacky, maybe can use pre-commit try-repo?
           # https://stackoverflow.com/questions/30871868/sed-replace-first-occurence-in-place-with-big-files
           sed -i ''  -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m 'current hash must be head'
 
       - name: Run pre-commit
         run: | 
