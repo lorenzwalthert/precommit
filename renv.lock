@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "RSPM",
-        "URL": "https://packagemanager.posit.co/cran/2024-09-12"
+        "URL": "https://packagemanager.posit.co/cran/2024-09-27"
       }
     ]
   },
@@ -214,14 +214,13 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "0.24.0",
+      "Version": "1.0.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
-        "R",
-        "methods"
+        "R"
       ],
-      "Hash": "a1066cbc05caee9a4bf6d90f194ff4da"
+      "Hash": "6b567375113ceb7d9f800de4dd42218e"
     },
     "fs": {
       "Package": "fs",
@@ -400,14 +399,14 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.7.7",
+      "Version": "1.8.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "878b467580097e9c383acbb16adab57a"
+      "Hash": "4b9c8485b0c7eecdf0a9ba5132a45576"
     },
     "purrr": {
       "Package": "purrr",
@@ -440,13 +439,13 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.7",
+      "Version": "1.0.9",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "utils"
       ],
-      "Hash": "397b7b2a265bc5a7a06852524dabae20"
+      "Hash": "ef233f0e9064fc88c898b340c9add5c2"
     },
     "rex": {
       "Package": "rex",
