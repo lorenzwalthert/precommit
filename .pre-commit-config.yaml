@@ -125,12 +125,12 @@ repos:
         -    git2r
         -    desc
         -    lorenzwalthert/precommit
-        stages: [commit, push]
+        stages: [pre-commit, pre-push]
     -   id: hooks-config-to-inst
         name: hooks-config-to-inst
         entry: Rscript inst/hooks/local/hooks-config-to-inst.R
         language: r
-        stages: [commit, push]
+        stages: [pre-commit, pre-push]
         additional_dependencies:
         -    fs
         require_serial: True
@@ -138,7 +138,7 @@ repos:
         name: spell-check-exclude-identical
         entry: Rscript inst/hooks/local/spell-check-exclude-identical.R
         language: r
-        stages: [commit, push]
+        stages: [pre-commit, pre-push]
         additional_dependencies:
         -    magrittr
         -    purrr
@@ -164,7 +164,7 @@ repos:
         -    purrr
         -    rlang
 
-default_stages: ["commit"]
+default_stages: ["pre-commit"]
 
 ci:
     skip: [consistent-release-tag, spell-check-ordered-exclude, pkgdown]
