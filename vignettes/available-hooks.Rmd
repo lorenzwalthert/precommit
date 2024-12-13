@@ -386,3 +386,21 @@ development dependencies of the package you want to run this hook for to be
 installed, as well as {pkgdown} (without its dependencies).
 
 This hook does not modify files. Added in version 0.3.2.9003.
+
+
+## `renv-lockfile-validate`
+
+Guarantees you that you don't accidentally commit an invalid renv.lock file.
+The below config that uses only `--error` should suffice for most users.
+
+    id: renv-lockfile-validate
+    args: [--error]
+
+This hook does not modify files.
+
+**Arguments**
+
+<!-- -->
+
+    id: renv-lockfile-validate
+    args: [--schema=<schema>] [--greedy --error --verbose --strict]

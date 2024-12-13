@@ -27,6 +27,7 @@ Suggests:
     docopt (>= 0.7.1),
     git2r,
     glue,
+    jsonvalidate,
     knitr,
     lintr,
     pkgload,
