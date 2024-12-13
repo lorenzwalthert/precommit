@@ -33,6 +33,7 @@ Suggests:
     pkgload,
     pkgdown,
     reticulate (>= 1.16),
+    renv (>= 1.0.8),
     rmarkdown,
     roxygen2,
     rstudioapi,
