@@ -1,6 +1,7 @@
 # General
 
 Before making a pull request, discuss your ideas in an issue.
+
 # Adding new hooks
 
 To create a new hook, have a look at the [official

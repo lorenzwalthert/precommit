@@ -84,6 +84,19 @@
       ],
       "Hash": "f27411eb6d9c3dada5edd444b8416675"
     },
+    "V8": {
+      "Package": "V8",
+      "Version": "6.0.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "Rcpp",
+        "curl",
+        "jsonlite",
+        "utils"
+      ],
+      "Hash": "6603bfcbc7883a5fed41fb13042a3899"
+    },
     "backports": {
       "Package": "backports",
       "Version": "1.5.0",
@@ -163,6 +176,16 @@
         "utils"
       ],
       "Hash": "859d96e65ef198fd43e82b9628d593ef"
+    },
+    "curl": {
+      "Package": "curl",
+      "Version": "5.2.3",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "d91263322a58af798f6cf3b13fd56dde"
     },
     "cyclocomp": {
       "Package": "cyclocomp",
@@ -276,6 +299,26 @@
         "digest"
       ],
       "Hash": "e58f80d4c5b4f0bab1456956d6ca6aad"
+    },
+    "jsonlite": {
+      "Package": "jsonlite",
+      "Version": "1.8.9",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "methods"
+      ],
+      "Hash": "4e993b65c2c3ffbffce7bb3e2c6f832b"
+    },
+    "jsonvalidate": {
+      "Package": "jsonvalidate",
+      "Version": "1.3.2",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "V8"
+      ],
+      "Hash": "cdc2843ef7f44f157198bb99aea7552d"
     },
     "knitr": {
       "Package": "knitr",

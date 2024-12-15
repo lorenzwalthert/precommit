@@ -1,0 +1,19 @@
+{
+  "R": {
+    "Version": "4.2.3",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+  "Packages": {
+    "markdown": {
+      "Package": "markdown",
+      "Version": "1.0",
+      "Source": "Repository",
+      "Repository": "CRAN"
+    }
+  }
+}
