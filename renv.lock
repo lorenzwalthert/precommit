@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "RSPM",
-        "URL": "https://packagemanager.posit.co/cran/2024-10-29"
+        "URL": "https://packagemanager.posit.co/cran/2024-12-12"
       }
     ]
   },
@@ -37,7 +37,7 @@
     },
     "R.oo": {
       "Package": "R.oo",
-      "Version": "1.26.0",
+      "Version": "1.27.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -46,7 +46,7 @@
         "methods",
         "utils"
       ],
-      "Hash": "4fed809e53ddb5407b3da3d0f572e591"
+      "Hash": "6ac79ff194202248cf946fe3a5d6d498"
     },
     "R.utils": {
       "Package": "R.utils",
@@ -75,14 +75,14 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.13",
+      "Version": "1.0.13-1",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "methods",
         "utils"
       ],
-      "Hash": "f27411eb6d9c3dada5edd444b8416675"
+      "Hash": "6b868847b365672d6c1677b1608da9ed"
     },
     "backports": {
       "Package": "backports",
@@ -144,13 +144,13 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.5.0",
+      "Version": "0.5.1",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R"
       ],
-      "Hash": "91570bba75d0c9d3f1040c835cee8fba"
+      "Hash": "9df43854f1c84685d095ed6270b52387"
     },
     "crayon": {
       "Package": "crayon",
@@ -224,14 +224,14 @@
     },
     "fs": {
       "Package": "fs",
-      "Version": "1.6.4",
+      "Version": "1.6.5",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "15aeb8c27f5ea5161f9f6a641fafd93a"
+      "Hash": "7f48af39fa27711ea5fbd183b399920d"
     },
     "glue": {
       "Package": "glue",
@@ -279,7 +279,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.48",
+      "Version": "1.49",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -291,7 +291,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "acf380f300c721da9fde7df115a5f86f"
+      "Hash": "9fcb189926d93c636dea94fbe4f44480"
     },
     "lazyeval": {
       "Package": "lazyeval",
@@ -594,7 +594,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.48",
+      "Version": "0.49",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -603,7 +603,7 @@
         "stats",
         "tools"
       ],
-      "Hash": "89e455b87c84e227eb7f60a1b4e5fe1f"
+      "Hash": "8687398773806cfff9401a2feca96298"
     },
     "xml2": {
       "Package": "xml2",
