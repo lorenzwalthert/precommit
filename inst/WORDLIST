@@ -98,6 +98,7 @@ Lifecycle
 LinkingTo
 lintr
 loadCache
+lockfile
 lorenz
 lorenzwalthert
 lt
