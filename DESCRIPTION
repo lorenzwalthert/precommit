@@ -1,6 +1,6 @@
 Package: precommit
 Title: Pre-Commit Hooks
-Version: 0.4.3.9004
+Version: 0.4.3.9005
 Author: Lorenz Walthert
 Maintainer: Lorenz Walthert <lorenz.walthert@icloud.com>
 Description: Useful git hooks for R building on top of the multi-language
@@ -22,7 +22,7 @@ Imports:
     rprojroot,
     withr,
     yaml
-Suggests: 
+Suggests:
     desc,
     docopt (>= 0.7.1),
     git2r,
@@ -42,7 +42,7 @@ Suggests:
     testthat (>= 2.1.0),
     tibble,
     usethis (>= 2.0.0)
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c( "rd", "namespace", "collate",

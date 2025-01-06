@@ -1,14 +1,14 @@
 ---
 title: "Available Hooks"
-description: > 
+description: >
   Check out all hooks this repo contains and how they can be customized
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{available-hooks}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -164,7 +164,7 @@ to run the `roxygenize` hook for that.
 
       id: parsable-roxygen
       args: [--eval]
-    
+
 This hook was added in version 0.4.3.9000.
 
 ## `no-browser-statement`
@@ -274,7 +274,7 @@ roclets you specified in `DESCRIPTION`.
 <!-- -->
 
     id: roxygenize
-    args: [--root=<R package root>] 
+    args: [--root=<R package root>]
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
@@ -295,8 +295,8 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
 
 <!-- -->
 
-      id: deps-in-desc 
-      args: [--allow_private_imports] 
+      id: deps-in-desc
+      args: [--allow_private_imports]
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
@@ -305,8 +305,8 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
 
 <!-- -->
 
-    id: deps-in-desc 
-    args: [--root=<R package root>] 
+    id: deps-in-desc
+    args: [--root=<R package root>]
 
 This hook does not modify the file `DESCRIPTION` because the user should
 decide for each package if it should go to `Imports:` or `Suggests:`,
@@ -324,7 +324,7 @@ This hook does modify the file `DESCRIPTION`.
 <!-- -->
 
     id: use-tidy-description
-    args: [--root=<R package root>] 
+    args: [--root=<R package root>]
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
@@ -364,7 +364,7 @@ This hook does not modify any file.
 <!-- -->
 
     id: codemeta-description-updated
-    args: [--root=<R package root>] 
+    args: [--root=<R package root>]
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
@@ -374,15 +374,15 @@ This hook does not modify any file.
 
 ## `pkgdown`
 
-Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the 
-correct entries for references and articles. 
+Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the
+correct entries for references and articles.
 This hook skips the time-consuming parts of building the index and reference and
-only performs the validation. Hence we don't rely on the extensive dependency 
-graph of {pkgdown} being installed, including packages with heavy build-time 
+only performs the validation. Hence we don't rely on the extensive dependency
+graph of {pkgdown} being installed, including packages with heavy build-time
 dependencies and system libraries.
 
-For this check, we rely on the the global R package library and require all 
-development dependencies of the package you want to run this hook for to be 
+For this check, we rely on the the global R package library and require all
+development dependencies of the package you want to run this hook for to be
 installed, as well as {pkgdown} (without its dependencies).
 
 This hook does not modify files. Added in version 0.3.2.9003.
@@ -390,13 +390,16 @@ This hook does not modify files. Added in version 0.3.2.9003.
 
 ## `renv-lockfile-validate`
 
-Guarantees you that you don't accidentally commit an invalid renv.lock file.
+Guarantees that you don't accidentally commit an invalid `renv.lock` file.
+See [`renv::lockfile_validate()` documentation](https://rstudio.github.io/renv/reference/lockfile_validate.html)
+for details.
+
 The below config that uses only `--error` should suffice for most users.
 
     id: renv-lockfile-validate
     args: [--error]
 
-This hook does not modify files.
+This hook does not modify files. Added in version 0.4.3.9005.
 
 **Arguments**
 
