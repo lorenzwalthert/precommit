@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.3.9004</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.3.9005</span>
       </span>
     </div>
 
@@ -138,7 +138,7 @@ modifies files or not.</p>
 documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9004
+    rev: v0.4.3.9005
     hooks:
     -   id: lintr
         args: [--warn_only, --key=value]</code></pre>
@@ -285,7 +285,7 @@ the <code>exclude:</code> key from spell check hook the default
 repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code>
 file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your
 config file, so you can easily add or remove some files. As of
-v0.4.3.9004, the following regex is used to exclude files following the
+v0.4.3.9005, the following regex is used to exclude files following the
 <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python
 regex syntax</a>:</p>
 <pre><code>(?x)^(
@@ -352,7 +352,7 @@ when you call {roxygen2} interactively matches the one from in
 {precommit} or simply not run {roxygen2} manually.</p>
 <p>If you specify additional roclets through the <code>Roxygen:</code>
 field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the
-dependencies explicitly such that <code>renv::install()</code>
+dependencies explicitly such that <code><a href="https://rstudio.github.io/renv/reference/install.html" class="external-link">renv::install()</a></code>
 understands it, e.g.</p>
 <pre><code><span>  <span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span></span>
 <span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
@@ -364,7 +364,7 @@ others depending on which roxygen roclets you specified in
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: roxygenize
-args: [--root=&lt;R package root&gt;] </code></pre>
+args: [--root=&lt;R package root&gt;]</code></pre>
 <ul>
 <li>Argument <code>root</code> specifies the directory in the git repo
 that contains the R package. Defaults to <code>.</code> since for most R
@@ -386,16 +386,16 @@ private imports into the package namespace are tolerable, e.g.
 <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will
 fail if such a call is found.</li>
 </ul>
-<!-- --><pre><code>  id: deps-in-desc 
-  args: [--allow_private_imports] </code></pre>
+<!-- --><pre><code>  id: deps-in-desc
+  args: [--allow_private_imports]</code></pre>
 <ul>
 <li>Argument <code>root</code> specifies the directory in the git repo
 that contains the R package. Defaults to <code>.</code> since for most R
 package git repos, the git and R package root coincide. Added in version
 0.3.2.9000.</li>
 </ul>
-<!-- --><pre><code>id: deps-in-desc 
-args: [--root=&lt;R package root&gt;] </code></pre>
+<!-- --><pre><code>id: deps-in-desc
+args: [--root=&lt;R package root&gt;]</code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because
 the user should decide for each package if it should go to
 <code>Imports:</code> or <code>Suggests:</code>, which can be done
@@ -412,7 +412,7 @@ order.</p>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: use-tidy-description
-args: [--root=&lt;R package root&gt;] </code></pre>
+args: [--root=&lt;R package root&gt;]</code></pre>
 <ul>
 <li>Argument <code>root</code> specifies the directory in the git repo
 that contains the R package. Defaults to <code>.</code> since for most R
@@ -451,7 +451,7 @@ order to keep <code>codemeta.json</code> in sync with
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: codemeta-description-updated
-args: [--root=&lt;R package root&gt;] </code></pre>
+args: [--root=&lt;R package root&gt;]</code></pre>
 <ul>
 <li>Argument <code>root</code> specifies the directory in the git repo
 that contains the R package. Defaults to <code>.</code> since for most R
@@ -474,6 +474,23 @@ require all development dependencies of the package you want to run this
 hook for to be installed, as well as {pkgdown} (without its
 dependencies).</p>
 <p>This hook does not modify files. Added in version 0.3.2.9003.</p>
+</div>
+<div class="section level3">
+<h3 id="renv-lockfile-validate">
+<code>renv-lockfile-validate</code><a class="anchor" aria-label="anchor" href="#renv-lockfile-validate"></a>
+</h3>
+<p>Guarantees that you don’t accidentally commit an invalid
+<code>renv.lock</code> file. See <a href="https://rstudio.github.io/renv/reference/lockfile_validate.html" class="external-link"><code>renv::lockfile_validate()</code>
+documentation</a> for details.</p>
+<p>The below config that uses only <code>--error</code> should suffice
+for most users.</p>
+<pre><code>id: renv-lockfile-validate
+args: [--error]</code></pre>
+<p>This hook does not modify files. Added in version 0.4.3.9005.</p>
+<p><strong>Arguments</strong></p>
+<!-- -->
+<pre><code>id: renv-lockfile-validate
+args: [--schema=&lt;schema&gt;] [--greedy --error --verbose --strict]</code></pre>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
