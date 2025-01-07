@@ -65,6 +65,8 @@ repos:
     -   id: no-debug-statement
     -   id: deps-in-desc
     -   id: pkgdown
+    -   id: renv-lockfile-validate
+        args: [--error]
 -   repo: local
     hooks:
     -   id: consistent-release-tag

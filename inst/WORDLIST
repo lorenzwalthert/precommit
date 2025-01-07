@@ -82,6 +82,7 @@ issuehunt
 isTRUE
 jpeg
 json
+jsonvalidate
 KernSmooth
 knitr
 Ko
@@ -97,6 +98,7 @@ Lifecycle
 LinkingTo
 lintr
 loadCache
+lockfile
 lorenz
 lorenzwalthert
 lt
