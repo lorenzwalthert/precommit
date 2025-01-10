@@ -85,8 +85,8 @@ roxygenize_with_cache <- function(key, dirs) {
     error = function(e) e
   )
   if (
-    inherits(out, "packageNotFoundError") ||
-      ("message" %in% names(out) && grepl("Dependency package(\\(s\\))? .* not available", out$message))
+    inherits(out, c("packageNotFoundError", "rlib_error_package_not_found")) ||
+      ("message" %in% names(out) && grepl("The package .* is required\\.", conditionMessage(out)))
   ) {
     rlang::abort(paste0(
       conditionMessage(out),
@@ -97,7 +97,7 @@ roxygenize_with_cache <- function(key, dirs) {
       "    -   id: roxygenize",
       "
         additional_dependencies:
-        - r-lib/pkgapi\n\n"
+        - r-lib/pkgapi # replace `r-lib/pkgapi` with the package required\n\n"
     ))
   } else if (inherits(out, "error")) {
     rlang::abort(conditionMessage(out))
