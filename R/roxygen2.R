@@ -97,7 +97,7 @@ roxygenize_with_cache <- function(key, dirs) {
       "    -   id: roxygenize",
       "
         additional_dependencies:
-        - r-lib/pkgapi\n\n"
+        - r-lib/pkgapi # replace `r-lib/pkgapi` with the package required\n\n"
     ))
   } else if (inherits(out, "error")) {
     rlang::abort(conditionMessage(out))
