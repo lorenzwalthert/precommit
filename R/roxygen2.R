@@ -85,8 +85,8 @@ roxygenize_with_cache <- function(key, dirs) {
     error = function(e) e
   )
   if (
-    inherits(out, "packageNotFoundError") ||
-      ("message" %in% names(out) && grepl("The package .* is required\\.", out$message))
+    inherits(out, c("packageNotFoundError", "rlib_error_package_not_found")) ||
+      ("message" %in% names(out) && grepl("The package .* is required\\.", conditionMessage(out)))
   ) {
     rlang::abort(paste0(
       conditionMessage(out),

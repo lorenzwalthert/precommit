@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9003
+    rev: 111b95a44750a710337f71d3886832b95b327774
     hooks: 
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --cache-root=styler-perm]
@@ -31,34 +31,34 @@ repos:
     -   id: spell-check
         exclude: >
           (?x)^(
+          (.*/|)NAMESPACE|
+          (.*/|)WORDLIST|
+          (.*/|)\.Rbuildignore|
+          (.*/|)\.Renviron|
+          (.*/|)\.Rprofile|
+          (.*/|)\.gitignore|
+          (.*/|)\.pre-commit-.*|
+          (.*/|)\.travis\.yml|
+          (.*/|)appveyor\.yml|
+          (.*/|)renv/settings\.dcf|
+          (.*/|)renv\.lock|
+          .*\.RData|
+          .*\.Rds|
+          .*\.Rproj|
           .*\.[rR]|
           .*\.feather|
           .*\.jpeg|
           .*\.pdf|
           .*\.png|
           .*\.py|
-          .*\.RData|
           .*\.rds|
-          .*\.Rds|
-          .*\.Rproj|
           .*\.sh|
-          (.*/|)\.gitignore|
-          (.*/|)\.pre-commit-.*|
-          (.*/|)\.Rbuildignore|
-          (.*/|)\.Renviron|
-          (.*/|)\.Rprofile|
-          (.*/|)\.travis\.yml|
-          (.*/|)appveyor\.yml|
-          (.*/|)NAMESPACE|
-          (.*/|)renv/settings\.dcf|
-          (.*/|)renv\.lock|
-          (.*/|)WORDLIST|
+          LICENSE|
           \.github/workflows/.*|
           data/.*|
           inst/hooks/.*|
           inst/pre-commit-.*|
           inst/usethis-legacy-hook|
-          LICENSE|
           renv/.*|
           revdep/.*|
           tests/testthat/in/.*|
