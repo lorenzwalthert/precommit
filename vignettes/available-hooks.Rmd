@@ -347,6 +347,12 @@ in a `.lintr` config file in Debian Control Field Format as specified in
 the [`.lintr`
 documentation](https://github.com/r-lib/lintr#project-configuration).
 
+When linting a package, `load_package` lintr uses `pkgload::load_all()`
+to load the package before running `lintr::lint()`.
+
+      id: lintr
+      args: [--load_package]
+
 This hook does not modify any file.
 
 ## `codemeta-description-updated`
