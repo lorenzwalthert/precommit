@@ -73,6 +73,18 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
   }
 }
 
+auto_release <- function() {
+  desc_new <- desc::desc_bump_version("dev")
+  path_template_config <- c(
+    "inst/pre-commit-config-pkg.yaml",
+    "inst/pre-commit-config-proj.yaml"
+  )
+
+  purrr::walk(path_template_config, update_rev_in_config,
+    new_version = as.character(desc_new$get_version())
+  )
+}
+
 git_tag_release <- function(last_release, new_version) {
   sys_call("git", glue::glue('tag -a {new_version} -m "{release_msg(last_release, new_version)}"'))
   sys_call("git", glue::glue("push origin {new_version}"))
