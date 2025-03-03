@@ -44,7 +44,7 @@ jobs:
             [1]: https://github.com/peter-evans/create-pull-request
           
       - name: Push latest tag
-        run: > 
+        run: |
           Rscript -e "install.packages('desc')"
           TAG="v$(Rscript -e 'cat(as.character(desc::desc_get_version()))')"
           git tag $TAG
