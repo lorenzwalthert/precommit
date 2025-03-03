@@ -45,7 +45,7 @@ jobs:
           
       - name: Push latest tag
         run: > 
-          Rscript -e "renv::install('desc')"
+          Rscript -e "install.packages('desc')"
           TAG="v$(Rscript -e 'cat(as.character(desc::desc_get_version()))')"
           git tag $TAG
           git push origin $TAG
