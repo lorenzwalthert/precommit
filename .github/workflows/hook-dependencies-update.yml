@@ -26,6 +26,8 @@ jobs:
         run: Rscript inst/update-existing-hook-dependencies.R
       - name: update existing packages
         run: Rscript inst/update-dependency-graph-existing-packages.R
+      - name: auto-release
+        run: Rscript -e 'renv::restore(); precommit:::auto_release()' 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.1.0
         with:
@@ -40,4 +42,8 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-pull-request
           
-            
+      - name: Push latest tag
+        run: > 
+          TAG="v$(Rscript -e 'cat(as.character(desc::desc_get_version()))')"
+          git tag $TAG
+          git push origin $TAG
