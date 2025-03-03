@@ -74,7 +74,6 @@ release_gh <- function(bump = "dev", is_cran = bump != "dev") {
 }
 
 auto_release <- function() {
-  autoupdate()
   desc_new <- desc::desc_bump_version("dev")
   path_template_config <- c(
     "inst/pre-commit-config-pkg.yaml",
