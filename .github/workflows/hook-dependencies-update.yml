@@ -17,15 +17,14 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-
-      - name: install runtime dependencies
-        run: Rscript -e "install.packages(c('renv', 'jsonlite'))"
-      - name: update PPM URL
-        run: Rscript inst/update-ppm-url.R
-      - name: update dependency graph among packages
-        run: Rscript inst/update-existing-hook-dependencies.R
-      - name: update existing packages
-        run: Rscript inst/update-dependency-graph-existing-packages.R
+#       - name: install runtime dependencies
+#         run: Rscript -e "install.packages(c('renv', 'jsonlite'))"
+#       - name: update PPM URL
+#         run: Rscript inst/update-ppm-url.R
+#       - name: update dependency graph among packages
+#         run: Rscript inst/update-existing-hook-dependencies.R
+#       - name: update existing packages
+#         run: Rscript inst/update-dependency-graph-existing-packages.R
       - name: auto-release
         run: Rscript -e 'renv::restore(); precommit:::auto_release()' 
       - name: Create Pull Request
