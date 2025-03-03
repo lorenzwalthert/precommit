@@ -26,7 +26,7 @@ jobs:
 #       - name: update existing packages
 #         run: Rscript inst/update-dependency-graph-existing-packages.R
       - name: auto-release
-        run: Rscript -e 'renv::restore(); precommit:::auto_release()' 
+        run: Rscript -e 'source("renv/activate.R"); renv::restore(); precommit:::auto_release()' 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.1.0
         with:
