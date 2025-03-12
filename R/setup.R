@@ -249,12 +249,12 @@ upstream_repo_url_is_outdated <- function() {
 snippet_generate <- function(snippet = "additional-deps-roxygenize",
                              open = rstudioapi::isAvailable(),
                              root = here::here()) {
-  snippet_generator <- if(snippet == 'additional-deps-roxygenize') {
+  snippet_generator <- if (snippet == "additional-deps-roxygenize") {
     snippet_generate_impl_additional_deps_roxygenize
-  } else if (snippet == 'additional-deps-lintr') {
+  } else if (snippet == "additional-deps-lintr") {
     snippet_generate_impl_additional_deps_lintr
   } else {
-   rlang::abort(paste0('Snippet "', snippet, '" not supported'))
+    rlang::abort(paste0('Snippet "', snippet, '" not supported'))
   }
   rlang::inform(paste(
     "Generating snippet using CRAN versions. If you need another source,",
@@ -272,7 +272,7 @@ snippet_generate <- function(snippet = "additional-deps-roxygenize",
     ))
     return()
   }
-  
+
   hard_dependencies %>%
     snippet_generator() %>%
     cat(sep = "")
