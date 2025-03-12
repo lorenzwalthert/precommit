@@ -43,7 +43,7 @@ test_that("snippet generation works for lintr", {
     out <- capture_output(snippet_generate("additional-deps-lintr")),
     NA,
   )
-  
+
   expect_match(
     out, "    -   id: lintr\n.*        -    styler\n$",
   )
