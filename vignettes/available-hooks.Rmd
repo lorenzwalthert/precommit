@@ -270,15 +270,21 @@ you should either make sure the version you use when you call {roxygen2}
 interactively matches the one from in {precommit} or simply not run
 {roxygen2} manually.
 
-If you specify additional roclets through the `Roxygen:` field in
-`DESCRIPTION`, e.g. from [{pkgapi}](https://github.com/r-lib/pkgapi) you
-must specify the dependencies explicitly such that `renv::install()`
-understands it, e.g.
+Note that your package's dependencies must be listed in
+`additional_dependencies:` in your `.pre-commit-config.yaml` as shown
+below. You can generate these for easy c/p with
+`snippet_generate("additional-deps-roxygenize")` .
+
+Similarly, if you specify additional roclets through the `Roxygen:`
+field in `DESCRIPTION`, e.g. from
+[{pkgapi}](https://github.com/r-lib/pkgapi) you must specify the
+dependencies explicitly such that `renv::install()` understands it.
 
 ```         
   id: roxygenize
   additional_dependencies:
   - r-lib/pkgapi
+  - dplyr
 ```
 
 **Arguments**
@@ -371,8 +377,10 @@ should set this with the field `verbose: true`.
 -   `load-package`: When linting a package, {lintr} uses
     `pkgload::load_all()` to load the package before running
     `lintr::lint()`. Note that you need to list all dependencies of the
-    package under `additional_dependencies:` in your
-    `.pre-commit-config.yaml`.
+    package under `additional_dependencies:` for the `lintr:`hook in
+    your `.pre-commit-config.yaml`. You can generate the code snip o for
+    c/p with `snippet_generate("additional-deps-lintr")`. This argument
+    was added in 0.4.3.9005.
 
 The `.lintr` config file as documented in the [`.lintr`
 documentation](https://github.com/r-lib/lintr#project-configuration) is
