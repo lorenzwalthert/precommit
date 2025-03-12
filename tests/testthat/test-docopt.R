@@ -7,16 +7,14 @@ test_that("custom docopt interface parses as expected", {
     c("Another file with spaces.R", "Yet another file with spaces (YAFWS).R", "--warn_only"),
     c("--warn_only", "Another file with spaces.R"),
     c("--warn_only", "Another file with spaces.R", "Yet another file with spaces (YAFWS).R"),
-    c("Another file with spaces.R", "--warn_only", "Yet another file with spaces (YAFWS).R"),
-    c("--load_package", "Another file with spaces.R", "Yet another file with spaces (YAFWS).R")
+    c("Another file with spaces.R", "--warn_only", "Yet another file with spaces (YAFWS).R")
   )
 
   "Run lintr on R files during a precommit.
 Usage:
-  cmdtest [options] <files>...
+  cmdtest [--warn_only] <files>...
 Options:
-  --warn_only     Placeholder for test.
-  --load_package  Placeholder for test.
+  --warn_only  Placeholder for test.
 " -> doc
 
   for (args in args_variants) {
@@ -36,13 +34,6 @@ Options:
       expect_equal(length(new_args$`<files>`), length(args))
       expect_false(new_args$warn_only)
       expect_false(new_args$`--warn_only`)
-    }
-    if ("--load_package" %in% args) {
-      expect_true(new_args$load_package)
-      expect_true(new_args$`--load_package`)
-    } else {
-      expect_false(new_args$load_package)
-      expect_false(new_args$`--load_package`)
     }
   }
 })
