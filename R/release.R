@@ -81,7 +81,7 @@ auto_release <- function() {
   )
 
   purrr::walk(path_template_config, update_rev_in_config,
-    new_version = as.character(desc_new$get_version())
+    new_version = paste0('v', as.character(desc_new$get_version()))
   )
 }
 
