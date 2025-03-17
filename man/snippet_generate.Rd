@@ -5,7 +5,7 @@
 \title{Generate code snippets}
 \usage{
 snippet_generate(
-  snippet = "",
+  snippet = "additional-deps-roxygenize",
   open = rstudioapi::isAvailable(),
   root = here::here()
 )
@@ -28,5 +28,8 @@ Currently supported:
 \item additional-deps-roxygenize: Code to paste into
 \code{.pre-commit-config.yaml} for the additional dependencies required by
 the roxygenize hook.
+\item additional-deps-lintr: Code to paste into
+\code{.pre-commit-config.yaml} for the additional dependencies required by
+the lintr hook if you use \code{--load-package}.
 }
 }
