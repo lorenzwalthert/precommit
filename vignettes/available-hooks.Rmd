@@ -71,13 +71,18 @@ for the available settings.
 ## `style-files`
 
 A hook to style files with [styler](https://styler.r-lib.org). Only
-commit code corresponding to the tidyverse style guide. You can pass
-arguments to
+commit code corresponding to the tidyverse style guide.
+
+**Arguments**
+
+You can pass arguments to
 [`style_file(...)`](https://styler.r-lib.org/reference/style_file.html)
 using the `--key=value` syntax like this:
 
-      id: style-files
-      args: [--scope=spaces, --reindention=specify_reindention('#')]
+```         
+  id: style-files
+  args: [--scope=spaces, --reindention=specify_reindention('#')]
+```
 
 In addition, the hook takes the following arguments that are not passed
 to
@@ -89,8 +94,10 @@ to
 
 <!-- -->
 
-      id: style-files
-      args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]
+```         
+  id: style-files
+  args: [--style_pkg=pkg.with.style.guide, --style_fun=exported.style.function]
+```
 
 -   The argument `--no-warn-cache` is deprecated and will be removed in
     a future release. Please remove it from your
@@ -105,8 +112,10 @@ to
 
 <!-- -->
 
-      id: style-files
-      args: [--cache-root=styler]
+```         
+  id: style-files
+  args: [--cache-root=styler]
+```
 
 -   Argument `ignore-start` and `ignore-stop` is passed to `options()`
     to set `styler.ignore_start` and `styler.ignore_stop` respectively.
@@ -117,8 +126,10 @@ to
 
 <!-- -->
 
-      id: style-files
-      args: [--ignore-start="^# styler: on$", --ignore-stop="^# styler: off$"]
+```         
+  id: style-files
+  args: [--ignore-start="^# styler: on$", --ignore-stop="^# styler: off$"]
+```
 
 This hook modifies files unless you specify `--dry=fail` (requires
 `{styler} > 1.3.2`).
@@ -141,31 +152,33 @@ This hook does not modify files.
 
 ## `parsable-roxygen`
 
-Checks if roxygen comments within your `.R` files are "valid" by checking if
-running `roxygen2::parse_file()` on them returns any messages.
+Checks if roxygen comments within your `.R` files are "valid" by
+checking if running `roxygen2::parse_file()` on them returns any
+messages.
 
-This hook does not modify files.
+**Arguments**
 
-**eval**
+```         
+  id: parsable-roxygen
+  args: [--eval]
+```
 
-By default, each file will be parsed, but code will not be evaluated - neither
-any explicit code in the file, nor any `@eval` tags within roxygen comments.
+-   `eval`: By default, each file will be parsed, but code will not be
+    evaluated - neither any explicit code in the file, nor any `@eval`
+    tags within roxygen comments. If your commentary contains `@eval`
+    tags which you would prefer to evaluate, you can specify the
+    `--eval` flag, which will cause the file's code to be evaluated in
+    an environment created by `roxygen2::env_file()`. Note that
+    dependencies of the code to evaluate must be available for
+    pre-commit. You may list these as `additional_dependencies:` for the
+    `parsable-roxygen` hook in `.pre-commit-config.yaml`.
 
-If your commentary contains `@eval` tags which you would prefer to evaluate, you
-can specify the `--eval` flag, which will cause the file's code to be evaluated
-in an environment created by `roxygen2::env_file()`. Note that dependencies of
-the code to evaluate must be available for pre-commit. You may list these as
-`additional_dependencies:` for the `parsable-roxygen` hook in
-`.pre-commit-config.yaml`.
+    Inline R code within roxygen comments (i.e. within backticks) is
+    **not** evaluated by this hook, whether or not `--eval` is
+    specified. You would need to run the `roxygenize` hook for that.
 
-Inline R code within roxygen comments (i.e. within backticks) is **not**
-evaluated by this hook, whether or not `--eval` is specified. You would need
-to run the `roxygenize` hook for that.
-
-      id: parsable-roxygen
-      args: [--eval]
-
-This hook was added in version 0.4.3.9000.
+This hook does not modify files. This hook was added in version
+0.4.3.9000.
 
 ## `no-browser-statement`
 
@@ -176,8 +189,8 @@ This hook does not modify files.
 
 ## `no-print-statement`
 
-Guarantees you that you don't accidentally commit code with a
-`print()` statement in it.
+Guarantees you that you don't accidentally commit code with a `print()`
+statement in it.
 
 This hook does not modify files. This hook was added in version
 0.3.2.9020.
@@ -217,20 +230,23 @@ readLines(system.file("pre-commit-hooks.yaml", package = "precommit")) %>%
   cat(sep = "\n")
 ```
 
-**language**
+**Arguments**
 
-The `lang` arg will be passed to `spelling::spell_check_files()`.
+```         
+  id: spell-check
+  args: [--lang=<language>, --read-only]
+```
 
-      id: spell-check
-      args: [--lang=<language>]
+-   `language`: The `lang` arg will be passed to
+    `spelling::spell_check_files()`.
 
-**read only**
+-   `read-only`**:** The `--read-only` flag will be passed to spell
+    check. This flag makes this hook idempotent.
 
-The `--read-only` flag will be passed to spell check. This flag makes
-this hook idempotent.
-
-      id: spell-check
-      args: [--read-only]
+```         
+  id: spell-check
+  args: [--read-only]
+```
 
 This hook does not modify input files. It will add all words not found
 in the dictionary to `inst/WORDLIST`, assuming they were spelled
@@ -247,39 +263,50 @@ To opt out of updating `inst/WORDLIST` provide the `--read-only` flag.
 
 A hook to run `roxygen2::roxygenize()`. Makes sure you commit your `.Rd`
 changes with the source changes. To take advantage of caching, you don't
-need to run `roxygen2::roxygenize()` manually anymore. The argument
-`--no-warn-cache` is deprecated and will be removed in a future release.
-Please remove it from your `.pre-commit-config.yaml`.
+need to run `roxygen2::roxygenize()` manually anymore.
 
 Because the hook will write the version of {roxygen2} to `DESCRIPTON`,
 you should either make sure the version you use when you call {roxygen2}
 interactively matches the one from in {precommit} or simply not run
 {roxygen2} manually.
 
-If you specify additional roclets through the `Roxygen:` field in
-`DESCRIPTION`, e.g. from [{pkgapi}](https://github.com/r-lib/pkgapi) you
-must specify the dependencies explicitly such that `renv::install()`
-understands it, e.g.
+Note that your package's dependencies must be listed in
+`additional_dependencies:` in your `.pre-commit-config.yaml` as shown
+below. You can generate these for easy c/p with
+`snippet_generate("additional-deps-roxygenize")` .
 
-      id: roxygenize
-      additional_dependencies:
-      - r-lib/pkgapi
+Similarly, if you specify additional roclets through the `Roxygen:`
+field in `DESCRIPTION`, e.g. from
+[{pkgapi}](https://github.com/r-lib/pkgapi) you must specify the
+dependencies explicitly such that `renv::install()` understands it.
 
-This hook does not modify input files, but writes to `.Rd` files in
-`man/`, `NAMESPACE` and potentially others depending on which roxygen
-roclets you specified in `DESCRIPTION`.
+```         
+  id: roxygenize
+  additional_dependencies:
+  - r-lib/pkgapi
+  - dplyr
+```
 
 **Arguments**
 
 <!-- -->
 
-    id: roxygenize
-    args: [--root=<R package root>]
+```         
+id: roxygenize
+args: [--root=<R package root>]
+```
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
     repos, the git and R package root coincide. Added in version
     0.3.3.00000.
+-   The argument `--no-warn-cache` is deprecated and will be removed in
+    a future release. Please remove it from your
+    `.pre-commit-config.yaml`.
+
+This hook does not modify input files, but writes to `.Rd` files in
+`man/`, `NAMESPACE` and potentially others depending on which roxygen
+roclets you specified in `DESCRIPTION`.
 
 ## `deps-in-desc`
 
@@ -288,25 +315,22 @@ your DESCRIPTION file. Note that `README.Rmd` is never checked.
 
 **Arguments**
 
+```         
+  id: deps-in-desc
+  args: [--allow_private_imports, -root=<R package root>]
+```
+
 -   Flag `allow_private_imports` lets the user specify that private
     imports into the package namespace are tolerable, e.g.
     `somepkg:::x()`. Flag not set by default, i.e. the hook will fail if
     such a call is found.
 
-<!-- -->
-
-      id: deps-in-desc
-      args: [--allow_private_imports]
+    <!-- -->
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
     repos, the git and R package root coincide. Added in version
     0.3.2.9000.
-
-<!-- -->
-
-    id: deps-in-desc
-    args: [--root=<R package root>]
 
 This hook does not modify the file `DESCRIPTION` because the user should
 decide for each package if it should go to `Imports:` or `Suggests:`,
@@ -323,8 +347,10 @@ This hook does modify the file `DESCRIPTION`.
 
 <!-- -->
 
-    id: use-tidy-description
-    args: [--root=<R package root>]
+```         
+id: use-tidy-description
+args: [--root=<R package root>]
+```
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
@@ -333,77 +359,89 @@ This hook does modify the file `DESCRIPTION`.
 
 ## `lintr`
 
-A hook to run `lintr::lint()` to check that R files are lint free.
-Argument `warning_only` changes the behavior of the pre-commit to be
-non-blocking. You should set this with the field `verbose: true`.
+A hook to run `lintr::lint()` to check that R files are lint free. You
+should set this with the field `verbose: true`.
 
-      id: lintr
-      args: [--warn_only]
-      verbose: true
+**Arguments**
 
-When configured this way, lintr prints lint errors as they appear. Other
-arguments are not supported. Instead, `lintr` config should be specified
-in a `.lintr` config file in Debian Control Field Format as specified in
-the [`.lintr`
-documentation](https://github.com/r-lib/lintr#project-configuration).
+```         
+  id: lintr
+  args: [--warn-only, --load-package]
+  verbose: true
+```
+
+-   `warn-only`: Changes the behavior of the pre-commit to be
+    non-blocking. When configured this way, lintr prints lint errors as
+    they appear.
+
+-   `load-package`: When linting a package, {lintr} uses
+    `pkgload::load_all()` to load the package before running
+    `lintr::lint()`. Note that you need to list all dependencies of the
+    package under `additional_dependencies:` for the `lintr:`hook in
+    your `.pre-commit-config.yaml`. You can generate the code snip o for
+    c/p with `snippet_generate("additional-deps-lintr")`. This argument
+    was added in 0.4.3.9005.
+
+The `.lintr` config file as documented in the [`.lintr`
+documentation](https://github.com/r-lib/lintr#project-configuration) is
+respected.
 
 This hook does not modify any file.
 
 ## `codemeta-description-updated`
 
 Make sure `DESCRIPTION` hasn't been edited more recently than
-`codemeta.json`,
-
-i.e. remind you to run `codemetar::write_codemeta()` in order to keep
-`codemeta.json` in sync with `DESCRIPTION`.
-
-This hook does not modify any file.
+`codemeta.json`, i.e. remind you to run `codemetar::write_codemeta()` in
+order to keep `codemeta.json` in sync with `DESCRIPTION`.
 
 **Arguments**
 
 <!-- -->
 
-    id: codemeta-description-updated
-    args: [--root=<R package root>]
+```         
+id: codemeta-description-updated
+args: [--root=<R package root>]
+```
 
 -   Argument `root` specifies the directory in the git repo that
     contains the R package. Defaults to `.` since for most R package git
-    repos, the git and R package root coincide. Added in version
-    0.3.3.00000.
+    repos, the git and R package root coincide.
 
+This hook does not modify any file. Added in version 0.3.3.00000.
 
 ## `pkgdown`
 
-Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root) has the
-correct entries for references and articles.
-This hook skips the time-consuming parts of building the index and reference and
-only performs the validation. Hence we don't rely on the extensive dependency
-graph of {pkgdown} being installed, including packages with heavy build-time
-dependencies and system libraries.
+Check if your {pkgdown} config file (e.g. `_pkgdown.yml` in your root)
+has the correct entries for references and articles. This hook skips the
+time-consuming parts of building the index and reference and only
+performs the validation. Hence we don't rely on the extensive dependency
+graph of {pkgdown} being installed, including packages with heavy
+build-time dependencies and system libraries.
 
-For this check, we rely on the the global R package library and require all
-development dependencies of the package you want to run this hook for to be
-installed, as well as {pkgdown} (without its dependencies).
+For this check, we rely on the the global R package library and require
+all development dependencies of the package you want to run this hook
+for to be installed, as well as {pkgdown} (without its dependencies).
 
 This hook does not modify files. Added in version 0.3.2.9003.
 
-
 ## `renv-lockfile-validate`
 
-Guarantees that you don't accidentally commit an invalid `renv.lock` file.
-See [`renv::lockfile_validate()` documentation](https://rstudio.github.io/renv/reference/lockfile_validate.html)
-for details.
+Guarantees that you don't accidentally commit an invalid `renv.lock`
+file. See [`renv::lockfile_validate()`
+documentation](https://rstudio.github.io/renv/reference/lockfile_validate.html)
+for details. The below config that uses only `--error` should suffice
+for most users.
 
-The below config that uses only `--error` should suffice for most users.
-
-    id: renv-lockfile-validate
-    args: [--error]
-
-This hook does not modify files. Added in version 0.4.3.9005.
+```         
+id: renv-lockfile-validate
+args: [--error]
+```
 
 **Arguments**
 
-<!-- -->
+```         
+id: renv-lockfile-validate
+args: [--schema=<schema>] [--greedy --error --verbose --strict]
+```
 
-    id: renv-lockfile-validate
-    args: [--schema=<schema>] [--greedy --error --verbose --strict]
+This hook does not modify files. Added in version 0.4.3.9005.

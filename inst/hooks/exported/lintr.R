@@ -3,11 +3,15 @@
 
 "Run lintr on R files during a precommit.
 Usage:
-  lintr [--warn_only] <files>...
+  lintr [options] <files>...
+
 Options:
-  --warn_only  Print lint warnings instead of blocking the commit. Should be
-               used with `verbose: True` in `.pre-commit-config.yaml`.
-               Otherwise, lints will never be shown to the user.
+  --warn_only     Print lint warnings instead of blocking the commit. Should be
+                  used with `verbose: True` in `.pre-commit-config.yaml`.
+                  Otherwise, lints will never be shown to the user.
+  --load_package  Use `pkgload::load_all()` to load subject package prior to
+                  running lintr.
+
 " -> doc
 
 arguments <- precommit::precommit_docopt(doc)
@@ -21,6 +25,11 @@ if (any(lintr_staged)) {
     "the changes to it. ",
     call. = FALSE
   )
+}
+
+if (arguments$load_package) {
+  cat("Attempting to load package\n")
+  pkgload::load_all()
 }
 
 for (path in arguments$files) {

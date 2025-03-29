@@ -237,71 +237,79 @@ upstream_repo_url_is_outdated <- function() {
 #' * additional-deps-roxygenize: Code to paste into
 #'   `.pre-commit-config.yaml` for the additional dependencies required by
 #'   the roxygenize hook.
+#' * additional-deps-lintr: Code to paste into
+#'   `.pre-commit-config.yaml` for the additional dependencies required by
+#'   the lintr hook if you use `--load-package`.
 #' @param snippet Name of the snippet.
 #' @param open Whether or not to open the .pre-commit-config.yaml. The default
 #' is `TRUE` when working in  RStudio. Otherwise, we recommend manually opening
 #' the file.
 #' @inheritParams fallback_doc
 #' @export
-snippet_generate <- function(snippet = "",
+snippet_generate <- function(snippet = "additional-deps-roxygenize",
                              open = rstudioapi::isAvailable(),
                              root = here::here()) {
-  rlang::arg_match(snippet, c("additional-deps-roxygenize"))
-  if (snippet == "additional-deps-roxygenize") {
-    rlang::inform(paste(
-      "Generating snippet using CRAN versions. If you need another source,",
-      "specify with syntax that `renv::install()` understands (see examples in",
-      "help file).",
-      "\n"
+  snippet_generator <- if (snippet == "additional-deps-roxygenize") {
+    snippet_generate_impl_additional_deps_roxygenize
+  } else if (snippet == "additional-deps-lintr") {
+    snippet_generate_impl_additional_deps_lintr
+  } else {
+    rlang::abort(paste0('Snippet "', snippet, '" not supported'))
+  }
+  rlang::inform(paste(
+    "Generating snippet using CRAN versions. If you need another source,",
+    "specify with syntax that `renv::install()` understands (see examples in",
+    "help file).",
+    "\n"
+  ))
+  deps <- desc::desc_get_deps()
+  hard_dependencies <- deps[(deps$type %in% c("Depends", "Imports")), "package"] %>%
+    setdiff("R")
+  if (length(hard_dependencies) < 1) {
+    cli::cli_alert_success(paste0(
+      "According to {.code DESCRIPTION}`, there are no hard dependencies of ",
+      "your package. You are set."
     ))
-    deps <- desc::desc_get_deps()
-    hard_dependencies <- deps[(deps$type %in% c("Depends", "Imports")), "package"] %>%
-      setdiff("R")
-    if (length(hard_dependencies) < 1) {
-      cli::cli_alert_success(paste0(
-        "According to {.code DESCRIPTION}`, there are no hard dependencies of ",
-        "your package. You are set."
-      ))
-      return()
-    }
-    hard_dependencies %>%
-      snippet_generate_impl_additional_deps_roxygenize() %>%
-      cat(sep = "")
-    cat("\n")
-    cli::cli_ul(paste0(
-      "Replace the `id: roxygenize` key in `.pre-commit-config.yaml` with the ",
-      "above code."
-    ))
-    cli::cli_alert_info(paste0(
-      "Note that CI services like {.url pre-commit.ci} have build-time ",
-      "restrictions and installing the above dependencies may exceed those, ",
-      "resulting in a timeout. In addition, system dependencies are not ",
-      "supported for {.url pre-commit.ci}. See ",
-      '{.code vignette("ci", package = "precommit")} for details and solutions.'
-    ))
-    remote_deps <- rlang::try_fetch(
-      desc::desc_get_field("Remotes"),
-      error = function(e) character()
-    )
-    if (length(remote_deps) > 0) {
-      rlang::warn(paste0(
-        "It seems you have remote dependencies in your `DESCRIPTION`. You ",
-        "need to edit the above list manually to match the syntax `renv::install()` ",
-        "understands, i.e. if you have in your `DESCRIPTION`
+    return()
+  }
+
+  hard_dependencies %>%
+    snippet_generator() %>%
+    cat(sep = "")
+  cat("\n")
+  cli::cli_ul(paste0(
+    "Replace the `id: roxygenize` key in `.pre-commit-config.yaml` with the ",
+    "above code."
+  ))
+  cli::cli_alert_info(paste0(
+    "Note that CI services like {.url pre-commit.ci} have build-time ",
+    "restrictions and installing the above dependencies may exceed those, ",
+    "resulting in a timeout. In addition, system dependencies are not ",
+    "supported for {.url pre-commit.ci}. See ",
+    '{.code vignette("ci", package = "precommit")} for details and solutions.'
+  ))
+  remote_deps <- rlang::try_fetch(
+    desc::desc_get_field("Remotes"),
+    error = function(e) character()
+  )
+  if (length(remote_deps) > 0) {
+    rlang::warn(paste0(
+      "It seems you have remote dependencies in your `DESCRIPTION`. You ",
+      "need to edit the above list manually to match the syntax `renv::install()` ",
+      "understands, i.e. if you have in your `DESCRIPTION`
 
 Imports:
-    tidyr
+  tidyr
 Remotes:
-    tidyverse/tidyr@2fd80d5
+  tidyverse/tidyr@2fd80d5
 
 You need in your `.pre-commit-config.yaml`
 
-        additional_dependencies:
-        -    tidyverse/tidyr@2fd80d5
+      additional_dependencies:
+      -    tidyverse/tidyr@2fd80d5
 
 "
-      ))
-    }
+    ))
   }
   if (open) {
     precommit::open_config(root)
@@ -316,5 +324,16 @@ snippet_generate_impl_additional_deps_roxygenize <- function(packages, with_vers
     sort()
   paste0("    -   id: roxygenize
         # roxygen requires loading pkg -> add dependencies from DESCRIPTION
+        additional_dependencies:\n", out)
+}
+
+snippet_generate_impl_additional_deps_lintr <- function(packages, with_version = FALSE) {
+  out <- paste0(
+    "        -    ", packages, "\n",
+    collapse = ""
+  ) %>%
+    sort()
+  paste0("    -   id: lintr
+        # lintr requires loading pkg -> add dependencies from DESCRIPTION
         additional_dependencies:\n", out)
 }
