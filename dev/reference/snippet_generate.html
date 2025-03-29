@@ -85,7 +85,7 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">snippet_generate</span><span class="op">(</span></span>
-<span>  snippet <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  snippet <span class="op">=</span> <span class="st">"additional-deps-roxygenize"</span>,</span>
 <span>  open <span class="op">=</span> <span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/rstudioapi/reference/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  root <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -114,6 +114,9 @@ the file.</p></dd>
     <p>Currently supported:</p><ul><li><p>additional-deps-roxygenize: Code to paste into
 <code>.pre-commit-config.yaml</code> for the additional dependencies required by
 the roxygenize hook.</p></li>
+<li><p>additional-deps-lintr: Code to paste into
+<code>.pre-commit-config.yaml</code> for the additional dependencies required by
+the lintr hook if you use <code>--load-package</code>.</p></li>
 </ul></div>
 
   </div>

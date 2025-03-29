@@ -157,7 +157,9 @@ documentation</a>, for the available settings.</p>
 <code>style-files</code><a class="anchor" aria-label="anchor" href="#style-files"></a>
 </h3>
 <p>A hook to style files with <a href="https://styler.r-lib.org" class="external-link">styler</a>. Only commit code
-corresponding to the tidyverse style guide. You can pass arguments to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a>
+corresponding to the tidyverse style guide.</p>
+<p><strong>Arguments</strong></p>
+<p>You can pass arguments to <a href="https://styler.r-lib.org/reference/style_file.html" class="external-link"><code>style_file(...)</code></a>
 using the <code>--key=value</code> syntax like this:</p>
 <pre><code>  id: style-files
   args: [--scope=spaces, --reindention=specify_reindention('#')]</code></pre>
@@ -225,14 +227,17 @@ an error.</p>
 <p>Checks if roxygen comments within your <code>.R</code> files are
 “valid” by checking if running <code><a href="https://roxygen2.r-lib.org/reference/parse_package.html" class="external-link">roxygen2::parse_file()</a></code> on
 them returns any messages.</p>
-<p>This hook does not modify files.</p>
-<p><strong>eval</strong></p>
-<p>By default, each file will be parsed, but code will not be evaluated
-- neither any explicit code in the file, nor any <code>@eval</code> tags
-within roxygen comments.</p>
-<p>If your commentary contains <code>@eval</code> tags which you would
-prefer to evaluate, you can specify the <code>--eval</code> flag, which
-will cause the file’s code to be evaluated in an environment created by
+<p><strong>Arguments</strong></p>
+<pre><code>  id: parsable-roxygen
+  args: [--eval]</code></pre>
+<ul>
+<li>
+<p><code>eval</code>: By default, each file will be parsed, but code
+will not be evaluated - neither any explicit code in the file, nor any
+<code>@eval</code> tags within roxygen comments. If your commentary
+contains <code>@eval</code> tags which you would prefer to evaluate, you
+can specify the <code>--eval</code> flag, which will cause the file’s
+code to be evaluated in an environment created by
 <code><a href="https://roxygen2.r-lib.org/reference/parse_package.html" class="external-link">roxygen2::env_file()</a></code>. Note that dependencies of the code to
 evaluate must be available for pre-commit. You may list these as
 <code>additional_dependencies:</code> for the
@@ -242,9 +247,10 @@ evaluate must be available for pre-commit. You may list these as
 <strong>not</strong> evaluated by this hook, whether or not
 <code>--eval</code> is specified. You would need to run the
 <code>roxygenize</code> hook for that.</p>
-<pre><code>  id: parsable-roxygen
-  args: [--eval]</code></pre>
-<p>This hook was added in version 0.4.3.9000.</p>
+</li>
+</ul>
+<p>This hook does not modify files. This hook was added in version
+0.4.3.9000.</p>
 </div>
 <div class="section level3">
 <h3 id="no-browser-statement">
@@ -314,14 +320,16 @@ regex syntax</a>:</p>
 \.github/workflows/.*|
 data/.*|
 )$</code></pre>
-<p><strong>language</strong></p>
-<p>The <code>lang</code> arg will be passed to
-<code><a href="https://docs.ropensci.org/spelling//reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p>
+<p><strong>Arguments</strong></p>
 <pre><code>  id: spell-check
-  args: [--lang=&lt;language&gt;]</code></pre>
-<p><strong>read only</strong></p>
-<p>The <code>--read-only</code> flag will be passed to spell check. This
-flag makes this hook idempotent.</p>
+  args: [--lang=&lt;language&gt;, --read-only]</code></pre>
+<ul>
+<li><p><code>language</code>: The <code>lang</code> arg will be passed
+to <code><a href="https://docs.ropensci.org/spelling//reference/spell_check_files.html" class="external-link">spelling::spell_check_files()</a></code>.</p></li>
+<li><p><code>read-only</code><strong>:</strong> The
+<code>--read-only</code> flag will be passed to spell check. This flag
+makes this hook idempotent.</p></li>
+</ul>
 <pre><code>  id: spell-check
   args: [--read-only]</code></pre>
 <p>This hook does not modify input files. It will add all words not
@@ -342,25 +350,24 @@ and this time, the commit should pass.</p>
 <p>A hook to run <code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code>. Makes sure you
 commit your <code>.Rd</code> changes with the source changes. To take
 advantage of caching, you don’t need to run
-<code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore. The argument
-<code>--no-warn-cache</code> is deprecated and will be removed in a
-future release. Please remove it from your
-<code>.pre-commit-config.yaml</code>.</p>
+<code><a href="https://roxygen2.r-lib.org/reference/roxygenize.html" class="external-link">roxygen2::roxygenize()</a></code> manually anymore.</p>
 <p>Because the hook will write the version of {roxygen2} to
 <code>DESCRIPTON</code>, you should either make sure the version you use
 when you call {roxygen2} interactively matches the one from in
 {precommit} or simply not run {roxygen2} manually.</p>
-<p>If you specify additional roclets through the <code>Roxygen:</code>
-field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the
+<p>Note that your package’s dependencies must be listed in
+<code>additional_dependencies:</code> in your
+<code>.pre-commit-config.yaml</code> as shown below. You can generate
+these for easy c/p with
+<code>snippet_generate("additional-deps-roxygenize")</code> .</p>
+<p>Similarly, if you specify additional roclets through the
+<code>Roxygen:</code> field in <code>DESCRIPTION</code>, e.g. from <a href="https://github.com/r-lib/pkgapi" class="external-link">{pkgapi}</a> you must specify the
 dependencies explicitly such that <code><a href="https://rstudio.github.io/renv/reference/install.html" class="external-link">renv::install()</a></code>
-understands it, e.g.</p>
+understands it.</p>
 <pre><code><span>  <span class="va">id</span><span class="op">:</span> <span class="va">roxygenize</span></span>
 <span>  <span class="va">additional_dependencies</span><span class="op">:</span></span>
-<span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span></code></pre>
-<p>This hook does not modify input files, but writes to <code>.Rd</code>
-files in <code>man/</code>, <code>NAMESPACE</code> and potentially
-others depending on which roxygen roclets you specified in
-<code>DESCRIPTION</code>.</p>
+<span>  <span class="op">-</span> <span class="va">r</span><span class="op">-</span><span class="va">lib</span><span class="op">/</span><span class="va">pkgapi</span></span>
+<span>  <span class="op">-</span> <span class="va">dplyr</span></span></code></pre>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: roxygenize
@@ -370,7 +377,14 @@ args: [--root=&lt;R package root&gt;]</code></pre>
 that contains the R package. Defaults to <code>.</code> since for most R
 package git repos, the git and R package root coincide. Added in version
 0.3.3.00000.</li>
+<li>The argument <code>--no-warn-cache</code> is deprecated and will be
+removed in a future release. Please remove it from your
+<code>.pre-commit-config.yaml</code>.</li>
 </ul>
+<p>This hook does not modify input files, but writes to <code>.Rd</code>
+files in <code>man/</code>, <code>NAMESPACE</code> and potentially
+others depending on which roxygen roclets you specified in
+<code>DESCRIPTION</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="deps-in-desc">
@@ -380,22 +394,21 @@ package git repos, the git and R package root coincide. Added in version
 are listed in your DESCRIPTION file. Note that <code>README.Rmd</code>
 is never checked.</p>
 <p><strong>Arguments</strong></p>
+<pre><code>  id: deps-in-desc
+  args: [--allow_private_imports, -root=&lt;R package root&gt;]</code></pre>
 <ul>
-<li>Flag <code>allow_private_imports</code> lets the user specify that
-private imports into the package namespace are tolerable, e.g.
+<li>
+<p>Flag <code>allow_private_imports</code> lets the user specify
+that private imports into the package namespace are tolerable, e.g.
 <code>somepkg:::x()</code>. Flag not set by default, i.e. the hook will
-fail if such a call is found.</li>
+fail if such a call is found.</p>
+<!-- -->
+</li>
+<li><p>Argument <code>root</code> specifies the directory in the git
+repo that contains the R package. Defaults to <code>.</code> since for
+most R package git repos, the git and R package root coincide. Added in
+version 0.3.2.9000.</p></li>
 </ul>
-<!-- --><pre><code>  id: deps-in-desc
-  args: [--allow_private_imports]</code></pre>
-<ul>
-<li>Argument <code>root</code> specifies the directory in the git repo
-that contains the R package. Defaults to <code>.</code> since for most R
-package git repos, the git and R package root coincide. Added in version
-0.3.2.9000.</li>
-</ul>
-<!-- --><pre><code>id: deps-in-desc
-args: [--root=&lt;R package root&gt;]</code></pre>
 <p>This hook does not modify the file <code>DESCRIPTION</code> because
 the user should decide for each package if it should go to
 <code>Imports:</code> or <code>Suggests:</code>, which can be done
@@ -425,17 +438,27 @@ package git repos, the git and R package root coincide. Added in version
 <code>lintr</code><a class="anchor" aria-label="anchor" href="#lintr"></a>
 </h3>
 <p>A hook to run <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code> to check that R files are
-lint free. Argument <code>warning_only</code> changes the behavior of
-the pre-commit to be non-blocking. You should set this with the field
+lint free. You should set this with the field
 <code>verbose: true</code>.</p>
+<p><strong>Arguments</strong></p>
 <pre><code>  id: lintr
-  args: [--warn_only]
+  args: [--warn-only, --load-package]
   verbose: true</code></pre>
-<p>When configured this way, lintr prints lint errors as they appear.
-Other arguments are not supported. Instead, <code>lintr</code> config
-should be specified in a <code>.lintr</code> config file in Debian
-Control Field Format as specified in the <a href="https://github.com/r-lib/lintr#project-configuration" class="external-link"><code>.lintr</code>
-documentation</a>.</p>
+<ul>
+<li><p><code>warn-only</code>: Changes the behavior of the pre-commit to
+be non-blocking. When configured this way, lintr prints lint errors as
+they appear.</p></li>
+<li><p><code>load-package</code>: When linting a package, {lintr} uses
+<code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code> to load the package before running
+<code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code>. Note that you need to list all dependencies
+of the package under <code>additional_dependencies:</code> for the
+<code>lintr:</code>hook in your <code>.pre-commit-config.yaml</code>.
+You can generate the code snip o for c/p with
+<code>snippet_generate("additional-deps-lintr")</code>. This argument
+was added in 0.4.3.9005.</p></li>
+</ul>
+<p>The <code>.lintr</code> config file as documented in the <a href="https://github.com/r-lib/lintr#project-configuration" class="external-link"><code>.lintr</code>
+documentation</a> is respected.</p>
 <p>This hook does not modify any file.</p>
 </div>
 <div class="section level3">
@@ -443,11 +466,9 @@ documentation</a>.</p>
 <code>codemeta-description-updated</code><a class="anchor" aria-label="anchor" href="#codemeta-description-updated"></a>
 </h3>
 <p>Make sure <code>DESCRIPTION</code> hasn’t been edited more recently
-than <code>codemeta.json</code>,</p>
-<p>i.e. remind you to run <code>codemetar::write_codemeta()</code> in
-order to keep <code>codemeta.json</code> in sync with
-<code>DESCRIPTION</code>.</p>
-<p>This hook does not modify any file.</p>
+than <code>codemeta.json</code>, i.e. remind you to run
+<code>codemetar::write_codemeta()</code> in order to keep
+<code>codemeta.json</code> in sync with <code>DESCRIPTION</code>.</p>
 <p><strong>Arguments</strong></p>
 <!-- -->
 <pre><code>id: codemeta-description-updated
@@ -455,9 +476,9 @@ args: [--root=&lt;R package root&gt;]</code></pre>
 <ul>
 <li>Argument <code>root</code> specifies the directory in the git repo
 that contains the R package. Defaults to <code>.</code> since for most R
-package git repos, the git and R package root coincide. Added in version
-0.3.3.00000.</li>
+package git repos, the git and R package root coincide.</li>
 </ul>
+<p>This hook does not modify any file. Added in version 0.3.3.00000.</p>
 </div>
 <div class="section level3">
 <h3 id="pkgdown">
@@ -481,16 +502,14 @@ dependencies).</p>
 </h3>
 <p>Guarantees that you don’t accidentally commit an invalid
 <code>renv.lock</code> file. See <a href="https://rstudio.github.io/renv/reference/lockfile_validate.html" class="external-link"><code>renv::lockfile_validate()</code>
-documentation</a> for details.</p>
-<p>The below config that uses only <code>--error</code> should suffice
-for most users.</p>
+documentation</a> for details. The below config that uses only
+<code>--error</code> should suffice for most users.</p>
 <pre><code>id: renv-lockfile-validate
 args: [--error]</code></pre>
-<p>This hook does not modify files. Added in version 0.4.3.9005.</p>
 <p><strong>Arguments</strong></p>
-<!-- -->
 <pre><code>id: renv-lockfile-validate
 args: [--schema=&lt;schema&gt;] [--greedy --error --verbose --strict]</code></pre>
+<p>This hook does not modify files. Added in version 0.4.3.9005.</p>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
