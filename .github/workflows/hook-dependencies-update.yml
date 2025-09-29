@@ -47,7 +47,7 @@ jobs:
             [1]: https://github.com/peter-evans/create-pull-request
       - name: Checkout PR head SHA
         if: steps.cpr.outputs['pull-request-operation'] != 'none'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ steps.cpr.outputs['pull-request-head-sha'] }}
           fetch-depth: 0  # good practice if you need history
