@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9014
+    rev: v0.4.3.9015
     hooks: 
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --cache-root=styler-perm]
@@ -106,7 +106,7 @@ repos:
     # Only required when https://pre-commit.ci is used for config validation
     -   id: check-pre-commit-ci-config
 -   repo: https://github.com/lorenzwalthert/gitignore-tidy
-    rev: 0.1.2
+    rev: 0.1.3
     hooks: 
     -   id: tidy-gitignore
 -   repo: local
