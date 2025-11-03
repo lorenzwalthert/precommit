@@ -84,7 +84,6 @@ if (!on_windows_on_cran()) {
   )
 
 
-
   # Rnw
   run_test("deps-in-desc",
     "deps-in-desc",

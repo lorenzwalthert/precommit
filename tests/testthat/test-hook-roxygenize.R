@@ -73,9 +73,6 @@ if (!on_cran()) {
 }
 
 
-
-
-
 # with up to date rd present
 run_test("roxygenize",
   file_name = c("man/flie.Rd" = "flie-true.Rd"),

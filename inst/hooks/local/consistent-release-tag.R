@@ -23,7 +23,6 @@ path_config <- c(
 )
 
 
-
 assert_config_has_rev <- function(path_config, latest_tag) {
   file <- yaml::read_yaml(path_config)
   repo <- purrr::map(file$repos, "repo")
