@@ -2,7 +2,6 @@
 run_test("use-tidy-description", "DESCRIPTION", suffix = "")
 
 
-
 if (!on_cran()) {
   # in sub directory with correct root
   run_test("use-tidy-description",
