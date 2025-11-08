@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">precommit</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.3.9017</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.3.9018</span>
       </span>
     </div>
 
@@ -138,7 +138,7 @@ modifies files or not.</p>
 documentation</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You can specify arguments like this:</p>
 <pre><code>repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9017
+    rev: v0.4.3.9018
     hooks:
     -   id: lintr
         args: [--warn_only, --key=value]</code></pre>
@@ -291,7 +291,7 @@ the <code>exclude:</code> key from spell check hook the default
 repository’s configuration (i.e. the <code>.pre-commit-hooks.yaml</code>
 file in <a href="https://github.com/lorenzwalthert/precommit" class="external-link uri">https://github.com/lorenzwalthert/precommit</a>) into your
 config file, so you can easily add or remove some files. As of
-v0.4.3.9017, the following regex is used to exclude files following the
+v0.4.3.9018, the following regex is used to exclude files following the
 <a href="https://pre-commit.com/#regular-expressions" class="external-link">verbose python
 regex syntax</a>:</p>
 <pre><code>(?x)^(
@@ -442,20 +442,32 @@ lint free. You should set this with the field
 <code>verbose: true</code>.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>  id: lintr
-  args: [--warn-only, --load-package]
+  args: [--warn_only, --load_package]
   verbose: true</code></pre>
 <ul>
-<li><p><code>warn-only</code>: Changes the behavior of the pre-commit to
+<li><p><code>warn_only</code>: Changes the behavior of the pre-commit to
 be non-blocking. When configured this way, lintr prints lint errors as
 they appear.</p></li>
-<li><p><code>load-package</code>: When linting a package, {lintr} uses
-<code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code> to load the package before running
-<code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code>. Note that you need to list all dependencies
-of the package under <code>additional_dependencies:</code> for the
-<code>lintr:</code>hook in your <code>.pre-commit-config.yaml</code>.
-You can generate the code snip o for c/p with
+<li>
+<p><code>load_package</code>: When linting an R package, {lintr} can
+use <code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code> to load your package before running
+<code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code>. This allows {lintr} to:</p>
+<ul>
+<li>Recognize internal and exported functions, classes, and
+methods.</li>
+<li>Read the NAMESPACE to correctly resolve imported functions.</li>
+</ul>
+<p>Note that your package’s dependencies must be listed in
+<code>additional_dependencies:</code> in your
+<code>.pre-commit-config.yaml</code> as shown below. You can generate
+these for easy c/p with
 <code>snippet_generate("additional-deps-lintr")</code>. This argument
-was added in 0.4.3.9005.</p></li>
+was added in version 0.4.3.9005.</p>
+<pre><code>  id: lintr
+  args: [--load_package]
+  additional_dependencies:
+  -   dplyr</code></pre>
+</li>
 </ul>
 <p>The <code>.lintr</code> config file as documented in the <a href="https://github.com/r-lib/lintr#project-configuration" class="external-link"><code>.lintr</code>
 documentation</a> is respected.</p>
@@ -539,7 +551,7 @@ either.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
