@@ -366,21 +366,31 @@ should set this with the field `verbose: true`.
 
 ```         
   id: lintr
-  args: [--warn-only, --load-package]
+  args: [--warn_only, --load_package]
   verbose: true
 ```
 
--   `warn-only`: Changes the behavior of the pre-commit to be
+-   `warn_only`: Changes the behavior of the pre-commit to be
     non-blocking. When configured this way, lintr prints lint errors as
     they appear.
 
--   `load-package`: When linting a package, {lintr} uses
-    `pkgload::load_all()` to load the package before running
-    `lintr::lint()`. Note that you need to list all dependencies of the
-    package under `additional_dependencies:` for the `lintr:`hook in
-    your `.pre-commit-config.yaml`. You can generate the code snip o for
-    c/p with `snippet_generate("additional-deps-lintr")`. This argument
-    was added in 0.4.3.9005.
+-   `load_package`: When linting an R package, {lintr} can use
+    `pkgload::load_all()` to load your package before running `lintr::lint()`.
+    This allows {lintr} to: 
+      - Recognize internal and exported functions, classes, and methods.
+      - Read the NAMESPACE to correctly resolve imported functions.
+    
+    Note that your package's dependencies must be listed in
+    `additional_dependencies:` in your `.pre-commit-config.yaml` as shown
+    below. You can generate these for easy c/p with
+    `snippet_generate("additional-deps-lintr")`. This argument was added in
+    version 0.4.3.9005.
+    ```         
+      id: lintr
+      args: [--load_package]
+      additional_dependencies:
+      -   dplyr
+    ```
 
 The `.lintr` config file as documented in the [`.lintr`
 documentation](https://github.com/r-lib/lintr#project-configuration) is
