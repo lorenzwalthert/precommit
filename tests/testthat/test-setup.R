@@ -37,7 +37,14 @@ test_that("snippet generation works for lintr", {
     out <- capture_output(snippet_generate("additional-deps-lintr")),
     NA,
   )
-  expect_equal(out, "")
+  expect_equal(out, paste0(
+    "    -   id: lintr\n",
+    "        # lintr requires loading pkg -> add dependencies (incl. Suggests) from DESCRIPTION\n",
+    "        args: [--load_package]\n",
+    "        additional_dependencies:\n",
+    "        -    testthat\n",
+    ""
+  ))
   usethis::use_package("styler")
   expect_error(
     out <- capture_output(snippet_generate("additional-deps-lintr")),

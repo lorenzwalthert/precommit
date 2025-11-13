@@ -133,6 +133,15 @@ use_ci <- function(ci = getOption("precommit.ci", "native"),
       "proceed."
     ))
   }
+
+  if (length(grep("^ *- *id *: *lintr", config)) > 0) {
+    cli::cli_ul(paste0(
+      "It seems like you are using the lintr hook. This requires further ",
+      "edits in your {.code .pre-commit-config.yaml}, please run ",
+      "{.code precommit::snippet_generate('additional-deps-lintr')} to ",
+      "proceed."
+    ))
+  }
 }
 
 #' Auto-update your hooks
@@ -263,8 +272,17 @@ snippet_generate <- function(snippet = "additional-deps-roxygenize",
     "\n"
   ))
   deps <- desc::desc_get_deps()
-  hard_dependencies <- deps[(deps$type %in% c("Depends", "Imports")), "package"] %>%
+
+  # Add Suggests for lintr, so it works on vignettes, readme, etc.
+  dep_types <- if (snippet == "additional-deps-lintr") {
+    c("Depends", "Imports", "Suggests")
+  } else {
+    c("Depends", "Imports")
+  }
+
+  hard_dependencies <- deps[(deps$type %in% dep_types), "package"] %>%
     setdiff("R")
+
   if (length(hard_dependencies) < 1) {
     cli::cli_alert_success(paste0(
       "According to {.code DESCRIPTION}`, there are no hard dependencies of ",
@@ -277,10 +295,7 @@ snippet_generate <- function(snippet = "additional-deps-roxygenize",
     snippet_generator() %>%
     cat(sep = "")
   cat("\n")
-  cli::cli_ul(paste0(
-    "Replace the `id: roxygenize` key in `.pre-commit-config.yaml` with the ",
-    "above code."
-  ))
+
   cli::cli_alert_info(paste0(
     "Note that CI services like {.url pre-commit.ci} have build-time ",
     "restrictions and installing the above dependencies may exceed those, ",
@@ -334,6 +349,7 @@ snippet_generate_impl_additional_deps_lintr <- function(packages, with_version =
   ) %>%
     sort()
   paste0("    -   id: lintr
-        # lintr requires loading pkg -> add dependencies from DESCRIPTION
+        # lintr requires loading pkg -> add dependencies (incl. Suggests) from DESCRIPTION
+        args: [--load_package]
         additional_dependencies:\n", out)
 }

@@ -41,6 +41,7 @@ repos:
           data/.*|
           )$
     -   id: lintr
+        args: [--load_package]
     -   id: readme-rmd-rendered
     -   id: parsable-R
     -   id: no-browser-statement
