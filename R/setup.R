@@ -350,5 +350,6 @@ snippet_generate_impl_additional_deps_lintr <- function(packages, with_version =
     sort()
   paste0("    -   id: lintr
         # lintr requires loading pkg -> add dependencies (incl. Suggests) from DESCRIPTION
+        args: [--load_package]
         additional_dependencies:\n", out)
 }

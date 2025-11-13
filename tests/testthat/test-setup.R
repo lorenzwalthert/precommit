@@ -40,6 +40,7 @@ test_that("snippet generation works for lintr", {
   expect_equal(out, paste0(
     "    -   id: lintr\n",
     "        # lintr requires loading pkg -> add dependencies (incl. Suggests) from DESCRIPTION\n",
+    "        args: [--load_package]\n",
     "        additional_dependencies:\n",
     "        -    testthat\n",
     ""
