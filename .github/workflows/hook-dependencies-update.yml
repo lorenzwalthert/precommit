@@ -33,7 +33,7 @@ jobs:
         run: Rscript -e 'source("renv/activate.R"); renv::restore(); renv::install("."); precommit:::auto_release()' 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v7.0.7
+        uses: peter-evans/create-pull-request@v8.0.0
         with:
           token: ${{ secrets.PRECOMMIT_HOOK_DEPENDENCY_UPDATE }}
           commit-message: Update renv dependencies
