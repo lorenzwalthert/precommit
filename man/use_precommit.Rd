@@ -19,7 +19,7 @@ use_precommit(
 \item{config_source}{Path or URL to a \code{.pre-commit-config.yaml}. This
 config file will be hard-copied into \code{root}. If \code{NULL}, we check if
 \code{root} is a package or project directory using
-\code{\link[rprojroot:find_root_file]{rprojroot::find_package_root_file()}}, and resort to an appropriate default
+\code{\link[rprojroot:find_package_root_file]{rprojroot::find_package_root_file()}}, and resort to an appropriate default
 config. See section 'Copying an existing config file'.}
 
 \item{force}{Whether or not to overwrite an existing ci config file (only
@@ -100,7 +100,7 @@ use_precommit()
 }
 }
 \seealso{
-Other helpers: 
-\code{\link{open_config}()}
+Other helpers:
+\code{\link[=open_config]{open_config()}}
 }
 \concept{helpers}

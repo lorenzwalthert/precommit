@@ -10,9 +10,9 @@ version_precommit()
 Retrieves the version of the pre-commit executable used.
 }
 \seealso{
-Other executable managers: 
-\code{\link{install_precommit}()},
-\code{\link{uninstall_precommit}()},
-\code{\link{update_precommit}()}
+Other executable managers:
+\code{\link[=install_precommit]{install_precommit()}},
+\code{\link[=uninstall_precommit]{uninstall_precommit()}},
+\code{\link[=update_precommit]{update_precommit()}}
 }
 \concept{executable managers}
