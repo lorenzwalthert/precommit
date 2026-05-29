@@ -18,9 +18,9 @@ pre-commit depend on it) and do a fresh installation with
 \code{\link[=install_precommit]{install_precommit()}}.
 }
 \seealso{
-Other executable managers: 
-\code{\link{install_precommit}()},
-\code{\link{uninstall_precommit}()},
-\code{\link{version_precommit}()}
+Other executable managers:
+\code{\link[=install_precommit]{install_precommit()}},
+\code{\link[=uninstall_precommit]{uninstall_precommit()}},
+\code{\link[=version_precommit]{version_precommit()}}
 }
 \concept{executable managers}

@@ -2,7 +2,7 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9021
+    rev: e034ebc4a7bfa43d3ff07b453a90ed52bc0c4863
     hooks: 
     -   id: style-files
         args: [--style_pkg=styler, --style_fun=tidyverse_style, --cache-root=styler-perm]
@@ -14,7 +14,7 @@ repos:
     -   id: roxygenize
         additional_dependencies:
         -    cli
-        -    fs
+        -    fs@1.6.7
         -    here
         -    magrittr
         -    purrr
@@ -117,7 +117,7 @@ repos:
         language: r
         additional_dependencies:
         -    docopt
-        -    fs
+        -    fs@1.6.7
         -    yaml
         -    purrr
         -    glue
@@ -132,7 +132,7 @@ repos:
         language: r
         stages: [pre-commit, pre-push]
         additional_dependencies:
-        -    fs
+        -    fs@1.6.7
         require_serial: True
     -   id: spell-check-exclude-identical
         name: spell-check-exclude-identical

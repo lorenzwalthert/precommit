@@ -20,13 +20,13 @@ This function is only exported for use in hook scripts, but it's not intended
 to be called by the end-user directly.
 }
 \seealso{
-Other hook script helpers: 
-\code{\link{diff_requires_run_roxygenize}()},
-\code{\link{dirs_R.cache}()},
-\code{\link{may_require_permanent_cache}()},
-\code{\link{precommit_docopt}()},
-\code{\link{robust_purl}()},
-\code{\link{roxygen_assert_additional_dependencies}()}
+Other hook script helpers:
+\code{\link[=diff_requires_run_roxygenize]{diff_requires_run_roxygenize()}},
+\code{\link[=dirs_R.cache]{dirs_R.cache()}},
+\code{\link[=may_require_permanent_cache]{may_require_permanent_cache()}},
+\code{\link[=precommit_docopt]{precommit_docopt()}},
+\code{\link[=robust_purl]{robust_purl()}},
+\code{\link[=roxygen_assert_additional_dependencies]{roxygen_assert_additional_dependencies()}}
 }
 \concept{hook script helpers}
 \keyword{internal}

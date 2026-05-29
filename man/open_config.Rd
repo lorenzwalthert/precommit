@@ -34,7 +34,7 @@ open_wordlist()
 }
 }
 \seealso{
-Other helpers: 
-\code{\link{use_precommit}()}
+Other helpers:
+\code{\link[=use_precommit]{use_precommit()}}
 }
 \concept{helpers}

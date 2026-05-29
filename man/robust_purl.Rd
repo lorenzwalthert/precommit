@@ -2,26 +2,26 @@
 % Please edit documentation in R/purl.R
 \name{robust_purl}
 \alias{robust_purl}
-\title{Run \code{\link[knitr:knit]{knitr::purl()}}, setting the chunk option \code{purl} to \code{TRUE} if it's not
+\title{Run \code{\link[knitr:purl]{knitr::purl()}}, setting the chunk option \code{purl} to \code{TRUE} if it's not
 already set to a literal value.}
 \usage{
 robust_purl(path)
 }
 \arguments{
-\item{path}{The path to the file you want to \code{\link[knitr:knit]{knitr::purl()}}.}
+\item{path}{The path to the file you want to \code{\link[knitr:purl]{knitr::purl()}}.}
 }
 \description{
 This function is only exported for use in hook scripts, but it's not intended
 to be called by the end-user directly.
 }
 \seealso{
-Other hook script helpers: 
-\code{\link{diff_requires_run_roxygenize}()},
-\code{\link{dirs_R.cache}()},
-\code{\link{may_require_permanent_cache}()},
-\code{\link{precommit_docopt}()},
-\code{\link{roxygen_assert_additional_dependencies}()},
-\code{\link{roxygenize_with_cache}()}
+Other hook script helpers:
+\code{\link[=diff_requires_run_roxygenize]{diff_requires_run_roxygenize()}},
+\code{\link[=dirs_R.cache]{dirs_R.cache()}},
+\code{\link[=may_require_permanent_cache]{may_require_permanent_cache()}},
+\code{\link[=precommit_docopt]{precommit_docopt()}},
+\code{\link[=roxygen_assert_additional_dependencies]{roxygen_assert_additional_dependencies()}},
+\code{\link[=roxygenize_with_cache]{roxygenize_with_cache()}}
 }
 \concept{hook script helpers}
 \keyword{internal}
