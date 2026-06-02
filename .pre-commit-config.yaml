@@ -14,7 +14,7 @@ repos:
     -   id: roxygenize
         additional_dependencies:
         -    cli
-        -    fs@1.6.7
+        -    fs
         -    here
         -    magrittr
         -    purrr
@@ -117,7 +117,7 @@ repos:
         language: r
         additional_dependencies:
         -    docopt
-        -    fs@1.6.7
+        -    fs
         -    yaml
         -    purrr
         -    glue
@@ -132,7 +132,7 @@ repos:
         language: r
         stages: [pre-commit, pre-push]
         additional_dependencies:
-        -    fs@1.6.7
+        -    fs
         require_serial: True
     -   id: spell-check-exclude-identical
         name: spell-check-exclude-identical
