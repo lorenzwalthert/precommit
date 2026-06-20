@@ -1,3 +1,4 @@
+
 # Check for source files (case-insensitive)
 rmd_files <- list.files(pattern = "^README\\.[Rr]md$")
 qmd_files <- list.files(pattern = "^README\\.[Qq]md$")
@@ -12,7 +13,7 @@ if (length(rmd_files) == 1) {
 } else if (length(qmd_files) == 1) {
   source_file <- qmd_files
 } else {
-  return()
+  quit(status=0)
 }
 
 # Check if README.md exists and is in sync
