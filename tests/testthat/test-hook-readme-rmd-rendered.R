@@ -33,7 +33,7 @@ if (has_git()) {
   run_test("readme-rmd-rendered",
     file_name = c("README.Rmd", "README.md", "README.qmd"),
     suffix = "",
-    std_err = 'Multiple README source files found',
+    std_err = "Multiple README source files found",
     std_out = NULL,
     file_transformer = function(files) {
       git_init()
