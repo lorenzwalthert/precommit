@@ -1,36 +1,41 @@
-renderable_files <- list.files(pattern = "^README\\.[QqRr]md$")
-renderable <- ""
-rmd <- grep("readme\\.rmd", renderable_files, ignore.case = TRUE, value = TRUE)
-qmd <- grep("readme\\.qmd", renderable_files, ignore.case = TRUE, value = TRUE)
+# Check for source files (case-insensitive)
+rmd_files <- list.files(pattern = "^README\\.[Rr]md$")
+qmd_files <- list.files(pattern = "^README\\.[Qq]md$")
 
-if (length(rmd) > 0) {
-  if (length(qmd) > 0) {
-    warning(paste0("Both ", rmd, " and ", qmd, " exist; ignoring ", qmd, "."))
-  }
-  renderable <- rmd[1]
-} else {
-  renderable <- qmd[1]
+if (length(rmd_files) + length(qmd_files) > 1) {
+  rlang::abort("Multiple README source files found. Please use only one format (README.Rmd or README.qmd).")
 }
 
-if (file.exists(renderable) && file.exists("README.md")) {
-  if (file.info("README.md")$mtime < file.info(renderable)$mtime) {
-    rlang::abort(paste0("README.md is out of date; please re-knit ", renderable, "."))
+# Determine which source file is present
+if (length(rmd_files) == 1) {
+  source_file <- rmd_files
+} else if (length(qmd_files) == 1) {
+  source_file <- qmd_files
+} else {
+  return()
+}
+
+# Check if README.md exists and is in sync
+if (file.exists("README.md")) {
+  if (file.info("README.md")$mtime < file.info(source_file)$mtime) {
+    rlang::abort(paste0("README.md is out of date; please re-knit ", source_file, "."))
   }
+  
   if (!nzchar(Sys.which("git"))) {
     rlang::abort("git not found on `$PATH`, hook can't be run.")
   }
+  
+  # Get staged files
   file_names_staged <- system2(
     "git", c("diff --cached --name-only"),
     stdout = TRUE
   )
-  # num_readmes <- length(grepl("^README\\.[R]?md$", file_names_staged))
-  staged_readmes <- grep("^README\\.[RrQq]?md$", file_names_staged, value = TRUE)
-  if (length(staged_readmes) > 0) {
-    rendered_staged <- any(grepl("README.md", staged_readmes, fixed = TRUE))
-    renderable_staged <- any(grepl(renderable, staged_readmes, fixed = TRUE))
-
-    if (!(rendered_staged && renderable_staged)) {
-      rlang::abort(paste(renderable, "and README.md should be both staged."))
-    }
+  
+  # Check that both source and output are staged together
+  source_staged <- source_file %in% file_names_staged
+  output_staged <- "README.md" %in% file_names_staged
+  
+  if (!source_staged || !output_staged) {
+    rlang::abort(paste(source_file, "and README.md must both be staged."))
   }
 }
