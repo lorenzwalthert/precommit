@@ -136,8 +136,8 @@ This hook modifies files unless you specify `--dry=fail` (requires
 
 ## `readme-rmd-rendered`
 
-Make sure `README.Rmd` hasn't been edited more recently than
-`README.md`, i.e. remind you to render the `.Rmd` to `.md` before
+Make sure `README.Rmd` or `README.qmd` hasn't been edited more recently than
+`README.md`, i.e. remind you to render the `.Rmd` or `.qmd` to `.md` before
 committing.
 
 This hook does not modify files.

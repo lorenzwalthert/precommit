@@ -1,0 +1,12 @@
+---
+format: gfm
+---
+
+# This is a readme
+
+```{r}
+knitr::opts_chunk$set(
+  fig.path = "man/figures/",
+  eval = FALSE
+)
+```

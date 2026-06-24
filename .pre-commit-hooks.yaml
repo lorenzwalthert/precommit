@@ -58,10 +58,10 @@
     minimum_pre_commit_version: "2.13.0"
 -   id: readme-rmd-rendered
     name: readme-rmd-rendered
-    description: make sure README.Rmd hasn't been edited more recently than `README.md`
+    description: make sure README.Rmd or README.qmd hasn't been edited more recently than `README.md`
     entry: Rscript inst/hooks/exported/readme-rmd-rendered.R
     language: r
-    files: 'README\.[Rr]?md$'
+    files: 'README\.[RrQq]?md$'
     minimum_pre_commit_version: "2.13.0"
 -   id: codemeta-description-updated
     name: codemeta-description-updated
