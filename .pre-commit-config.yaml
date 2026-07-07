@@ -168,4 +168,4 @@ default_stages: ["pre-commit"]
 
 ci:
     skip: [consistent-release-tag, spell-check-ordered-exclude, pkgdown]
-    autoupdate_schedule: monthly
+    autoupdate_schedule: weekly
