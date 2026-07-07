@@ -35,7 +35,9 @@ if (file.exists("README.md")) {
   source_staged <- source_file %in% file_names_staged
   output_staged <- "README.md" %in% file_names_staged
 
-  if (!source_staged || !output_staged) {
-    rlang::abort(paste(source_file, "and README.md must both be staged."))
+  if (sum(source_staged, output_staged) == 1) {
+    rlang::abort(paste(
+      source_file, "and README.md must both be either staged or unstaged."
+    ))
   }
 }
