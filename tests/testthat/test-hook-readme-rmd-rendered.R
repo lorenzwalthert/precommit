@@ -47,7 +47,7 @@ if (has_git()) {
     run_test("readme-rmd-rendered",
       file_name = c("README.Rmd", "README.md"),
       suffix = "",
-      std_err = "must both be staged",
+      std_err = "must both be either staged",
       std_out = NULL,
       file_transformer = function(files) {
         if (length(files) > 1) {
@@ -112,7 +112,7 @@ if (has_git()) {
     run_test("readme-rmd-rendered",
       file_name = c("README.qmd", "README.md"),
       suffix = "",
-      std_err = "must both be staged",
+      std_err = "must both be either staged",
       std_out = NULL,
       file_transformer = function(files) {
         if (length(files) > 1) {
