@@ -22,7 +22,7 @@ run_test(
   "parsable-roxygen",
   suffix = "-fail.R",
   std_out = "Roxygen commentary",
-  std_err = "@description has mismatched braces or quotes",
+  std_err = "description has mismatched braces or quotes",
   read_only = TRUE
 )
 
