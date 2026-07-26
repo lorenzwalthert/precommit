@@ -31,34 +31,34 @@ repos:
     -   id: spell-check
         exclude: >
           (?x)^(
-          (.*/|)NAMESPACE|
-          (.*/|)WORDLIST|
-          (.*/|)\.Rbuildignore|
-          (.*/|)\.Renviron|
-          (.*/|)\.Rprofile|
-          (.*/|)\.gitignore|
-          (.*/|)\.pre-commit-.*|
-          (.*/|)\.travis\.yml|
-          (.*/|)appveyor\.yml|
-          (.*/|)renv/settings\.dcf|
-          (.*/|)renv\.lock|
-          .*\.RData|
-          .*\.Rds|
-          .*\.Rproj|
           .*\.[rR]|
           .*\.feather|
           .*\.jpeg|
           .*\.pdf|
           .*\.png|
           .*\.py|
+          .*\.RData|
           .*\.rds|
+          .*\.Rds|
+          .*\.Rproj|
           .*\.sh|
-          LICENSE|
+          (.*/|)\.gitignore|
+          (.*/|)\.pre-commit-.*|
+          (.*/|)\.Rbuildignore|
+          (.*/|)\.Renviron|
+          (.*/|)\.Rprofile|
+          (.*/|)\.travis\.yml|
+          (.*/|)appveyor\.yml|
+          (.*/|)NAMESPACE|
+          (.*/|)renv/settings\.dcf|
+          (.*/|)renv\.lock|
+          (.*/|)WORDLIST|
           \.github/workflows/.*|
           data/.*|
           inst/hooks/.*|
           inst/pre-commit-.*|
           inst/usethis-legacy-hook|
+          LICENSE|
           renv/.*|
           revdep/.*|
           tests/testthat/in/.*|
@@ -121,7 +121,7 @@ repos:
         -    yaml
         -    purrr
         -    glue
-        -    rlang
+        -    rlang@1.3.0
         -    git2r
         -    desc
         -    lorenzwalthert/precommit
