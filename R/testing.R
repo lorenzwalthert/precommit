@@ -51,7 +51,10 @@ run_test <- function(hook_name,
     package = "precommit"
   ), regexp = paste0("/", hook_name))
   if (length(path_executable) != 1) {
-    rlang::abort("Failed to derive hook path")
+    rlang::abort(c(
+      "Failed to derive hook path since there are more than one path matching the hook name:",
+      paste0(path_executable, sep = ",")
+    ))
   }
   path_candidate <- paste0(testthat::test_path("in", file_name), suffix) %>%
     ensure_named(names(file_name), fs::path_file)
