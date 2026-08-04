@@ -19,7 +19,6 @@ hook_deps <- function(root) {
 source("inst/update-renv-prepare.R")
 source("renv/activate.R")
 renv::restore()
-install.packages("pak")
 options(renv.snapshot.filter = hook_deps)
 
 # TODO snapshot looks up from which repo the packages were installed.
