@@ -19,7 +19,10 @@ if (packageVersion("renv") < package_version("1.0.8")) {
   rlang::abort("You need at least version 1.0.8 of {renv} to run this hook.")
 }
 if (!require(jsonvalidate, quietly = TRUE)) {
-  stop("{jsonvalidate} could not be loaded, please install it.")
+  stop(
+    "{jsonvalidate} could not be loaded, please add it",
+    "to `.pre-commit-config.yaml` -> hook `renv-lockfile-validate` -> `additional_dependencies`"
+  )
 }
 
 arguments <- precommit::precommit_docopt(doc)

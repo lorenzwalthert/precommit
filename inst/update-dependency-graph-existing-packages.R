@@ -5,9 +5,12 @@ hook_deps <- function(root) {
   dont <- c(
     "yaml", "usethis", "withr", "rstudioapi", "precommit",
     "pkgdown",
-    "httr"
+    "httr",
+    "jsonvalidate"
   )
-  out <- c(out, "docopt", "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "desc", "jsonvalidate")
+  out <- c(
+    out, "docopt", "roxygen2", "spelling", "styler", "pkgload", "lintr", "knitr", "desc"
+  )
   out <- setdiff(c(unique(c(out, deps[deps$type == "Imports", ]$package))), dont)
   out <- names(renv:::renv_package_dependencies(out))
   return(sort(out))
@@ -16,6 +19,7 @@ hook_deps <- function(root) {
 source("inst/update-renv-prepare.R")
 source("renv/activate.R")
 renv::restore()
+install.packages("pak")
 options(renv.snapshot.filter = hook_deps)
 
 # TODO snapshot looks up from which repo the packages were installed.
