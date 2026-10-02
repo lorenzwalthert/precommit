@@ -52,6 +52,24 @@ jobs:
           ref: ${{ steps.cpr.outputs['pull-request-head-sha'] }}
           fetch-depth: 0  # good practice if you need history
 
+      - name: Update .pre-commit-config.yaml rev to PR head SHA
+        if: steps.cpr.outputs['pull-request-operation'] != 'none'
+        run: |
+          SHA="${{ steps.cpr.outputs['pull-request-head-sha'] }}"
+          sed -i '' -e "1,/rev:.*/{s/rev:.*/rev: $SHA/;}" .pre-commit-config.yaml
+
+      - name: Commit .pre-commit-config.yaml update
+        if: steps.cpr.outputs['pull-request-operation'] != 'none'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .pre-commit-config.yaml
+          git commit -m 'Pin .pre-commit-config.yaml rev to PR head SHA'
+
+      - name: Push .pre-commit-config.yaml update to PR branch
+        if: steps.cpr.outputs['pull-request-operation'] != 'none'
+        run: git push origin hook-dependencies-update
+
       - name: Push latest tag
         run: |
           Rscript -e "install.packages('desc')"

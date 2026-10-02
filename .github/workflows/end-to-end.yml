@@ -7,7 +7,10 @@ name: end-2-end
 
 jobs:
   end-2-end:
-    runs-on: macOS-latest
+    strategy:
+      matrix:
+        os: [macOS-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -53,19 +56,36 @@ jobs:
           fs::file_delete(config_name)
           fs::file_copy(ref_config, config_name)
         shell: Rscript {0}
-      - name: Update Hook revision to current push
+      - name: Update Hook revision to current push (macOS)
+        if: runner.os == 'macOS'
         run: |
           # hacky, maybe can use pre-commit try-repo?
           # https://stackoverflow.com/questions/30871868/sed-replace-first-occurence-in-place-with-big-files
-          sed -i ''  -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
+          sed -i '' -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m 'current hash must be head'
 
+      - name: Update Hook revision to current push (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sed -i -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m 'current hash must be head'
+
+      - name: Install pre-commit (macOS)
+        if: runner.os == 'macOS'
+        run: brew install pre-commit
+
+      - name: Install pre-commit (Linux)
+        if: runner.os == 'Linux'
+        run: pip install pre-commit
+
       - name: Run pre-commit
         run: | 
-          brew install pre-commit
           pre-commit install --install-hooks
           
           echo 'running R/test.R'
