@@ -9,8 +9,8 @@
 #'   to fail if there are such hooks. "allow" will run these along with
 #'   pre-commit. "remove" will delete them.
 #' @param open Whether or not to open `.pre-commit-config.yaml` after
-#'   it's been placed in your repo as well as
-#'   [pre-commit.ci](https://pre-commit.ci) (if `ci = "native"`). The default is
+#'   it's been placed in your repo, and the CI service's setup page
+#'   (see `open` in [use_ci()] for details). The default is
 #'   `TRUE` when working in RStudio.
 #' @param autoupdate Whether or not to run [autoupdate()] as part of this
 #'   function call.
@@ -46,7 +46,7 @@ use_precommit <- function(config_source = getOption("precommit.config_source"),
                           legacy_hooks = "forbid",
                           open = rstudioapi::isAvailable(),
                           install_hooks = TRUE,
-                          ci = getOption("precommit.ci", "native"),
+                          ci = getOption("precommit.ci", "lite"),
                           autoupdate = install_hooks,
                           root = here::here()) {
   rlang::arg_match(legacy_hooks, c("forbid", "allow", "remove"))
@@ -70,18 +70,32 @@ use_precommit <- function(config_source = getOption("precommit.config_source"),
 #' Use continuous integration with pre-commit
 #'
 #' Sets up continuous integration, or prompts the user to do it manually.
+#' See `vignette("ci", package = "precommit")` for a detailed comparison of
+#' the available options.
 #'
-#' @param ci Specifies which continuous integration service to use. See
-#'   `vignette("ci", package = "precommit")` for details. Defaults to
-#'   `getOption("precommit.ci", "native")`, which is set to
-#'   `"native"` on package loading (if unset). `"native"` sets up
-#'   [pre-commit.ci](https://pre-commit.ci). Alternatively, `"gha"` can be used
-#'   to set up [GitHub Actions](https://github.com/features/actions). Set value
-#'   to `NA` if you don't want to use a continuous integration.
-#' @param force Whether or not to overwrite an existing ci config file (only
-#'   relevant for `ci = "gha"`).
-#' @param open Whether or not to open [pre-commit.ci](https://pre-commit.ci)
-#'   (if `ci = "native"`). The default is `TRUE` when working in RStudio.
+#' @param ci Specifies which continuous integration service to use. Defaults to
+#'   `getOption("precommit.ci", "lite")`, which is set to `"lite"` on package
+#'   loading (if unset). Valid values:
+#'
+#'   - `"lite"`: Sets up [pre-commit.ci lite](https://github.com/apps/pre-commit-ci-lite),
+#'     a GitHub App that runs hooks on GitHub Actions and auto-fixes PRs.
+#'     Copies two workflow files to `.github/workflows/` and opens the app
+#'     installation page. **Recommended default.**
+#'   - `"native"`: Sets up the fully managed [pre-commit.ci](https://pre-commit.ci)
+#'     service. No workflow files are added; the user is prompted to
+#'     authenticate via the browser.
+#'   - `"gha"`: Sets up a self-contained
+#'     [GitHub Actions](https://github.com/features/actions) workflow copied
+#'     to `.github/workflows/pre-commit.yaml`. Auto-fixing requires additional
+#'     credential setup.
+#'   - `NA`: Skip CI setup entirely.
+#'
+#' @param force Whether or not to overwrite existing CI workflow files (only
+#'   relevant for `ci = "lite"` and `ci = "gha"`).
+#' @param open Whether or not to open the CI service's setup page in the
+#'   browser (`ci = "lite"` opens the GitHub App page;
+#'   `ci = "native"` opens [pre-commit.ci](https://pre-commit.ci)).
+#'   The default is `TRUE` when working in RStudio.
 #' @inheritParams fallback_doc
 #' @export
 use_ci <- function(ci = getOption("precommit.ci", "native"),
@@ -110,6 +124,41 @@ use_ci <- function(ci = getOption("precommit.ci", "native"),
       "run on pull requests. If workflow fails, please file an issue in ",
       "{.code https://github.com/lorenzwalthert/precommit}."
     ))
+  } else if (ci == "lite") {
+    dest <- fs::path(root, ".github/workflows/pre-commit.yml")
+    dest_autoupdate <- fs::path(root, ".github/workflows/pre-commit-autoupdate.yml")
+    fs::dir_create(fs::path_dir(dest))
+    fs::file_copy(
+      system.file("pre-commit-lite.yaml", package = "precommit"),
+      dest,
+      overwrite = force
+    )
+    fs::file_copy(
+      system.file("pre-commit-lite-autoupdate.yaml", package = "precommit"),
+      dest_autoupdate,
+      overwrite = force
+    )
+    cli::cli_alert_success(paste0(
+      "Added pre-commit.ci lite workflow templates to ",
+      "{.code .github/workflows/pre-commit.yml} and ",
+      "{.code .github/workflows/pre-commit-autoupdate.yml}."
+    ))
+    cli::cli_ul(c(
+      paste0(
+        "Install the {.href [pre-commit.ci lite GitHub App](https://github.com/apps/pre-commit-ci-lite)} ",
+        "on your repository to enable automatic fixing of pull requests, ",
+        "then come back to complete the set-up process."
+      ),
+      paste0(
+        "To enable monthly autoupdates of hook versions, go to ",
+        "{.emph Settings \u2192 Actions \u2192 General \u2192 Workflow permissions} and enable ",
+        "{.emph Allow GitHub Actions to create and approve pull requests}."
+      )
+    ))
+    Sys.sleep(2)
+    if (open) {
+      utils::browseURL("https://github.com/apps/pre-commit-ci-lite")
+    }
   } else if (ci == "native") {
     cli::cli_ul(paste0(
       "Sign in with GitHub to authenticate {.url https://pre-commit.ci} and ",
@@ -121,7 +170,7 @@ use_ci <- function(ci = getOption("precommit.ci", "native"),
     }
   } else {
     rlang::abort(
-      'Argument `ci` must be one of `"native"` (default), `"gha"` or `NULL`.'
+      'Argument `ci` must be one of `"native"` (default), `"lite"`, `"gha"` or `NULL`.'
     )
   }
   config <- readLines(fs::path(root, ".pre-commit-config.yaml"))
