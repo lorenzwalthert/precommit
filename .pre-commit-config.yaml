@@ -57,7 +57,6 @@ repos:
           data/.*|
           inst/hooks/.*|
           inst/pre-commit-.*|
-          inst/usethis-legacy-hook|
           LICENSE|
           renv/.*|
           revdep/.*|

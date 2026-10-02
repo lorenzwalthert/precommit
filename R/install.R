@@ -140,13 +140,12 @@ install_repo <- function(root, install_hooks, legacy_hooks) {
 }
 
 remove_usethis_readme_hook <- function() {
-  legacy <- readLines(
-    system.file("usethis-legacy-hook", package = "precommit"),
-    encoding = "UTF-8"
-  )
   candidate <- ".git/hooks/pre-commit"
   if (file_exists(candidate)) {
-    if (identical(readLines(candidate, encoding = "UTF-8"), legacy)) {
+    lines <- readLines(candidate, encoding = "UTF-8")
+    is_usethis_readme_hook <- any(grepl("git diff --cached --name-only", lines, fixed = TRUE)) &&
+      any(grepl("README", lines, fixed = TRUE))
+    if (is_usethis_readme_hook) {
       fs::file_delete(candidate)
       cli::cli_alert_info(paste(
         "Removed the render-README hook, which was added with",
