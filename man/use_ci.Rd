@@ -12,22 +12,36 @@ use_ci(
 )
 }
 \arguments{
-\item{ci}{Specifies which continuous integration service to use. See
-\code{vignette("ci", package = "precommit")} for details. Defaults to
-\code{getOption("precommit.ci", "native")}, which is set to
-\code{"native"} on package loading (if unset). \code{"native"} sets up
-\href{https://pre-commit.ci}{pre-commit.ci}. Alternatively, \code{"gha"} can be used
-to set up \href{https://github.com/features/actions}{GitHub Actions}. Set value
-to \code{NA} if you don't want to use a continuous integration.}
+\item{ci}{Specifies which continuous integration service to use. Defaults to
+\code{getOption("precommit.ci", "lite")}, which is set to \code{"lite"} on package
+loading (if unset). Valid values:
+\itemize{
+\item \code{"lite"}: Sets up \href{https://github.com/apps/pre-commit-ci-lite}{pre-commit.ci lite},
+a GitHub App that runs hooks on GitHub Actions and auto-fixes PRs.
+Copies two workflow files to \verb{.github/workflows/} and opens the app
+installation page. \strong{Recommended default.}
+\item \code{"native"}: Sets up the fully managed \href{https://pre-commit.ci}{pre-commit.ci}
+service. No workflow files are added; the user is prompted to
+authenticate via the browser.
+\item \code{"gha"}: Sets up a self-contained
+\href{https://github.com/features/actions}{GitHub Actions} workflow copied
+to \code{.github/workflows/pre-commit.yaml}. Auto-fixing requires additional
+credential setup.
+\item \code{NA}: Skip CI setup entirely.
+}}
 
-\item{force}{Whether or not to overwrite an existing ci config file (only
-relevant for \code{ci = "gha"}).}
+\item{force}{Whether or not to overwrite existing CI workflow files (only
+relevant for \code{ci = "lite"} and \code{ci = "gha"}).}
 
-\item{open}{Whether or not to open \href{https://pre-commit.ci}{pre-commit.ci}
-(if \code{ci = "native"}). The default is \code{TRUE} when working in RStudio.}
+\item{open}{Whether or not to open the CI service's setup page in the
+browser (\code{ci = "lite"} opens the GitHub App page;
+\code{ci = "native"} opens \href{https://pre-commit.ci}{pre-commit.ci}).
+The default is \code{TRUE} when working in RStudio.}
 
 \item{root}{The path to the root directory of your project.}
 }
 \description{
 Sets up continuous integration, or prompts the user to do it manually.
+See \code{vignette("ci", package = "precommit")} for a detailed comparison of
+the available options.
 }
