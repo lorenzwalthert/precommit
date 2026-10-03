@@ -33,7 +33,19 @@ jobs:
         run: Rscript -e 'source("renv/activate.R"); renv::restore(); renv::install("."); precommit:::auto_release()'
       - name: Pin .pre-commit-config.yaml rev to current SHA
         run: |
-          sed -i '' -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
+          f=.pre-commit-config.yaml
+
+          sed -i.bak '\#repo: https://github.com/lorenzwalthert/precommit$#,/rev:/ s/\(rev: \).*/\1'"$GITHUB_SHA"'/' "$f"
+
+          stat=$(git diff --no-index --numstat "$f.bak" "$f" || true)
+
+          if echo "$stat" | awk '{ exit !($1 == 1 && $2 == 1) }'; then
+            rm "$f.bak"
+          else
+            echo "Expected exactly one changed line, got:" >&2
+            git diff --no-index --unified=0 "$f.bak" "$f" >&2 || true
+            exit 1
+          fi
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v8.1.1
