@@ -40,8 +40,11 @@ jobs:
         run: |
           install.packages('pak')
           sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
-          for (script in c(sysreqs[['pre_install']], sysreqs[['install']], sysreqs[['post_install']])) {
+          scripts <- c(sysreqs[['pre_install']], sysreqs[['install']], sysreqs[['post_install']])
+          for (script in scripts) {
+            script <- paste(unlist(script), collapse = ' ')
             if (length(script) > 0L && nzchar(script)) {
+              message('Running: ', script)
               system2('sudo', c('bash', '-lc', script))
             }
           }
