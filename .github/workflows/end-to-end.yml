@@ -8,6 +8,7 @@ name: end-2-end
 jobs:
   end-2-end:
     strategy:
+      fail-fast: false
       matrix:
         os: [macOS-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
@@ -34,7 +35,8 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install system dependencies
+      - name: Install system dependencies (Linux only)
+        if: runner.os == 'Linux'
         run: |
           install.packages('pak')
           sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
