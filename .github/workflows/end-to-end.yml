@@ -34,6 +34,17 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
+      - name: Install system dependencies
+        run: |
+          install.packages('pak')
+          sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
+          for (script in c(sysreqs[['pre_install']], sysreqs[['install']], sysreqs[['post_install']])) {
+            if (length(script) > 0L && nzchar(script)) {
+              system(script)
+            }
+          }
+        shell: Rscript {0}
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
