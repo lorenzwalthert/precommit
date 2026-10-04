@@ -35,21 +35,35 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install system dependencies (Linux only)
+      - name: Generate system dependency commands (Linux only)
         if: runner.os == 'Linux'
         run: |
           install.packages('pak')
           sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
           scripts <- c(sysreqs[['pre_install']], sysreqs[['install_scripts']], sysreqs[['post_install']])
-          for (script in scripts) {
-            if (length(script) == 0L || !any(nzchar(script))) {
-              next
+          commands <- vapply(scripts, function(x) {
+            if (length(x) == 0L || !any(nzchar(x))) {
+              return(NA_character_)
             }
-            script <- paste(unlist(script), collapse = ' ')
-            message('Running: ', script)
-            system2('sudo', c('bash', '-lc', script))
-          }
+            paste(unlist(x), collapse = ' ')
+          }, character(1))
+          commands <- commands[!is.na(commands)]
+          writeLines(commands, 'sysreqs.sh')
+          cat(commands, sep = '\n')
         shell: Rscript {0}
+
+      - name: Run system dependency commands (Linux only)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f sysreqs.sh ]]; then
+            while IFS= read -r cmd; do
+              [[ -z "$cmd" ]] && continue
+              echo "Running: $cmd"
+              sudo bash -lc "$cmd"
+            done < sysreqs.sh
+          fi
 
       - name: Install dependencies
         run: |
