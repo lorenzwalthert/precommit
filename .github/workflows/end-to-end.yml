@@ -40,7 +40,7 @@ jobs:
         run: |
           install.packages('pak')
           sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
-          scripts <- c(sysreqs[['pre_install']], sysreqs[['install']], sysreqs[['post_install']])
+          scripts <- c(sysreqs[['pre_install']], sysreqs[['install_scripts']], sysreqs[['post_install']])
           commands <- vapply(scripts, function(x) {
             if (length(x) == 0L || !any(nzchar(x))) {
               return(NA_character_)
