@@ -42,7 +42,7 @@ jobs:
           sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
           for (script in c(sysreqs[['pre_install']], sysreqs[['install']], sysreqs[['post_install']])) {
             if (length(script) > 0L && nzchar(script)) {
-              system(script)
+              system2('sudo', c('bash', '-lc', script))
             }
           }
         shell: Rscript {0}
