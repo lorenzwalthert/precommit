@@ -7,7 +7,11 @@ name: end-2-end
 
 jobs:
   end-2-end:
-    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macOS-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -30,6 +34,36 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Generate system dependency commands (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          install.packages('pak')
+          sysreqs <- pak::pkg_sysreqs('local::.', dependencies = TRUE)
+          scripts <- c(sysreqs[['pre_install']], sysreqs[['install_scripts']], sysreqs[['post_install']])
+          commands <- vapply(scripts, function(x) {
+            if (length(x) == 0L || !any(nzchar(x))) {
+              return(NA_character_)
+            }
+            paste(unlist(x), collapse = ' ')
+          }, character(1))
+          commands <- commands[!is.na(commands)]
+          writeLines(commands, 'sysreqs.sh')
+          cat(commands, sep = '\n')
+        shell: Rscript {0}
+
+      - name: Run system dependency commands (Linux only)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f sysreqs.sh ]]; then
+            while IFS= read -r cmd; do
+              [[ -z "$cmd" ]] && continue
+              echo "Running: $cmd"
+              sudo bash -lc "$cmd"
+            done < sysreqs.sh
+          fi
 
       - name: Install dependencies
         run: |
@@ -57,15 +91,24 @@ jobs:
         run: |
           # hacky, maybe can use pre-commit try-repo?
           # https://stackoverflow.com/questions/30871868/sed-replace-first-occurence-in-place-with-big-files
-          sed -i ''  -e "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml
+          # sed -i '' is BSD (macOS); sed -i is GNU (Linux) — use a temp file for portability
+          sed "1,/rev:.*/{s/rev:.*/rev: $GITHUB_SHA/;}" .pre-commit-config.yaml > .pre-commit-config.yaml.tmp
+          mv .pre-commit-config.yaml.tmp .pre-commit-config.yaml
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m 'current hash must be head'
 
+      - name: Install pre-commit (macOS)
+        if: runner.os == 'macOS'
+        run: brew install pre-commit
+
+      - name: Install pre-commit (Linux)
+        if: runner.os == 'Linux'
+        run: pipx install pre-commit
+
       - name: Run pre-commit
         run: | 
-          brew install pre-commit
           pre-commit install --install-hooks
           
           echo 'running R/test.R'
