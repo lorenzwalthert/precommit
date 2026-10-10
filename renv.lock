@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "RSPM",
-        "URL": "https://packagemanager.posit.co/cran/2026-07-10"
+        "URL": "https://packagemanager.posit.co/cran/2026-09-28"
       }
     ]
   },
@@ -215,28 +215,6 @@
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "RSPM"
     },
-    "backports": {
-      "Package": "backports",
-      "Version": "1.5.1",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "Reimplementations of Functions Introduced Since R-3.0.0",
-      "Authors@R": "c( person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")), person(\"Duncan\", \"Murdoch\", NULL, \"murdoch.duncan@gmail.com\", role = c(\"aut\")), person(\"R Core Team\", role = \"aut\"))",
-      "Maintainer": "Michel Lang <michellang@gmail.com>",
-      "Description": "Functions introduced or changed since R v3.0.0 are re-implemented in this package. The backports are conditionally exported in order to let R resolve the function name to either the implemented backport, or the respective base version, if available. Package developers can make use of new functions or arguments by selectively importing specific backports to support older installations.",
-      "URL": "https://github.com/r-lib/backports",
-      "BugReports": "https://github.com/r-lib/backports/issues",
-      "License": "GPL-2 | GPL-3",
-      "NeedsCompilation": "yes",
-      "ByteCompile": "yes",
-      "Depends": [
-        "R (>= 3.0.0)"
-      ],
-      "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.3",
-      "Author": "Michel Lang [cre, aut] (ORCID: <https://orcid.org/0000-0001-9754-0393>), Duncan Murdoch [aut], R Core Team [aut]",
-      "Repository": "RSPM"
-    },
     "brew": {
       "Package": "brew",
       "Version": "1.0-10",
@@ -437,7 +415,7 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "7.1.0",
+      "Version": "8.0.0",
       "Source": "Repository",
       "Type": "Package",
       "Title": "A Modern and Flexible Web Client for R",
@@ -461,13 +439,13 @@
       "Depends": [
         "R (>= 3.0.0)"
       ],
-      "RoxygenNote": "7.3.2",
       "Encoding": "UTF-8",
       "Language": "en-US",
+      "Config/roxygen2/version": "8.0.0",
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Hadley Wickham [ctb], Posit Software, PBC [cph]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "desc": {
       "Package": "desc",
@@ -846,11 +824,11 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.51",
+      "Version": "1.52",
       "Source": "Repository",
       "Type": "Package",
       "Title": "A General-Purpose Package for Dynamic Report Generation in R",
-      "Authors@R": "c( person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\", URL = \"https://yihui.org\")), person(\"Abhraneel\", \"Sarma\", role = \"ctb\"), person(\"Adam\", \"Vogt\", role = \"ctb\"), person(\"Alastair\", \"Andrew\", role = \"ctb\"), person(\"Alex\", \"Zvoleff\", role = \"ctb\"), person(\"Amar\", \"Al-Zubaidi\", role = \"ctb\"), person(\"Andre\", \"Simon\", role = \"ctb\", comment = \"the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de\"), person(\"Aron\", \"Atkins\", role = \"ctb\"), person(\"Aaron\", \"Wolen\", role = \"ctb\"), person(\"Ashley\", \"Manton\", role = \"ctb\"), person(\"Atsushi\", \"Yasumoto\", role = \"ctb\", comment = c(ORCID = \"0000-0002-8335-495X\")), person(\"Ben\", \"Baumer\", role = \"ctb\"), person(\"Brian\", \"Diggs\", role = \"ctb\"), person(\"Brian\", \"Zhang\", role = \"ctb\"), person(\"Bulat\", \"Yapparov\", role = \"ctb\"), person(\"Cassio\", \"Pereira\", role = \"ctb\"), person(\"Christophe\", \"Dervieux\", role = \"ctb\"), person(\"David\", \"Hall\", role = \"ctb\"), person(\"David\", \"Hugh-Jones\", role = \"ctb\"), person(\"David\", \"Robinson\", role = \"ctb\"), person(\"Doug\", \"Hemken\", role = \"ctb\"), person(\"Duncan\", \"Murdoch\", role = \"ctb\"), person(\"Elio\", \"Campitelli\", role = \"ctb\"), person(\"Ellis\", \"Hughes\", role = \"ctb\"), person(\"Emily\", \"Riederer\", role = \"ctb\"), person(\"Fabian\", \"Hirschmann\", role = \"ctb\"), person(\"Fitch\", \"Simeon\", role = \"ctb\"), person(\"Forest\", \"Fang\", role = \"ctb\"), person(c(\"Frank\", \"E\", \"Harrell\", \"Jr\"), role = \"ctb\", comment = \"the Sweavel package at inst/misc/Sweavel.sty\"), person(\"Garrick\", \"Aden-Buie\", role = \"ctb\"), person(\"Gregoire\", \"Detrez\", role = \"ctb\"), person(\"Hadley\", \"Wickham\", role = \"ctb\"), person(\"Hao\", \"Zhu\", role = \"ctb\"), person(\"Heewon\", \"Jeon\", role = \"ctb\"), person(\"Henrik\", \"Bengtsson\", role = \"ctb\"), person(\"Hiroaki\", \"Yutani\", role = \"ctb\"), person(\"Ian\", \"Lyttle\", role = \"ctb\"), person(\"Hodges\", \"Daniel\", role = \"ctb\"), person(\"Jacob\", \"Bien\", role = \"ctb\"), person(\"Jake\", \"Burkhead\", role = \"ctb\"), person(\"James\", \"Manton\", role = \"ctb\"), person(\"Jared\", \"Lander\", role = \"ctb\"), person(\"Jason\", \"Punyon\", role = \"ctb\"), person(\"Javier\", \"Luraschi\", role = \"ctb\"), person(\"Jeff\", \"Arnold\", role = \"ctb\"), person(\"Jenny\", \"Bryan\", role = \"ctb\"), person(\"Jeremy\", \"Ashkenas\", role = c(\"ctb\", \"cph\"), comment = \"the CSS file at inst/misc/docco-classic.css\"), person(\"Jeremy\", \"Stephens\", role = \"ctb\"), person(\"Jim\", \"Hester\", role = \"ctb\"), person(\"Joe\", \"Cheng\", role = \"ctb\"), person(\"Johannes\", \"Ranke\", role = \"ctb\"), person(\"John\", \"Honaker\", role = \"ctb\"), person(\"John\", \"Muschelli\", role = \"ctb\"), person(\"Jonathan\", \"Keane\", role = \"ctb\"), person(\"JJ\", \"Allaire\", role = \"ctb\"), person(\"Johan\", \"Toloe\", role = \"ctb\"), person(\"Jonathan\", \"Sidi\", role = \"ctb\"), person(\"Joseph\", \"Larmarange\", role = \"ctb\"), person(\"Julien\", \"Barnier\", role = \"ctb\"), person(\"Kaiyin\", \"Zhong\", role = \"ctb\"), person(\"Kamil\", \"Slowikowski\", role = \"ctb\"), person(\"Karl\", \"Forner\", role = \"ctb\"), person(c(\"Kevin\", \"K.\"), \"Smith\", role = \"ctb\"), person(\"Kirill\", \"Mueller\", role = \"ctb\"), person(\"Kohske\", \"Takahashi\", role = \"ctb\"), person(\"Lorenz\", \"Walthert\", role = \"ctb\"), person(\"Lucas\", \"Gallindo\", role = \"ctb\"), person(\"Marius\", \"Hofert\", role = \"ctb\"), person(\"Martin\", \"Modrák\", role = \"ctb\"), person(\"Michael\", \"Chirico\", role = \"ctb\"), person(\"Michael\", \"Friendly\", role = \"ctb\"), person(\"Michal\", \"Bojanowski\", role = \"ctb\"), person(\"Michel\", \"Kuhlmann\", role = \"ctb\"), person(\"Miller\", \"Patrick\", role = \"ctb\"), person(\"Nacho\", \"Caballero\", role = \"ctb\"), person(\"Nick\", \"Salkowski\", role = \"ctb\"), person(\"Niels Richard\", \"Hansen\", role = \"ctb\"), person(\"Noam\", \"Ross\", role = \"ctb\"), person(\"Obada\", \"Mahdi\", role = \"ctb\"), person(\"Pavel N.\", \"Krivitsky\", role = \"ctb\", comment=c(ORCID = \"0000-0002-9101-3362\")), person(\"Pedro\", \"Faria\", role = \"ctb\"), person(\"Qiang\", \"Li\", role = \"ctb\"), person(\"Ramnath\", \"Vaidyanathan\", role = \"ctb\"), person(\"Richard\", \"Cotton\", role = \"ctb\"), person(\"Robert\", \"Krzyzanowski\", role = \"ctb\"), person(\"Rodrigo\", \"Copetti\", role = \"ctb\"), person(\"Romain\", \"Francois\", role = \"ctb\"), person(\"Ruaridh\", \"Williamson\", role = \"ctb\"), person(\"Sagiru\", \"Mati\", role = \"ctb\", comment = c(ORCID = \"0000-0003-1413-3974\")), person(\"Scott\", \"Kostyshak\", role = \"ctb\"), person(\"Sebastian\", \"Meyer\", role = \"ctb\"), person(\"Sietse\", \"Brouwer\", role = \"ctb\"), person(c(\"Simon\", \"de\"), \"Bernard\", role = \"ctb\"), person(\"Sylvain\", \"Rousseau\", role = \"ctb\"), person(\"Taiyun\", \"Wei\", role = \"ctb\"), person(\"Thibaut\", \"Assus\", role = \"ctb\"), person(\"Thibaut\", \"Lamadon\", role = \"ctb\"), person(\"Thomas\", \"Leeper\", role = \"ctb\"), person(\"Tim\", \"Mastny\", role = \"ctb\"), person(\"Tom\", \"Torsney-Weir\", role = \"ctb\"), person(\"Trevor\", \"Davis\", role = \"ctb\"), person(\"Viktoras\", \"Veitas\", role = \"ctb\"), person(\"Weicheng\", \"Zhu\", role = \"ctb\"), person(\"Wush\", \"Wu\", role = \"ctb\"), person(\"Zachary\", \"Foster\", role = \"ctb\"), person(\"Zhian N.\", \"Kamvar\", role = \"ctb\", comment = c(ORCID = \"0000-0003-1458-7108\")), person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
+      "Authors@R": "c( person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\", URL = \"https://yihui.org\")), person(\"Abhraneel\", \"Sarma\", role = \"ctb\"), person(\"Adam\", \"Vogt\", role = \"ctb\"), person(\"Alastair\", \"Andrew\", role = \"ctb\"), person(\"Alex\", \"Zvoleff\", role = \"ctb\"), person(\"Amar\", \"Al-Zubaidi\", role = \"ctb\"), person(\"Andre\", \"Simon\", role = \"ctb\", comment = \"the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de\"), person(\"Aron\", \"Atkins\", role = \"ctb\"), person(\"Aaron\", \"Wolen\", role = \"ctb\"), person(\"Ashley\", \"Manton\", role = \"ctb\"), person(\"Atsushi\", \"Yasumoto\", role = \"ctb\", comment = c(ORCID = \"0000-0002-8335-495X\")), person(\"Ben\", \"Baumer\", role = \"ctb\"), person(\"Brian\", \"Diggs\", role = \"ctb\"), person(\"Brian\", \"Zhang\", role = \"ctb\"), person(\"Bulat\", \"Yapparov\", role = \"ctb\"), person(\"Cassio\", \"Pereira\", role = \"ctb\"), person(\"Christophe\", \"Dervieux\", role = \"ctb\"), person(\"David\", \"Hall\", role = \"ctb\"), person(\"David\", \"Hugh-Jones\", role = \"ctb\"), person(\"David\", \"Robinson\", role = \"ctb\"), person(\"Doug\", \"Hemken\", role = \"ctb\"), person(\"Duncan\", \"Murdoch\", role = \"ctb\"), person(\"Elio\", \"Campitelli\", role = \"ctb\"), person(\"Ellis\", \"Hughes\", role = \"ctb\"), person(\"Emily\", \"Riederer\", role = \"ctb\"), person(\"Fabian\", \"Hirschmann\", role = \"ctb\"), person(\"Fitch\", \"Simeon\", role = \"ctb\"), person(\"Forest\", \"Fang\", role = \"ctb\"), person(c(\"Frank\", \"E\", \"Harrell\", \"Jr\"), role = \"ctb\", comment = \"the Sweavel package at inst/misc/Sweavel.sty\"), person(\"Garrick\", \"Aden-Buie\", role = \"ctb\"), person(\"Gregoire\", \"Detrez\", role = \"ctb\"), person(\"Hadley\", \"Wickham\", role = \"ctb\"), person(\"Hao\", \"Zhu\", role = \"ctb\"), person(\"Heewon\", \"Jeon\", role = \"ctb\"), person(\"Henrik\", \"Bengtsson\", role = \"ctb\"), person(\"Hiroaki\", \"Yutani\", role = \"ctb\"), person(\"Ian\", \"Lyttle\", role = \"ctb\"), person(\"Hodges\", \"Daniel\", role = \"ctb\"), person(\"Jacob\", \"Bien\", role = \"ctb\"), person(\"Jake\", \"Burkhead\", role = \"ctb\"), person(\"James\", \"Manton\", role = \"ctb\"), person(\"Jared\", \"Lander\", role = \"ctb\"), person(\"Jason\", \"Punyon\", role = \"ctb\"), person(\"Javier\", \"Luraschi\", role = \"ctb\"), person(\"Jeff\", \"Arnold\", role = \"ctb\"), person(\"Jenny\", \"Bryan\", role = \"ctb\"), person(\"Jeremy\", \"Ashkenas\", role = c(\"ctb\", \"cph\"), comment = \"the CSS file at inst/misc/docco-classic.css\"), person(\"Jeremy\", \"Stephens\", role = \"ctb\"), person(\"Jim\", \"Hester\", role = \"ctb\"), person(\"Joe\", \"Cheng\", role = \"ctb\"), person(\"Johan\", \"Larsson\", role = \"ctb\"), person(\"Johannes\", \"Ranke\", role = \"ctb\"), person(\"John\", \"Honaker\", role = \"ctb\"), person(\"John\", \"Muschelli\", role = \"ctb\"), person(\"Jonathan\", \"Keane\", role = \"ctb\"), person(\"JJ\", \"Allaire\", role = \"ctb\"), person(\"Johan\", \"Toloe\", role = \"ctb\"), person(\"Jonathan\", \"Sidi\", role = \"ctb\"), person(\"Joseph\", \"Larmarange\", role = \"ctb\"), person(\"Julien\", \"Barnier\", role = \"ctb\"), person(\"Kaiyin\", \"Zhong\", role = \"ctb\"), person(\"Kamil\", \"Slowikowski\", role = \"ctb\"), person(\"Karl\", \"Forner\", role = \"ctb\"), person(c(\"Kevin\", \"K.\"), \"Smith\", role = \"ctb\"), person(\"Kirill\", \"Mueller\", role = \"ctb\"), person(\"Kohske\", \"Takahashi\", role = \"ctb\"), person(\"Leonidas\", \"Zhak\", role = \"ctb\"), person(\"Lorenz\", \"Walthert\", role = \"ctb\"), person(\"Lucas\", \"Gallindo\", role = \"ctb\"), person(\"Marius\", \"Hofert\", role = \"ctb\"), person(\"Martin\", \"Modrák\", role = \"ctb\"), person(\"Michael\", \"Chirico\", role = \"ctb\"), person(\"Michael\", \"Friendly\", role = \"ctb\"), person(\"Michal\", \"Bojanowski\", role = \"ctb\"), person(\"Michel\", \"Kuhlmann\", role = \"ctb\"), person(\"Miller\", \"Patrick\", role = \"ctb\"), person(\"Nacho\", \"Caballero\", role = \"ctb\"), person(\"Nick\", \"Salkowski\", role = \"ctb\"), person(\"Niels Richard\", \"Hansen\", role = \"ctb\"), person(\"Noam\", \"Ross\", role = \"ctb\"), person(\"Obada\", \"Mahdi\", role = \"ctb\"), person(\"Pavel N.\", \"Krivitsky\", role = \"ctb\", comment=c(ORCID = \"0000-0002-9101-3362\")), person(\"Pedro\", \"Faria\", role = \"ctb\"), person(\"Qiang\", \"Li\", role = \"ctb\"), person(\"Ramnath\", \"Vaidyanathan\", role = \"ctb\"), person(\"Richard\", \"Cotton\", role = \"ctb\"), person(\"Robert\", \"Krzyzanowski\", role = \"ctb\"), person(\"Rodrigo\", \"Copetti\", role = \"ctb\"), person(\"Romain\", \"Francois\", role = \"ctb\"), person(\"Ruaridh\", \"Williamson\", role = \"ctb\"), person(\"Sagiru\", \"Mati\", role = \"ctb\", comment = c(ORCID = \"0000-0003-1413-3974\")), person(\"Scott\", \"Kostyshak\", role = \"ctb\"), person(\"Sebastian\", \"Meyer\", role = \"ctb\"), person(\"Sietse\", \"Brouwer\", role = \"ctb\"), person(c(\"Simon\", \"de\"), \"Bernard\", role = \"ctb\"), person(\"Sylvain\", \"Rousseau\", role = \"ctb\"), person(\"Taiyun\", \"Wei\", role = \"ctb\"), person(\"Thibaut\", \"Assus\", role = \"ctb\"), person(\"Thibaut\", \"Lamadon\", role = \"ctb\"), person(\"Thomas\", \"Leeper\", role = \"ctb\"), person(\"Tim\", \"Mastny\", role = \"ctb\"), person(\"Tom\", \"Torsney-Weir\", role = \"ctb\"), person(\"Trevor\", \"Davis\", role = \"ctb\"), person(\"Viktoras\", \"Veitas\", role = \"ctb\"), person(\"Weicheng\", \"Zhu\", role = \"ctb\"), person(\"Wush\", \"Wu\", role = \"ctb\"), person(\"Zachary\", \"Foster\", role = \"ctb\"), person(\"Zhian N.\", \"Kamvar\", role = \"ctb\", comment = c(ORCID = \"0000-0003-1458-7108\")), person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Provides a general-purpose tool for dynamic report generation in R using Literate Programming techniques.",
       "Depends": [
         "R (>= 3.6.0)"
@@ -874,12 +852,11 @@
         "jpeg",
         "JuliaCall (>= 0.11.1)",
         "magick",
-        "litedown",
-        "markdown (>= 1.3)",
+        "litedown (>= 0.10)",
         "otel",
         "otelsdk",
         "png",
-        "ragg",
+        "ragg (>= 1.5.0)",
         "reticulate (>= 1.4)",
         "rgl (>= 0.95.1201)",
         "rlang",
@@ -902,12 +879,12 @@
       "Encoding": "UTF-8",
       "VignetteBuilder": "litedown, knitr",
       "SystemRequirements": "Package vignettes based on R Markdown v2 or reStructuredText require Pandoc (http://pandoc.org). The function rst2pdf() requires rst2pdf (https://github.com/rst2pdf/rst2pdf).",
-      "Collate": "'block.R' 'cache.R' 'citation.R' 'hooks-html.R' 'plot.R' 'utils.R' 'defaults.R' 'concordance.R' 'engine.R' 'highlight.R' 'themes.R' 'header.R' 'hooks-asciidoc.R' 'hooks-chunk.R' 'hooks-extra.R' 'hooks-latex.R' 'hooks-md.R' 'hooks-rst.R' 'hooks-textile.R' 'hooks.R' 'otel.R' 'output.R' 'package.R' 'pandoc.R' 'params.R' 'parser.R' 'pattern.R' 'rocco.R' 'spin.R' 'table.R' 'template.R' 'utils-conversion.R' 'utils-rd2html.R' 'utils-string.R' 'utils-sweave.R' 'utils-upload.R' 'utils-vignettes.R' 'zzz.R'",
-      "RoxygenNote": "7.3.3",
+      "Collate": "'block.R' 'cache.R' 'citation.R' 'hooks-html.R' 'plot.R' 'utils.R' 'defaults.R' 'concordance.R' 'engine.R' 'highlight.R' 'themes.R' 'header.R' 'hooks-asciidoc.R' 'hooks-chunk.R' 'hooks-extra.R' 'hooks-latex.R' 'hooks-md.R' 'hooks-rst.R' 'hooks-textile.R' 'hooks-typst.R' 'hooks.R' 'otel.R' 'output.R' 'package.R' 'pandoc.R' 'params.R' 'parser.R' 'pattern.R' 'rocco.R' 'spin.R' 'table.R' 'template.R' 'utils-conversion.R' 'utils-rd2html.R' 'utils-string.R' 'utils-sweave.R' 'utils-upload.R' 'utils-vignettes.R' 'zzz.R'",
+      "Config/roxygen2/version": "8.1.0",
       "NeedsCompilation": "no",
-      "Author": "Yihui Xie [aut, cre] (ORCID: <https://orcid.org/0000-0003-0645-5666>, URL: https://yihui.org), Abhraneel Sarma [ctb], Adam Vogt [ctb], Alastair Andrew [ctb], Alex Zvoleff [ctb], Amar Al-Zubaidi [ctb], Andre Simon [ctb] (the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de), Aron Atkins [ctb], Aaron Wolen [ctb], Ashley Manton [ctb], Atsushi Yasumoto [ctb] (ORCID: <https://orcid.org/0000-0002-8335-495X>), Ben Baumer [ctb], Brian Diggs [ctb], Brian Zhang [ctb], Bulat Yapparov [ctb], Cassio Pereira [ctb], Christophe Dervieux [ctb], David Hall [ctb], David Hugh-Jones [ctb], David Robinson [ctb], Doug Hemken [ctb], Duncan Murdoch [ctb], Elio Campitelli [ctb], Ellis Hughes [ctb], Emily Riederer [ctb], Fabian Hirschmann [ctb], Fitch Simeon [ctb], Forest Fang [ctb], Frank E Harrell Jr [ctb] (the Sweavel package at inst/misc/Sweavel.sty), Garrick Aden-Buie [ctb], Gregoire Detrez [ctb], Hadley Wickham [ctb], Hao Zhu [ctb], Heewon Jeon [ctb], Henrik Bengtsson [ctb], Hiroaki Yutani [ctb], Ian Lyttle [ctb], Hodges Daniel [ctb], Jacob Bien [ctb], Jake Burkhead [ctb], James Manton [ctb], Jared Lander [ctb], Jason Punyon [ctb], Javier Luraschi [ctb], Jeff Arnold [ctb], Jenny Bryan [ctb], Jeremy Ashkenas [ctb, cph] (the CSS file at inst/misc/docco-classic.css), Jeremy Stephens [ctb], Jim Hester [ctb], Joe Cheng [ctb], Johannes Ranke [ctb], John Honaker [ctb], John Muschelli [ctb], Jonathan Keane [ctb], JJ Allaire [ctb], Johan Toloe [ctb], Jonathan Sidi [ctb], Joseph Larmarange [ctb], Julien Barnier [ctb], Kaiyin Zhong [ctb], Kamil Slowikowski [ctb], Karl Forner [ctb], Kevin K. Smith [ctb], Kirill Mueller [ctb], Kohske Takahashi [ctb], Lorenz Walthert [ctb], Lucas Gallindo [ctb], Marius Hofert [ctb], Martin Modrák [ctb], Michael Chirico [ctb], Michael Friendly [ctb], Michal Bojanowski [ctb], Michel Kuhlmann [ctb], Miller Patrick [ctb], Nacho Caballero [ctb], Nick Salkowski [ctb], Niels Richard Hansen [ctb], Noam Ross [ctb], Obada Mahdi [ctb], Pavel N. Krivitsky [ctb] (ORCID: <https://orcid.org/0000-0002-9101-3362>), Pedro Faria [ctb], Qiang Li [ctb], Ramnath Vaidyanathan [ctb], Richard Cotton [ctb], Robert Krzyzanowski [ctb], Rodrigo Copetti [ctb], Romain Francois [ctb], Ruaridh Williamson [ctb], Sagiru Mati [ctb] (ORCID: <https://orcid.org/0000-0003-1413-3974>), Scott Kostyshak [ctb], Sebastian Meyer [ctb], Sietse Brouwer [ctb], Simon de Bernard [ctb], Sylvain Rousseau [ctb], Taiyun Wei [ctb], Thibaut Assus [ctb], Thibaut Lamadon [ctb], Thomas Leeper [ctb], Tim Mastny [ctb], Tom Torsney-Weir [ctb], Trevor Davis [ctb], Viktoras Veitas [ctb], Weicheng Zhu [ctb], Wush Wu [ctb], Zachary Foster [ctb], Zhian N. Kamvar [ctb] (ORCID: <https://orcid.org/0000-0003-1458-7108>), Posit Software, PBC [cph, fnd]",
+      "Author": "Yihui Xie [aut, cre] (ORCID: <https://orcid.org/0000-0003-0645-5666>, URL: https://yihui.org), Abhraneel Sarma [ctb], Adam Vogt [ctb], Alastair Andrew [ctb], Alex Zvoleff [ctb], Amar Al-Zubaidi [ctb], Andre Simon [ctb] (the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de), Aron Atkins [ctb], Aaron Wolen [ctb], Ashley Manton [ctb], Atsushi Yasumoto [ctb] (ORCID: <https://orcid.org/0000-0002-8335-495X>), Ben Baumer [ctb], Brian Diggs [ctb], Brian Zhang [ctb], Bulat Yapparov [ctb], Cassio Pereira [ctb], Christophe Dervieux [ctb], David Hall [ctb], David Hugh-Jones [ctb], David Robinson [ctb], Doug Hemken [ctb], Duncan Murdoch [ctb], Elio Campitelli [ctb], Ellis Hughes [ctb], Emily Riederer [ctb], Fabian Hirschmann [ctb], Fitch Simeon [ctb], Forest Fang [ctb], Frank E Harrell Jr [ctb] (the Sweavel package at inst/misc/Sweavel.sty), Garrick Aden-Buie [ctb], Gregoire Detrez [ctb], Hadley Wickham [ctb], Hao Zhu [ctb], Heewon Jeon [ctb], Henrik Bengtsson [ctb], Hiroaki Yutani [ctb], Ian Lyttle [ctb], Hodges Daniel [ctb], Jacob Bien [ctb], Jake Burkhead [ctb], James Manton [ctb], Jared Lander [ctb], Jason Punyon [ctb], Javier Luraschi [ctb], Jeff Arnold [ctb], Jenny Bryan [ctb], Jeremy Ashkenas [ctb, cph] (the CSS file at inst/misc/docco-classic.css), Jeremy Stephens [ctb], Jim Hester [ctb], Joe Cheng [ctb], Johan Larsson [ctb], Johannes Ranke [ctb], John Honaker [ctb], John Muschelli [ctb], Jonathan Keane [ctb], JJ Allaire [ctb], Johan Toloe [ctb], Jonathan Sidi [ctb], Joseph Larmarange [ctb], Julien Barnier [ctb], Kaiyin Zhong [ctb], Kamil Slowikowski [ctb], Karl Forner [ctb], Kevin K. Smith [ctb], Kirill Mueller [ctb], Kohske Takahashi [ctb], Leonidas Zhak [ctb], Lorenz Walthert [ctb], Lucas Gallindo [ctb], Marius Hofert [ctb], Martin Modrák [ctb], Michael Chirico [ctb], Michael Friendly [ctb], Michal Bojanowski [ctb], Michel Kuhlmann [ctb], Miller Patrick [ctb], Nacho Caballero [ctb], Nick Salkowski [ctb], Niels Richard Hansen [ctb], Noam Ross [ctb], Obada Mahdi [ctb], Pavel N. Krivitsky [ctb] (ORCID: <https://orcid.org/0000-0002-9101-3362>), Pedro Faria [ctb], Qiang Li [ctb], Ramnath Vaidyanathan [ctb], Richard Cotton [ctb], Robert Krzyzanowski [ctb], Rodrigo Copetti [ctb], Romain Francois [ctb], Ruaridh Williamson [ctb], Sagiru Mati [ctb] (ORCID: <https://orcid.org/0000-0003-1413-3974>), Scott Kostyshak [ctb], Sebastian Meyer [ctb], Sietse Brouwer [ctb], Simon de Bernard [ctb], Sylvain Rousseau [ctb], Taiyun Wei [ctb], Thibaut Assus [ctb], Thibaut Lamadon [ctb], Thomas Leeper [ctb], Tim Mastny [ctb], Tom Torsney-Weir [ctb], Trevor Davis [ctb], Viktoras Veitas [ctb], Weicheng Zhu [ctb], Wush Wu [ctb], Zachary Foster [ctb], Zhian N. Kamvar [ctb] (ORCID: <https://orcid.org/0000-0003-1458-7108>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "lifecycle": {
       "Package": "lifecycle",
@@ -951,19 +928,18 @@
     },
     "lintr": {
       "Package": "lintr",
-      "Version": "3.3.0-1",
+      "Version": "3.4.0",
       "Source": "Repository",
       "Title": "A 'Linter' for R Code",
-      "Authors@R": "c( person(\"Jim\", \"Hester\", , role = \"aut\"), person(\"Florent\", \"Angly\", role = \"aut\", comment = c(GitHub = \"fangly\")), person(\"Russ\", \"Hyde\", role = \"aut\"), person(\"Michael\", \"Chirico\", email = \"michaelchirico4@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-0787-087X\")), person(\"Kun\", \"Ren\", role = \"aut\"), person(\"Alexander\", \"Rosenstock\", role = \"aut\", comment = c(GitHub = \"AshesITR\")), person(\"Indrajeet\", \"Patil\", email = \"patilindrajeet.science@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0003-1995-6531\")), person(\"Hugo\", \"Gruson\", role = \"aut\", comment = c(ORCID = \"0000-0002-4094-1476\")) )",
+      "Authors@R": "c( person(\"Jim\", \"Hester\", , role = \"aut\"), person(\"Florent\", \"Angly\", role = \"aut\", comment = c(GitHub = \"fangly\")), person(\"Russ\", \"Hyde\", role = \"aut\"), person(\"Michael\", \"Chirico\", email = \"michaelchirico4@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-0787-087X\")), person(\"Kun\", \"Ren\", role = \"aut\"), person(\"Alexander\", \"Rosenstock\", role = \"aut\", comment = c(GitHub = \"AshesITR\")), person(\"Indrajeet\", \"Patil\", email = \"patilindrajeet.science@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0003-1995-6531\")), person(\"Hugo\", \"Gruson\", role = \"aut\", comment = c(ORCID = \"0000-0002-4094-1476\")), person(\"Emmanuel\", \"Ferdman\", role = \"aut\") )",
       "Description": "Checks adherence to a given style, syntax errors and possible semantic issues.  Supports on the fly checking of R code edited with 'RStudio IDE', 'Emacs', 'Vim', 'Sublime Text', 'Atom' and 'Visual Studio Code'.",
       "License": "MIT + file LICENSE",
       "URL": "https://lintr.r-lib.org, https://github.com/r-lib/lintr",
       "BugReports": "https://github.com/r-lib/lintr/issues",
       "Depends": [
-        "R (>= 4.0)"
+        "R (>= 4.1.0)"
       ],
       "Imports": [
-        "backports (>= 1.5.0)",
         "cli (>= 3.4.0)",
         "codetools",
         "digest",
@@ -973,7 +949,7 @@
         "stats",
         "utils",
         "xfun",
-        "xml2 (>= 1.0.0)",
+        "xml2 (>= 1.3.4)",
         "xmlparsedata (>= 1.0.5)"
       ],
       "Suggests": [
@@ -984,7 +960,7 @@
         "rlang",
         "rmarkdown",
         "rstudioapi (>= 0.2)",
-        "testthat (>= 3.2.1)",
+        "testthat (>= 3.3.0)",
         "tibble",
         "tufte",
         "withr (>= 2.5.0)"
@@ -997,13 +973,13 @@
       "Config/Needs/development": "pkgload, testthat, patrick",
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.3",
-      "Collate": "'make_linter_from_xpath.R' 'xp_utils.R' 'utils.R' 'AAA.R' 'T_and_F_symbol_linter.R' 'absolute_path_linter.R' 'actions.R' 'addins.R' 'all_equal_linter.R' 'any_duplicated_linter.R' 'any_is_na_linter.R' 'assignment_linter.R' 'backport_linter.R' 'boolean_arithmetic_linter.R' 'brace_linter.R' 'cache.R' 'class_equals_linter.R' 'coalesce_linter.R' 'commas_linter.R' 'commented_code_linter.R' 'comparison_negation_linter.R' 'condition_call_linter.R' 'condition_message_linter.R' 'conjunct_test_linter.R' 'consecutive_assertion_linter.R' 'consecutive_mutate_linter.R' 'cyclocomp_linter.R' 'declared_functions.R' 'deprecated.R' 'download_file_linter.R' 'duplicate_argument_linter.R' 'empty_assignment_linter.R' 'equals_na_linter.R' 'exclude.R' 'expect_comparison_linter.R' 'expect_identical_linter.R' 'expect_length_linter.R' 'expect_lint.R' 'expect_named_linter.R' 'expect_not_linter.R' 'expect_null_linter.R' 'expect_s3_class_linter.R' 'expect_s4_class_linter.R' 'expect_true_false_linter.R' 'expect_type_linter.R' 'extract.R' 'fixed_regex_linter.R' 'for_loop_index_linter.R' 'function_argument_linter.R' 'function_left_parentheses_linter.R' 'function_return_linter.R' 'get_source_expressions.R' 'ids_with_token.R' 'if_not_else_linter.R' 'if_switch_linter.R' 'ifelse_censor_linter.R' 'implicit_assignment_linter.R' 'implicit_integer_linter.R' 'indentation_linter.R' 'infix_spaces_linter.R' 'inner_combine_linter.R' 'is_lint_level.R' 'is_numeric_linter.R' 'keyword_quote_linter.R' 'length_levels_linter.R' 'length_test_linter.R' 'lengths_linter.R' 'library_call_linter.R' 'line_length_linter.R' 'lint.R' 'linter_tag_docs.R' 'linter_tags.R' 'lintr-deprecated.R' 'lintr-package.R' 'list2df_linter.R' 'list_comparison_linter.R' 'literal_coercion_linter.R' 'make_linter_from_regex.R' 'matrix_apply_linter.R' 'methods.R' 'missing_argument_linter.R' 'missing_package_linter.R' 'namespace.R' 'namespace_linter.R' 'nested_ifelse_linter.R' 'nested_pipe_linter.R' 'nonportable_path_linter.R' 'shared_constants.R' 'nrow_subset_linter.R' 'numeric_leading_zero_linter.R' 'nzchar_linter.R' 'object_length_linter.R' 'object_name_linter.R' 'object_overwrite_linter.R' 'object_usage_linter.R' 'one_call_pipe_linter.R' 'outer_negation_linter.R' 'package_hooks_linter.R' 'paren_body_linter.R' 'paste_linter.R' 'path_utils.R' 'pipe_call_linter.R' 'pipe_consistency_linter.R' 'pipe_continuation_linter.R' 'pipe_return_linter.R' 'print_linter.R' 'quotes_linter.R' 'redundant_equals_linter.R' 'redundant_ifelse_linter.R' 'regex_subset_linter.R' 'rep_len_linter.R' 'repeat_linter.R' 'return_linter.R' 'routine_registration_linter.R' 'sample_int_linter.R' 'scalar_in_linter.R' 'semicolon_linter.R' 'seq_linter.R' 'settings.R' 'settings_utils.R' 'sort_linter.R' 'source_utils.R' 'spaces_inside_linter.R' 'spaces_left_parentheses_linter.R' 'sprintf_linter.R' 'stopifnot_all_linter.R' 'string_boundary_linter.R' 'strings_as_factors_linter.R' 'system_file_linter.R' 'terminal_close_linter.R' 'todo_comment_linter.R' 'trailing_blank_lines_linter.R' 'trailing_whitespace_linter.R' 'tree_utils.R' 'undesirable_function_linter.R' 'undesirable_operator_linter.R' 'unnecessary_concatenation_linter.R' 'unnecessary_lambda_linter.R' 'unnecessary_nesting_linter.R' 'unnecessary_placeholder_linter.R' 'unreachable_code_linter.R' 'unused_import_linter.R' 'use_lintr.R' 'vector_logic_linter.R' 'which_grepl_linter.R' 'whitespace_linter.R' 'with.R' 'with_id.R' 'xml_nodes_to_lints.R' 'xml_utils.R' 'yoda_test_linter.R' 'zzz.R'",
+      "Collate": "'make_linter_from_xpath.R' 'xp_utils.R' 'utils.R' 'AAA.R' 'T_and_F_symbol_linter.R' 'absolute_path_linter.R' 'actions.R' 'addins.R' 'all_equal_linter.R' 'any_duplicated_linter.R' 'any_is_na_linter.R' 'assignment_linter.R' 'backport_linter.R' 'boolean_arithmetic_linter.R' 'brace_linter.R' 'cache.R' 'class_equals_linter.R' 'coalesce_linter.R' 'commas_linter.R' 'commented_code_linter.R' 'comparison_negation_linter.R' 'condition_call_linter.R' 'condition_message_linter.R' 'conjunct_test_linter.R' 'consecutive_assertion_linter.R' 'consecutive_mutate_linter.R' 'cyclocomp_linter.R' 'declared_functions.R' 'deprecated.R' 'download_file_linter.R' 'duplicate_argument_linter.R' 'empty_assignment_linter.R' 'equals_na_linter.R' 'exclude.R' 'expect_comparison_linter.R' 'expect_identical_linter.R' 'expect_length_linter.R' 'expect_lint.R' 'expect_named_linter.R' 'expect_not_linter.R' 'expect_null_linter.R' 'expect_s3_class_linter.R' 'expect_s4_class_linter.R' 'expect_true_false_linter.R' 'expect_type_linter.R' 'extract.R' 'fixed_regex_linter.R' 'for_loop_index_linter.R' 'function_argument_linter.R' 'function_left_parentheses_linter.R' 'function_return_linter.R' 'get_source_expressions.R' 'ids_with_token.R' 'if_not_else_linter.R' 'if_switch_linter.R' 'ifelse_censor_linter.R' 'implicit_assignment_linter.R' 'implicit_integer_linter.R' 'indentation_linter.R' 'infix_spaces_linter.R' 'inner_combine_linter.R' 'is_lint_level.R' 'is_numeric_linter.R' 'keyword_quote_linter.R' 'length_levels_linter.R' 'length_test_linter.R' 'lengths_linter.R' 'library_call_linter.R' 'line_length_linter.R' 'lint.R' 'linter_tag_docs.R' 'linter_tags.R' 'lintr-package.R' 'list2df_linter.R' 'list_comparison_linter.R' 'literal_coercion_linter.R' 'make_linter_from_regex.R' 'matrix_apply_linter.R' 'methods.R' 'missing_argument_linter.R' 'missing_package_linter.R' 'namespace.R' 'namespace_linter.R' 'nested_ifelse_linter.R' 'nested_pipe_linter.R' 'nonportable_path_linter.R' 'shared_constants.R' 'nrow_subset_linter.R' 'numeric_leading_zero_linter.R' 'nzchar_linter.R' 'object_length_linter.R' 'object_name_linter.R' 'object_overwrite_linter.R' 'object_usage_linter.R' 'one_call_pipe_linter.R' 'outer_negation_linter.R' 'package_hooks_linter.R' 'paren_body_linter.R' 'paste_linter.R' 'path_utils.R' 'pipe_call_linter.R' 'pipe_consistency_linter.R' 'pipe_continuation_linter.R' 'pipe_return_linter.R' 'print_linter.R' 'quotes_linter.R' 'redundant_equals_linter.R' 'redundant_ifelse_linter.R' 'regex_subset_linter.R' 'rep_len_linter.R' 'repeat_linter.R' 'return_linter.R' 'routine_registration_linter.R' 'sample_int_linter.R' 'scalar_in_linter.R' 'semicolon_linter.R' 'seq_linter.R' 'settings.R' 'settings_utils.R' 'sort_linter.R' 'source_utils.R' 'spaces_inside_linter.R' 'spaces_left_parentheses_linter.R' 'sprintf_linter.R' 'stopifnot_all_linter.R' 'string_boundary_linter.R' 'strings_as_factors_linter.R' 'system_file_linter.R' 'terminal_close_linter.R' 'todo_comment_linter.R' 'trailing_blank_lines_linter.R' 'trailing_whitespace_linter.R' 'tree_utils.R' 'undesirable_function_linter.R' 'undesirable_operator_linter.R' 'unnecessary_concatenation_linter.R' 'unnecessary_lambda_linter.R' 'unnecessary_nesting_linter.R' 'unnecessary_placeholder_linter.R' 'unreachable_code_linter.R' 'unused_import_linter.R' 'use_lintr.R' 'vector_logic_linter.R' 'which_grepl_linter.R' 'whitespace_linter.R' 'with.R' 'with_id.R' 'xml_nodes_to_lints.R' 'xml_utils.R' 'yoda_test_linter.R' 'zzz.R'",
       "Language": "en-US",
+      "Config/roxygen2/version": "8.0.0",
       "NeedsCompilation": "no",
-      "Author": "Jim Hester [aut], Florent Angly [aut] (GitHub: fangly), Russ Hyde [aut], Michael Chirico [aut, cre] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Kun Ren [aut], Alexander Rosenstock [aut] (GitHub: AshesITR), Indrajeet Patil [aut] (ORCID: <https://orcid.org/0000-0003-1995-6531>), Hugo Gruson [aut] (ORCID: <https://orcid.org/0000-0002-4094-1476>)",
+      "Author": "Jim Hester [aut], Florent Angly [aut] (GitHub: fangly), Russ Hyde [aut], Michael Chirico [aut, cre] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Kun Ren [aut], Alexander Rosenstock [aut] (GitHub: AshesITR), Indrajeet Patil [aut] (ORCID: <https://orcid.org/0000-0003-1995-6531>), Hugo Gruson [aut] (ORCID: <https://orcid.org/0000-0002-4094-1476>), Emmanuel Ferdman [aut]",
       "Maintainer": "Michael Chirico <michaelchirico4@gmail.com>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -1290,9 +1266,39 @@
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "RSPM"
     },
+    "rdtools": {
+      "Package": "rdtools",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Title": "Efficient Manipulation of 'Rd' Files and Help Topics",
+      "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
+      "Description": "Provides fast, cached lookup of help topics and aliases across installed, source, and in-development packages, plus efficient retrieval of parsed 'Rd' ('R' documentation) objects. Per-package indexes are built once and cached, making repeated retrieval cheap enough to call in a tight loop.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://rdtools.r-lib.org, https://github.com/r-lib/rdtools",
+      "BugReports": "https://github.com/r-lib/rdtools/issues",
+      "Depends": [
+        "R (>= 4.0)"
+      ],
+      "Imports": [
+        "stats",
+        "tools"
+      ],
+      "Suggests": [
+        "testthat (>= 3.0.0)",
+        "withr"
+      ],
+      "Config/testthat/edition": "3",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "8.0.0",
+      "Config/Needs/website": "tidyverse/tidytemplate",
+      "NeedsCompilation": "yes",
+      "Author": "Hadley Wickham [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
+      "Maintainer": "Hadley Wickham <hadley@posit.co>",
+      "Repository": "CRAN"
+    },
     "renv": {
       "Package": "renv",
-      "Version": "1.2.3",
+      "Version": "1.2.4",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Project Environments",
@@ -1334,16 +1340,16 @@
         "webfakes"
       ],
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.3",
       "VignetteBuilder": "knitr",
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
       "Config/testthat/parallel": "true",
       "Config/testthat/start-first": "bioconductor,python,install,restore,snapshot,retrieve,remotes",
+      "Config/roxygen2/version": "8.0.0",
       "NeedsCompilation": "no",
       "Author": "Kevin Ushey [aut, cre] (ORCID: <https://orcid.org/0000-0003-2880-7407>), Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "rex": {
       "Package": "rex",
@@ -1436,7 +1442,7 @@
     },
     "roxygen2": {
       "Package": "roxygen2",
-      "Version": "8.0.0",
+      "Version": "8.1.0",
       "Source": "Repository",
       "Title": "In-Line Documentation for R",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Peter\", \"Danenberg\", , \"pcd@roxygen.org\", role = c(\"aut\", \"cph\")), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = \"aut\"), person(\"Manuel\", \"Eugster\", role = c(\"aut\", \"cph\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -1457,6 +1463,7 @@
         "methods",
         "pkgload (>= 1.5.2)",
         "R6 (>= 2.1.2)",
+        "rdtools (>= 0.1.0)",
         "rlang (>= 1.1.0)",
         "utils",
         "withr",
@@ -1479,7 +1486,7 @@
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/roxygen2/load": "installed",
       "Config/roxygen2/markdown": "TRUE",
-      "Config/roxygen2/version": "7.3.3.9000",
+      "Config/roxygen2/version": "8.0.0.9000",
       "Config/testthat/edition": "3",
       "Config/testthat/parallel": "TRUE",
       "Encoding": "UTF-8",
@@ -1487,7 +1494,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Peter Danenberg [aut, cph], Gábor Csárdi [aut], Manuel Eugster [aut, cph], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "rprojroot": {
       "Package": "rprojroot",
@@ -1689,7 +1696,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.60",
+      "Version": "0.61",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Supporting Functions for Packages Maintained by 'Yihui Xie'",
@@ -1729,11 +1736,11 @@
       "BugReports": "https://github.com/yihui/xfun/issues",
       "Encoding": "UTF-8",
       "VignetteBuilder": "litedown",
-      "Config/roxygen2/version": "8.0.0",
+      "Config/roxygen2/version": "8.1.0",
       "NeedsCompilation": "yes",
       "Author": "Yihui Xie [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-0645-5666>, URL: https://yihui.org), Wush Wu [ctb], Daijiang Li [ctb], Xianying Tan [ctb], Salim Brüggemann [ctb] (ORCID: <https://orcid.org/0000-0002-5329-5987>), Christophe Dervieux [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "xml2": {
       "Package": "xml2",
