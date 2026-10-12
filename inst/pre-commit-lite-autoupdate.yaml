@@ -1,0 +1,29 @@
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # monthly, 1st of each month
+  workflow_dispatch:
+
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+    # Requires: Settings → Actions → General → Workflow permissions →
+    # "Allow GitHub Actions to create and approve pull requests"
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+      with:
+        python-version: 3.x
+    - run: pip install pre-commit && pre-commit autoupdate
+    - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.11
+      id: create-pr
+      with:
+        commit-message: 'pre-commit autoupdate'
+        title: 'pre-commit autoupdate'
+        branch: pre-commit-autoupdate
+    - name: Check PR creation result
+      if: failure()
+      run: |
+        echo "::error::Failed to create pull request. If you see a permissions error, go to Settings → Actions → General → Workflow permissions and enable 'Allow GitHub Actions to create and approve pull requests'."

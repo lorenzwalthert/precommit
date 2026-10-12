@@ -3,7 +3,7 @@
   op.precommit <- list(
     precommit.executable = path_derive_precommit_exec(),
     precommit.block_install_hooks = FALSE,
-    precommit.ci = "native"
+    precommit.ci = "lite"
   )
   toset <- !(names(op.precommit) %in% names(op))
   if (any(toset)) options(op.precommit[toset])

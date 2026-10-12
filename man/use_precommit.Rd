@@ -10,7 +10,7 @@ use_precommit(
   legacy_hooks = "forbid",
   open = rstudioapi::isAvailable(),
   install_hooks = TRUE,
-  ci = getOption("precommit.ci", "native"),
+  ci = getOption("precommit.ci", "lite"),
   autoupdate = install_hooks,
   root = here::here()
 )
@@ -22,8 +22,8 @@ config file will be hard-copied into \code{root}. If \code{NULL}, we check if
 \code{\link[rprojroot:find_package_root_file]{rprojroot::find_package_root_file()}}, and resort to an appropriate default
 config. See section 'Copying an existing config file'.}
 
-\item{force}{Whether or not to overwrite an existing ci config file (only
-relevant for \code{ci = "gha"}).}
+\item{force}{Whether or not to overwrite existing CI workflow files (only
+relevant for \code{ci = "lite"} and \code{ci = "gha"}).}
 
 \item{legacy_hooks}{How to treat hooks already in the repo which are not
 managed by pre-commit. "forbid", the default, will cause  \code{use_precommit()}
@@ -31,20 +31,30 @@ to fail if there are such hooks. "allow" will run these along with
 pre-commit. "remove" will delete them.}
 
 \item{open}{Whether or not to open \code{.pre-commit-config.yaml} after
-it's been placed in your repo as well as
-\href{https://pre-commit.ci}{pre-commit.ci} (if \code{ci = "native"}). The default is
+it's been placed in your repo, and the CI service's setup page
+(see \code{open} in \code{\link[=use_ci]{use_ci()}} for details). The default is
 \code{TRUE} when working in RStudio.}
 
 \item{install_hooks}{Whether to install environments for all available hooks.
 If \code{FALSE}, environments are installed with first commit.}
 
-\item{ci}{Specifies which continuous integration service to use. See
-\code{vignette("ci", package = "precommit")} for details. Defaults to
-\code{getOption("precommit.ci", "native")}, which is set to
-\code{"native"} on package loading (if unset). \code{"native"} sets up
-\href{https://pre-commit.ci}{pre-commit.ci}. Alternatively, \code{"gha"} can be used
-to set up \href{https://github.com/features/actions}{GitHub Actions}. Set value
-to \code{NA} if you don't want to use a continuous integration.}
+\item{ci}{Specifies which continuous integration service to use. Defaults to
+\code{getOption("precommit.ci", "lite")}, which is set to \code{"lite"} on package
+loading (if unset). Valid values:
+\itemize{
+\item \code{"lite"}: Sets up \href{https://github.com/apps/pre-commit-ci-lite}{pre-commit.ci lite},
+a GitHub App that runs hooks on GitHub Actions and auto-fixes PRs.
+Copies two workflow files to \verb{.github/workflows/} and opens the app
+installation page. \strong{Recommended default.}
+\item \code{"native"}: Sets up the fully managed \href{https://pre-commit.ci}{pre-commit.ci}
+service. No workflow files are added; the user is prompted to
+authenticate via the browser.
+\item \code{"gha"}: Sets up a self-contained
+\href{https://github.com/features/actions}{GitHub Actions} workflow copied
+to \code{.github/workflows/pre-commit.yaml}. Auto-fixing requires additional
+credential setup.
+\item \code{NA}: Skip CI setup entirely.
+}}
 
 \item{autoupdate}{Whether or not to run \code{\link[=autoupdate]{autoupdate()}} as part of this
 function call.}
