@@ -39,6 +39,10 @@ jobs:
           path: ~/Library/Application Support/renv
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('renv.lock') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+      - name: Install System dependencies (macOS)
+        if: startsWith(runner.os, 'macOS')
+        run: |
+          brew install libgit2
       - name: Cache R packages (Linux)
         if: startsWith(runner.os, 'Linux')
         uses: actions/cache@v6
