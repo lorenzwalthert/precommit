@@ -5,8 +5,7 @@ rspm_url <- lockfile$R$Repositories$RSPM
 current_date <- Sys.Date()
 cooldown_in_days <- as.integer(Sys.getenv("R_PRECOMMIT_COOLDOWN_IN_DAYS", unset = "5"))
 
-to_substract <- max(0L, as.integer(strftime(current_date, "%u")) - cooldown_in_days)
-cooled_off_snapshot_day <- current_date - to_substract
+cooled_off_snapshot_day <- current_date - cooldown_in_days
 updated_url <- gsub("[0-9]{4}-[0-9]{2}-[0-9]{2}$", cooled_off_snapshot_day, rspm_url)
 lockfile$R$Repositories$RSPM <- updated_url
 renv::lockfile_write(lockfile = lockfile)
