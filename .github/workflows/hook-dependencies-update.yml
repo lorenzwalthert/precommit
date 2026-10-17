@@ -2,7 +2,12 @@ on:
   schedule:
     - cron:  '50 8 1,15 * *'
   workflow_dispatch:
-
+    inputs:
+      cooldown_in_days:
+        description: 'Number of days to cool off the PPM snapshot'
+        required: false
+        default: 5
+        type: number
 
 name: Hook dependency updates
 
@@ -11,6 +16,7 @@ jobs:
     runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_PRECOMMIT_COOLDOWN_IN_DAYS: ${{ inputs.cooldown_in_days || '5' }}
     steps:
       - uses: actions/checkout@v7
 
