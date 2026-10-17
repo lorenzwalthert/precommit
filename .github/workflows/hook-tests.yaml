@@ -39,10 +39,6 @@ jobs:
           path: ~/Library/Application Support/renv
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('renv.lock') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-      - name: Install System dependencies (macOS)
-        if: startsWith(runner.os, 'macOS')
-        run: |
-          brew install libgit2
       - name: Cache R packages (Linux)
         if: startsWith(runner.os, 'Linux')
         uses: actions/cache@v6
@@ -58,7 +54,14 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('renv.lock') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-2-
 
+      # testing dependencies live in the global R library and are installed
+      # by pak (binaries preferred, so no system libgit2 needed on macOS)
       - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::testthat
+            any::pkgload
+            any::git2r
       - name: Prepare hook environment
         run: |
           source('renv/activate.R')
@@ -84,10 +87,9 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) {
             install.packages("renv", repos = c(CRAN = "https://cloud.r-project.org"))
           }
-          # avoid build-time deps
-          renv::install(c('testthat', 'pkgload', 'git2r'))
           # some testing infrastructure we need is in R/testing.R
-          renv::install(getwd())
+          # (testthat, pkgload, git2r and package deps are already installed above)
+          renv::install(getwd(), dependencies = FALSE)
         shell: Rscript {0}
       - name: Session info (testing environment)
         run: |
