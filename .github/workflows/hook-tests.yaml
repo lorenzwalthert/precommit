@@ -58,7 +58,6 @@ jobs:
       - name: Prepare hook environment
         run: |
           source('renv/activate.R')
-          options(install.packages.compile.from.source = "never", pkgType = "binary")
           renv::restore()
           # install hook-specific additional_dependencies from .pre-commit-config.yaml
           renv::install(c('pkgdown'))
@@ -82,7 +81,6 @@ jobs:
             install.packages("renv", repos = c(CRAN = "https://cloud.r-project.org"))
           }
           # avoid build-time deps
-          options(install.packages.compile.from.source = "never") 
           renv::install(c('testthat', 'pkgload', 'git2r'))
           # some testing infrastructure we need is in R/testing.R
           renv::install(getwd())
