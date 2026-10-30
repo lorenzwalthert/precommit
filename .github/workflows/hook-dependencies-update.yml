@@ -97,17 +97,10 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-pull-request
 
-      - name: Check out the PR branch
-        if: steps.deps.outputs.changed == 'true'
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ steps.cpr.outputs.pull-request-branch }}
-          fetch-depth: 0
-
       - name: Push latest tag
         if: steps.deps.outputs.changed == 'true'
         env:
-          SHA: ${{ steps.cpr.outputs.pull-request-head-sha }}
+          SHA: ${{ steps.deps.outputs.sha }}
         run: |
           Rscript -e "install.packages('desc')"
           TAG="v$(Rscript -e 'cat(as.character(desc::desc_get_version()))')"
