@@ -94,6 +94,30 @@ test_that("Pre-commit CI GitHub Action template is parsable", {
   )
 })
 
+test_that("Pre-commit CI lite setup works", {
+  local_test_setup(
+    git = FALSE, use_precommit = FALSE, package = TRUE, install_hooks = FALSE
+  )
+  use_precommit_config(
+    root = getwd(),
+    open = FALSE, verbose = FALSE
+  )
+  use_ci("lite", root = getwd(), open = FALSE)
+  expect_true(file_exists(".github/workflows/pre-commit.yml"))
+  expect_true(file_exists(".github/workflows/pre-commit-autoupdate.yml"))
+})
+
+test_that("Pre-commit CI lite workflow templates are parsable", {
+  expect_error(
+    yaml::read_yaml(system.file("pre-commit-lite.yaml", package = "precommit")),
+    NA
+  )
+  expect_error(
+    yaml::read_yaml(system.file("pre-commit-lite-autoupdate.yaml", package = "precommit")),
+    NA
+  )
+})
+
 test_that("Pre-commit CI setup works", {
   local_test_setup(
     git = FALSE, use_precommit = FALSE, package = TRUE, install_hooks = FALSE
@@ -102,7 +126,7 @@ test_that("Pre-commit CI setup works", {
     root = getwd(),
     open = FALSE, verbose = FALSE
   )
-  use_ci(root = getwd(), open = FALSE)
+  use_ci("native", root = getwd(), open = FALSE)
   expect_false(file_exists(".github/workflows/pre-commit.yaml"))
 })
 
