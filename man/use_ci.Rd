@@ -5,7 +5,7 @@
 \title{Use continuous integration with pre-commit}
 \usage{
 use_ci(
-  ci = getOption("precommit.ci", "native"),
+  ci = getOption("precommit.ci", "lite"),
   force = FALSE,
   open = rstudioapi::isAvailable(),
   root = here::here()

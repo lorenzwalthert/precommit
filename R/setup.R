@@ -98,7 +98,7 @@ use_precommit <- function(config_source = getOption("precommit.config_source"),
 #'   The default is `TRUE` when working in RStudio.
 #' @inheritParams fallback_doc
 #' @export
-use_ci <- function(ci = getOption("precommit.ci", "native"),
+use_ci <- function(ci = getOption("precommit.ci", "lite"),
                    force = FALSE,
                    open = rstudioapi::isAvailable(),
                    root = here::here()) {
@@ -170,7 +170,7 @@ use_ci <- function(ci = getOption("precommit.ci", "native"),
     }
   } else {
     rlang::abort(
-      'Argument `ci` must be one of `"native"` (default), `"lite"`, `"gha"` or `NULL`.'
+      'Argument `ci` must be one of `"lite"` (default), `"native"`, `"gha"` or `NA`.'
     )
   }
   config <- readLines(fs::path(root, ".pre-commit-config.yaml"))
