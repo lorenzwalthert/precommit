@@ -1,2 +1,4 @@
+**/*.quarto_ipynb
 *.R
 *.html
+/.quarto/
