@@ -113,6 +113,13 @@ use_ci <- function(ci = getOption("precommit.ci", "lite"),
   } else if (ci == "gha") {
     dest <- fs::path(root, ".github/workflows/pre-commit.yaml")
     fs::dir_create(fs::path_dir(dest))
+    if (fs::file_exists(dest) && !force) {
+      cli::cli_alert_info(paste0(
+        "There is already a GitHub Actions workflow file at ",
+        "{.code .github/workflows/pre-commit.yaml}. Use {.code force = TRUE} to overwrite."
+      ))
+      return(invisible(NULL))
+    }
     fs::file_copy(
       system.file("pre-commit-gha.yaml", package = "precommit"),
       dest,
