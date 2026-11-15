@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "RSPM",
-        "URL": "https://packagemanager.posit.co/cran/2026-10-27"
+        "URL": "https://packagemanager.posit.co/cran/2026-11-10"
       }
     ]
   },
@@ -1014,14 +1014,13 @@
     },
     "otel": {
       "Package": "otel",
-      "Version": "0.2.0",
+      "Version": "0.3.0",
       "Source": "Repository",
       "Title": "OpenTelemetry R API",
       "Authors@R": "person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\"))",
       "Description": "High-quality, ubiquitous, and portable telemetry to enable effective observability. OpenTelemetry is a collection of tools, APIs, and SDKs used to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior. This package implements the OpenTelemetry API: <https://opentelemetry.io/docs/specs/otel/>. Use this package as a dependency if you want to instrument your R package for OpenTelemetry.",
       "License": "MIT + file LICENSE",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2.9000",
       "Depends": [
         "R (>= 3.6.0)"
       ],
@@ -1030,7 +1029,7 @@
         "cli",
         "glue",
         "jsonlite",
-        "otelsdk",
+        "otelsdk (>= 0.2.4)",
         "processx",
         "shiny",
         "spelling",
@@ -1041,12 +1040,12 @@
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
       "URL": "https://otel.r-lib.org, https://github.com/r-lib/otel",
-      "Additional_repositories": "https://github.com/r-lib/otelsdk/releases/download/devel",
       "BugReports": "https://github.com/r-lib/otel/issues",
+      "Config/roxygen2/version": "8.1.1",
       "NeedsCompilation": "no",
       "Author": "Gábor Csárdi [aut, cre]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "pkgbuild": {
       "Package": "pkgbuild",
